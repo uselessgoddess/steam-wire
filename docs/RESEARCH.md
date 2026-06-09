@@ -1,8 +1,9 @@
 # Protobuf modernization research
 
 > Status: living document. Phase 1 (workspace consolidation + green build on
-> `rust-protobuf` 3.7.x) is implemented in this PR. The prost migration is
-> scoped here and tracked as follow-up work so the tree never regresses.
+> `rust-protobuf` 3.5.1, pinned — see §3.1.1) is implemented in this PR. The
+> prost migration is scoped here and tracked as follow-up work so the tree never
+> regresses.
 
 ## 1. Goal & constraints
 
@@ -59,12 +60,42 @@ Crates: `protobuf`, `protobuf-codegen`, `protobuf-parse`. The repo pins
 - ⚠️ **Verbose codegen.** Every message gets accessors, `CachedSize`,
   `SpecialFields`, reflection descriptors, `oneof` enums, etc. → the 594 KLOC
   above. Reflection/descriptor data also inflates the binary.
-- ➖ **Mitigation that helps today:** `Codegen::lite_runtime(true)` /
-  `optimize_for = LITE_RUNTIME` drops reflection and `Debug`/text-format
-  machinery. This is the cheapest available size/compile win *without changing
-  the framework* and is compatible with the existing protocol code (it only
-  uses the binary wire API: `parse_from_bytes`, `write_to_writer`,
-  `compute_size`, field accessors, the `Enum` trait).
+- ✅ **Already mitigated:** `Codegen::lite_runtime(true)`
+  (`optimize_for = LITE_RUNTIME`) is **already enabled** in the in-repo codegen
+  (`crates/steam-vent-proto-build/src/main.rs:83`), so reflection and
+  `Debug`/text-format machinery are already dropped from the generated code.
+  This is the cheapest size/compile win *without changing the framework*, and is
+  compatible with the protocol layer, which only uses the binary wire API
+  (`parse_from_bytes`, `write_to_writer`, `compute_size`, field accessors, the
+  `Enum` trait). The remaining size/compile cost is intrinsic to
+  rust-protobuf's generated struct shape — only a framework change (prost) moves
+  it further.
+
+#### 3.1.1 Why the tree stays on 3.5.1, not 3.7.2 (empirical)
+
+Bumping the workspace to `rust-protobuf` 3.7.2 (latest stable) was attempted and
+**reverted**. The findings:
+
+- **The bump is blocked by the optional game-proto crates.** The registry crates
+  `steam-vent-proto-{tf2,csgo,dota2}` ship *committed* generated code that
+  hard-codes a runtime version check —
+  `steam_vent_proto_common::protobuf::VERSION_3_5_1` — in every file. Built
+  against protobuf 3.7.2 that symbol does not exist, so enabling the
+  `tf2`/`csgo`/`dota2` features fails to compile (observed: ~40 errors in csgo,
+  ~76 in dota2). Those crates are exact-pinned to 3.5.1 by construction.
+- **The bump buys nothing structural.** Diffing our own regenerated output on
+  3.5.1 vs 3.7.2 shows only cosmetic changes — the `VERSION_*` stamp and the
+  generator-version comment (~2 lines per file); zero changes to message
+  structs, wire code, or the public API. So 3.7.2 offers no size, compile-time
+  or correctness win to offset breaking the optional crates.
+- **Decision.** Pin all three `protobuf*` crates to `=3.5.1`. A
+  `[patch.crates-io]` redirects `steam-vent-proto-common` to the vendored path
+  crate, which **deduplicates** the dependency graph to a *single* common crate
+  and a single protobuf version (honoring goal 4). With the patch active the
+  registry game crates resolve to their newest `0.5.2` and compile green against
+  the vendored common — `cargo build --workspace --all-features` is clean (0
+  errors). Moving off 3.5.1 is therefore coupled to the prost migration (§6) or
+  to vendoring+regenerating the game crates, not a standalone version bump.
 
 ### 3.2 `protobuf` 4.x (Google's official Rust bindings) — **rejected**
 
@@ -132,10 +163,12 @@ leaves **prost**.
    using `protox` so the build stays pure-Rust.
 3. **Phase the work** so `main` always builds:
    - **Phase 1 (this PR):** single workspace; vendored proto crates building on
-     `rust-protobuf` 3.7.x; `steam-totp` added; size/speed profiles (`micro`,
-     `nano`) and CI that measures build time + binary size with `mold` +
-     `sccache`. Optionally flip codegen to `lite_runtime` for an immediate size
-     cut. This delivers measurable progress against goal (2) with zero risk.
+     `rust-protobuf` 3.5.1 (pinned — §3.1.1), with a `[patch.crates-io]` that
+     dedupes the graph to a single `steam-vent-proto-common`; `steam-totp`
+     added; `lite_runtime` codegen already on (§3.1); size/speed profiles
+     (`micro`, `nano`) and CI that measures build time + binary size with
+     `mold` + `sccache`. This delivers measurable progress against goal (2)
+     with zero risk.
    - **Phase 2 (follow-up):** introduce a `prost`-based generator in
      `steam-vent-proto-build` behind a feature, regenerate the steam crate,
      port the protocol-layer API touchpoints, and compare binary size / build
