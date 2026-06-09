@@ -246,7 +246,7 @@ impl SharedSecretAuthConfirmationHandler {
     /// Note that the secret as found in `totp://` urls is base32 encoded, not base64
     pub fn new(shared_secret: String, totp: fn(&str) -> Option<String>) -> Self {
         SharedSecretAuthConfirmationHandler {
-            shared_secret: shared_secret,
+            shared_secret,
             totp,
         }
     }
