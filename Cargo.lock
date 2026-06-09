@@ -1600,27 +1600,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "protobuf"
-version = "3.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0bcc343da15609eaecd65f8aa76df8dc4209d325131d8219358c0aaaebab0bf6"
-dependencies = [
- "bytes",
- "once_cell",
- "protobuf-support",
- "thiserror 1.0.69",
-]
-
-[[package]]
-name = "protobuf-support"
-version = "3.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0766e3675a627c327e4b3964582594b0e8741305d628a98a5de75a1d15f99b9"
-dependencies = [
- "thiserror 1.0.69",
-]
-
-[[package]]
 name = "protox"
 version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2037,7 +2016,7 @@ dependencies = [
 
 [[package]]
 name = "steam-vent"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "async-stream",
  "base64",
@@ -2061,7 +2040,7 @@ dependencies = [
  "steam-totp",
  "steam-vent-crypto",
  "steam-vent-proto",
- "steam-vent-proto-common 0.6.0",
+ "steam-vent-proto-common",
  "steam-vent-proto-steam",
  "steamid-ng",
  "thiserror 2.0.18",
@@ -2093,13 +2072,10 @@ dependencies = [
 
 [[package]]
 name = "steam-vent-proto"
-version = "0.5.1"
+version = "0.6.0"
 dependencies = [
- "steam-vent-proto-common 0.6.0",
- "steam-vent-proto-csgo",
- "steam-vent-proto-dota2",
+ "steam-vent-proto-common",
  "steam-vent-proto-steam",
- "steam-vent-proto-tf2",
 ]
 
 [[package]]
@@ -2120,15 +2096,6 @@ dependencies = [
 
 [[package]]
 name = "steam-vent-proto-common"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62682aa488b34d33f1045f9e4ee3c33ceef709e878524188dea4431cfe4f2131"
-dependencies = [
- "protobuf",
-]
-
-[[package]]
-name = "steam-vent-proto-common"
 version = "0.6.0"
 dependencies = [
  "bytes",
@@ -2137,39 +2104,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent-proto-csgo"
-version = "0.5.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fc9a1e885f80157ea5f6f8bdc3f0ac80b0782efd2d11306257515710fbcad203"
-dependencies = [
- "steam-vent-proto-common 0.5.1",
-]
-
-[[package]]
-name = "steam-vent-proto-dota2"
-version = "0.5.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "42fcc961de3a221252996edf1ebc651bfcc5503a0bcb79d960beedfd291994ed"
-dependencies = [
- "steam-vent-proto-common 0.5.1",
-]
-
-[[package]]
 name = "steam-vent-proto-steam"
 version = "0.6.0"
 dependencies = [
  "bytes",
  "prost",
- "steam-vent-proto-common 0.6.0",
-]
-
-[[package]]
-name = "steam-vent-proto-tf2"
-version = "0.5.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f899f4ef4a8d021c382986601787d51efadfff5367b0be63099b1db1b8ff9d51"
-dependencies = [
- "steam-vent-proto-common 0.5.1",
+ "steam-vent-proto-common",
 ]
 
 [[package]]
