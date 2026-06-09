@@ -31,14 +31,14 @@ rustls = { version = "0.23", default-features = false, features = ["ring"] }
 webpki-roots = "1.0.2"
 wreq = { version = "=6.0.0-rc.29", features = ["json"] }
 
-# --- serialization / protobuf ---
-# Pinned to 3.5.1: the external game-proto crates (tf2/csgo/dota2 v0.5.x) ship
-# generated code whose protobuf runtime version-check (`VERSION_3_5_1`) hard-pins
-# this exact version. Bumping requires vendoring+regenerating those crates too
-# (or the prost migration). See docs/RESEARCH.md.
-protobuf = { version = "=3.5.1" }
-protobuf-codegen = { version = "=3.5.1" }
-protobuf-parse = { version = "=3.5.1" }
+# --- serialization / protobuf (prost stack) ---
+# The whole protobuf surface is generated and consumed with prost: pure-Rust
+# parsing via protox (no protoc / no C toolchain), codegen via prost-build. This
+# replaced rust-protobuf 3.5.1 across the workspace — see docs/RESEARCH.md.
+prost = { version = "0.13" }
+prost-types = { version = "0.13" }
+prost-build = { version = "0.13" }
+protox = { version = "0.7" }
 serde = { version = "1.0", features = ["derive"] }
 json = { package = "serde_json", version = "1.0" }
 bytes = { version = "1.10" }
@@ -80,6 +80,9 @@ syn = { version = "2.0", features = ["full"] }
 proc-macro2 = "1.0"
 prettyplease = "0.2"
 ahash = "0.8"
+# heck 0.5 is what prost-build 0.13 uses internally; we replicate prost's
+# `to_upper_camel` + `strip_enum_prefix` ident renaming for the kind tables.
+heck = "0.5"
 
 # --- dev / test ---
 tracing-subscriber = "0.3.20"

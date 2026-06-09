@@ -1,20 +1,33 @@
+//! Codegen for the steam-vent protobuf crates.
+//!
+//! The pipeline is pure Rust (no `protoc`, no C toolchain):
+//!
+//! 1. [`protox`] parses the `.proto` surface into a [`FileDescriptorSet`].
+//! 2. [`prost_build`] turns that descriptor set into plain prost structs/enums,
+//!    written to a single flat module (the Steam protos have no `package`, so
+//!    prost emits everything into one `_.rs`).
+//! 3. We walk the same descriptor set to emit the steam-vent glue —
+//!    [`RpcService`]/[`RpcMethod`]/[`RpcMessageWithKind`]/[`MsgKindEnum`] impls —
+//!    and append it to that module.
+//!
+//! Every emitted ident is verified against the actual prost output (parsed with
+//! [`syn`]) so a naming drift fails the build loudly instead of producing a
+//! mismatched impl.
+//!
+//! [`RpcService`]: steam_vent_proto_common::RpcService
+//! [`RpcMethod`]: steam_vent_proto_common::RpcMethod
+//! [`RpcMessageWithKind`]: steam_vent_proto_common::RpcMessageWithKind
+//! [`MsgKindEnum`]: steam_vent_proto_common::MsgKindEnum
+
 mod kinds;
 
-use ahash::{AHashMap, AHashSet, RandomState};
+use heck::ToUpperCamelCase;
 use kinds::{get_kinds, Kind};
 use proc_macro2::{Ident, Span, TokenStream};
-use protobuf::reflect::{FileDescriptor, MessageDescriptor, ServiceDescriptor};
-use protobuf::{Message, SpecialFields, UnknownValueRef};
-use protobuf_codegen::{Codegen, Customize, CustomizeCallback};
-use quote::{quote, ToTokens};
-use std::cell::RefCell;
-use std::cmp::Ordering;
-use std::fs::{read_to_string, OpenOptions};
-use std::hash::{Hash, Hasher};
-use std::io::Write;
+use prost_types::FileDescriptorSet;
+use quote::quote;
+use std::collections::{BTreeMap, HashMap, HashSet};
 use std::path::{Path, PathBuf};
-use std::rc::Rc;
-use syn::__private::str;
 use walkdir::WalkDir;
 
 fn get_protos(path: impl AsRef<Path>) -> impl Iterator<Item = PathBuf> {
@@ -22,6 +35,13 @@ fn get_protos(path: impl AsRef<Path>) -> impl Iterator<Item = PathBuf> {
         .into_iter()
         .map(|res| res.expect("failed to read entry"))
         .filter(|entry| entry.path().is_file())
+        .filter(|entry| {
+            entry
+                .path()
+                .extension()
+                .and_then(|ext| ext.to_str())
+                == Some("proto")
+        })
         .filter(|entry| {
             !entry
                 .file_name()
@@ -47,7 +67,7 @@ fn main() {
     let mut protos = get_protos(&args.protos).collect::<Vec<_>>();
     protos.sort();
 
-    // Clean up old generated files before generating new ones
+    // Clean up old generated files before generating new ones.
     if args.target.exists() {
         for entry in WalkDir::new(&args.target)
             .into_iter()
@@ -56,377 +76,274 @@ fn main() {
             .filter(|e| e.path().extension().and_then(|s| s.to_str()) == Some("rs"))
         {
             std::fs::remove_file(entry.path()).unwrap_or_else(|e| {
-                panic!(
-                    "Failed to remove old generated file {:?}: {}",
-                    entry.path(),
-                    e
-                )
+                panic!("Failed to remove old generated file {:?}: {}", entry.path(), e)
             });
         }
     }
 
-    let kinds = get_kinds(&args.protos, &protos);
-    let service_generator = ServiceGenerator::new(kinds);
-    let service_files = service_generator.files.clone();
+    // 1. Parse the protos with protox (pure Rust, no protoc).
+    let fds = protox::compile(&protos, [&args.protos])
+        .unwrap_or_else(|e| panic!("protox failed to parse the proto surface: {e}"));
 
-    let builder_version_check = format!(
+    // 2. Extract the network-message kinds from the descriptor set.
+    let kinds = get_kinds(&fds);
+
+    // 3. Generate the prost types into a scratch dir, then read the single flat
+    //    module back. `compile_fds` works straight off the descriptor set, so it
+    //    does not shell out to protoc either.
+    let scratch = std::env::temp_dir().join(format!("steam-vent-prost-{}", std::process::id()));
+    std::fs::create_dir_all(&scratch).expect("failed to create scratch dir");
+    let mut config = prost_build::Config::new();
+    config.out_dir(&scratch);
+    // zero-copy `bytes` fields, mirroring rust-protobuf's `with-bytes`.
+    config.bytes(["."]);
+    config
+        .compile_fds(fds.clone())
+        .expect("prost-build codegen failed");
+
+    // The Steam protos have no `package`, so prost writes everything to `_.rs`.
+    let generated_path = scratch.join("_.rs");
+    let generated = std::fs::read_to_string(&generated_path).unwrap_or_else(|e| {
+        panic!(
+            "prost did not produce the expected flat module at {:?}: {}",
+            generated_path, e
+        )
+    });
+
+    // Index the generated symbols so every ident we emit can be verified.
+    let symbols = Symbols::parse(&generated);
+
+    // 4. Generate the steam-vent glue and verify it against `symbols`.
+    let glue = generate_glue(&fds, &kinds, &symbols);
+    let glue = prettyplease::unparse(
+        &syn::parse2(glue).expect("generated glue should be valid Rust"),
+    );
+
+    let version_check = format!(
         "const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_{};",
         env!("CARGO_PKG_VERSION").replace('.', "_")
     );
 
-    Codegen::new()
-        .pure()
-        .out_dir(&args.target)
-        .include(&args.protos)
-        .inputs(protos.iter())
-        .customize_callback(service_generator)
-        .customize(Customize::default().lite_runtime(true))
-        .run_from_script();
+    // The generated module is large machine output; silence lints for it.
+    let header = "\
+// @generated by steam-vent-proto-build (protox + prost-build). DO NOT EDIT.
+#![allow(clippy::all, clippy::pedantic, clippy::nursery, clippy::restriction)]
+#![allow(rustdoc::all, unused_imports, non_camel_case_types, non_snake_case)]
+";
 
-    for (file, services) in service_files.borrow().iter() {
-        let mut file = proto_path_to_rust_mod(&file);
-        file.push_str(".rs");
-        let source_file = args.target.join(&file);
-        if source_file.exists() {
-            let mut code = read_to_string(&source_file).unwrap();
-            let extra_code = if !services.is_empty() {
-                let service_tokens = services.services.iter().map(Service::gen);
-                let method_tokens = services.methods().map(|method| method.gen());
-                let message_tokens = services.messages.iter().map(ServiceMessage::gen);
-                let import_tokens = services.imports.iter().map(|file| {
-                    let path = proto_path_to_rust_mod(file);
-                    let path = Ident::new(&path, Span::call_site());
+    let out = format!("{header}\n{generated}\n{version_check}\n\n{glue}\n");
+
+    std::fs::create_dir_all(&args.target).expect("failed to create target dir");
+    std::fs::write(args.target.join("mod.rs"), out).expect("failed to write generated module");
+
+    let _ = std::fs::remove_dir_all(&scratch);
+}
+
+/// The structs and enums (with their variants) emitted by prost, used to verify
+/// every ident we generate actually exists.
+struct Symbols {
+    structs: HashSet<String>,
+    enums: HashMap<String, HashSet<String>>,
+}
+
+impl Symbols {
+    fn parse(src: &str) -> Self {
+        let file = syn::parse_file(src).expect("generated flat module should parse");
+        let mut structs = HashSet::new();
+        let mut enums = HashMap::new();
+        // The kind enums and the network-message structs are all top-level in the
+        // flat module (only nested messages/oneofs live in submodules, and those
+        // are never RPC roots or kinds), so a shallow walk is sufficient.
+        for item in &file.items {
+            match item {
+                syn::Item::Struct(s) => {
+                    structs.insert(s.ident.to_string());
+                }
+                syn::Item::Enum(e) => {
+                    enums.insert(
+                        e.ident.to_string(),
+                        e.variants.iter().map(|v| v.ident.to_string()).collect(),
+                    );
+                }
+                _ => {}
+            }
+        }
+        Symbols { structs, enums }
+    }
+
+    fn has_struct(&self, name: &str) -> bool {
+        self.structs.contains(name)
+    }
+
+    fn has_enum(&self, name: &str) -> bool {
+        self.enums.contains_key(name)
+    }
+
+    fn has_variant(&self, enum_name: &str, variant: &str) -> bool {
+        self.enums
+            .get(enum_name)
+            .is_some_and(|variants| variants.contains(variant))
+    }
+}
+
+/// prost's `to_upper_camel`: heck's `to_upper_camel_case` plus the `Self`
+/// keyword guard. Used to predict prost's message/enum idents.
+pub(crate) fn to_upper_camel(s: &str) -> String {
+    let mut ident = s.to_upper_camel_case();
+    if ident == "Self" {
+        ident.push('_');
+    }
+    ident
+}
+
+/// prost's `strip_enum_prefix`: drop the enum-name prefix from a variant unless
+/// doing so would leave an empty ident or one starting with a digit.
+fn strip_enum_prefix(prefix: &str, name: &str) -> String {
+    let stripped = name.strip_prefix(prefix).unwrap_or(name);
+    match stripped.chars().next() {
+        Some(c) if c.is_ascii_digit() => name.to_string(),
+        Some(_) => stripped.to_string(),
+        None => name.to_string(),
+    }
+}
+
+/// Predict the prost variant ident for an enum value, matching prost-build's
+/// `append_enum` exactly (`strip_enum_prefix(to_upper_camel(enum), to_upper_camel(value))`).
+pub(crate) fn prost_enum_variant(enum_name: &str, variant_name: &str) -> String {
+    strip_enum_prefix(&to_upper_camel(enum_name), &to_upper_camel(variant_name))
+}
+
+/// Map a proto type reference (e.g. `.CFoo_Bar_Request`) to its prost ident.
+fn rust_type_from_proto_ref(reference: &str) -> String {
+    let name = reference.rsplit('.').next().unwrap_or(reference);
+    to_upper_camel(name)
+}
+
+/// Emit the steam-vent glue impls for the whole descriptor set, deterministically
+/// ordered and verified against the generated `symbols`.
+fn generate_glue(fds: &FileDescriptorSet, kinds: &[Kind], symbols: &Symbols) -> TokenStream {
+    // Keyed by ident so the output is byte-stable regardless of file order.
+    let mut services: BTreeMap<String, TokenStream> = BTreeMap::new();
+    let mut methods: BTreeMap<String, TokenStream> = BTreeMap::new();
+    let mut message_kinds: BTreeMap<String, TokenStream> = BTreeMap::new();
+    let mut kind_enums: BTreeMap<String, TokenStream> = BTreeMap::new();
+
+    for file in &fds.file {
+        let file_name = file.name();
+
+        // RpcService + RpcMethod
+        for service in &file.service {
+            let service_name = service.name().to_string();
+            let service_ident = Ident::new(&service_name, Span::call_site());
+            services.entry(service_name.clone()).or_insert_with(|| {
+                quote! {
+                    pub struct #service_ident {}
+
+                    impl ::steam_vent_proto_common::RpcService for #service_ident {
+                        const SERVICE_NAME: &'static str = #service_name;
+                    }
+                }
+            });
+
+            for method in &service.method {
+                let full_name = format!("{}.{}#1", service_name, method.name());
+                let request = rust_type_from_proto_ref(method.input_type());
+                let response = rust_type_from_proto_ref(method.output_type());
+                if !symbols.has_struct(&request) {
+                    panic!(
+                        "RPC request type `{request}` (method {full_name}, {file_name}) \
+                         is not a generated message"
+                    );
+                }
+                if !symbols.has_struct(&response) {
+                    panic!(
+                        "RPC response type `{response}` (method {full_name}, {file_name}) \
+                         is not a generated message"
+                    );
+                }
+                let request_ident = Ident::new(&request, Span::call_site());
+                let response_ident = Ident::new(&response, Span::call_site());
+                methods.entry(request).or_insert_with(|| {
                     quote! {
-                        #[allow(unused_imports)]
-                        use crate::#path::*;
+                        impl ::steam_vent_proto_common::RpcMethod for #request_ident {
+                            const METHOD_NAME: &'static str = #full_name;
+                            type Response = #response_ident;
+                        }
                     }
                 });
-                let enum_kind_tokens = services.kind_enums.iter().map(|enum_name| {
-                    let ident = Ident::new(&enum_name, Span::call_site());
-                    quote!(
-                        impl ::steam_vent_proto_common::MsgKindEnum for #ident {}
-                    )
-                });
-                let tokens = quote! {
-                    #(#import_tokens)*
-                    #(#message_tokens)*
-                    #(#service_tokens)*
-                    #(#method_tokens)*
-                    #(#enum_kind_tokens)*
-                };
-
-                let syntax_tree = syn::parse2(tokens).unwrap();
-                let formatted = prettyplease::unparse(&syntax_tree);
-                format!("{}\n\n{}", builder_version_check, formatted)
-            } else {
-                builder_version_check.clone()
-            };
-
-            code = format!("{}\n\n{}", code, extra_code);
-            code = code.replace("::protobuf::", "::steam_vent_proto_common::protobuf::");
-
-            let mut file = OpenOptions::new()
-                .write(true)
-                .truncate(true)
-                .open(&source_file)
-                .unwrap();
-            file.write_all(code.as_bytes()).unwrap();
-        }
-    }
-}
-
-#[derive(Debug, Clone)]
-struct ServiceMethod {
-    name: String,
-    service_name: String,
-    description: Option<String>,
-    response: String,
-    request: String,
-}
-
-impl Hash for ServiceMethod {
-    fn hash<H: Hasher>(&self, state: &mut H) {
-        self.request.hash(state)
-    }
-}
-
-impl PartialEq for ServiceMethod {
-    fn eq(&self, other: &Self) -> bool {
-        self.request.eq(&other.request)
-    }
-}
-
-impl Eq for ServiceMethod {}
-
-impl PartialOrd for ServiceMethod {
-    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        self.request.partial_cmp(&other.request)
-    }
-}
-
-impl Ord for ServiceMethod {
-    fn cmp(&self, other: &Self) -> Ordering {
-        self.request.cmp(&other.request)
-    }
-}
-
-impl ServiceMethod {
-    fn gen(&self) -> TokenStream {
-        let name = format!("{}.{}#1", self.service_name, self.name);
-        let request_ident = Ident::new(&self.request, Span::call_site());
-
-        let response_ident = if self.response == "NoResponse" {
-            quote! {()}
-        } else {
-            Ident::new(&self.response, Span::call_site()).to_token_stream()
-        };
-        quote! {
-            impl ::steam_vent_proto_common::RpcMethod for #request_ident {
-                const METHOD_NAME: &'static str = #name;
-                type Response = #response_ident;
             }
         }
-    }
-}
 
-#[derive(Debug)]
-struct Service {
-    name: String,
-    description: Option<String>,
-    methods: Vec<ServiceMethod>,
-}
+        // RpcMessageWithKind for every top-level message that maps to a kind.
+        for message in &file.message_type {
+            let proto_name = message.name();
+            let Some(kind) = kinds
+                .iter()
+                .find(|kind| kind.matches(proto_name, Some(file_name)))
+                .or_else(|| kinds.iter().find(|kind| kind.matches(proto_name, None)))
+            else {
+                continue;
+            };
 
-struct ServiceMessage {
-    name: String,
-    kind: Option<Kind>,
-}
+            let message_ident_str = to_upper_camel(proto_name);
+            if !symbols.has_struct(&message_ident_str) {
+                panic!("message `{proto_name}` -> `{message_ident_str}` is not generated");
+            }
+            if !symbols.has_variant(kind.enum_ident_str(), kind.variant_ident_str()) {
+                panic!(
+                    "kind variant `{}::{}` (proto `{}`) is not present in the generated enum",
+                    kind.enum_ident_str(),
+                    kind.variant_ident_str(),
+                    kind.variant_proto(),
+                );
+            }
 
-impl ServiceMessage {
-    fn gen(&self) -> TokenStream {
-        let message_ident = Ident::new(&self.name, Span::call_site());
-        let kind_tokens = self.kind.as_ref().map(|kind| {
+            let message_ident = Ident::new(&message_ident_str, Span::call_site());
             let kind_ident = kind.ident();
             let enum_ident = kind.enum_ident();
-            quote! {
-                impl ::steam_vent_proto_common::RpcMessageWithKind for #message_ident {
-                    type KindEnum = #enum_ident;
-                    const KIND: Self::KindEnum = #kind_ident;
+            message_kinds.entry(message_ident_str).or_insert_with(|| {
+                quote! {
+                    impl ::steam_vent_proto_common::RpcMessageWithKind for #message_ident {
+                        type KindEnum = #enum_ident;
+                        const KIND: Self::KindEnum = #kind_ident;
+                    }
                 }
-            }
-        });
+            });
+        }
 
-        quote! {
-            impl ::steam_vent_proto_common::RpcMessage for #message_ident {
-                fn parse(reader: &mut dyn std::io::Read) -> ::protobuf::Result<Self> {
-                    <Self as ::protobuf::Message>::parse_from_reader(reader)
+        // MsgKindEnum for every kind enum (prost enums are plain `#[repr(i32)]`,
+        // so `*self as i32` yields the wire value).
+        for enum_type in &file.enum_type {
+            let name = enum_type.name();
+            if !(name.starts_with('E') && (name.ends_with("Msg") || name.ends_with("Messages"))) {
+                continue;
+            }
+            let enum_ident_str = to_upper_camel(name);
+            if !symbols.has_enum(&enum_ident_str) {
+                continue;
+            }
+            let enum_ident = Ident::new(&enum_ident_str, Span::call_site());
+            kind_enums.entry(enum_ident_str).or_insert_with(|| {
+                quote! {
+                    impl ::steam_vent_proto_common::MsgKindEnum for #enum_ident {
+                        fn enum_value(&self) -> i32 {
+                            *self as i32
+                        }
+                    }
                 }
-
-                fn write(&self, writer: &mut dyn std::io::Write) -> ::protobuf::Result<()> {
-                    use ::protobuf::Message;
-                    self.write_to_writer(writer)
-                }
-
-                fn encode_size(&self) -> usize {
-                    use ::protobuf::Message;
-                    self.compute_size() as usize
-                }
-            }
-            #kind_tokens
-        }
-    }
-}
-
-struct FileServices {
-    services: Vec<Service>,
-    imports: Vec<String>,
-    messages: Vec<ServiceMessage>,
-    kind_enums: Vec<String>,
-}
-
-impl FileServices {
-    fn is_empty(&self) -> bool {
-        // we don't check imports, since we only need to import stuff if we generate code
-        self.services.is_empty() && self.messages.is_empty() && self.kind_enums.is_empty()
-    }
-
-    fn methods(&self) -> impl Iterator<Item = ServiceMethod> {
-        let methods: AHashSet<ServiceMethod> = self
-            .services
-            .iter()
-            .flat_map(|service| service.methods.iter())
-            .cloned()
-            .collect();
-        let mut methods: Vec<_> = methods.into_iter().collect();
-        methods.sort();
-        methods.into_iter()
-    }
-}
-
-struct ServiceGenerator {
-    files: Rc<RefCell<AHashMap<String, FileServices>>>,
-    descriptions: Rc<RefCell<AHashMap<String, String>>>,
-    kinds: Vec<Kind>,
-}
-
-impl ServiceGenerator {
-    pub fn new(kinds: Vec<Kind>) -> Self {
-        Self {
-            files: Rc::new(RefCell::new(AHashMap::with_capacity_and_hasher(
-                16,
-                RandomState::with_seeds(1, 2, 3, 4),
-            ))),
-            descriptions: Default::default(),
-            kinds,
+            });
         }
     }
 
-    fn find_kind(&self, message_type: &str, file_name: Option<&str>) -> Option<Kind> {
-        self.kinds
-            .iter()
-            .find(|e_kind| e_kind.matches(message_type, file_name))
-            .cloned()
+    let services = services.into_values();
+    let methods = methods.into_values();
+    let message_kinds = message_kinds.into_values();
+    let kind_enums = kind_enums.into_values();
+
+    quote! {
+        #(#services)*
+        #(#methods)*
+        #(#message_kinds)*
+        #(#kind_enums)*
     }
-}
-
-fn get_description(fields: &SpecialFields) -> Option<String> {
-    for option in fields.unknown_fields().iter() {
-        if let UnknownValueRef::LengthDelimited(bytes) = option.1 {
-            if let Ok(desc) = String::from_utf8(bytes.into()) {
-                return Some(desc);
-            }
-        }
-    }
-    None
-}
-
-impl From<ServiceDescriptor> for Service {
-    fn from(value: ServiceDescriptor) -> Self {
-        let name = value.proto().name.clone().unwrap_or_default();
-        let methods = value
-            .methods()
-            .map(|method| ServiceMethod {
-                name: method.proto().name.clone().unwrap_or_default(),
-                service_name: name.clone(),
-                description: get_description(method.proto().options.special_fields()),
-                request: (method.input_type().full_name().into()),
-                response: method.output_type().full_name().into(),
-            })
-            .collect();
-        Service {
-            name,
-            description: get_description(value.proto().options.special_fields()),
-            methods,
-        }
-    }
-}
-
-impl Service {
-    fn gen(&self) -> TokenStream {
-        let name = &self.name;
-        let desc = self.description.as_deref().unwrap_or_default();
-        let struct_name = Ident::new(&self.name, Span::call_site());
-        quote! {
-            #[doc = #desc]
-            struct #struct_name {}
-
-            impl ::steam_vent_proto_common::RpcService for #struct_name {
-                const SERVICE_NAME: &'static str = #name;
-            }
-        }
-    }
-}
-
-impl CustomizeCallback for ServiceGenerator {
-    fn file(&self, file: &FileDescriptor) -> Customize {
-        let services: Vec<Service> = file.services().map(Service::from).collect();
-        let imports = file
-            .deps()
-            .iter()
-            .map(|dep| dep.name().to_string())
-            .filter(|import| !import.starts_with("google"))
-            .collect();
-        let messages: Vec<_> = file
-            .messages()
-            .map(|msg| ServiceMessage {
-                name: msg.name().into(),
-                kind: self
-                    .find_kind(msg.name(), Some(file.name()))
-                    .or_else(|| self.find_kind(msg.name(), None)),
-            })
-            .collect();
-        let kind_enums: Vec<_> = file
-            .enums()
-            .filter_map(|enum_type| {
-                (enum_type.name().starts_with("E")
-                    && (enum_type.name().ends_with("Msg")
-                        || enum_type.name().ends_with("Messages")))
-                .then(|| enum_type.name().to_string())
-            })
-            .collect();
-
-        for service in services.iter() {
-            for method in service.methods.iter() {
-                if let Some(description) = method.description.clone() {
-                    self.descriptions
-                        .borrow_mut()
-                        .insert(method.request.clone(), description);
-                }
-            }
-        }
-
-        self.files.borrow_mut().insert(
-            file.name().to_string(),
-            FileServices {
-                services,
-                imports,
-                messages,
-                kind_enums,
-            },
-        );
-        Customize::default()
-    }
-
-    fn message(&self, message: &MessageDescriptor) -> Customize {
-        if let Some(description) = self.descriptions.borrow().get(message.name()) {
-            Customize::default().before(&format!("#[doc = \"{description}\"]"))
-        } else {
-            Customize::default()
-        }
-    }
-}
-
-fn proto_path_to_rust_mod(path: &str) -> String {
-    let without_suffix = path
-        .rsplit("/")
-        .next()
-        .unwrap()
-        .strip_suffix(".proto")
-        .unwrap();
-
-    without_suffix
-        .chars()
-        .enumerate()
-        .map(|(i, c)| {
-            let valid = if i == 0 {
-                ident_start(c)
-            } else {
-                ident_continue(c)
-            };
-            if valid {
-                c
-            } else {
-                '_'
-            }
-        })
-        .collect::<String>()
-}
-
-// Copy-pasted from libsyntax.
-fn ident_start(c: char) -> bool {
-    (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_'
-}
-
-// Copy-pasted from libsyntax.
-fn ident_continue(c: char) -> bool {
-    (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_'
 }

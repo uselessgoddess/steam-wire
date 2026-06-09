@@ -19,7 +19,7 @@ webpki-roots = { workspace = true }
 binrw = { workspace = true }
 thiserror = { workspace = true }
 bytes = { workspace = true }
-protobuf = { workspace = true }
+prost = { workspace = true }
 bytemuck = { workspace = true }
 crc = { workspace = true }
 byteorder = { workspace = true }
