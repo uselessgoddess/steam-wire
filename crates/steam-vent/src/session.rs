@@ -3,11 +3,9 @@ use std::sync::Arc;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::Duration;
 
-use protobuf::MessageField;
 use steam_vent_crypto::CryptError;
-use steam_vent_proto_steam::steammessages_base::{CMsgIPAddress, cmsg_ipaddress};
-use steam_vent_proto_steam::steammessages_clientserver_login::{
-    CMsgClientHello, CMsgClientLogon, CMsgClientLogonResponse,
+use steam_vent_proto_steam::{
+    CMsgClientHello, CMsgClientLogon, CMsgClientLogonResponse, CMsgIpAddress, c_msg_ip_address,
 };
 use steamid_ng::{
     AccountType, Instance, InstanceFlags, InstanceType, SteamID, SteamIDParseError, Universe,
@@ -164,8 +162,7 @@ impl Session {
 }
 
 pub async fn anonymous(connection: &RawConnection, account_type: AccountType) -> Result<Session> {
-    let mut ip = CMsgIPAddress::new();
-    ip.set_v4(0);
+    let ip = CMsgIpAddress { ip: Some(c_msg_ip_address::Ip::V4(0)) };
 
     let logon = CMsgClientLogon {
         protocol_version: Some(65580),
@@ -173,7 +170,7 @@ pub async fn anonymous(connection: &RawConnection, account_type: AccountType) ->
         anon_user_target_account_name: Some(String::from("anonymous")),
         account_name: Some(String::from("anonymous")),
         supports_rate_limit_response: Some(false),
-        obfuscated_private_ip: MessageField::some(ip),
+        obfuscated_private_ip: Some(ip),
         client_language: Some(String::new()),
         chat_mode: Some(2),
         client_package_version: Some(1771),
@@ -201,15 +198,14 @@ pub async fn login(
     access_token: &str,
     web_access_token: Option<String>,
 ) -> Result<Session> {
-    let mut ip = CMsgIPAddress::new();
-    ip.set_v4(0);
+    let ip = CMsgIpAddress { ip: Some(c_msg_ip_address::Ip::V4(0)) };
 
     let logon = CMsgClientLogon {
         protocol_version: Some(65580),
         client_os_type: Some(203),
         account_name: Some(String::from(account)),
         supports_rate_limit_response: Some(false),
-        obfuscated_private_ip: MessageField::some(ip),
+        obfuscated_private_ip: Some(ip),
         client_language: Some(String::new()),
         machine_name: Some(String::new()),
         steamguard_dont_remember_computer: Some(false),
@@ -244,10 +240,9 @@ async fn send_logon(
     debug!("waiting for login response");
     let raw_response = fut.await.map_err(|_| NetworkError::EOF)?;
     let (header, response) = raw_response.into_header_and_message::<CMsgClientLogonResponse>()?;
-    EResult::from_result(response.eresult()).map_err(LoginError::from)?;
+    EResult::from_result(response.eresult.unwrap_or(2)).map_err(LoginError::from)?;
 
-    let assigned_steam_id = if response.has_client_supplied_steamid() {
-        let raw = response.client_supplied_steamid();
+    let assigned_steam_id = if let Some(raw) = response.client_supplied_steamid {
         SteamID::try_from(raw).unwrap_or(steam_id)
     } else if header.steam_id != crate::net::steam_id_nil() {
         header.steam_id
@@ -258,20 +253,22 @@ async fn send_logon(
     debug!(steam_id = %u64::from(assigned_steam_id), "session started");
     Ok(Session {
         session_id: header.session_id,
-        cell_id: response.cell_id(),
-        public_ip: response.public_ip.ip.as_ref().and_then(|ip| match &ip {
-            cmsg_ipaddress::Ip::V4(bits) => Some(IpAddr::V4(Ipv4Addr::from(*bits))),
-            cmsg_ipaddress::Ip::V6(bytes) if bytes.len() == 16 => {
-                let mut bits = [0u8; 16];
-                bits.copy_from_slice(&bytes[..]);
-                Some(IpAddr::V6(Ipv6Addr::from(bits)))
+        cell_id: response.cell_id.unwrap_or(0),
+        public_ip: response.public_ip.as_ref().and_then(|addr| addr.ip.as_ref()).and_then(|ip| {
+            match ip {
+                c_msg_ip_address::Ip::V4(bits) => Some(IpAddr::V4(Ipv4Addr::from(*bits))),
+                c_msg_ip_address::Ip::V6(bytes) if bytes.len() == 16 => {
+                    let mut bits = [0u8; 16];
+                    bits.copy_from_slice(&bytes[..]);
+                    Some(IpAddr::V6(Ipv6Addr::from(bits)))
+                }
+                _ => None,
             }
-            _ => None,
         }),
         ip_country_code: response.ip_country_code.clone(),
         steam_id: assigned_steam_id,
         job_id: JobIdCounter::default(),
-        heartbeat_interval: Duration::from_secs(response.heartbeat_seconds() as u64),
+        heartbeat_interval: Duration::from_secs(response.heartbeat_seconds.unwrap_or(0) as u64),
         app_id: None,
         access_token,
         web_access_token,
@@ -280,8 +277,7 @@ async fn send_logon(
 
 pub async fn hello<C: ConnectionImpl>(conn: &mut C) -> std::result::Result<(), NetworkError> {
     const PROTOCOL_VERSION: u32 = 65580;
-    let req =
-        CMsgClientHello { protocol_version: Some(PROTOCOL_VERSION), ..CMsgClientHello::default() };
+    let req = CMsgClientHello { protocol_version: Some(PROTOCOL_VERSION) };
 
     let header = NetMessageHeader {
         session_id: 0,

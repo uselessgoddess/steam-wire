@@ -4,16 +4,15 @@ use std::io::{Cursor, Read, Write};
 
 use binrw::BinRead;
 use byteorder::{LittleEndian, ReadBytesExt, WriteBytesExt};
-use bytes::{Buf, BytesMut};
+use bytes::{Buf, Bytes, BytesMut};
 use crc::{CRC_32_ISO_HDLC, Crc};
 use flate2::read::GzDecoder;
 use futures_util::StreamExt;
 use futures_util::future::ready;
 use futures_util::stream::{iter, once};
-use protobuf::Message;
 use steam_vent_proto_common::{MsgKind, MsgKindEnum, RpcMessage, RpcMessageWithKind};
-use steam_vent_proto_steam::enums_clientserver::EMsg;
-use steam_vent_proto_steam::steammessages_base::CMsgMulti;
+use steam_vent_proto_steam::EMsg;
+use steam_vent_proto_steam::CMsgMulti;
 use thiserror::Error;
 use tokio_stream::Stream;
 use tracing::{debug, trace};
@@ -41,7 +40,7 @@ pub struct ParseBigIntError;
 #[non_exhaustive]
 pub enum MessageBodyError {
     #[error("{0}")]
-    Protobuf(#[from] protobuf::Error),
+    Proto(#[from] steam_vent_proto_common::ProtoError),
     #[error("{0}")]
     BinRead(#[from] binrw::Error),
     #[error("{0}")]
@@ -107,7 +106,7 @@ impl EncodableMessage for ChannelEncryptRequest {
 
 impl NetMessage for ChannelEncryptRequest {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgChannelEncryptRequest;
+    const KIND: Self::KindEnum = EMsg::KEMsgChannelEncryptRequest;
 }
 
 #[derive(Debug, BinRead)]
@@ -126,7 +125,7 @@ impl EncodableMessage for ChannelEncryptResult {
 
 impl NetMessage for ChannelEncryptResult {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgChannelEncryptResult;
+    const KIND: Self::KindEnum = EMsg::KEMsgChannelEncryptResult;
 }
 
 #[derive(Debug)]
@@ -160,12 +159,12 @@ impl EncodableMessage for ClientEncryptResponse {
 
 impl NetMessage for ClientEncryptResponse {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgChannelEncryptResponse;
+    const KIND: Self::KindEnum = EMsg::KEMsgChannelEncryptResponse;
 }
 
 enum MaybeZipReader {
-    Raw(Cursor<Vec<u8>>),
-    Zipped(Box<GzDecoder<Cursor<Vec<u8>>>>),
+    Raw(Cursor<Bytes>),
+    Zipped(Box<GzDecoder<Cursor<Bytes>>>),
 }
 
 impl Read for MaybeZipReader {
@@ -182,7 +181,7 @@ pub(crate) fn flatten_multi<S: Stream<Item = Result<RawNetMessage, NetworkError>
     source: S,
 ) -> impl Stream<Item = Result<RawNetMessage, NetworkError>> {
     source.flat_map(|res| match res {
-        Ok(next) if next.kind == EMsg::k_EMsgMulti => {
+        Ok(next) if next.kind == EMsg::KEMsgMulti => {
             let reader = Cursor::new(next.data);
             let multi = match MultiBodyIter::new(reader) {
                 Err(e) => return once(ready(Err(e.into()))).right_stream(),
@@ -200,14 +199,13 @@ struct MultiBodyIter<R> {
 
 impl MultiBodyIter<MaybeZipReader> {
     pub fn new<R: Read>(mut reader: R) -> Result<Self, MalformedBody> {
-        let mut multi = CMsgMulti::parse_from_reader(&mut reader)
-            .map_err(|e| MalformedBody(EMsg::k_EMsgMulti.into(), e.into()))?;
+        let multi = CMsgMulti::parse(&mut reader)
+            .map_err(|e| MalformedBody(EMsg::KEMsgMulti.into(), e.into()))?;
 
-        let data = match multi.size_unzipped() {
-            0 => MaybeZipReader::Raw(Cursor::new(multi.take_message_body())),
-            _ => MaybeZipReader::Zipped(Box::new(GzDecoder::new(Cursor::new(
-                multi.take_message_body(),
-            )))),
+        let message_body = multi.message_body.unwrap_or_default();
+        let data = match multi.size_unzipped.unwrap_or(0) {
+            0 => MaybeZipReader::Raw(Cursor::new(message_body)),
+            _ => MaybeZipReader::Zipped(Box::new(GzDecoder::new(Cursor::new(message_body)))),
         };
 
         Ok(MultiBodyIter { reader: data })
@@ -256,7 +254,7 @@ impl<Request: ServiceMethodRequest + Debug> EncodableMessage for ServiceMethodMe
     }
 
     fn encode_size(&self) -> usize {
-        self.0.compute_size() as usize
+        self.0.encode_size()
     }
 
     fn process_header(&self, header: &mut NetMessageHeader) {
@@ -266,7 +264,7 @@ impl<Request: ServiceMethodRequest + Debug> EncodableMessage for ServiceMethodMe
 
 impl<Request: ServiceMethodRequest + Debug> NetMessage for ServiceMethodMessage<Request> {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgServiceMethodCallFromClient;
+    const KIND: Self::KindEnum = EMsg::KEMsgServiceMethodCallFromClient;
     const IS_PROTOBUF: bool = true;
 }
 
@@ -301,7 +299,7 @@ impl EncodableMessage for ServiceMethodResponseMessage {
 
 impl NetMessage for ServiceMethodResponseMessage {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgServiceMethodResponse;
+    const KIND: Self::KindEnum = EMsg::KEMsgServiceMethodResponse;
     const IS_PROTOBUF: bool = true;
 }
 
@@ -334,7 +332,7 @@ impl EncodableMessage for ServiceMethodNotification {
 
 impl NetMessage for ServiceMethodNotification {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgServiceMethod;
+    const KIND: Self::KindEnum = EMsg::KEMsgServiceMethod;
     const IS_PROTOBUF: bool = true;
 }
 

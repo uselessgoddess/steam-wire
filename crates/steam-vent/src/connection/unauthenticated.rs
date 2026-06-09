@@ -7,7 +7,7 @@ use bytes::BytesMut;
 use futures_util::future::{Either, select};
 use futures_util::{FutureExt, Sink, Stream};
 use serde::Deserialize;
-use steam_vent_proto_steam::enums_clientserver::EMsg;
+use steam_vent_proto_steam::EMsg;
 use steamid_ng::{AccountType, SteamID};
 use thiserror::Error;
 use tokio::time::timeout;
@@ -163,7 +163,7 @@ impl UnAuthenticatedConnection {
         account: &str,
         refresh_token: &str, // renamed from access_token for clarity
     ) -> Result<Connection, ConnectionError> {
-        use steam_vent_proto_steam::steammessages_auth_steamclient::CAuthentication_AccessToken_GenerateForApp_Request;
+        use steam_vent_proto_steam::CAuthenticationAccessTokenGenerateForAppRequest;
 
         let mut raw = self.0;
 
@@ -199,7 +199,7 @@ impl UnAuthenticatedConnection {
 
         raw.setup_heartbeat();
 
-        let req = CAuthentication_AccessToken_GenerateForApp_Request {
+        let req = CAuthenticationAccessTokenGenerateForAppRequest {
             refresh_token: Some(refresh_token.to_string()),
             steamid: Some(steam_id_raw),
             ..Default::default()
@@ -263,7 +263,7 @@ pub(crate) async fn service_method_un_authenticated<Msg: ServiceMethodRequest>(
     let msg = RawNetMessage::from_message_with_kind(
         header,
         ServiceMethodMessage(msg),
-        EMsg::k_EMsgServiceMethodCallFromClientNonAuthed,
+        EMsg::KEMsgServiceMethodCallFromClientNonAuthed,
         true,
     )?;
     connection.sender.send_raw(msg).await?;

@@ -1,7 +1,7 @@
 use std::error::Error;
 
 use steam_vent::{Connection, ConnectionTrait, ServerList};
-use steam_vent_proto::steammessages_contentsystem_steamclient::CContentServerDirectory_GetServersForSteamPipe_Request;
+use steam_vent_proto::CContentServerDirectoryGetServersForSteamPipeRequest;
 
 /// Lists Steam content (CDN) servers over an anonymous connection.
 ///
@@ -19,15 +19,17 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     println!("requesting content servers");
 
-    let mut req = CContentServerDirectory_GetServersForSteamPipe_Request::new();
-    req.set_max_servers(16);
+    let req = CContentServerDirectoryGetServersForSteamPipeRequest {
+        max_servers: Some(16),
+        ..Default::default()
+    };
     let response = connection.service_method(req).await?;
     for server in response.servers {
         println!(
             "{} {} (load {})",
-            server.type_(),
-            server.host(),
-            server.load(),
+            server.r#type.as_deref().unwrap_or_default(),
+            server.host.as_deref().unwrap_or_default(),
+            server.load.unwrap_or(0),
         );
     }
 

@@ -4,11 +4,11 @@ use std::io::{Cursor, Seek, SeekFrom};
 
 use byteorder::{LittleEndian, ReadBytesExt, WriteBytesExt};
 use bytes::{Buf, BufMut, Bytes, BytesMut};
-use protobuf::Message;
+use prost::Message;
 use steam_vent_crypto::CryptError;
 use steam_vent_proto_common::{MsgKind, MsgKindEnum};
-use steam_vent_proto_steam::enums_clientserver::EMsg;
-use steam_vent_proto_steam::steammessages_base::CMsgProtoBufHeader;
+use steam_vent_proto_steam::CMsgProtoBufHeader;
+use steam_vent_proto_steam::EMsg;
 use steamid_ng::SteamID;
 use thiserror::Error;
 use tracing::{debug, trace};
@@ -101,13 +101,11 @@ impl Default for NetMessageHeader {
 impl From<CMsgProtoBufHeader> for NetMessageHeader {
     fn from(header: CMsgProtoBufHeader) -> Self {
         NetMessageHeader {
-            source_job_id: JobId(header.jobid_source()),
-            target_job_id: JobId(header.jobid_target()),
-            steam_id: header.steamid().try_into().unwrap_or(steam_id_nil()),
-            session_id: header.client_sessionid(),
-            target_job_name: header
-                .has_target_job_name()
-                .then(|| header.target_job_name().to_string().into()),
+            source_job_id: JobId(header.jobid_source.unwrap_or(u64::MAX)),
+            target_job_id: JobId(header.jobid_target.unwrap_or(u64::MAX)),
+            steam_id: header.steamid.unwrap_or(0).try_into().unwrap_or(steam_id_nil()),
+            session_id: header.client_sessionid.unwrap_or(0),
+            target_job_name: header.target_job_name.map(Cow::Owned),
             result: header.eresult,
             source_app_id: header.routing_appid,
         }
@@ -126,15 +124,15 @@ impl NetMessageHeader {
             let header = if header_length > 0 {
                 let mut bytes = vec![0; header_length as usize];
                 let num = reader.read(&mut bytes)?;
-                CMsgProtoBufHeader::parse_from_bytes(&bytes[0..num])
+                CMsgProtoBufHeader::decode(&bytes[0..num])
                     .map_err(|_| NetworkError::InvalidHeader)?
                     .into()
             } else {
                 NetMessageHeader::default()
             };
             Ok((header, 8 + header_length as usize))
-        } else if kind == EMsg::k_EMsgChannelEncryptRequest
-            || kind == EMsg::k_EMsgChannelEncryptResult
+        } else if kind == EMsg::KEMsgChannelEncryptRequest
+            || kind == EMsg::KEMsgChannelEncryptResult
         {
             let target_job_id = reader.read_u64::<LittleEndian>()?;
             let source_job_id = reader.read_u64::<LittleEndian>()?;
@@ -176,17 +174,17 @@ impl NetMessageHeader {
         kind: K,
         proto: bool,
     ) -> std::io::Result<()> {
-        if MsgKind::from(kind) == EMsg::k_EMsgChannelEncryptResponse {
-            writer.write_u32::<LittleEndian>(kind.value() as u32)?;
+        if MsgKind::from(kind) == EMsg::KEMsgChannelEncryptResponse {
+            writer.write_u32::<LittleEndian>(kind.enum_value() as u32)?;
         } else if proto {
             trace!("writing header for {:?} protobuf message: {:?}", kind, self);
             let proto_header = self.proto_header(kind.into());
             writer.write_u32::<LittleEndian>(kind.encode_kind(true))?;
-            writer.write_u32::<LittleEndian>(proto_header.compute_size() as u32)?;
-            proto_header.write_to_writer(writer)?;
+            writer.write_u32::<LittleEndian>(proto_header.encoded_len() as u32)?;
+            writer.write_all(&proto_header.encode_to_vec())?;
         } else {
             trace!("writing header for {:?} message: {:?}", kind, self);
-            writer.write_u32::<LittleEndian>(kind.value() as u32)?;
+            writer.write_u32::<LittleEndian>(kind.enum_value() as u32)?;
             writer.write_u8(32)?;
             writer.write_u16::<LittleEndian>(2)?;
             writer.write_u64::<LittleEndian>(self.target_job_id.0)?;
@@ -199,41 +197,41 @@ impl NetMessageHeader {
     }
 
     fn proto_header(&self, kind: MsgKind) -> CMsgProtoBufHeader {
-        let mut proto_header = CMsgProtoBufHeader::new();
+        let mut proto_header = CMsgProtoBufHeader::default();
         if self.source_job_id != JobId::NONE {
-            proto_header.set_jobid_source(self.source_job_id.0);
+            proto_header.jobid_source = Some(self.source_job_id.0);
         }
         if self.target_job_id != JobId::NONE {
-            proto_header.set_jobid_target(self.target_job_id.0);
+            proto_header.jobid_target = Some(self.target_job_id.0);
         }
         if self.steam_id != steam_id_nil() {
-            proto_header.set_steamid(if kind == EMsg::k_EMsgServiceMethodCallFromClientNonAuthed {
+            proto_header.steamid = Some(if kind == EMsg::KEMsgServiceMethodCallFromClientNonAuthed {
                 0
             } else {
                 self.steam_id.into()
             });
         }
         if self.session_id != 0 {
-            proto_header.set_client_sessionid(self.session_id);
+            proto_header.client_sessionid = Some(self.session_id);
         }
-        if kind == EMsg::k_EMsgServiceMethodCallFromClientNonAuthed
-            || kind == EMsg::k_EMsgServiceMethodCallFromClient
+        if kind == EMsg::KEMsgServiceMethodCallFromClientNonAuthed
+            || kind == EMsg::KEMsgServiceMethodCallFromClient
         {
-            proto_header.set_realm(1);
+            proto_header.realm = Some(1);
         }
         if let Some(target_job_name) = self.target_job_name.as_deref() {
-            proto_header.set_target_job_name(target_job_name.into());
+            proto_header.target_job_name = Some(target_job_name.into());
         }
         proto_header.routing_appid = self.source_app_id;
         proto_header
     }
 
     pub fn encode_size(&self, kind: MsgKind, proto: bool) -> usize {
-        if kind == EMsg::k_EMsgChannelEncryptResponse {
+        if kind == EMsg::KEMsgChannelEncryptResponse {
             4
         } else if proto {
             let proto_header = self.proto_header(kind);
-            4 + 4 + proto_header.compute_size() as usize
+            4 + 4 + proto_header.encoded_len()
         } else {
             4 + 1 + 2 + 8 + 8 + 1 + 8 + 4 + 4
         }

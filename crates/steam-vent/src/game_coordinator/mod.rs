@@ -5,13 +5,11 @@ use std::pin::pin;
 use std::time::Duration;
 
 use futures_util::future::{Either, select};
-use protobuf::Message;
-use steam_vent_proto_common::{GCHandshake, MsgKindEnum, RpcMessage, RpcMessageWithKind};
-use steam_vent_proto_steam::enums_clientserver::EMsg;
-use steam_vent_proto_steam::steammessages_clientserver::CMsgClientGamesPlayed;
-use steam_vent_proto_steam::steammessages_clientserver::cmsg_client_games_played::GamePlayed;
-use steam_vent_proto_steam::steammessages_clientserver_2::CMsgGCClient;
-use steam_vent_proto_steam::steammessages_clientserver_login::CMsgClientHello;
+use steam_vent_proto_common::{
+    GCHandshake, MsgKindEnum, ProtoError, RpcMessage, RpcMessageWithKind,
+};
+use steam_vent_proto_steam::c_msg_client_games_played::GamePlayed;
+use steam_vent_proto_steam::{CMsgClientGamesPlayed, CMsgClientHello, CMsgGcClient, EMsg};
 use tokio::spawn;
 use tokio::sync::mpsc::channel;
 use tokio::time::sleep;
@@ -47,29 +45,11 @@ pub enum GCMsgKind {
     k_EMsgGCServerHello = 4007,
 }
 
-impl protobuf::Enum for GCMsgKind {
-    const NAME: &'static str = "GCMsgKind";
-
-    fn value(&self) -> i32 {
+impl MsgKindEnum for GCMsgKind {
+    fn enum_value(&self) -> i32 {
         *self as i32
     }
-
-    fn from_i32(v: i32) -> Option<Self> {
-        match v {
-            4004 => Some(Self::k_EMsgGCClientWelcome),
-            4005 => Some(Self::k_EMsgGCServerWelcome),
-            4006 => Some(Self::k_EMsgGCClientHello),
-            4007 => Some(Self::k_EMsgGCServerHello),
-            _ => None,
-        }
-    }
-
-    fn from_str(_s: &str) -> Option<Self> {
-        None
-    }
 }
-
-impl MsgKindEnum for GCMsgKind {}
 
 impl Debug for GameCoordinator {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
@@ -115,10 +95,10 @@ impl GameCoordinator {
             let mut gc_messages = pin!(gc_messages);
             while let Some(gc_message) = gc_messages.next().await {
                 if let Ok(mut message) = gc_message {
-                    let (kind, is_protobuf) = decode_kind(message.data.msgtype());
+                    let (kind, is_protobuf) = decode_kind(message.data.msgtype.unwrap_or(0));
                     debug!(kind = ?kind, is_protobuf, "received gc messages");
 
-                    let payload = message.data.take_payload();
+                    let payload = message.data.payload.take().unwrap_or_default();
                     tx.send(RawNetMessage::read(payload)).await.ok();
                 }
             }
@@ -141,7 +121,7 @@ impl GameCoordinator {
                     }],
                     ..Default::default()
                 },
-                EMsg::k_EMsgClientGamesPlayedWithDataBlob,
+                EMsg::KEMsgClientGamesPlayedWithDataBlob,
             )
             .await?;
 
@@ -217,10 +197,10 @@ impl ConnectionImpl for GameCoordinator {
 
         nested_header.write(&mut payload, kind, is_protobuf)?;
         msg.write_body(&mut payload)?;
-        let data = CMsgGCClient {
+        let data = CMsgGcClient {
             appid: Some(self.app_id),
             msgtype: Some(kind.encode_kind(is_protobuf)),
-            payload: Some(payload),
+            payload: Some(payload.into()),
             ..Default::default()
         };
 
@@ -231,46 +211,46 @@ impl ConnectionImpl for GameCoordinator {
 
 #[derive(Debug)]
 struct ClientToGcMessage {
-    data: CMsgGCClient,
+    data: CMsgGcClient,
 }
 
 impl RpcMessageWithKind for ClientToGcMessage {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgClientToGC;
+    const KIND: Self::KindEnum = EMsg::KEMsgClientToGc;
 }
 
 impl RpcMessage for ClientToGcMessage {
-    fn parse(reader: &mut dyn std::io::Read) -> protobuf::Result<Self> {
-        let data = <CMsgGCClient as Message>::parse_from_reader(reader)?;
+    fn parse(reader: &mut dyn std::io::Read) -> Result<Self, ProtoError> {
+        let data = CMsgGcClient::parse(reader)?;
         Ok(ClientToGcMessage { data })
     }
-    fn write(&self, writer: &mut dyn std::io::Write) -> protobuf::Result<()> {
-        self.data.write_to_writer(writer)
+    fn write(&self, writer: &mut dyn std::io::Write) -> Result<(), ProtoError> {
+        self.data.write(writer)
     }
     fn encode_size(&self) -> usize {
-        self.data.compute_size() as usize
+        self.data.encode_size()
     }
 }
 
 #[derive(Debug)]
 struct ClientFromGcMessage {
-    data: CMsgGCClient,
+    data: CMsgGcClient,
 }
 
 impl RpcMessageWithKind for ClientFromGcMessage {
     type KindEnum = EMsg;
-    const KIND: Self::KindEnum = EMsg::k_EMsgClientFromGC;
+    const KIND: Self::KindEnum = EMsg::KEMsgClientFromGc;
 }
 
 impl RpcMessage for ClientFromGcMessage {
-    fn parse(reader: &mut dyn std::io::Read) -> protobuf::Result<Self> {
-        let data = <CMsgGCClient as Message>::parse_from_reader(reader)?;
+    fn parse(reader: &mut dyn std::io::Read) -> Result<Self, ProtoError> {
+        let data = CMsgGcClient::parse(reader)?;
         Ok(ClientFromGcMessage { data })
     }
-    fn write(&self, writer: &mut dyn std::io::Write) -> protobuf::Result<()> {
-        self.data.write_to_writer(writer)
+    fn write(&self, writer: &mut dyn std::io::Write) -> Result<(), ProtoError> {
+        self.data.write(writer)
     }
     fn encode_size(&self) -> usize {
-        self.data.compute_size() as usize
+        self.data.encode_size()
     }
 }

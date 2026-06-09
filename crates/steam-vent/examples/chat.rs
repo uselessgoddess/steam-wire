@@ -8,10 +8,9 @@ use steam_vent::auth::{
     FileGuardDataStore,
 };
 use steam_vent::{Connection, ConnectionTrait, ServerList};
-use steam_vent_proto::enums::EPersonaStateFlag;
-use steam_vent_proto::steammessages_clientserver_friends::CMsgClientChangeStatus;
-use steam_vent_proto::steammessages_friendmessages_steamclient::{
-    CFriendMessages_IncomingMessage_Notification, CFriendMessages_SendMessage_Request,
+use steam_vent_proto::{
+    CFriendMessagesIncomingMessageNotification, CFriendMessagesSendMessageRequest,
+    CMsgClientChangeStatus, EPersonaStateFlag,
 };
 use steamid_ng::SteamID;
 use tokio::spawn;
@@ -41,17 +40,21 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .send(CMsgClientChangeStatus {
             persona_state: Some(1),
             persona_state_flags: Some(
-                EPersonaStateFlag::k_EPersonaStateFlag_ClientTypeMobile as u32,
+                EPersonaStateFlag::KEPersonaStateFlagClientTypeMobile as u32,
             ),
             ..Default::default()
         })
         .await?;
 
     let mut incoming_messages =
-        connection.on_notification::<CFriendMessages_IncomingMessage_Notification>();
+        connection.on_notification::<CFriendMessagesIncomingMessageNotification>();
     spawn(async move {
         while let Some(Ok(incoming)) = incoming_messages.next().await {
-            println!("{}: {}", incoming.steamid_friend(), incoming.message());
+            println!(
+                "{}: {}",
+                incoming.steamid_friend.unwrap_or(0),
+                incoming.message.as_deref().unwrap_or_default()
+            );
         }
     });
     let mut read_buff = String::with_capacity(32);
@@ -60,11 +63,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
         stdin().read_line(&mut read_buff).expect("stdin error");
         let input = read_buff.trim();
         if !input.is_empty() {
-            let req = CFriendMessages_SendMessage_Request {
+            let req = CFriendMessagesSendMessageRequest {
                 steamid: Some(target_steam_id.into()),
                 message: Some(input.into()),
                 chat_entry_type: Some(1),
-                ..CFriendMessages_SendMessage_Request::default()
+                ..CFriendMessagesSendMessageRequest::default()
             };
             connection.service_method(req).await?;
         }

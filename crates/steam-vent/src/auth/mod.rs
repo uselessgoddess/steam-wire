@@ -7,17 +7,16 @@ use base64::Engine;
 use base64::prelude::BASE64_STANDARD;
 pub use confirmation::*;
 pub use guard_data::*;
-use protobuf::{EnumOrUnknown, MessageField};
+use bytes::Bytes;
 use rsa::{BoxedUint, RsaPublicKey};
 use steam_vent_crypto::encrypt_with_key_pkcs1;
-use steam_vent_proto_steam::enums::ESessionPersistence;
-use steam_vent_proto_steam::steammessages_auth_steamclient::{
-    CAuthentication_AllowedConfirmation, CAuthentication_BeginAuthSessionViaCredentials_Request,
-    CAuthentication_BeginAuthSessionViaCredentials_Response, CAuthentication_DeviceDetails,
-    CAuthentication_GetPasswordRSAPublicKey_Request, CAuthentication_PollAuthSessionStatus_Request,
-    CAuthentication_PollAuthSessionStatus_Response,
-    CAuthentication_UpdateAuthSessionWithSteamGuardCode_Request, EAuthSessionGuardType,
-    EAuthTokenPlatformType,
+use steam_vent_proto_steam::{
+    CAuthenticationAllowedConfirmation, CAuthenticationBeginAuthSessionViaCredentialsRequest,
+    CAuthenticationBeginAuthSessionViaCredentialsResponse, CAuthenticationDeviceDetails,
+    CAuthenticationGetPasswordRsaPublicKeyRequest, CAuthenticationPollAuthSessionStatusRequest,
+    CAuthenticationPollAuthSessionStatusResponse,
+    CAuthenticationUpdateAuthSessionWithSteamGuardCodeRequest, EAuthSessionGuardType,
+    EAuthTokenPlatformType, ESessionPersistence,
 };
 use thiserror::Error;
 use tokio::time::sleep;
@@ -42,33 +41,29 @@ pub(crate) async fn begin_password_auth(
         encrypt_with_key_pkcs1(&pub_key, password.as_bytes()).map_err(LoginError::InvalidPubKey)?;
     let encoded_password = BASE64_STANDARD.encode(encrypted_password);
     info!(account, "starting credentials login");
-    let req = CAuthentication_BeginAuthSessionViaCredentials_Request {
+    let req = CAuthenticationBeginAuthSessionViaCredentialsRequest {
         account_name: Some(account.into()),
         encrypted_password: Some(encoded_password),
         encryption_timestamp: Some(timestamp),
-        persistence: Some(EnumOrUnknown::new(
-            ESessionPersistence::k_ESessionPersistence_Persistent,
-        )),
+        persistence: Some(ESessionPersistence::KESessionPersistencePersistent as i32),
 
         // todo: platform types
         website_id: Some("Client".into()),
-        device_details: MessageField::some(CAuthentication_DeviceDetails {
+        device_details: Some(CAuthenticationDeviceDetails {
             device_friendly_name: Some("DESKTOP-VENT".into()),
-            platform_type: Some(EnumOrUnknown::new(
-                EAuthTokenPlatformType::k_EAuthTokenPlatformType_SteamClient,
-            )),
+            platform_type: Some(EAuthTokenPlatformType::KEAuthTokenPlatformTypeSteamClient as i32),
             os_type: Some(1),
-            ..CAuthentication_DeviceDetails::default()
+            ..CAuthenticationDeviceDetails::default()
         }),
         guard_data: guard_data.map(String::from),
-        ..CAuthentication_BeginAuthSessionViaCredentials_Request::default()
+        ..CAuthenticationBeginAuthSessionViaCredentialsRequest::default()
     };
     let res = service_method_un_authenticated(connection, req).await?;
     Ok(StartedAuth::Credentials(res))
 }
 
 pub(crate) enum StartedAuth {
-    Credentials(CAuthentication_BeginAuthSessionViaCredentials_Response),
+    Credentials(CAuthenticationBeginAuthSessionViaCredentialsResponse),
 }
 
 #[derive(Debug, Error)]
@@ -81,7 +76,7 @@ pub enum ConfirmationError {
 }
 
 impl StartedAuth {
-    fn raw_confirmations(&self) -> &[CAuthentication_AllowedConfirmation] {
+    fn raw_confirmations(&self) -> &[CAuthenticationAllowedConfirmation] {
         match self {
             StartedAuth::Credentials(res) => res.allowed_confirmations.as_slice(),
         }
@@ -94,31 +89,32 @@ impl StartedAuth {
     #[allow(dead_code)]
     pub fn action_required(&self) -> bool {
         self.raw_confirmations().iter().any(|method| {
-            method.confirmation_type() != EAuthSessionGuardType::k_EAuthSessionGuardType_None
+            method.confirmation_type.unwrap_or_default()
+                != EAuthSessionGuardType::KEAuthSessionGuardTypeNone as i32
         })
     }
 
     fn client_id(&self) -> u64 {
         match self {
-            StartedAuth::Credentials(res) => res.client_id(),
+            StartedAuth::Credentials(res) => res.client_id.unwrap_or(0),
         }
     }
 
     pub fn steam_id(&self) -> u64 {
         match self {
-            StartedAuth::Credentials(res) => res.steamid(),
+            StartedAuth::Credentials(res) => res.steamid.unwrap_or(0),
         }
     }
 
     fn request_id(&self) -> Vec<u8> {
         match self {
-            StartedAuth::Credentials(res) => res.request_id().into(),
+            StartedAuth::Credentials(res) => res.request_id.as_deref().unwrap_or_default().to_vec(),
         }
     }
 
     fn interval(&self) -> f32 {
         match self {
-            StartedAuth::Credentials(res) => res.interval(),
+            StartedAuth::Credentials(res) => res.interval.unwrap_or(0.0),
         }
     }
 
@@ -137,12 +133,11 @@ impl StartedAuth {
     ) -> Result<(), ConfirmationError> {
         match confirmation {
             ConfirmationAction::GuardToken(token, ty) => {
-                let req = CAuthentication_UpdateAuthSessionWithSteamGuardCode_Request {
+                let req = CAuthenticationUpdateAuthSessionWithSteamGuardCodeRequest {
                     client_id: Some(self.client_id()),
                     steamid: Some(self.steam_id()),
                     code: Some(token.0),
-                    code_type: Some(EnumOrUnknown::new(ty.into())),
-                    ..CAuthentication_UpdateAuthSessionWithSteamGuardCode_Request::default()
+                    code_type: Some(EAuthSessionGuardType::from(ty) as i32),
                 };
                 let _ = service_method_un_authenticated(connection, req).await?;
             }
@@ -176,10 +171,10 @@ impl PendingAuth {
                 Duration::from_secs_f32(self.interval),
             )
             .await?;
-            if response.has_access_token() {
+            if response.access_token.is_some() {
                 return Ok(Tokens {
-                    access_token: Token(response.take_access_token()),
-                    refresh_token: Token(response.take_refresh_token()),
+                    access_token: Token(response.access_token.take().unwrap_or_default()),
+                    refresh_token: Token(response.refresh_token.take().unwrap_or_default()),
                     new_guard_data: response.new_guard_data,
                 });
             }
@@ -209,23 +204,23 @@ async fn poll_until_info(
     client_id: u64,
     request_id: &[u8],
     interval: Duration,
-) -> Result<CAuthentication_PollAuthSessionStatus_Response, NetworkError> {
+) -> Result<CAuthenticationPollAuthSessionStatusResponse, NetworkError> {
     loop {
-        let req = CAuthentication_PollAuthSessionStatus_Request {
+        let req = CAuthenticationPollAuthSessionStatusRequest {
             client_id: Some(client_id),
-            request_id: Some(request_id.into()),
-            ..CAuthentication_PollAuthSessionStatus_Request::default()
+            request_id: Some(Bytes::copy_from_slice(request_id)),
+            ..CAuthenticationPollAuthSessionStatusRequest::default()
         };
 
         let resp = service_method_un_authenticated(connection, req).await?;
-        let has_data = resp.has_access_token()
-            || resp.has_account_name()
-            || resp.has_agreement_session_url()
-            || resp.has_had_remote_interaction()
-            || resp.has_new_challenge_url()
-            || resp.has_new_client_id()
-            || resp.has_new_guard_data()
-            || resp.has_refresh_token();
+        let has_data = resp.access_token.is_some()
+            || resp.account_name.is_some()
+            || resp.agreement_session_url.is_some()
+            || resp.had_remote_interaction.is_some()
+            || resp.new_challenge_url.is_some()
+            || resp.new_client_id.is_some()
+            || resp.new_guard_data.is_some()
+            || resp.refresh_token.is_some();
 
         if has_data {
             return Ok(resp);
@@ -250,7 +245,7 @@ fn hex_to_boxed_uint(hex_str: &str) -> Option<BoxedUint> {
 
 fn malformed(error: impl Into<MessageBodyError>) -> MalformedBody {
     MalformedBody::new(
-        ServiceMethodMessage::<CAuthentication_GetPasswordRSAPublicKey_Request>::KIND,
+        ServiceMethodMessage::<CAuthenticationGetPasswordRsaPublicKeyRequest>::KIND,
         error,
     )
 }
@@ -261,10 +256,7 @@ async fn get_password_rsa(
     account: String,
 ) -> Result<(RsaPublicKey, u64), NetworkError> {
     debug!("getting password rsa");
-    let req = CAuthentication_GetPasswordRSAPublicKey_Request {
-        account_name: Some(account),
-        ..CAuthentication_GetPasswordRSAPublicKey_Request::default()
-    };
+    let req = CAuthenticationGetPasswordRsaPublicKeyRequest { account_name: Some(account) };
     let response = service_method_un_authenticated(connection, req).await?;
 
     let n_hex = response.publickey_mod.as_deref().unwrap_or_default();

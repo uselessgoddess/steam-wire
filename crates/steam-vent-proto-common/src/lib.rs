@@ -108,7 +108,7 @@ pub const PROTO_MASK: u32 = 0x80000000;
 /// Implemented by the codegen for every generated `EMsg`-style enum (prost
 /// enums are plain `#[repr(i32)]` C-like enums, so `*self as i32` yields the
 /// wire value).
-pub trait MsgKindEnum: Copy + Debug {
+pub trait MsgKindEnum: Copy + Debug + Send + Sync + 'static {
     fn enum_value(&self) -> i32;
 
     fn encode_kind(&self, is_protobuf: bool) -> u32 {

@@ -6,7 +6,7 @@ use steam_vent::auth::{
     FileGuardDataStore, SharedSecretAuthConfirmationHandler,
 };
 use steam_vent::{Connection, ConnectionTrait, ServerList};
-use steam_vent_proto::steammessages_player_steamclient::CPlayer_GetOwnedGames_Request;
+use steam_vent_proto::CPlayerGetOwnedGamesRequest;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -44,16 +44,25 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     println!("requesting games");
 
-    let req = CPlayer_GetOwnedGames_Request {
+    let req = CPlayerGetOwnedGamesRequest {
         steamid: Some(connection.steam_id().into()),
         include_appinfo: Some(true),
         include_played_free_games: Some(true),
-        ..CPlayer_GetOwnedGames_Request::default()
+        ..CPlayerGetOwnedGamesRequest::default()
     };
     let games = connection.service_method(req).await?;
-    println!("{} owns {} games", connection.steam_id().steam3(), games.game_count());
+    println!(
+        "{} owns {} games",
+        connection.steam_id().steam3(),
+        games.game_count.unwrap_or(0)
+    );
     for game in games.games {
-        println!("{}: {} {}", game.appid(), game.name(), game.playtime_forever());
+        println!(
+            "{}: {} {}",
+            game.appid.unwrap_or(0),
+            game.name.as_deref().unwrap_or_default(),
+            game.playtime_forever.unwrap_or(0)
+        );
     }
 
     Ok(())

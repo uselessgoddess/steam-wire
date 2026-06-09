@@ -6,7 +6,7 @@ use std::time::Duration;
 use bytes::BytesMut;
 use futures_util::{Sink, SinkExt, Stream};
 use steam_vent_proto_common::MsgKindEnum;
-use steam_vent_proto_steam::steammessages_clientserver_login::CMsgClientHeartBeat;
+use steam_vent_proto_steam::CMsgClientHeartBeat;
 use tokio::sync::Mutex;
 use tokio::time::sleep;
 use tokio::{select, spawn};

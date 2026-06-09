@@ -1,9 +1,7 @@
 use std::pin::pin;
 
 use futures_util::future::{Either, select};
-use steam_vent_proto_steam::steammessages_auth_steamclient::{
-    CAuthentication_AllowedConfirmation, EAuthSessionGuardType,
-};
+use steam_vent_proto_steam::{CAuthenticationAllowedConfirmation, EAuthSessionGuardType};
 use tokio::io::{
     AsyncBufReadExt, AsyncRead, AsyncWrite, AsyncWriteExt, BufReader, Stdin, Stdout, stdin, stdout,
 };
@@ -12,64 +10,62 @@ use crate::auth::SteamGuardToken;
 
 /// A method that can be used to confirm a login
 #[derive(Debug, Clone)]
-pub struct ConfirmationMethod(CAuthentication_AllowedConfirmation);
+pub struct ConfirmationMethod(CAuthenticationAllowedConfirmation);
 
-impl From<CAuthentication_AllowedConfirmation> for ConfirmationMethod {
-    fn from(value: CAuthentication_AllowedConfirmation) -> Self {
+impl From<CAuthenticationAllowedConfirmation> for ConfirmationMethod {
+    fn from(value: CAuthenticationAllowedConfirmation) -> Self {
         Self(value)
     }
 }
 
 impl ConfirmationMethod {
+    /// Decode the raw `confirmation_type` field into the guard-type enum.
+    fn guard_type(&self) -> EAuthSessionGuardType {
+        EAuthSessionGuardType::try_from(self.0.confirmation_type.unwrap_or_default())
+            .unwrap_or(EAuthSessionGuardType::KEAuthSessionGuardTypeUnknown)
+    }
+
     /// Get the human-readable confirmation type
     pub fn confirmation_type(&self) -> &'static str {
-        match self.0.confirmation_type() {
-            EAuthSessionGuardType::k_EAuthSessionGuardType_Unknown => "unknown",
-            EAuthSessionGuardType::k_EAuthSessionGuardType_None => "none",
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailCode => "email",
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceCode => "device code",
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceConfirmation => {
-                "device confirmation"
-            }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailConfirmation => {
-                "email confirmation"
-            }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_MachineToken => "machine token",
-            EAuthSessionGuardType::k_EAuthSessionGuardType_LegacyMachineAuth => "machine auth",
+        match self.guard_type() {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeUnknown => "unknown",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeNone => "none",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailCode => "email",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceCode => "device code",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceConfirmation => "device confirmation",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailConfirmation => "email confirmation",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeMachineToken => "machine token",
+            EAuthSessionGuardType::KEAuthSessionGuardTypeLegacyMachineAuth => "machine auth",
         }
     }
 
     /// Get the server-provided message for the confirmation
     pub fn confirmation_details(&self) -> &str {
-        self.0.associated_message()
+        self.0.associated_message.as_deref().unwrap_or_default()
     }
 
     /// Is any action required to confirm the login
     pub fn action_required(&self) -> bool {
-        self.0.confirmation_type() != EAuthSessionGuardType::k_EAuthSessionGuardType_None
+        self.guard_type() != EAuthSessionGuardType::KEAuthSessionGuardTypeNone
     }
 
     /// Get the class of the confirmation
     pub fn class(&self) -> ConfirmationMethodClass {
-        match self.0.confirmation_type() {
-            EAuthSessionGuardType::k_EAuthSessionGuardType_Unknown => ConfirmationMethodClass::None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_None => ConfirmationMethodClass::None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailCode => {
-                ConfirmationMethodClass::Code
-            }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceCode => {
-                ConfirmationMethodClass::Code
-            }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceConfirmation => {
+        match self.guard_type() {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeUnknown => ConfirmationMethodClass::None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeNone => ConfirmationMethodClass::None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailCode => ConfirmationMethodClass::Code,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceCode => ConfirmationMethodClass::Code,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceConfirmation => {
                 ConfirmationMethodClass::Confirmation
             }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailConfirmation => {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailConfirmation => {
                 ConfirmationMethodClass::Confirmation
             }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_MachineToken => {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeMachineToken => {
                 ConfirmationMethodClass::Stored
             }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_LegacyMachineAuth => {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeLegacyMachineAuth => {
                 ConfirmationMethodClass::Stored
             }
         }
@@ -77,17 +73,15 @@ impl ConfirmationMethod {
 
     /// Get the token type required for the confirmation, if the confirmation asks for a code
     pub fn token_type(&self) -> Option<GuardTokenType> {
-        match self.0.confirmation_type() {
-            EAuthSessionGuardType::k_EAuthSessionGuardType_Unknown => None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_None => None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailCode => Some(GuardTokenType::Email),
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceCode => {
-                Some(GuardTokenType::Device)
-            }
-            EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceConfirmation => None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_EmailConfirmation => None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_MachineToken => None,
-            EAuthSessionGuardType::k_EAuthSessionGuardType_LegacyMachineAuth => None,
+        match self.guard_type() {
+            EAuthSessionGuardType::KEAuthSessionGuardTypeUnknown => None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeNone => None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailCode => Some(GuardTokenType::Email),
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceCode => Some(GuardTokenType::Device),
+            EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceConfirmation => None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeEmailConfirmation => None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeMachineToken => None,
+            EAuthSessionGuardType::KEAuthSessionGuardTypeLegacyMachineAuth => None,
         }
     }
 }
@@ -127,8 +121,8 @@ pub enum GuardTokenType {
 impl From<GuardTokenType> for EAuthSessionGuardType {
     fn from(value: GuardTokenType) -> Self {
         match value {
-            GuardTokenType::Device => EAuthSessionGuardType::k_EAuthSessionGuardType_DeviceCode,
-            GuardTokenType::Email => EAuthSessionGuardType::k_EAuthSessionGuardType_EmailCode,
+            GuardTokenType::Device => EAuthSessionGuardType::KEAuthSessionGuardTypeDeviceCode,
+            GuardTokenType::Email => EAuthSessionGuardType::KEAuthSessionGuardTypeEmailCode,
         }
     }
 }

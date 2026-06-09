@@ -1,6 +1,7 @@
-use protobuf::{Message as _, SpecialFields};
-use steam_vent_proto_common::{GCHandshake, RpcMessage, RpcMessageWithKind};
-use steam_vent_proto_steam::steammessages_clientserver_login::CMsgClientHello;
+use std::io::{Read, Write};
+
+use steam_vent_proto_common::{GCHandshake, ProtoError, RpcMessage, RpcMessageWithKind};
+use steam_vent_proto_steam::CMsgClientHello;
 
 use crate::game_coordinator::GCMsgKind;
 
@@ -26,81 +27,30 @@ impl GCHandshake for GenericGCHandshake {
     }
 
     fn hello(&self) -> Self::Hello {
-        self.hello.clone()
+        self.hello
     }
 }
 
+/// The welcome message a game-coordinator sends after a successful handshake.
+///
+/// The generic handshake doesn't care about the contents of the welcome, only
+/// that it arrived, so this is modelled as an empty message: parsing drains and
+/// discards the body and writing emits nothing.
 #[derive(PartialEq, Clone, Default, Debug)]
-pub struct GenericCMsgClientWelcome {
-    pub special_fields: protobuf::SpecialFields,
-}
-
-impl protobuf::Message for GenericCMsgClientWelcome {
-    const NAME: &'static str = "CMsgClientWelcome";
-
-    fn is_initialized(&self) -> bool {
-        true
-    }
-
-    fn merge_from(&mut self, is: &mut protobuf::CodedInputStream<'_>) -> protobuf::Result<()> {
-        while let Some(tag) = is.read_raw_tag_or_eof()? {
-            protobuf::rt::read_unknown_or_skip_group(
-                tag,
-                is,
-                self.special_fields.mut_unknown_fields(),
-            )?;
-        }
-        Ok(())
-    }
-
-    #[allow(unused_variables)]
-    fn compute_size(&self) -> u64 {
-        let mut my_size = 0;
-        my_size += protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
-        self.special_fields.cached_size().set(my_size as u32);
-        my_size
-    }
-
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut protobuf::CodedOutputStream<'_>,
-    ) -> protobuf::Result<()> {
-        os.write_unknown_fields(self.special_fields.unknown_fields())?;
-        ::std::result::Result::Ok(())
-    }
-
-    fn special_fields(&self) -> &protobuf::SpecialFields {
-        &self.special_fields
-    }
-
-    fn mut_special_fields(&mut self) -> &mut protobuf::SpecialFields {
-        &mut self.special_fields
-    }
-
-    fn new() -> GenericCMsgClientWelcome {
-        GenericCMsgClientWelcome::default()
-    }
-
-    fn clear(&mut self) {
-        self.special_fields.clear();
-    }
-
-    fn default_instance() -> &'static GenericCMsgClientWelcome {
-        static INSTANCE: GenericCMsgClientWelcome =
-            GenericCMsgClientWelcome { special_fields: SpecialFields::new() };
-        &INSTANCE
-    }
-}
+pub struct GenericCMsgClientWelcome;
 
 impl RpcMessage for GenericCMsgClientWelcome {
-    fn parse(reader: &mut dyn std::io::Read) -> protobuf::Result<Self> {
-        protobuf::Message::parse_from_reader(reader)
+    fn parse(reader: &mut dyn Read) -> Result<Self, ProtoError> {
+        // The payload is ignored, but the reader still has to be drained.
+        let mut buf = Vec::new();
+        reader.read_to_end(&mut buf)?;
+        Ok(GenericCMsgClientWelcome)
     }
-    fn write(&self, writer: &mut dyn std::io::Write) -> protobuf::Result<()> {
-        self.write_to_writer(writer)
+    fn write(&self, _writer: &mut dyn Write) -> Result<(), ProtoError> {
+        Ok(())
     }
     fn encode_size(&self) -> usize {
-        self.compute_size() as usize
+        0
     }
 }
 

@@ -5,7 +5,7 @@ use std::sync::{Arc, Mutex};
 use dashmap::DashMap;
 use futures_util::Stream;
 use steam_vent_proto_common::MsgKind;
-use steam_vent_proto_steam::enums_clientserver::EMsg;
+use steam_vent_proto_steam::EMsg;
 use tokio::spawn;
 use tokio::sync::{broadcast, mpsc, oneshot};
 use tokio_stream::StreamExt;
@@ -94,7 +94,7 @@ impl MessageFilter {
                             filter_send.oneshot_kind_filters.remove(&message.kind)
                         {
                             tx.send(message).ok();
-                        } else if message.kind == EMsg::k_EMsgServiceMethod {
+                        } else if message.kind == EMsg::KEMsgServiceMethod {
                             if let Ok(notification) =
                                 message.into_message::<ServiceMethodNotification>()
                             {

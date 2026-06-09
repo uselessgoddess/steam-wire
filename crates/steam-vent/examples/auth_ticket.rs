@@ -10,7 +10,7 @@ use steam_vent::auth::{
     FileGuardDataStore,
 };
 use steam_vent::connection::{ReadonlyConnection, UnAuthenticatedConnection};
-use steam_vent_proto::steammessages_clientserver::CMsgClientGameConnectTokens;
+use steam_vent_proto::CMsgClientGameConnectTokens;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
