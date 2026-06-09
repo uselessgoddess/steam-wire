@@ -51,25 +51,25 @@ jobs:
       - name: Cold build (release, mold + sccache)
         id: cold
         run: |
-          cargo build --release -p steam-vent --quiet 2>/dev/null || true # warm deps first
-          cargo clean -p steam-vent -p steam-vent-proto-steam -p steam-vent-proto-common
+          cargo build --release -p steam-wire --quiet 2>/dev/null || true # warm deps first
+          cargo clean -p steam-wire -p steam-wire-proto-steam -p steam-wire-proto-common
           start=$SECONDS
-          cargo build --release -p steam-vent
+          cargo build --release -p steam-wire
           echo "seconds=$((SECONDS - start))" >> "$GITHUB_OUTPUT"
 
       - name: Incremental rebuild (touch lib.rs)
         id: warm
         run: |
-          touch crates/steam-vent/src/lib.rs
+          touch crates/steam-wire/src/lib.rs
           start=$SECONDS
-          cargo build --release -p steam-vent
+          cargo build --release -p steam-wire
           echo "seconds=$((SECONDS - start))" >> "$GITHUB_OUTPUT"
 
       - name: Build size profiles
         id: size
         run: |
           measure() { # profile -> bytes
-            cargo build --profile "$1" -p steam-vent --example "$SIZE_EXAMPLE" >/dev/null 2>&1
+            cargo build --profile "$1" -p steam-wire --example "$SIZE_EXAMPLE" >/dev/null 2>&1
             local dir="$1"; [ "$1" = "release" ] && dir="release"
             stat -c%s "target/$dir/examples/$SIZE_EXAMPLE"
           }
@@ -80,9 +80,9 @@ jobs:
       - name: cargo-bloat (top 25 by size)
         id: bloat
         run: |
-          cargo bloat --release -p steam-vent --example "$SIZE_EXAMPLE" -n 25 \
+          cargo bloat --release -p steam-wire --example "$SIZE_EXAMPLE" -n 25 \
             > bloat.txt 2>&1 || true
-          cargo bloat --release -p steam-vent --example "$SIZE_EXAMPLE" --crates -n 20 \
+          cargo bloat --release -p steam-wire --example "$SIZE_EXAMPLE" --crates -n 20 \
             > bloat-crates.txt 2>&1 || true
 
       - name: sccache stats
@@ -94,7 +94,7 @@ jobs:
           {
             echo "## Build metrics"
             echo
-            echo "### Build speed (release, \`-p steam-vent\`, mold + sccache)"
+            echo "### Build speed (release, \`-p steam-wire\`, mold + sccache)"
             echo "| Scenario | Wall-clock |"
             echo "| --- | --- |"
             echo "| Cold (proto crate rebuilt) | ${{ steps.cold.outputs.seconds }} s |"
