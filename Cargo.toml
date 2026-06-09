@@ -1,55 +1,119 @@
-[package]
-name = "steam-vent"
-version = "0.5.0"
-edition.workspace = true
+[workspace]
+resolver = "3"
+members = ["crates/*"]
 
-[dependencies]
-steam-vent-proto-common = "0.5.1"
-steam-vent-proto-steam = "0.5.2"
-steam-vent-crypto = { version = "0.2", path = "./crypto" }
-tokio = { workspace = true, features = ["net", "io-util", "macros", "io-std"] }
-tokio-util = { workspace = true, features = ["codec"] }
-tokio-stream = { version = "0.1.17", features = ["sync"] }
-tokio-tungstenite = { version = "0.29.0", features = [
-    "rustls-tls-webpki-roots",
-] }
-rustls = { workspace = true }
+[workspace.package]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/uselessgoddess/steam-vent"
+rust-version = "1.85.0"
+
+[workspace.dependencies]
+# --- workspace crates ---
+steam-vent = { path = "crates/steam-vent" }
+steam-vent-crypto = { path = "crates/steam-vent-crypto" }
+steam-vent-proto = { path = "crates/steam-vent-proto" }
+steam-vent-proto-common = { path = "crates/steam-vent-proto-common" }
+steam-vent-proto-steam = { path = "crates/steam-vent-proto-steam" }
+steam-vent-proto-build = { path = "crates/steam-vent-proto-build" }
+totp = { path = "crates/steam-totp", package = "steam-totp" }
+
+# --- async runtime / io ---
+tokio = { version = "1.47" }
+tokio-util = { version = "0.7" }
+tokio-stream = { version = "0.1.17" }
+futures-util = { version = "0.3.31" }
+async-stream = "0.3.6"
+
+# --- networking / tls ---
+tokio-tungstenite = { version = "0.29.0" }
+rustls = { version = "0.23", default-features = false, features = ["ring"] }
 webpki-roots = "1.0.2"
+wreq = { version = "=6.0.0-rc.29", features = ["json"] }
+
+# --- serialization / protobuf (prost stack) ---
+# The whole protobuf surface is generated and consumed with prost: pure-Rust
+# parsing via protox (no protoc / no C toolchain), codegen via prost-build. This
+# replaced rust-protobuf 3.5.1 across the workspace — see docs/RESEARCH.md.
+prost = { version = "0.13" }
+prost-types = { version = "0.13" }
+prost-build = { version = "0.13" }
+protox = { version = "0.7" }
+serde = { version = "1.0", features = ["derive"] }
+json = { package = "serde_json", version = "1.0" }
+bytes = { version = "1.10" }
 binrw = "0.15.0"
-thiserror = { workspace = true }
-bytes = { workspace = true }
-protobuf = { workspace = true }
 bytemuck = { version = "1.23.2", features = ["derive"] }
+
+# --- crypto (RustCrypto pre-1.0 generation: matches steam-vent-crypto's API usage) ---
+rsa = { version = "=0.10.0-rc.18" }
+sha1 = "0.11"
+sha2 = "0.11"
+hmac = "0.13"
+aes = "0.9.1"
+cbc = "0.2.1"
+rand = { version = "0.10" }
+
+# --- steam helpers ---
+steamid-ng = "3.0.0"
+num_enum = "0.7.4"
+
+# --- compression / encoding ---
+flate2 = { version = "1.1" }
+base64 = { version = "0.22" }
+hex = { version = "0.4" }
 crc = "3.3.0"
 byteorder = "1.5.0"
-flate2 = { workspace = true }
-steamid-ng = "3.0.0"
-futures-util = { version = "0.3.31", features = ["sink"] }
-dashmap = { workspace = true }
-tracing = { workspace = true }
-serde = { workspace = true, features = ["derive"] }
-json = { workspace = true }
-wreq = { workspace = true }
-rsa = { workspace = true }
-hex = { workspace = true }
-base64 = { workspace = true }
-num_enum = "0.7.4"
+
+# --- misc ---
+thiserror = { version = "2.0" }
+tracing = { version = "0.1" }
+dashmap = { version = "6.1" }
 directories = "6.0.0"
-async-stream = "0.3.6"
-rand = { workspace = true }
+once_cell = "1"
 
-totp = { workspace = true }
+# --- codegen tooling (proto-build) ---
+walkdir = "2.3.3"
+clap = { version = "4.5", features = ["derive"] }
+quote = "1.0"
+syn = { version = "2.0", features = ["full"] }
+proc-macro2 = "1.0"
+prettyplease = "0.2"
+ahash = "0.8"
+# heck 0.5 is what prost-build 0.13 uses internally; we replicate prost's
+# `to_upper_camel` + `strip_enum_prefix` ident renaming for the kind tables.
+heck = "0.5"
 
-[dev-dependencies]
-tokio = { version = "1.47", features = ["macros", "rt", "rt-multi-thread"] }
+# --- dev / test ---
 tracing-subscriber = "0.3.20"
 vdf-reader = "0.3.1"
-steam-vent-proto = "0.5.2"
 
-[[example]]
-name = "backpack"
-required-features = ["steam-vent-proto/tf2"]
+[profile.dev]
+split-debuginfo = "unpacked"
 
-[[example]]
-name = "inventory"
-required-features = ["steam-vent-proto/csgo"]
+[profile.release]
+split-debuginfo = "unpacked"
+
+# Build proc-macros / build scripts with optimizations even in dev,
+# this speeds up the (heavy) protobuf codegen without slowing edit cycles.
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.dev.package."*"]
+debug = false
+opt-level = 0
+
+# Size-optimized release: single codegen unit + thin LTO + stripped.
+[profile.micro]
+inherits = "release"
+codegen-units = 1
+opt-level = 3
+lto = "thin"
+strip = true
+
+# Minimal-size release: optimize for size, fat LTO, abort on panic.
+[profile.nano]
+inherits = "micro"
+opt-level = "z"
+lto = "fat"
+panic = "abort"

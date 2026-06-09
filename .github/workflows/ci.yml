@@ -1,0 +1,70 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: "1"
+
+jobs:
+  build-test:
+    name: Build & test (all features)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      # The whole workspace is pure prost now (no rust-protobuf, no protoc).
+      # --all-features keeps future opt-in features covered; --examples checks
+      # the public API surface every example exercises. --locked guards that the
+      # committed Cargo.lock stays in sync with the manifests.
+      - name: Build (libs + examples, all features)
+        run: cargo build --workspace --all-features --examples --locked
+      - name: Test
+        run: cargo test --workspace --all-features --locked
+
+  clippy:
+    name: Clippy (advisory)
+    runs-on: ubuntu-latest
+    # Advisory only: the vendored generated code is not lint-clean and we do not
+    # want to gate PRs on it. Surfaces lints without failing the build.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (stable + clippy)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --all-features --all-targets --locked
+
+  codegen-sync:
+    name: Proto codegen in sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      # Regenerate the committed Rust from the .proto sources (pure Rust, no
+      # protoc) and fail if it drifts — keeps generated code and sources honest.
+      - name: Regenerate steam protos from .proto sources
+        run: |
+          cargo run -q -p steam-vent-proto-build --locked -- \
+            crates/steam-vent-proto-steam/protos \
+            crates/steam-vent-proto-steam/src/generated
+      - name: Verify generated code is committed & in sync
+        run: |
+          if ! git diff --quiet -- crates/steam-vent-proto-steam/src/generated; then
+            echo "::error::Generated protobuf code is out of sync with the .proto sources."
+            echo "Run the codegen locally and commit the result:"
+            echo "  cargo run -p steam-vent-proto-build -- crates/steam-vent-proto-steam/protos crates/steam-vent-proto-steam/src/generated"
+            git --no-pager diff --stat -- crates/steam-vent-proto-steam/src/generated
+            exit 1
+          fi
+          echo "Generated code matches the .proto sources."

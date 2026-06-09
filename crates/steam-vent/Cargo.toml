@@ -1,0 +1,48 @@
+[package]
+name = "steam-vent"
+version = "0.6.0"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Rust client for the Steam network protocol"
+
+[dependencies]
+steam-vent-proto-common = { workspace = true }
+steam-vent-proto-steam = { workspace = true }
+steam-vent-crypto = { workspace = true }
+tokio = { workspace = true, features = ["net", "io-util", "macros", "io-std"] }
+tokio-util = { workspace = true, features = ["codec"] }
+tokio-stream = { workspace = true, features = ["sync"] }
+tokio-tungstenite = { workspace = true, features = ["rustls-tls-webpki-roots"] }
+rustls = { workspace = true }
+webpki-roots = { workspace = true }
+binrw = { workspace = true }
+thiserror = { workspace = true }
+bytes = { workspace = true }
+prost = { workspace = true }
+bytemuck = { workspace = true }
+crc = { workspace = true }
+byteorder = { workspace = true }
+flate2 = { workspace = true }
+steamid-ng = { workspace = true }
+futures-util = { workspace = true, features = ["sink"] }
+dashmap = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+json = { workspace = true }
+wreq = { workspace = true }
+rsa = { workspace = true }
+hex = { workspace = true }
+base64 = { workspace = true }
+num_enum = { workspace = true }
+directories = { workspace = true }
+async-stream = { workspace = true }
+rand = { workspace = true }
+
+totp = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread"] }
+tracing-subscriber = { workspace = true }
+vdf-reader = { workspace = true }
+steam-vent-proto = { workspace = true }

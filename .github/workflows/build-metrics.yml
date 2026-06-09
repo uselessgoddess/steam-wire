@@ -1,0 +1,128 @@
+name: build-metrics
+
+# Measures the two things the project optimizes for: build speed and binary
+# size. Reports wall-clock build times (cold + incremental, with mold + sccache)
+# and stripped binary sizes per release profile to the job summary, plus a
+# cargo-bloat breakdown. Heavy, so it runs on main, on demand, and weekly —
+# not on every PR.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+
+env:
+  CARGO_TERM_COLOR: always
+  # sccache can't cache incremental compilation; disabling it also makes the
+  # timing numbers reproducible.
+  CARGO_INCREMENTAL: "0"
+  RUSTC_WRAPPER: sccache
+  SCCACHE_GHA_ENABLED: "true"
+  # Representative example binary used for size measurements.
+  SIZE_EXAMPLE: login
+
+jobs:
+  metrics:
+    name: Build speed & binary size
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install mold linker
+        uses: rui314/setup-mold@v1
+        with:
+          make-default: true
+
+      - name: Install sccache
+        uses: mozilla-actions/sccache-action@v0.0.9
+
+      - name: Install cargo-bloat
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-bloat
+
+      - name: Cache cargo registry + target
+        uses: Swatinem/rust-cache@v2
+
+      - name: Cold build (release, mold + sccache)
+        id: cold
+        run: |
+          cargo build --release -p steam-vent --quiet 2>/dev/null || true # warm deps first
+          cargo clean -p steam-vent -p steam-vent-proto-steam -p steam-vent-proto-common
+          start=$SECONDS
+          cargo build --release -p steam-vent
+          echo "seconds=$((SECONDS - start))" >> "$GITHUB_OUTPUT"
+
+      - name: Incremental rebuild (touch lib.rs)
+        id: warm
+        run: |
+          touch crates/steam-vent/src/lib.rs
+          start=$SECONDS
+          cargo build --release -p steam-vent
+          echo "seconds=$((SECONDS - start))" >> "$GITHUB_OUTPUT"
+
+      - name: Build size profiles
+        id: size
+        run: |
+          measure() { # profile -> bytes
+            cargo build --profile "$1" -p steam-vent --example "$SIZE_EXAMPLE" >/dev/null 2>&1
+            local dir="$1"; [ "$1" = "release" ] && dir="release"
+            stat -c%s "target/$dir/examples/$SIZE_EXAMPLE"
+          }
+          echo "release=$(measure release)" >> "$GITHUB_OUTPUT"
+          echo "micro=$(measure micro)"     >> "$GITHUB_OUTPUT"
+          echo "nano=$(measure nano)"       >> "$GITHUB_OUTPUT"
+
+      - name: cargo-bloat (top 25 by size)
+        id: bloat
+        run: |
+          cargo bloat --release -p steam-vent --example "$SIZE_EXAMPLE" -n 25 \
+            > bloat.txt 2>&1 || true
+          cargo bloat --release -p steam-vent --example "$SIZE_EXAMPLE" --crates -n 20 \
+            > bloat-crates.txt 2>&1 || true
+
+      - name: sccache stats
+        run: sccache --show-stats || true
+
+      - name: Write job summary
+        run: |
+          human() { numfmt --to=iec --suffix=B "$1" 2>/dev/null || echo "$1 B"; }
+          {
+            echo "## Build metrics"
+            echo
+            echo "### Build speed (release, \`-p steam-vent\`, mold + sccache)"
+            echo "| Scenario | Wall-clock |"
+            echo "| --- | --- |"
+            echo "| Cold (proto crate rebuilt) | ${{ steps.cold.outputs.seconds }} s |"
+            echo "| Incremental (touch lib.rs)  | ${{ steps.warm.outputs.seconds }} s |"
+            echo
+            echo "### Binary size (\`$SIZE_EXAMPLE\` example, stripped)"
+            echo "| Profile | Size |"
+            echo "| --- | --- |"
+            echo "| release | $(human ${{ steps.size.outputs.release }}) |"
+            echo "| micro   | $(human ${{ steps.size.outputs.micro }}) |"
+            echo "| nano    | $(human ${{ steps.size.outputs.nano }}) |"
+            echo
+            echo "### cargo-bloat — largest crates"
+            echo '```'
+            cat bloat-crates.txt
+            echo '```'
+            echo "<details><summary>cargo-bloat — largest functions</summary>"
+            echo
+            echo '```'
+            cat bloat.txt
+            echo '```'
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload bloat reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: cargo-bloat
+          path: |
+            bloat.txt
+            bloat-crates.txt

@@ -1,0 +1,21 @@
+[package]
+name = "steam-vent-proto-build"
+description = "Build steam-vent compatible protobuf bindings"
+version = "0.6.0"
+edition = "2021"
+authors = ["Robin Appelman <robin@icewind.nl>"]
+license = "MIT"
+repository = "https://codeberg.org/steam-vent/proto"
+
+[dependencies]
+# pure-Rust protobuf parsing + codegen (no protoc / no C toolchain)
+prost-build = { workspace = true }
+prost-types = { workspace = true }
+protox = { workspace = true }
+heck = { workspace = true }
+walkdir = { workspace = true }
+clap = { workspace = true }
+quote = { workspace = true }
+prettyplease = { workspace = true }
+syn = { workspace = true }
+proc-macro2 = { workspace = true }
