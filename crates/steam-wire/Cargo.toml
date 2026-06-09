@@ -10,6 +10,7 @@ description = "client for the steam network protocol"
 steam-wire-proto-common = { workspace = true }
 steam-wire-proto-steam = { workspace = true }
 steam-wire-crypto = { workspace = true }
+steam-wire-proto = { workspace = true }
 tokio = { workspace = true, features = ["net", "io-util", "macros", "io-std"] }
 tokio-util = { workspace = true, features = ["codec"] }
 tokio-stream = { workspace = true, features = ["sync"] }
@@ -43,7 +44,6 @@ rand = { workspace = true }
 tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread"] }
 tracing-subscriber = { workspace = true }
 vdf-reader = { workspace = true }
-steam-wire-proto = { workspace = true }
 
 [[example]]
 name = "backpack"

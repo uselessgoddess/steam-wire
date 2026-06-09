@@ -21,3 +21,5 @@ pub use net::{NetMessageHeader, NetworkError, RawNetMessage};
 pub use serverlist::{DiscoverOptions, ServerDiscoveryError, ServerList};
 pub use service_method::ServiceMethodRequest;
 pub use session::{ConnectionError, LoginError};
+
+pub use steam_wire_proto as proto;
