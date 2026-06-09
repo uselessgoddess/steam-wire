@@ -6,9 +6,17 @@
 //! can write `steam_vent_proto::CMsgClientHello` regardless of which `.proto`
 //! file a message originated from.
 //!
-//! The tf2/csgo/dota2 game-coordinator crates that used to be re-exported here
-//! were dropped in the prost migration (they are rust-protobuf 3.x and cannot
-//! link against the prost-based common). See `docs/RESEARCH.md`.
+//! The game-coordinator protobufs for individual games are re-exported under
+//! their own sub-modules behind opt-in features: enable `tf2` for
+//! [`steam_vent_proto::tf2`](tf2) (Team Fortress 2, app 440) and `csgo` for
+//! [`steam_vent_proto::csgo`](csgo) (Counter-Strike 2 / CS:GO, app 730). They
+//! are kept namespaced rather than flattened because the package-less game
+//! protos reuse generic Steam-client symbol names. See `docs/RESEARCH.md` §8.
 
 pub use steam_vent_proto_common::*;
 pub use steam_vent_proto_steam::*;
+
+#[cfg(feature = "csgo")]
+pub use steam_vent_proto_csgo as csgo;
+#[cfg(feature = "tf2")]
+pub use steam_vent_proto_tf2 as tf2;

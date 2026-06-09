@@ -2075,7 +2075,9 @@ name = "steam-vent-proto"
 version = "0.6.0"
 dependencies = [
  "steam-vent-proto-common",
+ "steam-vent-proto-csgo",
  "steam-vent-proto-steam",
+ "steam-vent-proto-tf2",
 ]
 
 [[package]]
@@ -2104,7 +2106,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "steam-vent-proto-csgo"
+version = "0.6.0"
+dependencies = [
+ "bytes",
+ "prost",
+ "steam-vent-proto-common",
+]
+
+[[package]]
 name = "steam-vent-proto-steam"
+version = "0.6.0"
+dependencies = [
+ "bytes",
+ "prost",
+ "steam-vent-proto-common",
+]
+
+[[package]]
+name = "steam-vent-proto-tf2"
 version = "0.6.0"
 dependencies = [
  "bytes",

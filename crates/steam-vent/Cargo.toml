@@ -46,3 +46,14 @@ tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread"] }
 tracing-subscriber = { workspace = true }
 vdf-reader = { workspace = true }
 steam-vent-proto = { workspace = true }
+
+# Game-coordinator examples. They pull in the (large) per-game protobufs, so they
+# are gated behind the matching `steam-vent-proto` feature and only built when it
+# is enabled (e.g. `cargo run --example backpack --features steam-vent-proto/tf2`).
+[[example]]
+name = "backpack"
+required-features = ["steam-vent-proto/tf2"]
+
+[[example]]
+name = "inventory"
+required-features = ["steam-vent-proto/csgo"]

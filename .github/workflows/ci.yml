@@ -46,6 +46,14 @@ jobs:
   codegen-sync:
     name: Proto codegen in sync
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      # One job per proto crate: Steam plus the per-game game-coordinator crates.
+      matrix:
+        crate:
+          - steam-vent-proto-steam
+          - steam-vent-proto-tf2
+          - steam-vent-proto-csgo
     steps:
       - uses: actions/checkout@v4
       - name: Install Rust (stable)
@@ -53,18 +61,18 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       # Regenerate the committed Rust from the .proto sources (pure Rust, no
       # protoc) and fail if it drifts — keeps generated code and sources honest.
-      - name: Regenerate steam protos from .proto sources
+      - name: Regenerate ${{ matrix.crate }} from .proto sources
         run: |
           cargo run -q -p steam-vent-proto-build --locked -- \
-            crates/steam-vent-proto-steam/protos \
-            crates/steam-vent-proto-steam/src/generated
+            crates/${{ matrix.crate }}/protos \
+            crates/${{ matrix.crate }}/src/generated
       - name: Verify generated code is committed & in sync
         run: |
-          if ! git diff --quiet -- crates/steam-vent-proto-steam/src/generated; then
-            echo "::error::Generated protobuf code is out of sync with the .proto sources."
+          if ! git diff --quiet -- crates/${{ matrix.crate }}/src/generated; then
+            echo "::error::Generated protobuf code for ${{ matrix.crate }} is out of sync with the .proto sources."
             echo "Run the codegen locally and commit the result:"
-            echo "  cargo run -p steam-vent-proto-build -- crates/steam-vent-proto-steam/protos crates/steam-vent-proto-steam/src/generated"
-            git --no-pager diff --stat -- crates/steam-vent-proto-steam/src/generated
+            echo "  cargo run -p steam-vent-proto-build -- crates/${{ matrix.crate }}/protos crates/${{ matrix.crate }}/src/generated"
+            git --no-pager diff --stat -- crates/${{ matrix.crate }}/src/generated
             exit 1
           fi
-          echo "Generated code matches the .proto sources."
+          echo "Generated code for ${{ matrix.crate }} matches the .proto sources."
