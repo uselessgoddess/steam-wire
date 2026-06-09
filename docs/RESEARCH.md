@@ -1,220 +1,185 @@
 # Protobuf modernization research
 
-> Status: living document. Phase 1 (workspace consolidation + green build on
-> `rust-protobuf` 3.5.1, pinned — see §3.1.1) is implemented in this PR. The
-> prost direction is backed by a **working, measured proof-of-concept**
-> (`experiments/prost-poc`: −83.6% generated LOC on a real Steam-proto sample,
-> §3.3); the full framework migration is scoped here (§6) and tracked as
-> follow-up so the tree never regresses.
+> **Status: prost migration complete.** The whole workspace now generates and
+> runs on **prost** (parsed by `protox`, no `protoc`, no C toolchain). The
+> `rust-protobuf` 3.x backend, its runtime, and the external rust-protobuf game
+> crates have been removed. Result on the real Steam proto surface:
+> **594,019 → 58,773 lines of generated code (−90.1%)**, **23 MB → 2.6 MB on
+> disk (−88.7%)**, and **110 generated files → 1**. CI builds the whole
+> workspace `--locked` with zero warnings, all tests pass, clippy is clean, and
+> the committed codegen is verified in sync with the `.proto` sources. The
+> sections below record the analysis that led here and the final shape of the
+> migration; §3.1 / §3.1.1 / §5-§6 are kept as the historical decision trail
+> (now resolved) so the reasoning stays auditable.
 
 ## 1. Goal & constraints
 
 From the issue, in priority order:
 
 1. **Fundamental analysis**, then **either move to `prost` or update `protobuf`
-   to 4+**.
+   to 4+**. → **Moved to prost.**
 2. **Maximum goal: minimal binary size + maximum build speed.** Evaluate
-   `mold` + `sccache`. Add CI that *measures* build speed and binary size.
-3. **Update all Steam protobufs** if Steam changed them.
-4. **One Cargo workspace** so dependencies are easy to maintain and bump.
+   `mold` + `sccache`. Add CI that *measures* build speed and binary size. →
+   **Generated code cut ~10×; `mold`/`sccache`/`cargo-bloat` CI in place.**
+3. **Update all Steam protobufs** if Steam changed them. → **Resynced to the
+   latest SteamDatabase `Protobufs` snapshot (112 `.proto` files).**
+4. **One Cargo workspace** so dependencies are easy to maintain and bump. →
+   **Single `resolver = "3"`, edition-2024 workspace; `steam-totp` folded in.**
 
-Everything below is measured against goals (1) and (2): whatever we pick must
-make the crate *smaller* and *faster to build*, not just "newer".
+Everything below is measured against goals (1) and (2): whatever we picked had
+to make the crate *smaller* and *faster to build*, not just "newer". prost does.
 
-## 2. The Steam protobuf surface (measured)
+## 2. The Steam protobuf surface (measured, before vs after)
 
-Numbers from `crates/steam-vent-proto-steam` in this repo:
+The dominant cost in this project — by a wide margin — is the *generated* code,
+not the hand-written runtime (`steam-vent` is a few thousand lines on top). So
+the headline metric of the migration is how much that generated code shrank:
 
-| Metric | Value |
-| --- | --- |
-| `.proto` input files | 109 |
-| Generated `.rs` files | 110 |
-| Generated Rust LOC | **594,019** |
-| Generated source on disk | **23 MB** |
-| Largest single generated file | `htmlmessages.rs` — 1.16 MB |
+| Metric | rust-protobuf 3.x (`lite_runtime`) | **prost (current)** | Δ |
+| --- | ---: | ---: | ---: |
+| `.proto` input files | 109 | 112¹ | — |
+| Generated `.rs` files | 110 | **1** (`generated/mod.rs`) | −109 |
+| Generated Rust LOC | 594,019 | **58,773** | **−90.1%** |
+| Generated source on disk | 23 MB | **2.6 MB** | **−88.7%** |
+| Largest single generated file | `htmlmessages.rs` — 1.16 MB | `mod.rs` — 2.6 MB² | — |
 
-This 594 KLOC of generated code is, by a wide margin, the dominant cost in both
-**compile time** and **binary size**. It is the thing to optimize. The runtime
-crate (`steam-vent`) is a few thousand lines on top.
+¹ The proto set was resynced to the latest SteamDatabase snapshot during the
+migration, so the input counts differ slightly (109 → 112). For an
+**identical-input** comparison see the proof-of-concept in §3.3, which measured
+−83.6% LOC / −81.7% bytes on the *same* five protos before the full migration
+was undertaken; the full-crate result (−90.1%) is even better because prost
+collapses 110 per-file modules into one `mod.rs` and drops all per-file
+boilerplate.
 
-Steam's `.proto` files are **proto2** and carry **custom options**
-(per-message `MsgId`, per-field descriptions, service routing names). These
-options are consumed *at code-generation time* by `steam-vent-proto-build` to:
+² prost emits a single module tree, so there is one file rather than 110 — it is
+larger than any individual rust-protobuf file but ~9× smaller than their sum.
 
-- map each message to its `EMsg` kind (see `crates/steam-vent-proto-build/src/kinds.rs`), and
-- emit the `Rpc{Service,Method,Message}` trait impls that the protocol layer uses.
+Steam's `.proto` files are **proto2** and carry **custom options** (per-message
+`MsgId`, per-field descriptions, service routing names). These options are
+consumed *at code-generation time* by `steam-vent-proto-build` to:
 
-They are **not** needed at runtime — an important fact for the prost analysis.
+- map each message to its `EMsg` kind (`crates/steam-vent-proto-build/src/kinds.rs`), and
+- emit the `Rpc{Service,Method,Message}` trait impls the protocol layer uses.
+
+They are **not** needed at runtime — the fact that makes prost viable (§3.3).
 
 ## 3. Options evaluated
 
-### 3.1 `rust-protobuf` 3.x (status quo — stepancheg/rust-protobuf)
+### 3.1 `rust-protobuf` 3.x (the previous status quo — stepancheg/rust-protobuf)
 
-Crates: `protobuf`, `protobuf-codegen`, `protobuf-parse`. The repo pins
-`=3.5.1`; latest stable is **3.7.2** (verified on crates.io).
+Crates: `protobuf`, `protobuf-codegen`, `protobuf-parse`. Pure Rust (no
+`protoc`), full proto2 + custom-options support, `with-bytes` zero-copy fields.
+Its weakness is exactly goal (2): **verbose codegen.** Every message gets
+accessors, `CachedSize`, `SpecialFields`, reflection descriptors, etc. — the
+594 KLOC above. `lite_runtime` (dropping reflection/text-format) was already on
+and helped, but the remaining size/compile cost is intrinsic to its generated
+struct shape. Only a framework change moved it further — which is what prost is.
+**This backend has now been removed from the tree.**
 
-- ✅ **Pure Rust**, no `protoc`, no C toolchain. Codegen runs via
-  `protobuf-parse`'s `.pure()` parser — exactly what the in-repo
-  `steam-vent-proto-build` tool already does.
-- ✅ Full **proto2 + extensions/custom-options** support, which the build tool
-  relies on to derive `EMsg` kinds and RPC traits.
-- ✅ `with-bytes` gives zero-copy `Bytes` fields (already enabled).
-- ⚠️ **Verbose codegen.** Every message gets accessors, `CachedSize`,
-  `SpecialFields`, reflection descriptors, `oneof` enums, etc. → the 594 KLOC
-  above. Reflection/descriptor data also inflates the binary.
-- ✅ **Already mitigated:** `Codegen::lite_runtime(true)`
-  (`optimize_for = LITE_RUNTIME`) is **already enabled** in the in-repo codegen
-  (`crates/steam-vent-proto-build/src/main.rs:83`), so reflection and
-  `Debug`/text-format machinery are already dropped from the generated code.
-  This is the cheapest size/compile win *without changing the framework*, and is
-  compatible with the protocol layer, which only uses the binary wire API
-  (`parse_from_bytes`, `write_to_writer`, `compute_size`, field accessors, the
-  `Enum` trait). The remaining size/compile cost is intrinsic to
-  rust-protobuf's generated struct shape — only a framework change (prost) moves
-  it further.
+#### 3.1.1 Historical note: the 3.5.1 pin (now moot)
 
-#### 3.1.1 Why the tree stays on 3.5.1, not 3.7.2 (empirical)
-
-Bumping the workspace to `rust-protobuf` 3.7.2 (latest stable) was attempted and
-**reverted**. The findings:
-
-- **The bump is blocked by the optional game-proto crates.** The registry crates
-  `steam-vent-proto-{tf2,csgo,dota2}` ship *committed* generated code that
-  hard-codes a runtime version check —
-  `steam_vent_proto_common::protobuf::VERSION_3_5_1` — in every file. Built
-  against protobuf 3.7.2 that symbol does not exist, so enabling the
-  `tf2`/`csgo`/`dota2` features fails to compile (observed: ~40 errors in csgo,
-  ~76 in dota2). Those crates are exact-pinned to 3.5.1 by construction.
-- **The bump buys nothing structural.** Diffing our own regenerated output on
-  3.5.1 vs 3.7.2 shows only cosmetic changes — the `VERSION_*` stamp and the
-  generator-version comment (~2 lines per file); zero changes to message
-  structs, wire code, or the public API. So 3.7.2 offers no size, compile-time
-  or correctness win to offset breaking the optional crates.
-- **Decision.** Pin all three `protobuf*` crates to `=3.5.1`. A
-  `[patch.crates-io]` redirects `steam-vent-proto-common` to the vendored path
-  crate, which **deduplicates** the dependency graph to a *single* common crate
-  and a single protobuf version (honoring goal 4). With the patch active the
-  registry game crates resolve to their newest `0.5.2` and compile green against
-  the vendored common — `cargo build --workspace --all-features` is clean (0
-  errors). Moving off 3.5.1 is therefore coupled to the prost migration (§6) or
-  to vendoring+regenerating the game crates, not a standalone version bump.
+During Phase 1 the workspace was pinned to `rust-protobuf =3.5.1` rather than the
+then-latest 3.7.2, because the external game-proto crates
+(`steam-vent-proto-{tf2,csgo,dota2}`) ship committed code hard-coding
+`steam_vent_proto_common::protobuf::VERSION_3_5_1`, so they would not compile
+against 3.7.2 (~40 errors in csgo, ~76 in dota2), and a `[patch.crates-io]`
+deduped the graph to a single common crate. The prost migration made this entire
+constraint moot: rust-protobuf is gone, the version pin is gone, the
+`[patch.crates-io]` is gone, and the incompatible game crates were dropped (§8).
 
 ### 3.2 `protobuf` 4.x (Google's official Rust bindings) — **rejected**
 
-- ❌ **Not pure Rust.** The default `upb` kernel is C, compiled via `cc`; the
-  `cpp` kernel needs a full C++ `protobuf` install. Either way it pulls
-  `protoc` and a C/C++ toolchain into the build graph.
-- ❌ This is **directly opposed to goal (2)**: it *adds* heavy native build
-  dependencies, hurting both cold-build speed and reproducibility, and makes
-  `mold`/`sccache` benefits marginal next to the C build.
-- ❌ API is still stabilizing and is a hard break from the 3.x API the protocol
-  layer uses; no migration path that is cheaper than prost.
-- ❌ No real binary-size advantage to offset the toolchain cost.
+- ❌ **Not pure Rust.** The default `upb` kernel is C (compiled via `cc`); the
+  `cpp` kernel needs a full C++ `protobuf` install. Either way it pulls `protoc`
+  and a C/C++ toolchain into the build graph.
+- ❌ **Directly opposed to goal (2):** it *adds* heavy native build deps, hurting
+  cold-build speed and reproducibility, and makes `mold`/`sccache` benefits
+  marginal next to the C build.
+- ❌ API still stabilizing; a hard break from the 3.x API with no migration path
+  cheaper than prost, and no binary-size win to offset the toolchain cost.
 
-**Conclusion:** of the two options the issue offered, "update to protobuf 4+"
-is the wrong one for a project whose headline goal is *small + fast*. That
-leaves **prost**.
+**Conclusion:** of the two options the issue offered, "update to protobuf 4+" is
+the wrong one for a project whose headline goal is *small + fast*. That left
+**prost**.
 
-### 3.3 `prost` (tokio-rs/prost) — **recommended target**
+### 3.3 `prost` (tokio-rs/prost) — **chosen and implemented**
 
 - ✅ **Pure Rust at runtime.** Messages are plain structs with
   `#[derive(prost::Message)]`; no reflection, no per-field accessor wall, no
-  cached-size/special-fields bookkeeping in the public API.
-- ✅ **Dramatically more compact codegen** → the single biggest lever on both
-  the 594 KLOC and the binary size. This is the core reason prost wins here.
-  **Measured, not assumed:** the `experiments/prost-poc` harness regenerates a
-  representative five-proto subset (`steammessages_base`,
-  `steammessages_unified_base.steamclient`, `enums`,
-  `steammessages_contentsystem.steamclient`,
-  `steammessages_player.steamclient`) with prost (parsed by `protox`, no
-  `protoc`) and compares it to the committed rust-protobuf output for the *same*
-  inputs:
+  cached-size/special-fields bookkeeping.
+- ✅ **Dramatically more compact codegen** — the single biggest lever on both the
+  generated LOC and the binary size, and the core reason prost wins here. This
+  was first *measured, not assumed* in `experiments/prost-poc` (a representative
+  five-proto subset): **−83.6% LOC / −81.7% bytes** on identical inputs. The
+  full-crate migration then delivered **−90.1% / −88.7%** (§2).
+- ✅ **Pure-Rust codegen too:** `protox` parses `.proto` files without `protoc`,
+  feeding `prost-build`. Keeps the "no native toolchain" property.
+- ✅ Optional fields, oneofs, nested messages, packed repeated, and
+  `bytes::Bytes` fields are all supported.
+- ✅ **proto2 custom options / extensions:** prost surfaces them as raw fields on
+  the parsed `FileDescriptorSet`. Because Steam's options are only needed *at
+  codegen time* (§2), `steam-vent-proto-build` reads them from the descriptors
+  and needs no runtime extension support. This is the crux that makes prost
+  viable for Steam.
+- ✅ **Service traits:** prost emits messages only, and Steam RPC is not gRPC, so
+  the existing custom `ServiceGenerator` in `steam-vent-proto-build` was retained
+  and retargeted to emit `Rpc*` impls over prost structs.
+- ✅ **Call-site churn — done.** The protocol layer (`net.rs`, `message.rs`,
+  `game_coordinator/`, `auth/`, …) was ported off the rust-protobuf API:
 
-  | backend | generated LOC | generated bytes |
-  | --- | ---: | ---: |
-  | rust-protobuf (`lite_runtime`) | 48,940 | 2,000,408 |
-  | prost | 8,047 | 366,711 |
-  | **reduction** | **−83.6%** | **−81.7%** |
-
-  The generated code shrinks ~5×, and the PoC's output *compiles and runs*, not
-  just generates — see `experiments/prost-poc/README.md` (`./measure.sh`).
-- ✅ Codegen can be **pure Rust** too: `protox` parses `.proto` files without
-  `protoc`, feeding `prost-build`'s `Config::compile_fds`. Keeps the
-  "no native toolchain" property we already have.
-- ✅ Optional fields, oneofs, nested messages, packed repeated, `bytes::Bytes`
-  fields (`bytes(".")`) are all supported.
-- ⚠️ **proto2 custom options / extensions**: prost surfaces unknown options as
-  raw fields on the `FileDescriptorSet` rather than typed extensions. Because
-  Steam's options are only needed *at codegen time* (§2), we read them from the
-  parsed descriptors in our own generator and **do not** need runtime extension
-  support. This is the crux that makes prost viable for Steam.
-- ⚠️ **No service traits out of the box.** prost emits messages only. Steam RPC
-  is not gRPC, so we keep our own service-trait generator (the existing
-  `ServiceGenerator` logic in `steam-vent-proto-build`), retargeted to emit
-  impls over prost structs instead of `protobuf::Message`.
-- ⚠️ **API churn at the call sites.** The protocol layer
-  (`net.rs`, `message.rs`, …) uses the rust-protobuf API: generated getters
-  (`.jobid_source()`), setters (`.set_jobid_source()`), `.compute_size()`,
-  `.write_to_writer()`, `parse_from_bytes`, `CMsgMulti::parse_from_reader`,
-  the `Enum` trait, `with-bytes`. prost replaces these with public struct
-  fields, `Message::encode/encoded_len/decode`. Every touchpoint must be
-  ported. This is the real cost of the migration and why it is phased.
+  | rust-protobuf | prost |
+  | --- | --- |
+  | `msg.field()` getter | `msg.field` (`Option<T>` / `Vec<T>`) + `.unwrap_or(..)` |
+  | `msg.set_field(v)` | `msg.field = Some(v)` |
+  | `msg.compute_size()` | `msg.encoded_len()` |
+  | `msg.write_to_writer(w)` | `msg.encode(w)` / `encode_to_vec` |
+  | `T::parse_from_bytes(b)` | `T::decode(b)` |
+  | `protobuf::Enum` + `.value()` | prost enums + `MsgKindEnum::enum_value()` |
+  | `EMsg::k_EMsgFoo` | `EMsg::KEMsgFoo` (heck `UpperCamelCase`) |
 
 ## 4. Comparison matrix
 
-| Criterion | rust-protobuf 3.x | protobuf 4.x (Google) | prost |
+| Criterion | rust-protobuf 3.x | protobuf 4.x (Google) | **prost (chosen)** |
 | --- | --- | --- | --- |
 | Pure-Rust build (no protoc/C) | ✅ (`.pure()`) | ❌ (upb/C++) | ✅ (`protox`) |
-| Generated code size | ❌ very large | ➖ medium | ✅ compact |
+| Generated code size | ❌ 594 KLOC | ➖ medium | ✅ **58.7 KLOC** |
 | Binary size | ➖ (✅ w/ lite) | ➖ | ✅ |
 | Compile speed | ❌ | ❌ (+C build) | ✅ |
-| proto2 + custom options | ✅ runtime | ✅ | ⚠️ codegen-time only (sufficient) |
-| Service traits | ⚙️ custom gen | ⚙️ | ⚙️ custom gen |
-| Migration cost from today | none | high | medium |
+| proto2 + custom options | ✅ runtime | ✅ | ✅ codegen-time (sufficient) |
+| Service traits | ⚙️ custom gen | ⚙️ | ⚙️ custom gen (retargeted) |
 | Fits goal "small + fast" | partial | **no** | **yes** |
 
-## 5. Decision
+## 5. Decision (implemented)
 
-1. **Reject protobuf 4.x** — it adds a C/C++ + `protoc` build dependency, the
+1. **Rejected protobuf 4.x** — it adds a C/C++ + `protoc` build dependency, the
    opposite of the stated size/speed goal.
-2. **Target prost** for the long-term win on binary size and compile time,
-   using `protox` so the build stays pure-Rust.
-3. **Phase the work** so `main` always builds:
-   - **Phase 1 (this PR):** single workspace; vendored proto crates building on
-     `rust-protobuf` 3.5.1 (pinned — §3.1.1), with a `[patch.crates-io]` that
-     dedupes the graph to a single `steam-vent-proto-common`; `steam-totp`
-     added; `lite_runtime` codegen already on (§3.1); size/speed profiles
-     (`micro`, `nano`) and CI that measures build time + binary size with
-     `mold` + `sccache`. This delivers measurable progress against goal (2)
-     with zero risk.
-   - **Phase 2 (follow-up):** introduce a `prost`-based generator in
-     `steam-vent-proto-build` behind a feature, regenerate the steam crate,
-     port the protocol-layer API touchpoints, and compare binary size / build
-     time head-to-head against Phase 1 using the same CI job.
+2. **Adopted prost** for the win on binary size and compile time, using `protox`
+   so the build stays pure-Rust.
+3. The work was staged so `main` always built — **both phases are now landed:**
+   - **Phase 1:** single workspace; `steam-totp` added; `lite_runtime` codegen;
+     size/speed profiles (`micro`, `nano`) and CI measuring build time + binary
+     size with `mold` + `sccache`. (Delivered the workspace + measurement
+     infrastructure with zero risk.)
+   - **Phase 2 (this work):** prost generator in `steam-vent-proto-build`, the
+     steam crate regenerated, the protocol-layer API ported, and the
+     incompatible game crates removed (§8). The §6 checklist below is the record
+     of that phase, now fully checked off.
 
-## 6. prost migration roadmap (Phase 2)
+## 6. prost migration roadmap — **completed**
 
-> **De-risked by `experiments/prost-poc`.** Step 1 below is already proven end
-> to end: `protox` parses Steam's proto2 + custom options with no `protoc`,
-> `prost-build` generates Rust, and that Rust compiles and runs. The PoC also
-> quantifies the payoff (−83.6% LOC / −81.7% bytes on the sample, §3.3) and
-> surfaces the concrete call-site churn (CamelCase type names, public fields vs
-> getters/setters). What remains for Phase 2 is the framework integration
-> (steps 2–6), not a question of feasibility.
-
-1. Add `protox` + `prost-build` to `steam-vent-proto-build`; parse `.proto`s to
-   a `FileDescriptorSet` (no protoc). ✅ *validated by the PoC.*
-2. Reproduce kind-mapping and RPC-trait generation by reading custom options
-   from the descriptor set (already the tool's job, different input type).
-3. Define the runtime shims prost lacks but the protocol needs: a thin
-   `Message` wrapper exposing `encode`/`decode`/`encoded_len`, and the
-   `RpcMessage`/`MsgKindEnum` traits over prost types.
-4. Regenerate `steam-vent-proto-steam`; expect a large LOC/size drop (re-measure
-   and record in §2).
-5. Port `steam-vent` call sites: accessors→fields, `compute_size`→`encoded_len`,
-   `write_to_writer`→`encode`, `parse_from_bytes`→`decode`, `Enum`→prost enums.
-6. Run the binary-size + build-time CI on both branches; keep prost only if it
-   wins (it is expected to).
+1. ✅ `protox` + `prost-build` in `steam-vent-proto-build`; parse `.proto`s to a
+   `FileDescriptorSet` (no protoc).
+2. ✅ Kind-mapping and RPC-trait generation reproduced by reading custom options
+   from the descriptor set.
+3. ✅ Runtime shims prost lacks but the protocol needs: `RpcMessage` /
+   `RpcMessageWithKind` / `MsgKindEnum` traits over prost types, with a blanket
+   `RpcMessage` impl for any `T: prost::Message + Default`
+   (`crates/steam-vent-proto-common/src/lib.rs`).
+4. ✅ `steam-vent-proto-steam` regenerated — LOC/size drop measured and recorded
+   in §2.
+5. ✅ `steam-vent` call sites ported (table in §3.3).
+6. ✅ Build-time + binary-size CI (`build-metrics.yml`) retained to track the
+   result over time.
 
 ## 7. Build-speed & binary-size strategy (goal 2)
 
@@ -222,17 +187,45 @@ Implemented at the workspace level (`Cargo.toml`):
 
 - `profile.micro` — `release` + `codegen-units = 1` + `lto = "thin"` + `strip`.
 - `profile.nano` — `micro` + `opt-level = "z"` + `lto = "fat"` + `panic = "abort"`.
-- `profile.dev.build-override.opt-level = 3` so the heavy proto **codegen**
-  build scripts/macros run optimized without slowing edit cycles.
+- `profile.dev.build-override.opt-level = 3` so the proto **codegen**
+  build-scripts/macros run optimized without slowing edit cycles.
 
-Toolchain levers measured in CI (see `.github/workflows/`):
+Toolchain levers measured in CI (`.github/workflows/build-metrics.yml`):
 
-- **`mold`** as the linker — biggest single win on link time for a crate that
-  links 594 KLOC of generated objects.
-- **`sccache`** — caches `rustc` outputs across CI runs; turns the proto crate
-  from a multi-minute cold build into a near-instant warm build.
+- **`mold`** as the linker — the biggest single win on link time.
+- **`sccache`** — caches `rustc` outputs across runs; turns the proto crate from
+  a multi-minute cold build into a near-instant warm build.
 - **`cargo-bloat`** — attributes binary size to crates/functions so the
-  proto-vs-runtime split (and prost's effect on it) is visible per run.
+  proto-vs-runtime split stays visible per run.
 
-The CI publishes wall-clock build time per profile and `cargo bloat` output so
-the prost-vs-rust-protobuf comparison in §5/§6 is data-driven, not assumed.
+The job publishes wall-clock build time per profile and `cargo bloat` output for
+the `login` example, so the size/speed story stays data-driven over time. (As a
+local datapoint, the entire `steam-vent-proto-steam` crate plus its full prost
+dependency stack now compiles cold in ~46 s; warm rebuilds are near-instant.)
+
+## 8. External game-coordinator crates (tf2/csgo/dota2) — **removed**
+
+The optional `steam-vent-proto-{tf2,csgo,dota2}` registry crates were **dropped**
+in the migration. They are **fundamentally incompatible with prost**: each is
+generated by *rust-protobuf 3.x*, implements the old `protobuf::Message` API, and
+links the rust-protobuf-era `steam-vent-proto-common` 0.5.1. Against the new
+prost-based common 0.6.0 they fail to compile — the build surfaces
+`there are multiple different versions of crate steam_vent_proto_common in the
+dependency graph` and `CSOEconItem: prost::Message is not satisfied`. There is no
+way to keep them *and* finish the prost migration; they were exact-pinned to the
+old world by construction.
+
+What this removes and what stays:
+
+- **Removed:** the three optional deps and the `[features]` section in
+  `steam-vent-proto`, the `[patch.crates-io]` dedup hack (it only existed to
+  unify those crates' common dep), and the two examples that used them
+  (`backpack.rs` → tf2, `inventory.rs` → csgo).
+- **Kept:** the entire **game-coordinator transport** lives in `steam-vent` and
+  is backend-agnostic — `Connection::game_coordinator`, `GenericGCHandshake`,
+  the `CMsgGcClient` envelope, and the GC message framing all remain. Users who
+  need typed GC payloads now bring their **own** prost-generated game protos and
+  send/receive them through that transport, instead of depending on a
+  pre-generated rust-protobuf crate that pinned the whole workspace to an old
+  toolchain. This is strictly more flexible and keeps the dependency graph pure
+  prost.

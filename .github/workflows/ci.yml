@@ -19,11 +19,10 @@ jobs:
       - name: Install Rust (stable)
         uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      # --all-features pulls in the optional game-proto crates (tf2/csgo/dota2),
-      # which only compile because the [patch.crates-io] in Cargo.toml dedupes
-      # steam-vent-proto-common to the vendored copy. Building them here guards
-      # that the patch keeps the whole graph green. --examples checks the public
-      # API surface used by the examples.
+      # The whole workspace is pure prost now (no rust-protobuf, no protoc).
+      # --all-features keeps future opt-in features covered; --examples checks
+      # the public API surface every example exercises. --locked guards that the
+      # committed Cargo.lock stays in sync with the manifests.
       - name: Build (libs + examples, all features)
         run: cargo build --workspace --all-features --examples --locked
       - name: Test
