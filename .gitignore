@@ -1,5 +1,6 @@
-target		
-.direnv		
-result		
-*.log		
+/target
+.direnv
+result
+*.log
 *.pcapng
+build-logs/
