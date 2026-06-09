@@ -2015,7 +2015,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent"
+name = "steam-wire"
 version = "0.6.0"
 dependencies = [
  "async-stream",
@@ -2038,10 +2038,10 @@ dependencies = [
  "serde",
  "serde_json",
  "steam-totp",
- "steam-vent-crypto",
- "steam-vent-proto",
- "steam-vent-proto-common",
- "steam-vent-proto-steam",
+ "steam-wire-crypto",
+ "steam-wire-proto",
+ "steam-wire-proto-common",
+ "steam-wire-proto-steam",
  "steamid-ng",
  "thiserror 2.0.18",
  "tokio",
@@ -2056,7 +2056,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent-crypto"
+name = "steam-wire-crypto"
 version = "0.2.1"
 dependencies = [
  "aes",
@@ -2071,17 +2071,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent-proto"
+name = "steam-wire-proto"
 version = "0.6.0"
 dependencies = [
- "steam-vent-proto-common",
- "steam-vent-proto-csgo",
- "steam-vent-proto-steam",
- "steam-vent-proto-tf2",
+ "steam-wire-proto-common",
+ "steam-wire-proto-csgo",
+ "steam-wire-proto-steam",
+ "steam-wire-proto-tf2",
 ]
 
 [[package]]
-name = "steam-vent-proto-build"
+name = "steam-wire-proto-build"
 version = "0.6.0"
 dependencies = [
  "clap",
@@ -2097,7 +2097,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent-proto-common"
+name = "steam-wire-proto-common"
 version = "0.6.0"
 dependencies = [
  "bytes",
@@ -2106,30 +2106,30 @@ dependencies = [
 ]
 
 [[package]]
-name = "steam-vent-proto-csgo"
+name = "steam-wire-proto-csgo"
 version = "0.6.0"
 dependencies = [
  "bytes",
  "prost",
- "steam-vent-proto-common",
+ "steam-wire-proto-common",
 ]
 
 [[package]]
-name = "steam-vent-proto-steam"
+name = "steam-wire-proto-steam"
 version = "0.6.0"
 dependencies = [
  "bytes",
  "prost",
- "steam-vent-proto-common",
+ "steam-wire-proto-common",
 ]
 
 [[package]]
-name = "steam-vent-proto-tf2"
+name = "steam-wire-proto-tf2"
 version = "0.6.0"
 dependencies = [
  "bytes",
  "prost",
- "steam-vent-proto-common",
+ "steam-wire-proto-common",
 ]
 
 [[package]]

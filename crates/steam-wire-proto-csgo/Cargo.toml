@@ -1,0 +1,14 @@
+[package]
+name = "steam-wire-proto-csgo"
+description = "Protobuf structs used by the Steam client protocol for Counter-Strike 2 / Counter-Strike: Global Offensive"
+version = "0.6.0"
+edition = "2021"
+rust-version = "1.75.0"
+authors = ["Robin Appelman <robin@icewind.nl>"]
+license = "MIT"
+repository = "https://codeberg.org/steam-wire/proto-csgo"
+
+[dependencies]
+steam-wire-proto-common = { workspace = true }
+prost = { workspace = true }
+bytes = { workspace = true }

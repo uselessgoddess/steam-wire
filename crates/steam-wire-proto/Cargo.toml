@@ -1,0 +1,26 @@
+[package]
+name = "steam-wire-proto"
+version = "0.6.0"
+authors = ["Robin Appelman <robin@icewind.nl>"]
+edition = "2021"
+description = "Protobuf structs used by the Steam client protocol"
+license = "MIT"
+repository = "https://codeberg.org/steam-wire/proto"
+rust-version = "1.78.0"
+
+[dependencies]
+steam-wire-proto-common = { workspace = true }
+steam-wire-proto-steam = { workspace = true }
+# Game-coordinator protos, re-exported under `steam_wire_proto::{tf2,csgo}` when
+# the matching feature is enabled. These are now in-workspace prost crates
+# (regenerated from the SteamDatabase .proto sources), so they link against the
+# prost-based `steam-wire-proto-common` like every other crate here. See
+# docs/RESEARCH.md §8.
+steam-wire-proto-tf2 = { workspace = true, optional = true }
+steam-wire-proto-csgo = { workspace = true, optional = true }
+
+[features]
+# Opt-in game-coordinator protobufs. Off by default to keep the common build
+# lean (each pulls in a large generated module).
+tf2 = ["dep:steam-wire-proto-tf2"]
+csgo = ["dep:steam-wire-proto-csgo"]

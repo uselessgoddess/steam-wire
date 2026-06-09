@@ -5,38 +5,33 @@ members = ["crates/*"]
 [workspace.package]
 edition = "2024"
 license = "MIT"
-repository = "https://github.com/uselessgoddess/steam-vent"
+repository = "https://github.com/uselessgoddess/steam-wire"
 rust-version = "1.85.0"
 
 [workspace.dependencies]
-# --- workspace crates ---
-steam-vent = { path = "crates/steam-vent" }
-steam-vent-crypto = { path = "crates/steam-vent-crypto" }
-steam-vent-proto = { path = "crates/steam-vent-proto" }
-steam-vent-proto-common = { path = "crates/steam-vent-proto-common" }
-steam-vent-proto-steam = { path = "crates/steam-vent-proto-steam" }
-steam-vent-proto-tf2 = { path = "crates/steam-vent-proto-tf2" }
-steam-vent-proto-csgo = { path = "crates/steam-vent-proto-csgo" }
-steam-vent-proto-build = { path = "crates/steam-vent-proto-build" }
-totp = { path = "crates/steam-totp", package = "steam-totp" }
+steam-wire = { path = "crates/steam-wire" }
+steam-wire-crypto = { path = "crates/steam-wire-crypto" }
+steam-wire-proto = { path = "crates/steam-wire-proto" }
+steam-wire-proto-common = { path = "crates/steam-wire-proto-common" }
+steam-wire-proto-steam = { path = "crates/steam-wire-proto-steam" }
+steam-wire-proto-tf2 = { path = "crates/steam-wire-proto-tf2" }
+steam-wire-proto-csgo = { path = "crates/steam-wire-proto-csgo" }
+steam-wire-proto-build = { path = "crates/steam-wire-proto-build" }
 
-# --- async runtime / io ---
+# async/io
 tokio = { version = "1.47" }
 tokio-util = { version = "0.7" }
 tokio-stream = { version = "0.1.17" }
 futures-util = { version = "0.3.31" }
 async-stream = "0.3.6"
 
-# --- networking / tls ---
+# net/tls
 tokio-tungstenite = { version = "0.29.0" }
 rustls = { version = "0.23", default-features = false, features = ["ring"] }
 webpki-roots = "1.0.2"
 wreq = { version = "=6.0.0-rc.29", features = ["json"] }
 
-# --- serialization / protobuf (prost stack) ---
-# The whole protobuf surface is generated and consumed with prost: pure-Rust
-# parsing via protox (no protoc / no C toolchain), codegen via prost-build. This
-# replaced rust-protobuf 3.5.1 across the workspace — see docs/RESEARCH.md.
+# serde/prost 
 prost = { version = "0.13" }
 prost-types = { version = "0.13" }
 prost-build = { version = "0.13" }
@@ -47,7 +42,7 @@ bytes = { version = "1.10" }
 binrw = "0.15.0"
 bytemuck = { version = "1.23.2", features = ["derive"] }
 
-# --- crypto (RustCrypto pre-1.0 generation: matches steam-vent-crypto's API usage) ---
+# crypto
 rsa = { version = "=0.10.0-rc.18" }
 sha1 = "0.11"
 sha2 = "0.11"
@@ -56,25 +51,25 @@ aes = "0.9.1"
 cbc = "0.2.1"
 rand = { version = "0.10" }
 
-# --- steam helpers ---
+# steam
 steamid-ng = "3.0.0"
 num_enum = "0.7.4"
 
-# --- compression / encoding ---
+# codec
 flate2 = { version = "1.1" }
 base64 = { version = "0.22" }
 hex = { version = "0.4" }
 crc = "3.3.0"
 byteorder = "1.5.0"
 
-# --- misc ---
+# misc
 thiserror = { version = "2.0" }
 tracing = { version = "0.1" }
 dashmap = { version = "6.1" }
 directories = "6.0.0"
 once_cell = "1"
 
-# --- codegen tooling (proto-build) ---
+# codegen
 walkdir = "2.3.3"
 clap = { version = "4.5", features = ["derive"] }
 quote = "1.0"
@@ -86,7 +81,7 @@ ahash = "0.8"
 # `to_upper_camel` + `strip_enum_prefix` ident renaming for the kind tables.
 heck = "0.5"
 
-# --- dev / test ---
+# dev
 tracing-subscriber = "0.3.20"
 vdf-reader = "0.3.1"
 
@@ -96,26 +91,9 @@ split-debuginfo = "unpacked"
 [profile.release]
 split-debuginfo = "unpacked"
 
-# Build proc-macros / build scripts with optimizations even in dev,
-# this speeds up the (heavy) protobuf codegen without slowing edit cycles.
 [profile.dev.build-override]
 opt-level = 3
 
 [profile.dev.package."*"]
 debug = false
 opt-level = 0
-
-# Size-optimized release: single codegen unit + thin LTO + stripped.
-[profile.micro]
-inherits = "release"
-codegen-units = 1
-opt-level = 3
-lto = "thin"
-strip = true
-
-# Minimal-size release: optimize for size, fat LTO, abort on panic.
-[profile.nano]
-inherits = "micro"
-opt-level = "z"
-lto = "fat"
-panic = "abort"
