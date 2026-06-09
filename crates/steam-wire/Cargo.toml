@@ -6,6 +6,11 @@ license.workspace = true
 repository.workspace = true
 description = "client for the steam network protocol"
 
+[features]
+default = []
+csgo = ["steam-wire-proto/csgo"]
+tf2 = ["steam-wire-proto/tf2"]
+
 [dependencies]
 steam-wire-proto-common = { workspace = true }
 steam-wire-proto-steam = { workspace = true }
