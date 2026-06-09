@@ -1,0 +1,14 @@
+[package]
+name = "steam-vent-proto-tf2"
+description = "Protobuf structs used by the Steam client protocol for Team Fortress 2"
+version = "0.6.0"
+edition = "2021"
+rust-version = "1.75.0"
+authors = ["Robin Appelman <robin@icewind.nl>"]
+license = "MIT"
+repository = "https://codeberg.org/steam-vent/proto-tf2"
+
+[dependencies]
+steam-vent-proto-common = { workspace = true }
+prost = { workspace = true }
+bytes = { workspace = true }

@@ -11,11 +11,16 @@ rust-version = "1.78.0"
 [dependencies]
 steam-vent-proto-common = { workspace = true }
 steam-vent-proto-steam = { workspace = true }
-# NOTE: the tf2/csgo/dota2 game-coordinator protos used to be pulled from the
-# external `steam-vent-proto-{tf2,csgo,dota2}` crates (rust-protobuf 3.x). They
-# were dropped during the prost migration: those registry crates are generated
-# against the old rust-protobuf `steam-vent-proto-common` API and cannot link
-# against the prost-based common in this workspace. The game-coordinator
-# transport (`Connection::game_coordinator`, `GenericGCHandshake`) still lives in
-# `steam-vent`; to use it, bring your own prost-generated game protos. See
-# docs/RESEARCH.md §8 ("External game-coordinator crates").
+# Game-coordinator protos, re-exported under `steam_vent_proto::{tf2,csgo}` when
+# the matching feature is enabled. These are now in-workspace prost crates
+# (regenerated from the SteamDatabase .proto sources), so they link against the
+# prost-based `steam-vent-proto-common` like every other crate here. See
+# docs/RESEARCH.md §8.
+steam-vent-proto-tf2 = { workspace = true, optional = true }
+steam-vent-proto-csgo = { workspace = true, optional = true }
+
+[features]
+# Opt-in game-coordinator protobufs. Off by default to keep the common build
+# lean (each pulls in a large generated module).
+tf2 = ["dep:steam-vent-proto-tf2"]
+csgo = ["dep:steam-vent-proto-csgo"]

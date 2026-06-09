@@ -15,6 +15,8 @@ steam-vent-crypto = { path = "crates/steam-vent-crypto" }
 steam-vent-proto = { path = "crates/steam-vent-proto" }
 steam-vent-proto-common = { path = "crates/steam-vent-proto-common" }
 steam-vent-proto-steam = { path = "crates/steam-vent-proto-steam" }
+steam-vent-proto-tf2 = { path = "crates/steam-vent-proto-tf2" }
+steam-vent-proto-csgo = { path = "crates/steam-vent-proto-csgo" }
 steam-vent-proto-build = { path = "crates/steam-vent-proto-build" }
 totp = { path = "crates/steam-totp", package = "steam-totp" }
 
