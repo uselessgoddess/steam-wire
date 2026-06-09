@@ -1,8 +1,1 @@
-/target
-/experiments/*/target
-.direnv
-result
-*.log
-*.pcapng
-build-logs/
-ci-logs/
+target
