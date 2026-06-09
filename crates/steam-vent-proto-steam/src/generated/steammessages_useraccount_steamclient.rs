@@ -708,6 +708,1918 @@ pub mod cuser_account_get_available_valve_discount_promotions_response {
     }
 }
 
+// @@protoc_insertion_point(message:CUserAccount_GetOptOutEmailOptions_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CUserAccount_GetOptOutEmailOptions_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Request.opt_out_token)
+    pub opt_out_token: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CUserAccount_GetOptOutEmailOptions_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CUserAccount_GetOptOutEmailOptions_Request {
+    fn default() -> &'a CUserAccount_GetOptOutEmailOptions_Request {
+        <CUserAccount_GetOptOutEmailOptions_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CUserAccount_GetOptOutEmailOptions_Request {
+    pub fn new() -> CUserAccount_GetOptOutEmailOptions_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string opt_out_token = 1;
+
+    pub fn opt_out_token(&self) -> &str {
+        match self.opt_out_token.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_opt_out_token(&mut self) {
+        self.opt_out_token = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_token(&self) -> bool {
+        self.opt_out_token.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_token(&mut self, v: ::std::string::String) {
+        self.opt_out_token = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_opt_out_token(&mut self) -> &mut ::std::string::String {
+        if self.opt_out_token.is_none() {
+            self.opt_out_token = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.opt_out_token.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_opt_out_token(&mut self) -> ::std::string::String {
+        self.opt_out_token.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CUserAccount_GetOptOutEmailOptions_Request {
+    const NAME: &'static str = "CUserAccount_GetOptOutEmailOptions_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.opt_out_token = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.opt_out_token.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.opt_out_token.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CUserAccount_GetOptOutEmailOptions_Request {
+        CUserAccount_GetOptOutEmailOptions_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.opt_out_token = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CUserAccount_GetOptOutEmailOptions_Request {
+        static instance: CUserAccount_GetOptOutEmailOptions_Request = CUserAccount_GetOptOutEmailOptions_Request {
+            opt_out_token: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CPerAppEmailOptions)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPerAppEmailOptions {
+    // message fields
+    // @@protoc_insertion_point(field:CPerAppEmailOptions.appid)
+    pub appid: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CPerAppEmailOptions.opt_out_in_library_events)
+    pub opt_out_in_library_events: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPerAppEmailOptions.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPerAppEmailOptions {
+    fn default() -> &'a CPerAppEmailOptions {
+        <CPerAppEmailOptions as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPerAppEmailOptions {
+    pub fn new() -> CPerAppEmailOptions {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 appid = 1;
+
+    pub fn appid(&self) -> u32 {
+        self.appid.unwrap_or(0)
+    }
+
+    pub fn clear_appid(&mut self) {
+        self.appid = ::std::option::Option::None;
+    }
+
+    pub fn has_appid(&self) -> bool {
+        self.appid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid(&mut self, v: u32) {
+        self.appid = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_in_library_events = 2;
+
+    pub fn opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_in_library_events(&mut self) {
+        self.opt_out_in_library_events = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_in_library_events(&mut self, v: bool) {
+        self.opt_out_in_library_events = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPerAppEmailOptions {
+    const NAME: &'static str = "CPerAppEmailOptions";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.opt_out_in_library_events = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.appid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.appid {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            os.write_bool(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPerAppEmailOptions {
+        CPerAppEmailOptions::new()
+    }
+
+    fn clear(&mut self) {
+        self.appid = ::std::option::Option::None;
+        self.opt_out_in_library_events = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPerAppEmailOptions {
+        static instance: CPerAppEmailOptions = CPerAppEmailOptions {
+            appid: ::std::option::Option::None,
+            opt_out_in_library_events: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CPerClanEmailOptions)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPerClanEmailOptions {
+    // message fields
+    // @@protoc_insertion_point(field:CPerClanEmailOptions.clanid)
+    pub clanid: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CPerClanEmailOptions.opt_out_in_library_events)
+    pub opt_out_in_library_events: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPerClanEmailOptions.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPerClanEmailOptions {
+    fn default() -> &'a CPerClanEmailOptions {
+        <CPerClanEmailOptions as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPerClanEmailOptions {
+    pub fn new() -> CPerClanEmailOptions {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 clanid = 1;
+
+    pub fn clanid(&self) -> u32 {
+        self.clanid.unwrap_or(0)
+    }
+
+    pub fn clear_clanid(&mut self) {
+        self.clanid = ::std::option::Option::None;
+    }
+
+    pub fn has_clanid(&self) -> bool {
+        self.clanid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_clanid(&mut self, v: u32) {
+        self.clanid = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_in_library_events = 2;
+
+    pub fn opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_in_library_events(&mut self) {
+        self.opt_out_in_library_events = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_in_library_events(&mut self, v: bool) {
+        self.opt_out_in_library_events = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPerClanEmailOptions {
+    const NAME: &'static str = "CPerClanEmailOptions";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.clanid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.opt_out_in_library_events = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.clanid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.clanid {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            os.write_bool(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPerClanEmailOptions {
+        CPerClanEmailOptions::new()
+    }
+
+    fn clear(&mut self) {
+        self.clanid = ::std::option::Option::None;
+        self.opt_out_in_library_events = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPerClanEmailOptions {
+        static instance: CPerClanEmailOptions = CPerClanEmailOptions {
+            clanid: ::std::option::Option::None,
+            opt_out_in_library_events: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CUserAccount_GetOptOutEmailOptions_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CUserAccount_GetOptOutEmailOptions_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.email)
+    pub email: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_all)
+    pub opt_out_all: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_wishlist_sales)
+    pub opt_out_wishlist_sales: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_seasonal_promo)
+    pub opt_out_seasonal_promo: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_wishlist_releases)
+    pub opt_out_wishlist_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_greenlight_releases)
+    pub opt_out_greenlight_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_curator_connect)
+    pub opt_out_curator_connect: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_creator_home_releases)
+    pub opt_out_creator_home_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_in_library_events)
+    pub opt_out_in_library_events: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.per_app_opt_outs)
+    pub per_app_opt_outs: ::std::vec::Vec<CPerAppEmailOptions>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.per_clan_opt_outs)
+    pub per_clan_opt_outs: ::std::vec::Vec<CPerClanEmailOptions>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_loyalty_awards_received)
+    pub opt_out_loyalty_awards_received: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_partner_messages)
+    pub opt_out_partner_messages: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_year_in_review)
+    pub opt_out_year_in_review: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_wishlist_demo_releases)
+    pub opt_out_wishlist_demo_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_creator_home_demo_releases)
+    pub opt_out_creator_home_demo_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_next_fest_starts)
+    pub opt_out_next_fest_starts: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_theme_sale_starts)
+    pub opt_out_theme_sale_starts: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_season_pass_ship)
+    pub opt_out_season_pass_ship: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.opt_out_roadmap_ship)
+    pub opt_out_roadmap_ship: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_GetOptOutEmailOptions_Response.is_self)
+    pub is_self: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CUserAccount_GetOptOutEmailOptions_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CUserAccount_GetOptOutEmailOptions_Response {
+    fn default() -> &'a CUserAccount_GetOptOutEmailOptions_Response {
+        <CUserAccount_GetOptOutEmailOptions_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CUserAccount_GetOptOutEmailOptions_Response {
+    pub fn new() -> CUserAccount_GetOptOutEmailOptions_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional string email = 1;
+
+    pub fn email(&self) -> &str {
+        match self.email.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_email(&mut self) {
+        self.email = ::std::option::Option::None;
+    }
+
+    pub fn has_email(&self) -> bool {
+        self.email.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_email(&mut self, v: ::std::string::String) {
+        self.email = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_email(&mut self) -> &mut ::std::string::String {
+        if self.email.is_none() {
+            self.email = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.email.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_email(&mut self) -> ::std::string::String {
+        self.email.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool opt_out_all = 2;
+
+    pub fn opt_out_all(&self) -> bool {
+        self.opt_out_all.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_all(&mut self) {
+        self.opt_out_all = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_all(&self) -> bool {
+        self.opt_out_all.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_all(&mut self, v: bool) {
+        self.opt_out_all = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_sales = 3;
+
+    pub fn opt_out_wishlist_sales(&self) -> bool {
+        self.opt_out_wishlist_sales.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_sales(&mut self) {
+        self.opt_out_wishlist_sales = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_sales(&self) -> bool {
+        self.opt_out_wishlist_sales.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_sales(&mut self, v: bool) {
+        self.opt_out_wishlist_sales = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_seasonal_promo = 4;
+
+    pub fn opt_out_seasonal_promo(&self) -> bool {
+        self.opt_out_seasonal_promo.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_seasonal_promo(&mut self) {
+        self.opt_out_seasonal_promo = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_seasonal_promo(&self) -> bool {
+        self.opt_out_seasonal_promo.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_seasonal_promo(&mut self, v: bool) {
+        self.opt_out_seasonal_promo = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_releases = 5;
+
+    pub fn opt_out_wishlist_releases(&self) -> bool {
+        self.opt_out_wishlist_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_releases(&mut self) {
+        self.opt_out_wishlist_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_releases(&self) -> bool {
+        self.opt_out_wishlist_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_releases(&mut self, v: bool) {
+        self.opt_out_wishlist_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_greenlight_releases = 6;
+
+    pub fn opt_out_greenlight_releases(&self) -> bool {
+        self.opt_out_greenlight_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_greenlight_releases(&mut self) {
+        self.opt_out_greenlight_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_greenlight_releases(&self) -> bool {
+        self.opt_out_greenlight_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_greenlight_releases(&mut self, v: bool) {
+        self.opt_out_greenlight_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_curator_connect = 7;
+
+    pub fn opt_out_curator_connect(&self) -> bool {
+        self.opt_out_curator_connect.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_curator_connect(&mut self) {
+        self.opt_out_curator_connect = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_curator_connect(&self) -> bool {
+        self.opt_out_curator_connect.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_curator_connect(&mut self, v: bool) {
+        self.opt_out_curator_connect = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_creator_home_releases = 8;
+
+    pub fn opt_out_creator_home_releases(&self) -> bool {
+        self.opt_out_creator_home_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_creator_home_releases(&mut self) {
+        self.opt_out_creator_home_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_creator_home_releases(&self) -> bool {
+        self.opt_out_creator_home_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_creator_home_releases(&mut self, v: bool) {
+        self.opt_out_creator_home_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_in_library_events = 9;
+
+    pub fn opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_in_library_events(&mut self) {
+        self.opt_out_in_library_events = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_in_library_events(&mut self, v: bool) {
+        self.opt_out_in_library_events = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_loyalty_awards_received = 12;
+
+    pub fn opt_out_loyalty_awards_received(&self) -> bool {
+        self.opt_out_loyalty_awards_received.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_loyalty_awards_received(&mut self) {
+        self.opt_out_loyalty_awards_received = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_loyalty_awards_received(&self) -> bool {
+        self.opt_out_loyalty_awards_received.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_loyalty_awards_received(&mut self, v: bool) {
+        self.opt_out_loyalty_awards_received = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_partner_messages = 13;
+
+    pub fn opt_out_partner_messages(&self) -> bool {
+        self.opt_out_partner_messages.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_partner_messages(&mut self) {
+        self.opt_out_partner_messages = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_partner_messages(&self) -> bool {
+        self.opt_out_partner_messages.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_partner_messages(&mut self, v: bool) {
+        self.opt_out_partner_messages = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_year_in_review = 14;
+
+    pub fn opt_out_year_in_review(&self) -> bool {
+        self.opt_out_year_in_review.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_year_in_review(&mut self) {
+        self.opt_out_year_in_review = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_year_in_review(&self) -> bool {
+        self.opt_out_year_in_review.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_year_in_review(&mut self, v: bool) {
+        self.opt_out_year_in_review = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_demo_releases = 15;
+
+    pub fn opt_out_wishlist_demo_releases(&self) -> bool {
+        self.opt_out_wishlist_demo_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_demo_releases(&mut self) {
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_demo_releases(&self) -> bool {
+        self.opt_out_wishlist_demo_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_demo_releases(&mut self, v: bool) {
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_creator_home_demo_releases = 16;
+
+    pub fn opt_out_creator_home_demo_releases(&self) -> bool {
+        self.opt_out_creator_home_demo_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_creator_home_demo_releases(&mut self) {
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_creator_home_demo_releases(&self) -> bool {
+        self.opt_out_creator_home_demo_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_creator_home_demo_releases(&mut self, v: bool) {
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_next_fest_starts = 17;
+
+    pub fn opt_out_next_fest_starts(&self) -> bool {
+        self.opt_out_next_fest_starts.unwrap_or(true)
+    }
+
+    pub fn clear_opt_out_next_fest_starts(&mut self) {
+        self.opt_out_next_fest_starts = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_next_fest_starts(&self) -> bool {
+        self.opt_out_next_fest_starts.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_next_fest_starts(&mut self, v: bool) {
+        self.opt_out_next_fest_starts = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_theme_sale_starts = 18;
+
+    pub fn opt_out_theme_sale_starts(&self) -> bool {
+        self.opt_out_theme_sale_starts.unwrap_or(true)
+    }
+
+    pub fn clear_opt_out_theme_sale_starts(&mut self) {
+        self.opt_out_theme_sale_starts = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_theme_sale_starts(&self) -> bool {
+        self.opt_out_theme_sale_starts.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_theme_sale_starts(&mut self, v: bool) {
+        self.opt_out_theme_sale_starts = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_season_pass_ship = 19;
+
+    pub fn opt_out_season_pass_ship(&self) -> bool {
+        self.opt_out_season_pass_ship.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_season_pass_ship(&mut self) {
+        self.opt_out_season_pass_ship = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_season_pass_ship(&self) -> bool {
+        self.opt_out_season_pass_ship.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_season_pass_ship(&mut self, v: bool) {
+        self.opt_out_season_pass_ship = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_roadmap_ship = 20;
+
+    pub fn opt_out_roadmap_ship(&self) -> bool {
+        self.opt_out_roadmap_ship.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_roadmap_ship(&mut self) {
+        self.opt_out_roadmap_ship = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_roadmap_ship(&self) -> bool {
+        self.opt_out_roadmap_ship.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_roadmap_ship(&mut self, v: bool) {
+        self.opt_out_roadmap_ship = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_self = 21;
+
+    pub fn is_self(&self) -> bool {
+        self.is_self.unwrap_or(false)
+    }
+
+    pub fn clear_is_self(&mut self) {
+        self.is_self = ::std::option::Option::None;
+    }
+
+    pub fn has_is_self(&self) -> bool {
+        self.is_self.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_self(&mut self, v: bool) {
+        self.is_self = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CUserAccount_GetOptOutEmailOptions_Response {
+    const NAME: &'static str = "CUserAccount_GetOptOutEmailOptions_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.email = ::std::option::Option::Some(is.read_string()?);
+                },
+                16 => {
+                    self.opt_out_all = ::std::option::Option::Some(is.read_bool()?);
+                },
+                24 => {
+                    self.opt_out_wishlist_sales = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32 => {
+                    self.opt_out_seasonal_promo = ::std::option::Option::Some(is.read_bool()?);
+                },
+                40 => {
+                    self.opt_out_wishlist_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                48 => {
+                    self.opt_out_greenlight_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                56 => {
+                    self.opt_out_curator_connect = ::std::option::Option::Some(is.read_bool()?);
+                },
+                64 => {
+                    self.opt_out_creator_home_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                72 => {
+                    self.opt_out_in_library_events = ::std::option::Option::Some(is.read_bool()?);
+                },
+                82 => {
+                    self.per_app_opt_outs.push(is.read_message()?);
+                },
+                90 => {
+                    self.per_clan_opt_outs.push(is.read_message()?);
+                },
+                96 => {
+                    self.opt_out_loyalty_awards_received = ::std::option::Option::Some(is.read_bool()?);
+                },
+                104 => {
+                    self.opt_out_partner_messages = ::std::option::Option::Some(is.read_bool()?);
+                },
+                112 => {
+                    self.opt_out_year_in_review = ::std::option::Option::Some(is.read_bool()?);
+                },
+                120 => {
+                    self.opt_out_wishlist_demo_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                128 => {
+                    self.opt_out_creator_home_demo_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                136 => {
+                    self.opt_out_next_fest_starts = ::std::option::Option::Some(is.read_bool()?);
+                },
+                144 => {
+                    self.opt_out_theme_sale_starts = ::std::option::Option::Some(is.read_bool()?);
+                },
+                152 => {
+                    self.opt_out_season_pass_ship = ::std::option::Option::Some(is.read_bool()?);
+                },
+                160 => {
+                    self.opt_out_roadmap_ship = ::std::option::Option::Some(is.read_bool()?);
+                },
+                168 => {
+                    self.is_self = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.email.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.opt_out_all {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_sales {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_seasonal_promo {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_greenlight_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_curator_connect {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_creator_home_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            my_size += 1 + 1;
+        }
+        for value in &self.per_app_opt_outs {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        for value in &self.per_clan_opt_outs {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.opt_out_loyalty_awards_received {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_partner_messages {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_year_in_review {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_demo_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_creator_home_demo_releases {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_next_fest_starts {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_theme_sale_starts {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_season_pass_ship {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_roadmap_ship {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.is_self {
+            my_size += 2 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.email.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.opt_out_all {
+            os.write_bool(2, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_sales {
+            os.write_bool(3, v)?;
+        }
+        if let Some(v) = self.opt_out_seasonal_promo {
+            os.write_bool(4, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_releases {
+            os.write_bool(5, v)?;
+        }
+        if let Some(v) = self.opt_out_greenlight_releases {
+            os.write_bool(6, v)?;
+        }
+        if let Some(v) = self.opt_out_curator_connect {
+            os.write_bool(7, v)?;
+        }
+        if let Some(v) = self.opt_out_creator_home_releases {
+            os.write_bool(8, v)?;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            os.write_bool(9, v)?;
+        }
+        for v in &self.per_app_opt_outs {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(10, v, os)?;
+        };
+        for v in &self.per_clan_opt_outs {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(11, v, os)?;
+        };
+        if let Some(v) = self.opt_out_loyalty_awards_received {
+            os.write_bool(12, v)?;
+        }
+        if let Some(v) = self.opt_out_partner_messages {
+            os.write_bool(13, v)?;
+        }
+        if let Some(v) = self.opt_out_year_in_review {
+            os.write_bool(14, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_demo_releases {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.opt_out_creator_home_demo_releases {
+            os.write_bool(16, v)?;
+        }
+        if let Some(v) = self.opt_out_next_fest_starts {
+            os.write_bool(17, v)?;
+        }
+        if let Some(v) = self.opt_out_theme_sale_starts {
+            os.write_bool(18, v)?;
+        }
+        if let Some(v) = self.opt_out_season_pass_ship {
+            os.write_bool(19, v)?;
+        }
+        if let Some(v) = self.opt_out_roadmap_ship {
+            os.write_bool(20, v)?;
+        }
+        if let Some(v) = self.is_self {
+            os.write_bool(21, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CUserAccount_GetOptOutEmailOptions_Response {
+        CUserAccount_GetOptOutEmailOptions_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.email = ::std::option::Option::None;
+        self.opt_out_all = ::std::option::Option::None;
+        self.opt_out_wishlist_sales = ::std::option::Option::None;
+        self.opt_out_seasonal_promo = ::std::option::Option::None;
+        self.opt_out_wishlist_releases = ::std::option::Option::None;
+        self.opt_out_greenlight_releases = ::std::option::Option::None;
+        self.opt_out_curator_connect = ::std::option::Option::None;
+        self.opt_out_creator_home_releases = ::std::option::Option::None;
+        self.opt_out_in_library_events = ::std::option::Option::None;
+        self.per_app_opt_outs.clear();
+        self.per_clan_opt_outs.clear();
+        self.opt_out_loyalty_awards_received = ::std::option::Option::None;
+        self.opt_out_partner_messages = ::std::option::Option::None;
+        self.opt_out_year_in_review = ::std::option::Option::None;
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::None;
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::None;
+        self.opt_out_next_fest_starts = ::std::option::Option::None;
+        self.opt_out_theme_sale_starts = ::std::option::Option::None;
+        self.opt_out_season_pass_ship = ::std::option::Option::None;
+        self.opt_out_roadmap_ship = ::std::option::Option::None;
+        self.is_self = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CUserAccount_GetOptOutEmailOptions_Response {
+        static instance: CUserAccount_GetOptOutEmailOptions_Response = CUserAccount_GetOptOutEmailOptions_Response {
+            email: ::std::option::Option::None,
+            opt_out_all: ::std::option::Option::None,
+            opt_out_wishlist_sales: ::std::option::Option::None,
+            opt_out_seasonal_promo: ::std::option::Option::None,
+            opt_out_wishlist_releases: ::std::option::Option::None,
+            opt_out_greenlight_releases: ::std::option::Option::None,
+            opt_out_curator_connect: ::std::option::Option::None,
+            opt_out_creator_home_releases: ::std::option::Option::None,
+            opt_out_in_library_events: ::std::option::Option::None,
+            per_app_opt_outs: ::std::vec::Vec::new(),
+            per_clan_opt_outs: ::std::vec::Vec::new(),
+            opt_out_loyalty_awards_received: ::std::option::Option::None,
+            opt_out_partner_messages: ::std::option::Option::None,
+            opt_out_year_in_review: ::std::option::Option::None,
+            opt_out_wishlist_demo_releases: ::std::option::Option::None,
+            opt_out_creator_home_demo_releases: ::std::option::Option::None,
+            opt_out_next_fest_starts: ::std::option::Option::None,
+            opt_out_theme_sale_starts: ::std::option::Option::None,
+            opt_out_season_pass_ship: ::std::option::Option::None,
+            opt_out_roadmap_ship: ::std::option::Option::None,
+            is_self: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CUserAccount_SetOptOutEmailOptions_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CUserAccount_SetOptOutEmailOptions_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_token)
+    pub opt_out_token: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_all)
+    pub opt_out_all: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_wishlist_sales)
+    pub opt_out_wishlist_sales: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_seasonal_promo)
+    pub opt_out_seasonal_promo: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_wishlist_releases)
+    pub opt_out_wishlist_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_greenlight_releases)
+    pub opt_out_greenlight_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_curator_connect)
+    pub opt_out_curator_connect: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_creator_home_releases)
+    pub opt_out_creator_home_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_in_library_events)
+    pub opt_out_in_library_events: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.per_app_opt_outs)
+    pub per_app_opt_outs: ::std::vec::Vec<CPerAppEmailOptions>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.per_clan_opt_outs)
+    pub per_clan_opt_outs: ::std::vec::Vec<CPerClanEmailOptions>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_loyalty_awards_received)
+    pub opt_out_loyalty_awards_received: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_partner_messages)
+    pub opt_out_partner_messages: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_year_in_review)
+    pub opt_out_year_in_review: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_wishlist_demo_releases)
+    pub opt_out_wishlist_demo_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_creator_home_demo_releases)
+    pub opt_out_creator_home_demo_releases: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_next_fest_starts)
+    pub opt_out_next_fest_starts: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_theme_sale_starts)
+    pub opt_out_theme_sale_starts: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_season_pass_ship)
+    pub opt_out_season_pass_ship: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserAccount_SetOptOutEmailOptions_Request.opt_out_roadmap_ship)
+    pub opt_out_roadmap_ship: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CUserAccount_SetOptOutEmailOptions_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CUserAccount_SetOptOutEmailOptions_Request {
+    fn default() -> &'a CUserAccount_SetOptOutEmailOptions_Request {
+        <CUserAccount_SetOptOutEmailOptions_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CUserAccount_SetOptOutEmailOptions_Request {
+    pub fn new() -> CUserAccount_SetOptOutEmailOptions_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string opt_out_token = 1;
+
+    pub fn opt_out_token(&self) -> &str {
+        match self.opt_out_token.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_opt_out_token(&mut self) {
+        self.opt_out_token = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_token(&self) -> bool {
+        self.opt_out_token.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_token(&mut self, v: ::std::string::String) {
+        self.opt_out_token = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_opt_out_token(&mut self) -> &mut ::std::string::String {
+        if self.opt_out_token.is_none() {
+            self.opt_out_token = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.opt_out_token.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_opt_out_token(&mut self) -> ::std::string::String {
+        self.opt_out_token.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool opt_out_all = 2;
+
+    pub fn opt_out_all(&self) -> bool {
+        self.opt_out_all.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_all(&mut self) {
+        self.opt_out_all = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_all(&self) -> bool {
+        self.opt_out_all.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_all(&mut self, v: bool) {
+        self.opt_out_all = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_sales = 3;
+
+    pub fn opt_out_wishlist_sales(&self) -> bool {
+        self.opt_out_wishlist_sales.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_sales(&mut self) {
+        self.opt_out_wishlist_sales = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_sales(&self) -> bool {
+        self.opt_out_wishlist_sales.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_sales(&mut self, v: bool) {
+        self.opt_out_wishlist_sales = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_seasonal_promo = 4;
+
+    pub fn opt_out_seasonal_promo(&self) -> bool {
+        self.opt_out_seasonal_promo.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_seasonal_promo(&mut self) {
+        self.opt_out_seasonal_promo = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_seasonal_promo(&self) -> bool {
+        self.opt_out_seasonal_promo.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_seasonal_promo(&mut self, v: bool) {
+        self.opt_out_seasonal_promo = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_releases = 5;
+
+    pub fn opt_out_wishlist_releases(&self) -> bool {
+        self.opt_out_wishlist_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_releases(&mut self) {
+        self.opt_out_wishlist_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_releases(&self) -> bool {
+        self.opt_out_wishlist_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_releases(&mut self, v: bool) {
+        self.opt_out_wishlist_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_greenlight_releases = 6;
+
+    pub fn opt_out_greenlight_releases(&self) -> bool {
+        self.opt_out_greenlight_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_greenlight_releases(&mut self) {
+        self.opt_out_greenlight_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_greenlight_releases(&self) -> bool {
+        self.opt_out_greenlight_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_greenlight_releases(&mut self, v: bool) {
+        self.opt_out_greenlight_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_curator_connect = 7;
+
+    pub fn opt_out_curator_connect(&self) -> bool {
+        self.opt_out_curator_connect.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_curator_connect(&mut self) {
+        self.opt_out_curator_connect = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_curator_connect(&self) -> bool {
+        self.opt_out_curator_connect.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_curator_connect(&mut self, v: bool) {
+        self.opt_out_curator_connect = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_creator_home_releases = 8;
+
+    pub fn opt_out_creator_home_releases(&self) -> bool {
+        self.opt_out_creator_home_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_creator_home_releases(&mut self) {
+        self.opt_out_creator_home_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_creator_home_releases(&self) -> bool {
+        self.opt_out_creator_home_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_creator_home_releases(&mut self, v: bool) {
+        self.opt_out_creator_home_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_in_library_events = 9;
+
+    pub fn opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_in_library_events(&mut self) {
+        self.opt_out_in_library_events = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_in_library_events(&self) -> bool {
+        self.opt_out_in_library_events.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_in_library_events(&mut self, v: bool) {
+        self.opt_out_in_library_events = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_loyalty_awards_received = 12;
+
+    pub fn opt_out_loyalty_awards_received(&self) -> bool {
+        self.opt_out_loyalty_awards_received.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_loyalty_awards_received(&mut self) {
+        self.opt_out_loyalty_awards_received = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_loyalty_awards_received(&self) -> bool {
+        self.opt_out_loyalty_awards_received.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_loyalty_awards_received(&mut self, v: bool) {
+        self.opt_out_loyalty_awards_received = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_partner_messages = 13;
+
+    pub fn opt_out_partner_messages(&self) -> bool {
+        self.opt_out_partner_messages.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_partner_messages(&mut self) {
+        self.opt_out_partner_messages = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_partner_messages(&self) -> bool {
+        self.opt_out_partner_messages.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_partner_messages(&mut self, v: bool) {
+        self.opt_out_partner_messages = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_year_in_review = 14;
+
+    pub fn opt_out_year_in_review(&self) -> bool {
+        self.opt_out_year_in_review.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_year_in_review(&mut self) {
+        self.opt_out_year_in_review = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_year_in_review(&self) -> bool {
+        self.opt_out_year_in_review.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_year_in_review(&mut self, v: bool) {
+        self.opt_out_year_in_review = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_wishlist_demo_releases = 15;
+
+    pub fn opt_out_wishlist_demo_releases(&self) -> bool {
+        self.opt_out_wishlist_demo_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_wishlist_demo_releases(&mut self) {
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_wishlist_demo_releases(&self) -> bool {
+        self.opt_out_wishlist_demo_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_wishlist_demo_releases(&mut self, v: bool) {
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_creator_home_demo_releases = 16;
+
+    pub fn opt_out_creator_home_demo_releases(&self) -> bool {
+        self.opt_out_creator_home_demo_releases.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_creator_home_demo_releases(&mut self) {
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_creator_home_demo_releases(&self) -> bool {
+        self.opt_out_creator_home_demo_releases.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_creator_home_demo_releases(&mut self, v: bool) {
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_next_fest_starts = 17;
+
+    pub fn opt_out_next_fest_starts(&self) -> bool {
+        self.opt_out_next_fest_starts.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_next_fest_starts(&mut self) {
+        self.opt_out_next_fest_starts = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_next_fest_starts(&self) -> bool {
+        self.opt_out_next_fest_starts.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_next_fest_starts(&mut self, v: bool) {
+        self.opt_out_next_fest_starts = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_theme_sale_starts = 18;
+
+    pub fn opt_out_theme_sale_starts(&self) -> bool {
+        self.opt_out_theme_sale_starts.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_theme_sale_starts(&mut self) {
+        self.opt_out_theme_sale_starts = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_theme_sale_starts(&self) -> bool {
+        self.opt_out_theme_sale_starts.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_theme_sale_starts(&mut self, v: bool) {
+        self.opt_out_theme_sale_starts = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_season_pass_ship = 19;
+
+    pub fn opt_out_season_pass_ship(&self) -> bool {
+        self.opt_out_season_pass_ship.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_season_pass_ship(&mut self) {
+        self.opt_out_season_pass_ship = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_season_pass_ship(&self) -> bool {
+        self.opt_out_season_pass_ship.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_season_pass_ship(&mut self, v: bool) {
+        self.opt_out_season_pass_ship = ::std::option::Option::Some(v);
+    }
+
+    // optional bool opt_out_roadmap_ship = 20;
+
+    pub fn opt_out_roadmap_ship(&self) -> bool {
+        self.opt_out_roadmap_ship.unwrap_or(false)
+    }
+
+    pub fn clear_opt_out_roadmap_ship(&mut self) {
+        self.opt_out_roadmap_ship = ::std::option::Option::None;
+    }
+
+    pub fn has_opt_out_roadmap_ship(&self) -> bool {
+        self.opt_out_roadmap_ship.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_opt_out_roadmap_ship(&mut self, v: bool) {
+        self.opt_out_roadmap_ship = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CUserAccount_SetOptOutEmailOptions_Request {
+    const NAME: &'static str = "CUserAccount_SetOptOutEmailOptions_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.opt_out_token = ::std::option::Option::Some(is.read_string()?);
+                },
+                16 => {
+                    self.opt_out_all = ::std::option::Option::Some(is.read_bool()?);
+                },
+                24 => {
+                    self.opt_out_wishlist_sales = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32 => {
+                    self.opt_out_seasonal_promo = ::std::option::Option::Some(is.read_bool()?);
+                },
+                40 => {
+                    self.opt_out_wishlist_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                48 => {
+                    self.opt_out_greenlight_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                56 => {
+                    self.opt_out_curator_connect = ::std::option::Option::Some(is.read_bool()?);
+                },
+                64 => {
+                    self.opt_out_creator_home_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                72 => {
+                    self.opt_out_in_library_events = ::std::option::Option::Some(is.read_bool()?);
+                },
+                82 => {
+                    self.per_app_opt_outs.push(is.read_message()?);
+                },
+                90 => {
+                    self.per_clan_opt_outs.push(is.read_message()?);
+                },
+                96 => {
+                    self.opt_out_loyalty_awards_received = ::std::option::Option::Some(is.read_bool()?);
+                },
+                104 => {
+                    self.opt_out_partner_messages = ::std::option::Option::Some(is.read_bool()?);
+                },
+                112 => {
+                    self.opt_out_year_in_review = ::std::option::Option::Some(is.read_bool()?);
+                },
+                120 => {
+                    self.opt_out_wishlist_demo_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                128 => {
+                    self.opt_out_creator_home_demo_releases = ::std::option::Option::Some(is.read_bool()?);
+                },
+                136 => {
+                    self.opt_out_next_fest_starts = ::std::option::Option::Some(is.read_bool()?);
+                },
+                144 => {
+                    self.opt_out_theme_sale_starts = ::std::option::Option::Some(is.read_bool()?);
+                },
+                152 => {
+                    self.opt_out_season_pass_ship = ::std::option::Option::Some(is.read_bool()?);
+                },
+                160 => {
+                    self.opt_out_roadmap_ship = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.opt_out_token.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.opt_out_all {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_sales {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_seasonal_promo {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_greenlight_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_curator_connect {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_creator_home_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            my_size += 1 + 1;
+        }
+        for value in &self.per_app_opt_outs {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        for value in &self.per_clan_opt_outs {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.opt_out_loyalty_awards_received {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_partner_messages {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_year_in_review {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_wishlist_demo_releases {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.opt_out_creator_home_demo_releases {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_next_fest_starts {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_theme_sale_starts {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_season_pass_ship {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.opt_out_roadmap_ship {
+            my_size += 2 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.opt_out_token.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.opt_out_all {
+            os.write_bool(2, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_sales {
+            os.write_bool(3, v)?;
+        }
+        if let Some(v) = self.opt_out_seasonal_promo {
+            os.write_bool(4, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_releases {
+            os.write_bool(5, v)?;
+        }
+        if let Some(v) = self.opt_out_greenlight_releases {
+            os.write_bool(6, v)?;
+        }
+        if let Some(v) = self.opt_out_curator_connect {
+            os.write_bool(7, v)?;
+        }
+        if let Some(v) = self.opt_out_creator_home_releases {
+            os.write_bool(8, v)?;
+        }
+        if let Some(v) = self.opt_out_in_library_events {
+            os.write_bool(9, v)?;
+        }
+        for v in &self.per_app_opt_outs {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(10, v, os)?;
+        };
+        for v in &self.per_clan_opt_outs {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(11, v, os)?;
+        };
+        if let Some(v) = self.opt_out_loyalty_awards_received {
+            os.write_bool(12, v)?;
+        }
+        if let Some(v) = self.opt_out_partner_messages {
+            os.write_bool(13, v)?;
+        }
+        if let Some(v) = self.opt_out_year_in_review {
+            os.write_bool(14, v)?;
+        }
+        if let Some(v) = self.opt_out_wishlist_demo_releases {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.opt_out_creator_home_demo_releases {
+            os.write_bool(16, v)?;
+        }
+        if let Some(v) = self.opt_out_next_fest_starts {
+            os.write_bool(17, v)?;
+        }
+        if let Some(v) = self.opt_out_theme_sale_starts {
+            os.write_bool(18, v)?;
+        }
+        if let Some(v) = self.opt_out_season_pass_ship {
+            os.write_bool(19, v)?;
+        }
+        if let Some(v) = self.opt_out_roadmap_ship {
+            os.write_bool(20, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CUserAccount_SetOptOutEmailOptions_Request {
+        CUserAccount_SetOptOutEmailOptions_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.opt_out_token = ::std::option::Option::None;
+        self.opt_out_all = ::std::option::Option::None;
+        self.opt_out_wishlist_sales = ::std::option::Option::None;
+        self.opt_out_seasonal_promo = ::std::option::Option::None;
+        self.opt_out_wishlist_releases = ::std::option::Option::None;
+        self.opt_out_greenlight_releases = ::std::option::Option::None;
+        self.opt_out_curator_connect = ::std::option::Option::None;
+        self.opt_out_creator_home_releases = ::std::option::Option::None;
+        self.opt_out_in_library_events = ::std::option::Option::None;
+        self.per_app_opt_outs.clear();
+        self.per_clan_opt_outs.clear();
+        self.opt_out_loyalty_awards_received = ::std::option::Option::None;
+        self.opt_out_partner_messages = ::std::option::Option::None;
+        self.opt_out_year_in_review = ::std::option::Option::None;
+        self.opt_out_wishlist_demo_releases = ::std::option::Option::None;
+        self.opt_out_creator_home_demo_releases = ::std::option::Option::None;
+        self.opt_out_next_fest_starts = ::std::option::Option::None;
+        self.opt_out_theme_sale_starts = ::std::option::Option::None;
+        self.opt_out_season_pass_ship = ::std::option::Option::None;
+        self.opt_out_roadmap_ship = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CUserAccount_SetOptOutEmailOptions_Request {
+        static instance: CUserAccount_SetOptOutEmailOptions_Request = CUserAccount_SetOptOutEmailOptions_Request {
+            opt_out_token: ::std::option::Option::None,
+            opt_out_all: ::std::option::Option::None,
+            opt_out_wishlist_sales: ::std::option::Option::None,
+            opt_out_seasonal_promo: ::std::option::Option::None,
+            opt_out_wishlist_releases: ::std::option::Option::None,
+            opt_out_greenlight_releases: ::std::option::Option::None,
+            opt_out_curator_connect: ::std::option::Option::None,
+            opt_out_creator_home_releases: ::std::option::Option::None,
+            opt_out_in_library_events: ::std::option::Option::None,
+            per_app_opt_outs: ::std::vec::Vec::new(),
+            per_clan_opt_outs: ::std::vec::Vec::new(),
+            opt_out_loyalty_awards_received: ::std::option::Option::None,
+            opt_out_partner_messages: ::std::option::Option::None,
+            opt_out_year_in_review: ::std::option::Option::None,
+            opt_out_wishlist_demo_releases: ::std::option::Option::None,
+            opt_out_creator_home_demo_releases: ::std::option::Option::None,
+            opt_out_next_fest_starts: ::std::option::Option::None,
+            opt_out_theme_sale_starts: ::std::option::Option::None,
+            opt_out_season_pass_ship: ::std::option::Option::None,
+            opt_out_roadmap_ship: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CUserAccount_SetOptOutEmailOptions_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CUserAccount_SetOptOutEmailOptions_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CUserAccount_SetOptOutEmailOptions_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CUserAccount_SetOptOutEmailOptions_Response {
+    fn default() -> &'a CUserAccount_SetOptOutEmailOptions_Response {
+        <CUserAccount_SetOptOutEmailOptions_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CUserAccount_SetOptOutEmailOptions_Response {
+    pub fn new() -> CUserAccount_SetOptOutEmailOptions_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CUserAccount_SetOptOutEmailOptions_Response {
+    const NAME: &'static str = "CUserAccount_SetOptOutEmailOptions_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CUserAccount_SetOptOutEmailOptions_Response {
+        CUserAccount_SetOptOutEmailOptions_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CUserAccount_SetOptOutEmailOptions_Response {
+        static instance: CUserAccount_SetOptOutEmailOptions_Response = CUserAccount_SetOptOutEmailOptions_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CUserAccount_GetClientWalletDetails_Request)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CUserAccount_GetClientWalletDetails_Request {
@@ -4438,6 +6350,88 @@ for CUserAccount_GetAvailableValveDiscountPromotions_Response {
     }
 }
 impl ::steam_vent_proto_common::RpcMessage
+for CUserAccount_GetOptOutEmailOptions_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPerAppEmailOptions {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPerClanEmailOptions {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CUserAccount_GetOptOutEmailOptions_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CUserAccount_SetOptOutEmailOptions_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CUserAccount_SetOptOutEmailOptions_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
 for CUserAccount_GetClientWalletDetails_Request {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -4794,6 +6788,11 @@ for CUserAccount_GetFriendInviteTokens_Request {
     const METHOD_NAME: &'static str = "UserAccount.GetFriendInviteTokens#1";
     type Response = CUserAccount_GetFriendInviteTokens_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod
+for CUserAccount_GetOptOutEmailOptions_Request {
+    const METHOD_NAME: &'static str = "UserAccount.GetOptOutEmailOptions#1";
+    type Response = CUserAccount_GetOptOutEmailOptions_Response;
+}
 impl ::steam_vent_proto_common::RpcMethod for CUserAccount_GetUserCountry_Request {
     const METHOD_NAME: &'static str = "UserAccount.GetUserCountry#1";
     type Response = CUserAccount_GetUserCountry_Response;
@@ -4811,6 +6810,11 @@ impl ::steam_vent_proto_common::RpcMethod
 for CUserAccount_RevokeFriendInviteToken_Request {
     const METHOD_NAME: &'static str = "UserAccount.RevokeFriendInviteToken#1";
     type Response = CUserAccount_RevokeFriendInviteToken_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CUserAccount_SetOptOutEmailOptions_Request {
+    const METHOD_NAME: &'static str = "UserAccount.SetOptOutEmailOptions#1";
+    type Response = CUserAccount_SetOptOutEmailOptions_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CUserAccount_ViewFriendInviteToken_Request {

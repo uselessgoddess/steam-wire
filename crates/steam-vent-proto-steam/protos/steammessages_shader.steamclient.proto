@@ -79,6 +79,15 @@ message CShader_ReportExternalBuild_Request {
 message CShader_ReportExternalBuild_Response {
 }
 
+message CShader_ReportBucketProcessingComplete_Request {
+	optional uint32 appid = 1;
+	optional string gpu_desc = 2;
+	optional string driver_desc = 3;
+}
+
+message CShader_ReportBucketProcessingComplete_Response {
+}
+
 service Shader {
 	rpc GetShaderReportingCadence (.CShader_GetShaderReportingCadence_Request) returns (.CShader_GetShaderReportingCadence_Response);
 	rpc RegisterShader (.CShader_RegisterShader_Request) returns (.CShader_RegisterShader_Response);
@@ -86,4 +95,5 @@ service Shader {
 	rpc GetBucketManifest (.CShader_GetBucketManifest_Request) returns (.CShader_GetBucketManifest_Response);
 	rpc GetStaleBucket (.CShader_GetStaleBucket_Request) returns (.CShader_GetStaleBucket_Response);
 	rpc ReportExternalBuild (.CShader_ReportExternalBuild_Request) returns (.CShader_ReportExternalBuild_Response);
+	rpc ReportBucketProcessingComplete (.CShader_ReportBucketProcessingComplete_Request) returns (.CShader_ReportBucketProcessingComplete_Response);
 }

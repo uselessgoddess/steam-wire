@@ -728,8 +728,6 @@ pub struct CMsgClientSettings {
     // message fields
     // @@protoc_insertion_point(field:CMsgClientSettings.no_save_personal_info)
     pub no_save_personal_info: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientSettings.oobe_test_mode_enabled)
-    pub oobe_test_mode_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.in_client_beta)
     pub in_client_beta: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.is_steam_sideloaded)
@@ -830,6 +828,18 @@ pub struct CMsgClientSettings {
     pub overlay_fps_counter_cpu_graph: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.overlay_fps_counter_allow_km_driver)
     pub overlay_fps_counter_allow_km_driver: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.achievement_notification_toast)
+    pub achievement_notification_toast: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.achievement_notification_sound)
+    pub achievement_notification_sound: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controllerconnect_notification_toast)
+    pub controllerconnect_notification_toast: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controllerconnect_notification_sound)
+    pub controllerconnect_notification_sound: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_low_battery_notification_toast)
+    pub controller_low_battery_notification_toast: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_low_battery_notification_sound)
+    pub controller_low_battery_notification_sound: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.smooth_scroll_webviews)
     pub smooth_scroll_webviews: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.enable_gpu_accelerated_webviews)
@@ -852,6 +862,10 @@ pub struct CMsgClientSettings {
     pub enable_gamescope_composer: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.enable_gamescope_composer_vr)
     pub enable_gamescope_composer_vr: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.show_switch_to_desktop_at_login)
+    pub show_switch_to_desktop_at_login: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.enable_steamrt64_client)
+    pub enable_steamrt64_client: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.disable_all_toasts)
     pub disable_all_toasts: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.disable_toasts_in_game)
@@ -970,6 +984,24 @@ pub struct CMsgClientSettings {
     pub controller_poll_rate: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.controller_siapi_config_author_mode)
     pub controller_siapi_config_author_mode: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_show_ibex_tour)
+    pub controller_show_ibex_tour: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_0)
+    pub controller_chat_radial_menu_option_0: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_1)
+    pub controller_chat_radial_menu_option_1: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_2)
+    pub controller_chat_radial_menu_option_2: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_3)
+    pub controller_chat_radial_menu_option_3: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_4)
+    pub controller_chat_radial_menu_option_4: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_5)
+    pub controller_chat_radial_menu_option_5: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_6)
+    pub controller_chat_radial_menu_option_6: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.controller_chat_radial_menu_option_7)
+    pub controller_chat_radial_menu_option_7: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgClientSettings.startup_movie_id)
     pub startup_movie_id: ::std::option::Option<u64>,
     // @@protoc_insertion_point(field:CMsgClientSettings.startup_movie_local_path)
@@ -1030,8 +1062,6 @@ pub struct CMsgClientSettings {
     pub gamerecording_automatic_gain_control: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.show_timestamps_in_console)
     pub show_timestamps_in_console: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientSettings.force_oobe)
-    pub force_oobe: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.override_browser_composer_mode)
     pub override_browser_composer_mode: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgClientSettings.cef_remote_debugging_enabled)
@@ -1046,6 +1076,8 @@ pub struct CMsgClientSettings {
     pub developer_mode_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.show_advanced_update_channels)
     pub show_advanced_update_channels: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.browserview_underlays_allowed)
+    pub browserview_underlays_allowed: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.gamescope_hdr_visualization)
     pub gamescope_hdr_visualization: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EHDRVisualization>>,
     // @@protoc_insertion_point(field:CMsgClientSettings.gamescope_app_target_framerate)
@@ -1112,6 +1144,20 @@ pub struct CMsgClientSettings {
     pub steamos_vrs_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.steamos_separate_led_colors)
     pub steamos_separate_led_colors: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_wifi_reload_wifi_driver_on_sleep)
+    pub steamos_wifi_reload_wifi_driver_on_sleep: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_wifi_power_management_enabled)
+    pub steamos_wifi_power_management_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_cec_control)
+    pub steamos_cec_control: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_cec_suspend_tv)
+    pub steamos_cec_suspend_tv: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_cec_suspend_device)
+    pub steamos_cec_suspend_device: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_cec_wake_tv)
+    pub steamos_cec_wake_tv: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.steamos_cec_wake_device)
+    pub steamos_cec_wake_device: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.setting_validation_bool)
     pub setting_validation_bool: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.setting_validation_enum)
@@ -1132,10 +1178,24 @@ pub struct CMsgClientSettings {
     pub system_bluetooth_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.hardware_updater_enabled)
     pub hardware_updater_enabled: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientSettings.game_framerate_reporting_enabled)
-    pub game_framerate_reporting_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_idle_suspend_battery_sec)
+    pub system_idle_suspend_battery_sec: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_idle_suspend_ac_sec)
+    pub system_idle_suspend_ac_sec: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_enable_low_power_downloads)
+    pub system_enable_low_power_downloads: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_allow_battery_low_power_downloads)
+    pub system_allow_battery_low_power_downloads: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_idle_screensaver_battery_sec)
+    pub system_idle_screensaver_battery_sec: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.system_idle_screensaver_ac_sec)
+    pub system_idle_screensaver_ac_sec: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgClientSettings.vr_show_perf_graph_in_hmd)
     pub vr_show_perf_graph_in_hmd: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.vr_audio_spatialize)
+    pub vr_audio_spatialize: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.vr_audio_spatialize_surround)
+    pub vr_audio_spatialize_surround: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.accessibility_debug_visualizer)
     pub accessibility_debug_visualizer: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientSettings.accessibility_screen_reader_enabled)
@@ -1158,6 +1218,42 @@ pub struct CMsgClientSettings {
     pub accessibility_desktop_ui_scale: ::std::option::Option<f32>,
     // @@protoc_insertion_point(field:CMsgClientSettings.accessibility_screen_reader_locale)
     pub accessibility_screen_reader_locale: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.accessibility_mono_audio)
+    pub accessibility_mono_audio: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_enabled)
+    pub remote_play_wifi_ap_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_channel_5ghz)
+    pub remote_play_wifi_ap_channel_5ghz: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_channel_6ghz)
+    pub remote_play_wifi_ap_channel_6ghz: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_channel_width)
+    pub remote_play_wifi_ap_channel_width: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_hotspot_mode)
+    pub remote_play_wifi_ap_hotspot_mode: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_hotspot_ssid)
+    pub remote_play_wifi_ap_hotspot_ssid: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_hotspot_password)
+    pub remote_play_wifi_ap_hotspot_password: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_hotspot_routing)
+    pub remote_play_wifi_ap_hotspot_routing: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_show_advanced)
+    pub remote_play_wifi_ap_show_advanced: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.remote_play_wifi_ap_paired_ssid)
+    pub remote_play_wifi_ap_paired_ssid: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.skip_steamframe_pairing_dialog)
+    pub skip_steamframe_pairing_dialog: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.oobe_completed)
+    pub oobe_completed: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.oobe_test_mode_enabled)
+    pub oobe_test_mode_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.force_oobe)
+    pub force_oobe: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.oobe_stage_2_completed)
+    pub oobe_stage_2_completed: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.oobe_stage_2_test_mode_enabled)
+    pub oobe_stage_2_test_mode_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgClientSettings.force_stage_2_oobe)
+    pub force_stage_2_oobe: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgClientSettings.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -1191,25 +1287,6 @@ impl CMsgClientSettings {
     // Param is passed by value, moved
     pub fn set_no_save_personal_info(&mut self, v: bool) {
         self.no_save_personal_info = ::std::option::Option::Some(v);
-    }
-
-    // optional bool oobe_test_mode_enabled = 2;
-
-    pub fn oobe_test_mode_enabled(&self) -> bool {
-        self.oobe_test_mode_enabled.unwrap_or(false)
-    }
-
-    pub fn clear_oobe_test_mode_enabled(&mut self) {
-        self.oobe_test_mode_enabled = ::std::option::Option::None;
-    }
-
-    pub fn has_oobe_test_mode_enabled(&self) -> bool {
-        self.oobe_test_mode_enabled.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_oobe_test_mode_enabled(&mut self, v: bool) {
-        self.oobe_test_mode_enabled = ::std::option::Option::Some(v);
     }
 
     // optional bool in_client_beta = 3;
@@ -2188,6 +2265,120 @@ impl CMsgClientSettings {
         self.overlay_fps_counter_allow_km_driver = ::std::option::Option::Some(v);
     }
 
+    // optional bool achievement_notification_toast = 4033;
+
+    pub fn achievement_notification_toast(&self) -> bool {
+        self.achievement_notification_toast.unwrap_or(false)
+    }
+
+    pub fn clear_achievement_notification_toast(&mut self) {
+        self.achievement_notification_toast = ::std::option::Option::None;
+    }
+
+    pub fn has_achievement_notification_toast(&self) -> bool {
+        self.achievement_notification_toast.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_achievement_notification_toast(&mut self, v: bool) {
+        self.achievement_notification_toast = ::std::option::Option::Some(v);
+    }
+
+    // optional bool achievement_notification_sound = 4034;
+
+    pub fn achievement_notification_sound(&self) -> bool {
+        self.achievement_notification_sound.unwrap_or(false)
+    }
+
+    pub fn clear_achievement_notification_sound(&mut self) {
+        self.achievement_notification_sound = ::std::option::Option::None;
+    }
+
+    pub fn has_achievement_notification_sound(&self) -> bool {
+        self.achievement_notification_sound.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_achievement_notification_sound(&mut self, v: bool) {
+        self.achievement_notification_sound = ::std::option::Option::Some(v);
+    }
+
+    // optional bool controllerconnect_notification_toast = 4035;
+
+    pub fn controllerconnect_notification_toast(&self) -> bool {
+        self.controllerconnect_notification_toast.unwrap_or(false)
+    }
+
+    pub fn clear_controllerconnect_notification_toast(&mut self) {
+        self.controllerconnect_notification_toast = ::std::option::Option::None;
+    }
+
+    pub fn has_controllerconnect_notification_toast(&self) -> bool {
+        self.controllerconnect_notification_toast.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controllerconnect_notification_toast(&mut self, v: bool) {
+        self.controllerconnect_notification_toast = ::std::option::Option::Some(v);
+    }
+
+    // optional bool controllerconnect_notification_sound = 4036;
+
+    pub fn controllerconnect_notification_sound(&self) -> bool {
+        self.controllerconnect_notification_sound.unwrap_or(false)
+    }
+
+    pub fn clear_controllerconnect_notification_sound(&mut self) {
+        self.controllerconnect_notification_sound = ::std::option::Option::None;
+    }
+
+    pub fn has_controllerconnect_notification_sound(&self) -> bool {
+        self.controllerconnect_notification_sound.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controllerconnect_notification_sound(&mut self, v: bool) {
+        self.controllerconnect_notification_sound = ::std::option::Option::Some(v);
+    }
+
+    // optional bool controller_low_battery_notification_toast = 4037;
+
+    pub fn controller_low_battery_notification_toast(&self) -> bool {
+        self.controller_low_battery_notification_toast.unwrap_or(false)
+    }
+
+    pub fn clear_controller_low_battery_notification_toast(&mut self) {
+        self.controller_low_battery_notification_toast = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_low_battery_notification_toast(&self) -> bool {
+        self.controller_low_battery_notification_toast.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_low_battery_notification_toast(&mut self, v: bool) {
+        self.controller_low_battery_notification_toast = ::std::option::Option::Some(v);
+    }
+
+    // optional bool controller_low_battery_notification_sound = 4038;
+
+    pub fn controller_low_battery_notification_sound(&self) -> bool {
+        self.controller_low_battery_notification_sound.unwrap_or(false)
+    }
+
+    pub fn clear_controller_low_battery_notification_sound(&mut self) {
+        self.controller_low_battery_notification_sound = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_low_battery_notification_sound(&self) -> bool {
+        self.controller_low_battery_notification_sound.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_low_battery_notification_sound(&mut self, v: bool) {
+        self.controller_low_battery_notification_sound = ::std::option::Option::Some(v);
+    }
+
     // optional bool smooth_scroll_webviews = 5000;
 
     pub fn smooth_scroll_webviews(&self) -> bool {
@@ -2395,6 +2586,44 @@ impl CMsgClientSettings {
     // Param is passed by value, moved
     pub fn set_enable_gamescope_composer_vr(&mut self, v: bool) {
         self.enable_gamescope_composer_vr = ::std::option::Option::Some(v);
+    }
+
+    // optional bool show_switch_to_desktop_at_login = 5012;
+
+    pub fn show_switch_to_desktop_at_login(&self) -> bool {
+        self.show_switch_to_desktop_at_login.unwrap_or(false)
+    }
+
+    pub fn clear_show_switch_to_desktop_at_login(&mut self) {
+        self.show_switch_to_desktop_at_login = ::std::option::Option::None;
+    }
+
+    pub fn has_show_switch_to_desktop_at_login(&self) -> bool {
+        self.show_switch_to_desktop_at_login.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_show_switch_to_desktop_at_login(&mut self, v: bool) {
+        self.show_switch_to_desktop_at_login = ::std::option::Option::Some(v);
+    }
+
+    // optional bool enable_steamrt64_client = 5013;
+
+    pub fn enable_steamrt64_client(&self) -> bool {
+        self.enable_steamrt64_client.unwrap_or(false)
+    }
+
+    pub fn clear_enable_steamrt64_client(&mut self) {
+        self.enable_steamrt64_client = ::std::option::Option::None;
+    }
+
+    pub fn has_enable_steamrt64_client(&self) -> bool {
+        self.enable_steamrt64_client.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_enable_steamrt64_client(&mut self, v: bool) {
+        self.enable_steamrt64_client = ::std::option::Option::Some(v);
     }
 
     // optional bool disable_all_toasts = 6000;
@@ -3541,6 +3770,313 @@ impl CMsgClientSettings {
         self.controller_siapi_config_author_mode = ::std::option::Option::Some(v);
     }
 
+    // optional bool controller_show_ibex_tour = 140014;
+
+    pub fn controller_show_ibex_tour(&self) -> bool {
+        self.controller_show_ibex_tour.unwrap_or(false)
+    }
+
+    pub fn clear_controller_show_ibex_tour(&mut self) {
+        self.controller_show_ibex_tour = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_show_ibex_tour(&self) -> bool {
+        self.controller_show_ibex_tour.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_show_ibex_tour(&mut self, v: bool) {
+        self.controller_show_ibex_tour = ::std::option::Option::Some(v);
+    }
+
+    // optional string controller_chat_radial_menu_option_0 = 140030;
+
+    pub fn controller_chat_radial_menu_option_0(&self) -> &str {
+        match self.controller_chat_radial_menu_option_0.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_0(&mut self) {
+        self.controller_chat_radial_menu_option_0 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_0(&self) -> bool {
+        self.controller_chat_radial_menu_option_0.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_0(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_0 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_0(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_0.is_none() {
+            self.controller_chat_radial_menu_option_0 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_0.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_0(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_0.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_1 = 140031;
+
+    pub fn controller_chat_radial_menu_option_1(&self) -> &str {
+        match self.controller_chat_radial_menu_option_1.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_1(&mut self) {
+        self.controller_chat_radial_menu_option_1 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_1(&self) -> bool {
+        self.controller_chat_radial_menu_option_1.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_1(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_1 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_1(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_1.is_none() {
+            self.controller_chat_radial_menu_option_1 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_1.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_1(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_1.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_2 = 140032;
+
+    pub fn controller_chat_radial_menu_option_2(&self) -> &str {
+        match self.controller_chat_radial_menu_option_2.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_2(&mut self) {
+        self.controller_chat_radial_menu_option_2 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_2(&self) -> bool {
+        self.controller_chat_radial_menu_option_2.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_2(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_2 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_2(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_2.is_none() {
+            self.controller_chat_radial_menu_option_2 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_2.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_2(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_2.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_3 = 140033;
+
+    pub fn controller_chat_radial_menu_option_3(&self) -> &str {
+        match self.controller_chat_radial_menu_option_3.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_3(&mut self) {
+        self.controller_chat_radial_menu_option_3 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_3(&self) -> bool {
+        self.controller_chat_radial_menu_option_3.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_3(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_3 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_3(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_3.is_none() {
+            self.controller_chat_radial_menu_option_3 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_3.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_3(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_3.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_4 = 140034;
+
+    pub fn controller_chat_radial_menu_option_4(&self) -> &str {
+        match self.controller_chat_radial_menu_option_4.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_4(&mut self) {
+        self.controller_chat_radial_menu_option_4 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_4(&self) -> bool {
+        self.controller_chat_radial_menu_option_4.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_4(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_4 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_4(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_4.is_none() {
+            self.controller_chat_radial_menu_option_4 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_4.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_4(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_4.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_5 = 140035;
+
+    pub fn controller_chat_radial_menu_option_5(&self) -> &str {
+        match self.controller_chat_radial_menu_option_5.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_5(&mut self) {
+        self.controller_chat_radial_menu_option_5 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_5(&self) -> bool {
+        self.controller_chat_radial_menu_option_5.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_5(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_5 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_5(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_5.is_none() {
+            self.controller_chat_radial_menu_option_5 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_5.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_5(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_5.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_6 = 140036;
+
+    pub fn controller_chat_radial_menu_option_6(&self) -> &str {
+        match self.controller_chat_radial_menu_option_6.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_6(&mut self) {
+        self.controller_chat_radial_menu_option_6 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_6(&self) -> bool {
+        self.controller_chat_radial_menu_option_6.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_6(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_6 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_6(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_6.is_none() {
+            self.controller_chat_radial_menu_option_6 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_6.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_6(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_6.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string controller_chat_radial_menu_option_7 = 140037;
+
+    pub fn controller_chat_radial_menu_option_7(&self) -> &str {
+        match self.controller_chat_radial_menu_option_7.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_chat_radial_menu_option_7(&mut self) {
+        self.controller_chat_radial_menu_option_7 = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_chat_radial_menu_option_7(&self) -> bool {
+        self.controller_chat_radial_menu_option_7.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_chat_radial_menu_option_7(&mut self, v: ::std::string::String) {
+        self.controller_chat_radial_menu_option_7 = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_chat_radial_menu_option_7(&mut self) -> &mut ::std::string::String {
+        if self.controller_chat_radial_menu_option_7.is_none() {
+            self.controller_chat_radial_menu_option_7 = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_chat_radial_menu_option_7.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_chat_radial_menu_option_7(&mut self) -> ::std::string::String {
+        self.controller_chat_radial_menu_option_7.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
     // optional uint64 startup_movie_id = 16000;
 
     pub fn startup_movie_id(&self) -> u64 {
@@ -4151,25 +4687,6 @@ impl CMsgClientSettings {
         self.show_timestamps_in_console = ::std::option::Option::Some(v);
     }
 
-    // optional bool force_oobe = 20001;
-
-    pub fn force_oobe(&self) -> bool {
-        self.force_oobe.unwrap_or(false)
-    }
-
-    pub fn clear_force_oobe(&mut self) {
-        self.force_oobe = ::std::option::Option::None;
-    }
-
-    pub fn has_force_oobe(&self) -> bool {
-        self.force_oobe.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_force_oobe(&mut self, v: bool) {
-        self.force_oobe = ::std::option::Option::Some(v);
-    }
-
     // optional int32 override_browser_composer_mode = 20002;
 
     pub fn override_browser_composer_mode(&self) -> i32 {
@@ -4301,6 +4818,25 @@ impl CMsgClientSettings {
     // Param is passed by value, moved
     pub fn set_show_advanced_update_channels(&mut self, v: bool) {
         self.show_advanced_update_channels = ::std::option::Option::Some(v);
+    }
+
+    // optional bool browserview_underlays_allowed = 20009;
+
+    pub fn browserview_underlays_allowed(&self) -> bool {
+        self.browserview_underlays_allowed.unwrap_or(false)
+    }
+
+    pub fn clear_browserview_underlays_allowed(&mut self) {
+        self.browserview_underlays_allowed = ::std::option::Option::None;
+    }
+
+    pub fn has_browserview_underlays_allowed(&self) -> bool {
+        self.browserview_underlays_allowed.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_browserview_underlays_allowed(&mut self, v: bool) {
+        self.browserview_underlays_allowed = ::std::option::Option::Some(v);
     }
 
     // optional .EHDRVisualization gamescope_hdr_visualization = 21001;
@@ -4929,6 +5465,139 @@ impl CMsgClientSettings {
         self.steamos_separate_led_colors = ::std::option::Option::Some(v);
     }
 
+    // optional bool steamos_wifi_reload_wifi_driver_on_sleep = 22017;
+
+    pub fn steamos_wifi_reload_wifi_driver_on_sleep(&self) -> bool {
+        self.steamos_wifi_reload_wifi_driver_on_sleep.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_wifi_reload_wifi_driver_on_sleep(&mut self) {
+        self.steamos_wifi_reload_wifi_driver_on_sleep = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_wifi_reload_wifi_driver_on_sleep(&self) -> bool {
+        self.steamos_wifi_reload_wifi_driver_on_sleep.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_wifi_reload_wifi_driver_on_sleep(&mut self, v: bool) {
+        self.steamos_wifi_reload_wifi_driver_on_sleep = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_wifi_power_management_enabled = 220018;
+
+    pub fn steamos_wifi_power_management_enabled(&self) -> bool {
+        self.steamos_wifi_power_management_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_wifi_power_management_enabled(&mut self) {
+        self.steamos_wifi_power_management_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_wifi_power_management_enabled(&self) -> bool {
+        self.steamos_wifi_power_management_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_wifi_power_management_enabled(&mut self, v: bool) {
+        self.steamos_wifi_power_management_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_cec_control = 22019;
+
+    pub fn steamos_cec_control(&self) -> bool {
+        self.steamos_cec_control.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_cec_control(&mut self) {
+        self.steamos_cec_control = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_cec_control(&self) -> bool {
+        self.steamos_cec_control.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_cec_control(&mut self, v: bool) {
+        self.steamos_cec_control = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_cec_suspend_tv = 22020;
+
+    pub fn steamos_cec_suspend_tv(&self) -> bool {
+        self.steamos_cec_suspend_tv.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_cec_suspend_tv(&mut self) {
+        self.steamos_cec_suspend_tv = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_cec_suspend_tv(&self) -> bool {
+        self.steamos_cec_suspend_tv.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_cec_suspend_tv(&mut self, v: bool) {
+        self.steamos_cec_suspend_tv = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_cec_suspend_device = 22021;
+
+    pub fn steamos_cec_suspend_device(&self) -> bool {
+        self.steamos_cec_suspend_device.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_cec_suspend_device(&mut self) {
+        self.steamos_cec_suspend_device = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_cec_suspend_device(&self) -> bool {
+        self.steamos_cec_suspend_device.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_cec_suspend_device(&mut self, v: bool) {
+        self.steamos_cec_suspend_device = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_cec_wake_tv = 22022;
+
+    pub fn steamos_cec_wake_tv(&self) -> bool {
+        self.steamos_cec_wake_tv.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_cec_wake_tv(&mut self) {
+        self.steamos_cec_wake_tv = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_cec_wake_tv(&self) -> bool {
+        self.steamos_cec_wake_tv.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_cec_wake_tv(&mut self, v: bool) {
+        self.steamos_cec_wake_tv = ::std::option::Option::Some(v);
+    }
+
+    // optional bool steamos_cec_wake_device = 22023;
+
+    pub fn steamos_cec_wake_device(&self) -> bool {
+        self.steamos_cec_wake_device.unwrap_or(false)
+    }
+
+    pub fn clear_steamos_cec_wake_device(&mut self) {
+        self.steamos_cec_wake_device = ::std::option::Option::None;
+    }
+
+    pub fn has_steamos_cec_wake_device(&self) -> bool {
+        self.steamos_cec_wake_device.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamos_cec_wake_device(&mut self, v: bool) {
+        self.steamos_cec_wake_device = ::std::option::Option::Some(v);
+    }
+
     // optional bool setting_validation_bool = 23001;
 
     pub fn setting_validation_bool(&self) -> bool {
@@ -5120,23 +5789,118 @@ impl CMsgClientSettings {
         self.hardware_updater_enabled = ::std::option::Option::Some(v);
     }
 
-    // optional bool game_framerate_reporting_enabled = 24002;
+    // optional int32 system_idle_suspend_battery_sec = 24003;
 
-    pub fn game_framerate_reporting_enabled(&self) -> bool {
-        self.game_framerate_reporting_enabled.unwrap_or(false)
+    pub fn system_idle_suspend_battery_sec(&self) -> i32 {
+        self.system_idle_suspend_battery_sec.unwrap_or(0)
     }
 
-    pub fn clear_game_framerate_reporting_enabled(&mut self) {
-        self.game_framerate_reporting_enabled = ::std::option::Option::None;
+    pub fn clear_system_idle_suspend_battery_sec(&mut self) {
+        self.system_idle_suspend_battery_sec = ::std::option::Option::None;
     }
 
-    pub fn has_game_framerate_reporting_enabled(&self) -> bool {
-        self.game_framerate_reporting_enabled.is_some()
+    pub fn has_system_idle_suspend_battery_sec(&self) -> bool {
+        self.system_idle_suspend_battery_sec.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_game_framerate_reporting_enabled(&mut self, v: bool) {
-        self.game_framerate_reporting_enabled = ::std::option::Option::Some(v);
+    pub fn set_system_idle_suspend_battery_sec(&mut self, v: i32) {
+        self.system_idle_suspend_battery_sec = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 system_idle_suspend_ac_sec = 24004;
+
+    pub fn system_idle_suspend_ac_sec(&self) -> i32 {
+        self.system_idle_suspend_ac_sec.unwrap_or(0)
+    }
+
+    pub fn clear_system_idle_suspend_ac_sec(&mut self) {
+        self.system_idle_suspend_ac_sec = ::std::option::Option::None;
+    }
+
+    pub fn has_system_idle_suspend_ac_sec(&self) -> bool {
+        self.system_idle_suspend_ac_sec.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_idle_suspend_ac_sec(&mut self, v: i32) {
+        self.system_idle_suspend_ac_sec = ::std::option::Option::Some(v);
+    }
+
+    // optional bool system_enable_low_power_downloads = 24005;
+
+    pub fn system_enable_low_power_downloads(&self) -> bool {
+        self.system_enable_low_power_downloads.unwrap_or(false)
+    }
+
+    pub fn clear_system_enable_low_power_downloads(&mut self) {
+        self.system_enable_low_power_downloads = ::std::option::Option::None;
+    }
+
+    pub fn has_system_enable_low_power_downloads(&self) -> bool {
+        self.system_enable_low_power_downloads.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_enable_low_power_downloads(&mut self, v: bool) {
+        self.system_enable_low_power_downloads = ::std::option::Option::Some(v);
+    }
+
+    // optional bool system_allow_battery_low_power_downloads = 24006;
+
+    pub fn system_allow_battery_low_power_downloads(&self) -> bool {
+        self.system_allow_battery_low_power_downloads.unwrap_or(false)
+    }
+
+    pub fn clear_system_allow_battery_low_power_downloads(&mut self) {
+        self.system_allow_battery_low_power_downloads = ::std::option::Option::None;
+    }
+
+    pub fn has_system_allow_battery_low_power_downloads(&self) -> bool {
+        self.system_allow_battery_low_power_downloads.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_allow_battery_low_power_downloads(&mut self, v: bool) {
+        self.system_allow_battery_low_power_downloads = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 system_idle_screensaver_battery_sec = 24008;
+
+    pub fn system_idle_screensaver_battery_sec(&self) -> i32 {
+        self.system_idle_screensaver_battery_sec.unwrap_or(0)
+    }
+
+    pub fn clear_system_idle_screensaver_battery_sec(&mut self) {
+        self.system_idle_screensaver_battery_sec = ::std::option::Option::None;
+    }
+
+    pub fn has_system_idle_screensaver_battery_sec(&self) -> bool {
+        self.system_idle_screensaver_battery_sec.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_idle_screensaver_battery_sec(&mut self, v: i32) {
+        self.system_idle_screensaver_battery_sec = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 system_idle_screensaver_ac_sec = 24009;
+
+    pub fn system_idle_screensaver_ac_sec(&self) -> i32 {
+        self.system_idle_screensaver_ac_sec.unwrap_or(0)
+    }
+
+    pub fn clear_system_idle_screensaver_ac_sec(&mut self) {
+        self.system_idle_screensaver_ac_sec = ::std::option::Option::None;
+    }
+
+    pub fn has_system_idle_screensaver_ac_sec(&self) -> bool {
+        self.system_idle_screensaver_ac_sec.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_idle_screensaver_ac_sec(&mut self, v: i32) {
+        self.system_idle_screensaver_ac_sec = ::std::option::Option::Some(v);
     }
 
     // optional bool vr_show_perf_graph_in_hmd = 25000;
@@ -5156,6 +5920,44 @@ impl CMsgClientSettings {
     // Param is passed by value, moved
     pub fn set_vr_show_perf_graph_in_hmd(&mut self, v: bool) {
         self.vr_show_perf_graph_in_hmd = ::std::option::Option::Some(v);
+    }
+
+    // optional bool vr_audio_spatialize = 25001;
+
+    pub fn vr_audio_spatialize(&self) -> bool {
+        self.vr_audio_spatialize.unwrap_or(false)
+    }
+
+    pub fn clear_vr_audio_spatialize(&mut self) {
+        self.vr_audio_spatialize = ::std::option::Option::None;
+    }
+
+    pub fn has_vr_audio_spatialize(&self) -> bool {
+        self.vr_audio_spatialize.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_vr_audio_spatialize(&mut self, v: bool) {
+        self.vr_audio_spatialize = ::std::option::Option::Some(v);
+    }
+
+    // optional bool vr_audio_spatialize_surround = 25002;
+
+    pub fn vr_audio_spatialize_surround(&self) -> bool {
+        self.vr_audio_spatialize_surround.unwrap_or(false)
+    }
+
+    pub fn clear_vr_audio_spatialize_surround(&mut self) {
+        self.vr_audio_spatialize_surround = ::std::option::Option::None;
+    }
+
+    pub fn has_vr_audio_spatialize_surround(&self) -> bool {
+        self.vr_audio_spatialize_surround.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_vr_audio_spatialize_surround(&mut self, v: bool) {
+        self.vr_audio_spatialize_surround = ::std::option::Option::Some(v);
     }
 
     // optional bool accessibility_debug_visualizer = 26000;
@@ -5400,6 +6202,416 @@ impl CMsgClientSettings {
     pub fn take_accessibility_screen_reader_locale(&mut self) -> ::std::string::String {
         self.accessibility_screen_reader_locale.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional bool accessibility_mono_audio = 26012;
+
+    pub fn accessibility_mono_audio(&self) -> bool {
+        self.accessibility_mono_audio.unwrap_or(false)
+    }
+
+    pub fn clear_accessibility_mono_audio(&mut self) {
+        self.accessibility_mono_audio = ::std::option::Option::None;
+    }
+
+    pub fn has_accessibility_mono_audio(&self) -> bool {
+        self.accessibility_mono_audio.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_accessibility_mono_audio(&mut self, v: bool) {
+        self.accessibility_mono_audio = ::std::option::Option::Some(v);
+    }
+
+    // optional bool remote_play_wifi_ap_enabled = 27000;
+
+    pub fn remote_play_wifi_ap_enabled(&self) -> bool {
+        self.remote_play_wifi_ap_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_remote_play_wifi_ap_enabled(&mut self) {
+        self.remote_play_wifi_ap_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_enabled(&self) -> bool {
+        self.remote_play_wifi_ap_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_enabled(&mut self, v: bool) {
+        self.remote_play_wifi_ap_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 remote_play_wifi_ap_channel_5ghz = 27001;
+
+    pub fn remote_play_wifi_ap_channel_5ghz(&self) -> i32 {
+        self.remote_play_wifi_ap_channel_5ghz.unwrap_or(0)
+    }
+
+    pub fn clear_remote_play_wifi_ap_channel_5ghz(&mut self) {
+        self.remote_play_wifi_ap_channel_5ghz = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_channel_5ghz(&self) -> bool {
+        self.remote_play_wifi_ap_channel_5ghz.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_channel_5ghz(&mut self, v: i32) {
+        self.remote_play_wifi_ap_channel_5ghz = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 remote_play_wifi_ap_channel_6ghz = 27002;
+
+    pub fn remote_play_wifi_ap_channel_6ghz(&self) -> i32 {
+        self.remote_play_wifi_ap_channel_6ghz.unwrap_or(0)
+    }
+
+    pub fn clear_remote_play_wifi_ap_channel_6ghz(&mut self) {
+        self.remote_play_wifi_ap_channel_6ghz = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_channel_6ghz(&self) -> bool {
+        self.remote_play_wifi_ap_channel_6ghz.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_channel_6ghz(&mut self, v: i32) {
+        self.remote_play_wifi_ap_channel_6ghz = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 remote_play_wifi_ap_channel_width = 27003;
+
+    pub fn remote_play_wifi_ap_channel_width(&self) -> i32 {
+        self.remote_play_wifi_ap_channel_width.unwrap_or(0)
+    }
+
+    pub fn clear_remote_play_wifi_ap_channel_width(&mut self) {
+        self.remote_play_wifi_ap_channel_width = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_channel_width(&self) -> bool {
+        self.remote_play_wifi_ap_channel_width.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_channel_width(&mut self, v: i32) {
+        self.remote_play_wifi_ap_channel_width = ::std::option::Option::Some(v);
+    }
+
+    // optional bool remote_play_wifi_ap_hotspot_mode = 27004;
+
+    pub fn remote_play_wifi_ap_hotspot_mode(&self) -> bool {
+        self.remote_play_wifi_ap_hotspot_mode.unwrap_or(false)
+    }
+
+    pub fn clear_remote_play_wifi_ap_hotspot_mode(&mut self) {
+        self.remote_play_wifi_ap_hotspot_mode = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_hotspot_mode(&self) -> bool {
+        self.remote_play_wifi_ap_hotspot_mode.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_hotspot_mode(&mut self, v: bool) {
+        self.remote_play_wifi_ap_hotspot_mode = ::std::option::Option::Some(v);
+    }
+
+    // optional string remote_play_wifi_ap_hotspot_ssid = 27005;
+
+    pub fn remote_play_wifi_ap_hotspot_ssid(&self) -> &str {
+        match self.remote_play_wifi_ap_hotspot_ssid.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_play_wifi_ap_hotspot_ssid(&mut self) {
+        self.remote_play_wifi_ap_hotspot_ssid = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_hotspot_ssid(&self) -> bool {
+        self.remote_play_wifi_ap_hotspot_ssid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_hotspot_ssid(&mut self, v: ::std::string::String) {
+        self.remote_play_wifi_ap_hotspot_ssid = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_play_wifi_ap_hotspot_ssid(&mut self) -> &mut ::std::string::String {
+        if self.remote_play_wifi_ap_hotspot_ssid.is_none() {
+            self.remote_play_wifi_ap_hotspot_ssid = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_play_wifi_ap_hotspot_ssid.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_play_wifi_ap_hotspot_ssid(&mut self) -> ::std::string::String {
+        self.remote_play_wifi_ap_hotspot_ssid.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string remote_play_wifi_ap_hotspot_password = 27006;
+
+    pub fn remote_play_wifi_ap_hotspot_password(&self) -> &str {
+        match self.remote_play_wifi_ap_hotspot_password.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_play_wifi_ap_hotspot_password(&mut self) {
+        self.remote_play_wifi_ap_hotspot_password = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_hotspot_password(&self) -> bool {
+        self.remote_play_wifi_ap_hotspot_password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_hotspot_password(&mut self, v: ::std::string::String) {
+        self.remote_play_wifi_ap_hotspot_password = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_play_wifi_ap_hotspot_password(&mut self) -> &mut ::std::string::String {
+        if self.remote_play_wifi_ap_hotspot_password.is_none() {
+            self.remote_play_wifi_ap_hotspot_password = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_play_wifi_ap_hotspot_password.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_play_wifi_ap_hotspot_password(&mut self) -> ::std::string::String {
+        self.remote_play_wifi_ap_hotspot_password.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string remote_play_wifi_ap_hotspot_routing = 27007;
+
+    pub fn remote_play_wifi_ap_hotspot_routing(&self) -> &str {
+        match self.remote_play_wifi_ap_hotspot_routing.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_play_wifi_ap_hotspot_routing(&mut self) {
+        self.remote_play_wifi_ap_hotspot_routing = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_hotspot_routing(&self) -> bool {
+        self.remote_play_wifi_ap_hotspot_routing.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_hotspot_routing(&mut self, v: ::std::string::String) {
+        self.remote_play_wifi_ap_hotspot_routing = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_play_wifi_ap_hotspot_routing(&mut self) -> &mut ::std::string::String {
+        if self.remote_play_wifi_ap_hotspot_routing.is_none() {
+            self.remote_play_wifi_ap_hotspot_routing = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_play_wifi_ap_hotspot_routing.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_play_wifi_ap_hotspot_routing(&mut self) -> ::std::string::String {
+        self.remote_play_wifi_ap_hotspot_routing.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool remote_play_wifi_ap_show_advanced = 27008;
+
+    pub fn remote_play_wifi_ap_show_advanced(&self) -> bool {
+        self.remote_play_wifi_ap_show_advanced.unwrap_or(false)
+    }
+
+    pub fn clear_remote_play_wifi_ap_show_advanced(&mut self) {
+        self.remote_play_wifi_ap_show_advanced = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_show_advanced(&self) -> bool {
+        self.remote_play_wifi_ap_show_advanced.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_show_advanced(&mut self, v: bool) {
+        self.remote_play_wifi_ap_show_advanced = ::std::option::Option::Some(v);
+    }
+
+    // optional string remote_play_wifi_ap_paired_ssid = 27009;
+
+    pub fn remote_play_wifi_ap_paired_ssid(&self) -> &str {
+        match self.remote_play_wifi_ap_paired_ssid.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_play_wifi_ap_paired_ssid(&mut self) {
+        self.remote_play_wifi_ap_paired_ssid = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_play_wifi_ap_paired_ssid(&self) -> bool {
+        self.remote_play_wifi_ap_paired_ssid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_play_wifi_ap_paired_ssid(&mut self, v: ::std::string::String) {
+        self.remote_play_wifi_ap_paired_ssid = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_play_wifi_ap_paired_ssid(&mut self) -> &mut ::std::string::String {
+        if self.remote_play_wifi_ap_paired_ssid.is_none() {
+            self.remote_play_wifi_ap_paired_ssid = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_play_wifi_ap_paired_ssid.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_play_wifi_ap_paired_ssid(&mut self) -> ::std::string::String {
+        self.remote_play_wifi_ap_paired_ssid.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool skip_steamframe_pairing_dialog = 27010;
+
+    pub fn skip_steamframe_pairing_dialog(&self) -> bool {
+        self.skip_steamframe_pairing_dialog.unwrap_or(false)
+    }
+
+    pub fn clear_skip_steamframe_pairing_dialog(&mut self) {
+        self.skip_steamframe_pairing_dialog = ::std::option::Option::None;
+    }
+
+    pub fn has_skip_steamframe_pairing_dialog(&self) -> bool {
+        self.skip_steamframe_pairing_dialog.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_skip_steamframe_pairing_dialog(&mut self, v: bool) {
+        self.skip_steamframe_pairing_dialog = ::std::option::Option::Some(v);
+    }
+
+    // optional bool oobe_completed = 28001;
+
+    pub fn oobe_completed(&self) -> bool {
+        self.oobe_completed.unwrap_or(false)
+    }
+
+    pub fn clear_oobe_completed(&mut self) {
+        self.oobe_completed = ::std::option::Option::None;
+    }
+
+    pub fn has_oobe_completed(&self) -> bool {
+        self.oobe_completed.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_oobe_completed(&mut self, v: bool) {
+        self.oobe_completed = ::std::option::Option::Some(v);
+    }
+
+    // optional bool oobe_test_mode_enabled = 28002;
+
+    pub fn oobe_test_mode_enabled(&self) -> bool {
+        self.oobe_test_mode_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_oobe_test_mode_enabled(&mut self) {
+        self.oobe_test_mode_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_oobe_test_mode_enabled(&self) -> bool {
+        self.oobe_test_mode_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_oobe_test_mode_enabled(&mut self, v: bool) {
+        self.oobe_test_mode_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional bool force_oobe = 28003;
+
+    pub fn force_oobe(&self) -> bool {
+        self.force_oobe.unwrap_or(false)
+    }
+
+    pub fn clear_force_oobe(&mut self) {
+        self.force_oobe = ::std::option::Option::None;
+    }
+
+    pub fn has_force_oobe(&self) -> bool {
+        self.force_oobe.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_force_oobe(&mut self, v: bool) {
+        self.force_oobe = ::std::option::Option::Some(v);
+    }
+
+    // optional bool oobe_stage_2_completed = 28004;
+
+    pub fn oobe_stage_2_completed(&self) -> bool {
+        self.oobe_stage_2_completed.unwrap_or(false)
+    }
+
+    pub fn clear_oobe_stage_2_completed(&mut self) {
+        self.oobe_stage_2_completed = ::std::option::Option::None;
+    }
+
+    pub fn has_oobe_stage_2_completed(&self) -> bool {
+        self.oobe_stage_2_completed.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_oobe_stage_2_completed(&mut self, v: bool) {
+        self.oobe_stage_2_completed = ::std::option::Option::Some(v);
+    }
+
+    // optional bool oobe_stage_2_test_mode_enabled = 28005;
+
+    pub fn oobe_stage_2_test_mode_enabled(&self) -> bool {
+        self.oobe_stage_2_test_mode_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_oobe_stage_2_test_mode_enabled(&mut self) {
+        self.oobe_stage_2_test_mode_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_oobe_stage_2_test_mode_enabled(&self) -> bool {
+        self.oobe_stage_2_test_mode_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_oobe_stage_2_test_mode_enabled(&mut self, v: bool) {
+        self.oobe_stage_2_test_mode_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional bool force_stage_2_oobe = 28006;
+
+    pub fn force_stage_2_oobe(&self) -> bool {
+        self.force_stage_2_oobe.unwrap_or(false)
+    }
+
+    pub fn clear_force_stage_2_oobe(&mut self) {
+        self.force_stage_2_oobe = ::std::option::Option::None;
+    }
+
+    pub fn has_force_stage_2_oobe(&self) -> bool {
+        self.force_stage_2_oobe.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_force_stage_2_oobe(&mut self, v: bool) {
+        self.force_stage_2_oobe = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
@@ -5414,9 +6626,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             match tag {
                 8 => {
                     self.no_save_personal_info = ::std::option::Option::Some(is.read_bool()?);
-                },
-                16 => {
-                    self.oobe_test_mode_enabled = ::std::option::Option::Some(is.read_bool()?);
                 },
                 24 => {
                     self.in_client_beta = ::std::option::Option::Some(is.read_bool()?);
@@ -5568,6 +6777,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 32256 => {
                     self.overlay_fps_counter_allow_km_driver = ::std::option::Option::Some(is.read_bool()?);
                 },
+                32264 => {
+                    self.achievement_notification_toast = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32272 => {
+                    self.achievement_notification_sound = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32280 => {
+                    self.controllerconnect_notification_toast = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32288 => {
+                    self.controllerconnect_notification_sound = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32296 => {
+                    self.controller_low_battery_notification_toast = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32304 => {
+                    self.controller_low_battery_notification_sound = ::std::option::Option::Some(is.read_bool()?);
+                },
                 40000 => {
                     self.smooth_scroll_webviews = ::std::option::Option::Some(is.read_bool()?);
                 },
@@ -5600,6 +6827,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 },
                 40088 => {
                     self.enable_gamescope_composer_vr = ::std::option::Option::Some(is.read_bool()?);
+                },
+                40096 => {
+                    self.show_switch_to_desktop_at_login = ::std::option::Option::Some(is.read_bool()?);
+                },
+                40104 => {
+                    self.enable_steamrt64_client = ::std::option::Option::Some(is.read_bool()?);
                 },
                 48000 => {
                     self.disable_all_toasts = ::std::option::Option::Some(is.read_bool()?);
@@ -5778,6 +7011,33 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 1120104 => {
                     self.controller_siapi_config_author_mode = ::std::option::Option::Some(is.read_bool()?);
                 },
+                1120112 => {
+                    self.controller_show_ibex_tour = ::std::option::Option::Some(is.read_bool()?);
+                },
+                1120242 => {
+                    self.controller_chat_radial_menu_option_0 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120250 => {
+                    self.controller_chat_radial_menu_option_1 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120258 => {
+                    self.controller_chat_radial_menu_option_2 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120266 => {
+                    self.controller_chat_radial_menu_option_3 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120274 => {
+                    self.controller_chat_radial_menu_option_4 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120282 => {
+                    self.controller_chat_radial_menu_option_5 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120290 => {
+                    self.controller_chat_radial_menu_option_6 = ::std::option::Option::Some(is.read_string()?);
+                },
+                1120298 => {
+                    self.controller_chat_radial_menu_option_7 = ::std::option::Option::Some(is.read_string()?);
+                },
                 128000 => {
                     self.startup_movie_id = ::std::option::Option::Some(is.read_uint64()?);
                 },
@@ -5868,9 +7128,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 160000 => {
                     self.show_timestamps_in_console = ::std::option::Option::Some(is.read_bool()?);
                 },
-                160008 => {
-                    self.force_oobe = ::std::option::Option::Some(is.read_bool()?);
-                },
                 160016 => {
                     self.override_browser_composer_mode = ::std::option::Option::Some(is.read_int32()?);
                 },
@@ -5891,6 +7148,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 },
                 160064 => {
                     self.show_advanced_update_channels = ::std::option::Option::Some(is.read_bool()?);
+                },
+                160072 => {
+                    self.browserview_underlays_allowed = ::std::option::Option::Some(is.read_bool()?);
                 },
                 168008 => {
                     self.gamescope_hdr_visualization = ::std::option::Option::Some(is.read_enum_or_unknown()?);
@@ -5991,6 +7251,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 176128 => {
                     self.steamos_separate_led_colors = ::std::option::Option::Some(is.read_bool()?);
                 },
+                176136 => {
+                    self.steamos_wifi_reload_wifi_driver_on_sleep = ::std::option::Option::Some(is.read_bool()?);
+                },
+                1760144 => {
+                    self.steamos_wifi_power_management_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                176152 => {
+                    self.steamos_cec_control = ::std::option::Option::Some(is.read_bool()?);
+                },
+                176160 => {
+                    self.steamos_cec_suspend_tv = ::std::option::Option::Some(is.read_bool()?);
+                },
+                176168 => {
+                    self.steamos_cec_suspend_device = ::std::option::Option::Some(is.read_bool()?);
+                },
+                176176 => {
+                    self.steamos_cec_wake_tv = ::std::option::Option::Some(is.read_bool()?);
+                },
+                176184 => {
+                    self.steamos_cec_wake_device = ::std::option::Option::Some(is.read_bool()?);
+                },
                 184008 => {
                     self.setting_validation_bool = ::std::option::Option::Some(is.read_bool()?);
                 },
@@ -6021,11 +7302,32 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 192008 => {
                     self.hardware_updater_enabled = ::std::option::Option::Some(is.read_bool()?);
                 },
-                192016 => {
-                    self.game_framerate_reporting_enabled = ::std::option::Option::Some(is.read_bool()?);
+                192024 => {
+                    self.system_idle_suspend_battery_sec = ::std::option::Option::Some(is.read_int32()?);
+                },
+                192032 => {
+                    self.system_idle_suspend_ac_sec = ::std::option::Option::Some(is.read_int32()?);
+                },
+                192040 => {
+                    self.system_enable_low_power_downloads = ::std::option::Option::Some(is.read_bool()?);
+                },
+                192048 => {
+                    self.system_allow_battery_low_power_downloads = ::std::option::Option::Some(is.read_bool()?);
+                },
+                192064 => {
+                    self.system_idle_screensaver_battery_sec = ::std::option::Option::Some(is.read_int32()?);
+                },
+                192072 => {
+                    self.system_idle_screensaver_ac_sec = ::std::option::Option::Some(is.read_int32()?);
                 },
                 200000 => {
                     self.vr_show_perf_graph_in_hmd = ::std::option::Option::Some(is.read_bool()?);
+                },
+                200008 => {
+                    self.vr_audio_spatialize = ::std::option::Option::Some(is.read_bool()?);
+                },
+                200016 => {
+                    self.vr_audio_spatialize_surround = ::std::option::Option::Some(is.read_bool()?);
                 },
                 208000 => {
                     self.accessibility_debug_visualizer = ::std::option::Option::Some(is.read_bool()?);
@@ -6060,6 +7362,60 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
                 208090 => {
                     self.accessibility_screen_reader_locale = ::std::option::Option::Some(is.read_string()?);
                 },
+                208096 => {
+                    self.accessibility_mono_audio = ::std::option::Option::Some(is.read_bool()?);
+                },
+                216000 => {
+                    self.remote_play_wifi_ap_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                216008 => {
+                    self.remote_play_wifi_ap_channel_5ghz = ::std::option::Option::Some(is.read_int32()?);
+                },
+                216016 => {
+                    self.remote_play_wifi_ap_channel_6ghz = ::std::option::Option::Some(is.read_int32()?);
+                },
+                216024 => {
+                    self.remote_play_wifi_ap_channel_width = ::std::option::Option::Some(is.read_int32()?);
+                },
+                216032 => {
+                    self.remote_play_wifi_ap_hotspot_mode = ::std::option::Option::Some(is.read_bool()?);
+                },
+                216042 => {
+                    self.remote_play_wifi_ap_hotspot_ssid = ::std::option::Option::Some(is.read_string()?);
+                },
+                216050 => {
+                    self.remote_play_wifi_ap_hotspot_password = ::std::option::Option::Some(is.read_string()?);
+                },
+                216058 => {
+                    self.remote_play_wifi_ap_hotspot_routing = ::std::option::Option::Some(is.read_string()?);
+                },
+                216064 => {
+                    self.remote_play_wifi_ap_show_advanced = ::std::option::Option::Some(is.read_bool()?);
+                },
+                216074 => {
+                    self.remote_play_wifi_ap_paired_ssid = ::std::option::Option::Some(is.read_string()?);
+                },
+                216080 => {
+                    self.skip_steamframe_pairing_dialog = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224008 => {
+                    self.oobe_completed = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224016 => {
+                    self.oobe_test_mode_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224024 => {
+                    self.force_oobe = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224032 => {
+                    self.oobe_stage_2_completed = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224040 => {
+                    self.oobe_stage_2_test_mode_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                224048 => {
+                    self.force_stage_2_oobe = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -6073,9 +7429,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
         if let Some(v) = self.no_save_personal_info {
-            my_size += 1 + 1;
-        }
-        if let Some(v) = self.oobe_test_mode_enabled {
             my_size += 1 + 1;
         }
         if let Some(v) = self.in_client_beta {
@@ -6232,6 +7585,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.overlay_fps_counter_allow_km_driver {
             my_size += 3 + 1;
         }
+        if let Some(v) = self.achievement_notification_toast {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.achievement_notification_sound {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.controllerconnect_notification_toast {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.controllerconnect_notification_sound {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.controller_low_battery_notification_toast {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.controller_low_battery_notification_sound {
+            my_size += 3 + 1;
+        }
         if let Some(v) = self.smooth_scroll_webviews {
             my_size += 3 + 1;
         }
@@ -6263,6 +7634,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             my_size += 3 + 1;
         }
         if let Some(v) = self.enable_gamescope_composer_vr {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.show_switch_to_desktop_at_login {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.enable_steamrt64_client {
             my_size += 3 + 1;
         }
         if let Some(v) = self.disable_all_toasts {
@@ -6442,6 +7819,33 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.controller_siapi_config_author_mode {
             my_size += 3 + 1;
         }
+        if let Some(v) = self.controller_show_ibex_tour {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_0.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140030, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_1.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140031, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_2.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140032, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_3.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140033, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_4.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140034, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_5.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140035, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_6.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140036, &v);
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_7.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(140037, &v);
+        }
         if let Some(v) = self.startup_movie_id {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(16000, v);
         }
@@ -6535,9 +7939,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.show_timestamps_in_console {
             my_size += 3 + 1;
         }
-        if let Some(v) = self.force_oobe {
-            my_size += 3 + 1;
-        }
         if let Some(v) = self.override_browser_composer_mode {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(20002, v);
         }
@@ -6557,6 +7958,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             my_size += 3 + 1;
         }
         if let Some(v) = self.show_advanced_update_channels {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.browserview_underlays_allowed {
             my_size += 3 + 1;
         }
         if let Some(v) = self.gamescope_hdr_visualization {
@@ -6660,6 +8064,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.steamos_separate_led_colors {
             my_size += 3 + 1;
         }
+        if let Some(v) = self.steamos_wifi_reload_wifi_driver_on_sleep {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_wifi_power_management_enabled {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_cec_control {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_cec_suspend_tv {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_cec_suspend_device {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_cec_wake_tv {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.steamos_cec_wake_device {
+            my_size += 3 + 1;
+        }
         if let Some(v) = self.setting_validation_bool {
             my_size += 3 + 1;
         }
@@ -6691,10 +8116,31 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.hardware_updater_enabled {
             my_size += 3 + 1;
         }
-        if let Some(v) = self.game_framerate_reporting_enabled {
+        if let Some(v) = self.system_idle_suspend_battery_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(24003, v);
+        }
+        if let Some(v) = self.system_idle_suspend_ac_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(24004, v);
+        }
+        if let Some(v) = self.system_enable_low_power_downloads {
             my_size += 3 + 1;
         }
+        if let Some(v) = self.system_allow_battery_low_power_downloads {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.system_idle_screensaver_battery_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(24008, v);
+        }
+        if let Some(v) = self.system_idle_screensaver_ac_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(24009, v);
+        }
         if let Some(v) = self.vr_show_perf_graph_in_hmd {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.vr_audio_spatialize {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.vr_audio_spatialize_surround {
             my_size += 3 + 1;
         }
         if let Some(v) = self.accessibility_debug_visualizer {
@@ -6730,6 +8176,60 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.accessibility_screen_reader_locale.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(26011, &v);
         }
+        if let Some(v) = self.accessibility_mono_audio {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_enabled {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_5ghz {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(27001, v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_6ghz {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(27002, v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_width {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(27003, v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_mode {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_ssid.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(27005, &v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_password.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(27006, &v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_routing.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(27007, &v);
+        }
+        if let Some(v) = self.remote_play_wifi_ap_show_advanced {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_paired_ssid.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(27009, &v);
+        }
+        if let Some(v) = self.skip_steamframe_pairing_dialog {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.oobe_completed {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.oobe_test_mode_enabled {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.force_oobe {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.oobe_stage_2_completed {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.oobe_stage_2_test_mode_enabled {
+            my_size += 3 + 1;
+        }
+        if let Some(v) = self.force_stage_2_oobe {
+            my_size += 3 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -6738,9 +8238,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         if let Some(v) = self.no_save_personal_info {
             os.write_bool(1, v)?;
-        }
-        if let Some(v) = self.oobe_test_mode_enabled {
-            os.write_bool(2, v)?;
         }
         if let Some(v) = self.in_client_beta {
             os.write_bool(3, v)?;
@@ -6892,6 +8389,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.overlay_fps_counter_allow_km_driver {
             os.write_bool(4032, v)?;
         }
+        if let Some(v) = self.achievement_notification_toast {
+            os.write_bool(4033, v)?;
+        }
+        if let Some(v) = self.achievement_notification_sound {
+            os.write_bool(4034, v)?;
+        }
+        if let Some(v) = self.controllerconnect_notification_toast {
+            os.write_bool(4035, v)?;
+        }
+        if let Some(v) = self.controllerconnect_notification_sound {
+            os.write_bool(4036, v)?;
+        }
+        if let Some(v) = self.controller_low_battery_notification_toast {
+            os.write_bool(4037, v)?;
+        }
+        if let Some(v) = self.controller_low_battery_notification_sound {
+            os.write_bool(4038, v)?;
+        }
         if let Some(v) = self.smooth_scroll_webviews {
             os.write_bool(5000, v)?;
         }
@@ -6924,6 +8439,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         }
         if let Some(v) = self.enable_gamescope_composer_vr {
             os.write_bool(5011, v)?;
+        }
+        if let Some(v) = self.show_switch_to_desktop_at_login {
+            os.write_bool(5012, v)?;
+        }
+        if let Some(v) = self.enable_steamrt64_client {
+            os.write_bool(5013, v)?;
         }
         if let Some(v) = self.disable_all_toasts {
             os.write_bool(6000, v)?;
@@ -7102,6 +8623,33 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.controller_siapi_config_author_mode {
             os.write_bool(140013, v)?;
         }
+        if let Some(v) = self.controller_show_ibex_tour {
+            os.write_bool(140014, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_0.as_ref() {
+            os.write_string(140030, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_1.as_ref() {
+            os.write_string(140031, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_2.as_ref() {
+            os.write_string(140032, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_3.as_ref() {
+            os.write_string(140033, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_4.as_ref() {
+            os.write_string(140034, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_5.as_ref() {
+            os.write_string(140035, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_6.as_ref() {
+            os.write_string(140036, v)?;
+        }
+        if let Some(v) = self.controller_chat_radial_menu_option_7.as_ref() {
+            os.write_string(140037, v)?;
+        }
         if let Some(v) = self.startup_movie_id {
             os.write_uint64(16000, v)?;
         }
@@ -7192,9 +8740,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.show_timestamps_in_console {
             os.write_bool(20000, v)?;
         }
-        if let Some(v) = self.force_oobe {
-            os.write_bool(20001, v)?;
-        }
         if let Some(v) = self.override_browser_composer_mode {
             os.write_int32(20002, v)?;
         }
@@ -7215,6 +8760,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         }
         if let Some(v) = self.show_advanced_update_channels {
             os.write_bool(20008, v)?;
+        }
+        if let Some(v) = self.browserview_underlays_allowed {
+            os.write_bool(20009, v)?;
         }
         if let Some(v) = self.gamescope_hdr_visualization {
             os.write_enum(21001, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
@@ -7315,6 +8863,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.steamos_separate_led_colors {
             os.write_bool(22016, v)?;
         }
+        if let Some(v) = self.steamos_wifi_reload_wifi_driver_on_sleep {
+            os.write_bool(22017, v)?;
+        }
+        if let Some(v) = self.steamos_wifi_power_management_enabled {
+            os.write_bool(220018, v)?;
+        }
+        if let Some(v) = self.steamos_cec_control {
+            os.write_bool(22019, v)?;
+        }
+        if let Some(v) = self.steamos_cec_suspend_tv {
+            os.write_bool(22020, v)?;
+        }
+        if let Some(v) = self.steamos_cec_suspend_device {
+            os.write_bool(22021, v)?;
+        }
+        if let Some(v) = self.steamos_cec_wake_tv {
+            os.write_bool(22022, v)?;
+        }
+        if let Some(v) = self.steamos_cec_wake_device {
+            os.write_bool(22023, v)?;
+        }
         if let Some(v) = self.setting_validation_bool {
             os.write_bool(23001, v)?;
         }
@@ -7345,11 +8914,32 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.hardware_updater_enabled {
             os.write_bool(24001, v)?;
         }
-        if let Some(v) = self.game_framerate_reporting_enabled {
-            os.write_bool(24002, v)?;
+        if let Some(v) = self.system_idle_suspend_battery_sec {
+            os.write_int32(24003, v)?;
+        }
+        if let Some(v) = self.system_idle_suspend_ac_sec {
+            os.write_int32(24004, v)?;
+        }
+        if let Some(v) = self.system_enable_low_power_downloads {
+            os.write_bool(24005, v)?;
+        }
+        if let Some(v) = self.system_allow_battery_low_power_downloads {
+            os.write_bool(24006, v)?;
+        }
+        if let Some(v) = self.system_idle_screensaver_battery_sec {
+            os.write_int32(24008, v)?;
+        }
+        if let Some(v) = self.system_idle_screensaver_ac_sec {
+            os.write_int32(24009, v)?;
         }
         if let Some(v) = self.vr_show_perf_graph_in_hmd {
             os.write_bool(25000, v)?;
+        }
+        if let Some(v) = self.vr_audio_spatialize {
+            os.write_bool(25001, v)?;
+        }
+        if let Some(v) = self.vr_audio_spatialize_surround {
+            os.write_bool(25002, v)?;
         }
         if let Some(v) = self.accessibility_debug_visualizer {
             os.write_bool(26000, v)?;
@@ -7384,6 +8974,60 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         if let Some(v) = self.accessibility_screen_reader_locale.as_ref() {
             os.write_string(26011, v)?;
         }
+        if let Some(v) = self.accessibility_mono_audio {
+            os.write_bool(26012, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_enabled {
+            os.write_bool(27000, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_5ghz {
+            os.write_int32(27001, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_6ghz {
+            os.write_int32(27002, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_channel_width {
+            os.write_int32(27003, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_mode {
+            os.write_bool(27004, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_ssid.as_ref() {
+            os.write_string(27005, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_password.as_ref() {
+            os.write_string(27006, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_hotspot_routing.as_ref() {
+            os.write_string(27007, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_show_advanced {
+            os.write_bool(27008, v)?;
+        }
+        if let Some(v) = self.remote_play_wifi_ap_paired_ssid.as_ref() {
+            os.write_string(27009, v)?;
+        }
+        if let Some(v) = self.skip_steamframe_pairing_dialog {
+            os.write_bool(27010, v)?;
+        }
+        if let Some(v) = self.oobe_completed {
+            os.write_bool(28001, v)?;
+        }
+        if let Some(v) = self.oobe_test_mode_enabled {
+            os.write_bool(28002, v)?;
+        }
+        if let Some(v) = self.force_oobe {
+            os.write_bool(28003, v)?;
+        }
+        if let Some(v) = self.oobe_stage_2_completed {
+            os.write_bool(28004, v)?;
+        }
+        if let Some(v) = self.oobe_stage_2_test_mode_enabled {
+            os.write_bool(28005, v)?;
+        }
+        if let Some(v) = self.force_stage_2_oobe {
+            os.write_bool(28006, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -7402,7 +9046,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
 
     fn clear(&mut self) {
         self.no_save_personal_info = ::std::option::Option::None;
-        self.oobe_test_mode_enabled = ::std::option::Option::None;
         self.in_client_beta = ::std::option::Option::None;
         self.is_steam_sideloaded = ::std::option::Option::None;
         self.preferred_monitor = ::std::option::Option::None;
@@ -7453,6 +9096,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.overlay_fps_counter_fps_graph = ::std::option::Option::None;
         self.overlay_fps_counter_cpu_graph = ::std::option::Option::None;
         self.overlay_fps_counter_allow_km_driver = ::std::option::Option::None;
+        self.achievement_notification_toast = ::std::option::Option::None;
+        self.achievement_notification_sound = ::std::option::Option::None;
+        self.controllerconnect_notification_toast = ::std::option::Option::None;
+        self.controllerconnect_notification_sound = ::std::option::Option::None;
+        self.controller_low_battery_notification_toast = ::std::option::Option::None;
+        self.controller_low_battery_notification_sound = ::std::option::Option::None;
         self.smooth_scroll_webviews = ::std::option::Option::None;
         self.enable_gpu_accelerated_webviews = ::std::option::Option::None;
         self.enable_hardware_video_decoding = ::std::option::Option::None;
@@ -7464,6 +9113,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.enable_ui_sounds = ::std::option::Option::None;
         self.enable_gamescope_composer = ::std::option::Option::None;
         self.enable_gamescope_composer_vr = ::std::option::Option::None;
+        self.show_switch_to_desktop_at_login = ::std::option::Option::None;
+        self.enable_steamrt64_client = ::std::option::Option::None;
         self.disable_all_toasts = ::std::option::Option::None;
         self.disable_toasts_in_game = ::std::option::Option::None;
         self.play_sound_on_toast = ::std::option::Option::None;
@@ -7523,6 +9174,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.controller_enable_chord = ::std::option::Option::None;
         self.controller_poll_rate = ::std::option::Option::None;
         self.controller_siapi_config_author_mode = ::std::option::Option::None;
+        self.controller_show_ibex_tour = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_0 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_1 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_2 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_3 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_4 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_5 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_6 = ::std::option::Option::None;
+        self.controller_chat_radial_menu_option_7 = ::std::option::Option::None;
         self.startup_movie_id = ::std::option::Option::None;
         self.startup_movie_local_path = ::std::option::Option::None;
         self.startup_movie_shuffle = ::std::option::Option::None;
@@ -7553,7 +9213,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.gamerecording_force_mic_mono = ::std::option::Option::None;
         self.gamerecording_automatic_gain_control = ::std::option::Option::None;
         self.show_timestamps_in_console = ::std::option::Option::None;
-        self.force_oobe = ::std::option::Option::None;
         self.override_browser_composer_mode = ::std::option::Option::None;
         self.cef_remote_debugging_enabled = ::std::option::Option::None;
         self.force_deck_perf_tab = ::std::option::Option::None;
@@ -7561,6 +9220,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.hdr_compat_testing = ::std::option::Option::None;
         self.developer_mode_enabled = ::std::option::Option::None;
         self.show_advanced_update_channels = ::std::option::Option::None;
+        self.browserview_underlays_allowed = ::std::option::Option::None;
         self.gamescope_hdr_visualization = ::std::option::Option::None;
         self.gamescope_app_target_framerate = ::std::option::Option::None;
         self.gamescope_enable_app_target_framerate = ::std::option::Option::None;
@@ -7594,6 +9254,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.steamos_system_tracing_enabled = ::std::option::Option::None;
         self.steamos_vrs_enabled = ::std::option::Option::None;
         self.steamos_separate_led_colors = ::std::option::Option::None;
+        self.steamos_wifi_reload_wifi_driver_on_sleep = ::std::option::Option::None;
+        self.steamos_wifi_power_management_enabled = ::std::option::Option::None;
+        self.steamos_cec_control = ::std::option::Option::None;
+        self.steamos_cec_suspend_tv = ::std::option::Option::None;
+        self.steamos_cec_suspend_device = ::std::option::Option::None;
+        self.steamos_cec_wake_tv = ::std::option::Option::None;
+        self.steamos_cec_wake_device = ::std::option::Option::None;
         self.setting_validation_bool = ::std::option::Option::None;
         self.setting_validation_enum = ::std::option::Option::None;
         self.setting_validation_int32 = ::std::option::Option::None;
@@ -7604,8 +9271,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.setting_validation_hotkey.clear();
         self.system_bluetooth_enabled = ::std::option::Option::None;
         self.hardware_updater_enabled = ::std::option::Option::None;
-        self.game_framerate_reporting_enabled = ::std::option::Option::None;
+        self.system_idle_suspend_battery_sec = ::std::option::Option::None;
+        self.system_idle_suspend_ac_sec = ::std::option::Option::None;
+        self.system_enable_low_power_downloads = ::std::option::Option::None;
+        self.system_allow_battery_low_power_downloads = ::std::option::Option::None;
+        self.system_idle_screensaver_battery_sec = ::std::option::Option::None;
+        self.system_idle_screensaver_ac_sec = ::std::option::Option::None;
         self.vr_show_perf_graph_in_hmd = ::std::option::Option::None;
+        self.vr_audio_spatialize = ::std::option::Option::None;
+        self.vr_audio_spatialize_surround = ::std::option::Option::None;
         self.accessibility_debug_visualizer = ::std::option::Option::None;
         self.accessibility_screen_reader_enabled = ::std::option::Option::None;
         self.accessibility_screen_reader_rate = ::std::option::Option::None;
@@ -7617,13 +9291,30 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
         self.accessibility_color_filter_name = ::std::option::Option::None;
         self.accessibility_desktop_ui_scale = ::std::option::Option::None;
         self.accessibility_screen_reader_locale = ::std::option::Option::None;
+        self.accessibility_mono_audio = ::std::option::Option::None;
+        self.remote_play_wifi_ap_enabled = ::std::option::Option::None;
+        self.remote_play_wifi_ap_channel_5ghz = ::std::option::Option::None;
+        self.remote_play_wifi_ap_channel_6ghz = ::std::option::Option::None;
+        self.remote_play_wifi_ap_channel_width = ::std::option::Option::None;
+        self.remote_play_wifi_ap_hotspot_mode = ::std::option::Option::None;
+        self.remote_play_wifi_ap_hotspot_ssid = ::std::option::Option::None;
+        self.remote_play_wifi_ap_hotspot_password = ::std::option::Option::None;
+        self.remote_play_wifi_ap_hotspot_routing = ::std::option::Option::None;
+        self.remote_play_wifi_ap_show_advanced = ::std::option::Option::None;
+        self.remote_play_wifi_ap_paired_ssid = ::std::option::Option::None;
+        self.skip_steamframe_pairing_dialog = ::std::option::Option::None;
+        self.oobe_completed = ::std::option::Option::None;
+        self.oobe_test_mode_enabled = ::std::option::Option::None;
+        self.force_oobe = ::std::option::Option::None;
+        self.oobe_stage_2_completed = ::std::option::Option::None;
+        self.oobe_stage_2_test_mode_enabled = ::std::option::Option::None;
+        self.force_stage_2_oobe = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CMsgClientSettings {
         static instance: CMsgClientSettings = CMsgClientSettings {
             no_save_personal_info: ::std::option::Option::None,
-            oobe_test_mode_enabled: ::std::option::Option::None,
             in_client_beta: ::std::option::Option::None,
             is_steam_sideloaded: ::std::option::Option::None,
             preferred_monitor: ::std::option::Option::None,
@@ -7674,6 +9365,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             overlay_fps_counter_fps_graph: ::std::option::Option::None,
             overlay_fps_counter_cpu_graph: ::std::option::Option::None,
             overlay_fps_counter_allow_km_driver: ::std::option::Option::None,
+            achievement_notification_toast: ::std::option::Option::None,
+            achievement_notification_sound: ::std::option::Option::None,
+            controllerconnect_notification_toast: ::std::option::Option::None,
+            controllerconnect_notification_sound: ::std::option::Option::None,
+            controller_low_battery_notification_toast: ::std::option::Option::None,
+            controller_low_battery_notification_sound: ::std::option::Option::None,
             smooth_scroll_webviews: ::std::option::Option::None,
             enable_gpu_accelerated_webviews: ::std::option::Option::None,
             enable_hardware_video_decoding: ::std::option::Option::None,
@@ -7685,6 +9382,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             enable_ui_sounds: ::std::option::Option::None,
             enable_gamescope_composer: ::std::option::Option::None,
             enable_gamescope_composer_vr: ::std::option::Option::None,
+            show_switch_to_desktop_at_login: ::std::option::Option::None,
+            enable_steamrt64_client: ::std::option::Option::None,
             disable_all_toasts: ::std::option::Option::None,
             disable_toasts_in_game: ::std::option::Option::None,
             play_sound_on_toast: ::std::option::Option::None,
@@ -7744,6 +9443,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             controller_enable_chord: ::std::option::Option::None,
             controller_poll_rate: ::std::option::Option::None,
             controller_siapi_config_author_mode: ::std::option::Option::None,
+            controller_show_ibex_tour: ::std::option::Option::None,
+            controller_chat_radial_menu_option_0: ::std::option::Option::None,
+            controller_chat_radial_menu_option_1: ::std::option::Option::None,
+            controller_chat_radial_menu_option_2: ::std::option::Option::None,
+            controller_chat_radial_menu_option_3: ::std::option::Option::None,
+            controller_chat_radial_menu_option_4: ::std::option::Option::None,
+            controller_chat_radial_menu_option_5: ::std::option::Option::None,
+            controller_chat_radial_menu_option_6: ::std::option::Option::None,
+            controller_chat_radial_menu_option_7: ::std::option::Option::None,
             startup_movie_id: ::std::option::Option::None,
             startup_movie_local_path: ::std::option::Option::None,
             startup_movie_shuffle: ::std::option::Option::None,
@@ -7774,7 +9482,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             gamerecording_force_mic_mono: ::std::option::Option::None,
             gamerecording_automatic_gain_control: ::std::option::Option::None,
             show_timestamps_in_console: ::std::option::Option::None,
-            force_oobe: ::std::option::Option::None,
             override_browser_composer_mode: ::std::option::Option::None,
             cef_remote_debugging_enabled: ::std::option::Option::None,
             force_deck_perf_tab: ::std::option::Option::None,
@@ -7782,6 +9489,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             hdr_compat_testing: ::std::option::Option::None,
             developer_mode_enabled: ::std::option::Option::None,
             show_advanced_update_channels: ::std::option::Option::None,
+            browserview_underlays_allowed: ::std::option::Option::None,
             gamescope_hdr_visualization: ::std::option::Option::None,
             gamescope_app_target_framerate: ::std::option::Option::None,
             gamescope_enable_app_target_framerate: ::std::option::Option::None,
@@ -7815,6 +9523,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             steamos_system_tracing_enabled: ::std::option::Option::None,
             steamos_vrs_enabled: ::std::option::Option::None,
             steamos_separate_led_colors: ::std::option::Option::None,
+            steamos_wifi_reload_wifi_driver_on_sleep: ::std::option::Option::None,
+            steamos_wifi_power_management_enabled: ::std::option::Option::None,
+            steamos_cec_control: ::std::option::Option::None,
+            steamos_cec_suspend_tv: ::std::option::Option::None,
+            steamos_cec_suspend_device: ::std::option::Option::None,
+            steamos_cec_wake_tv: ::std::option::Option::None,
+            steamos_cec_wake_device: ::std::option::Option::None,
             setting_validation_bool: ::std::option::Option::None,
             setting_validation_enum: ::std::option::Option::None,
             setting_validation_int32: ::std::option::Option::None,
@@ -7825,8 +9540,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             setting_validation_hotkey: ::steam_vent_proto_common::protobuf::MessageField::none(),
             system_bluetooth_enabled: ::std::option::Option::None,
             hardware_updater_enabled: ::std::option::Option::None,
-            game_framerate_reporting_enabled: ::std::option::Option::None,
+            system_idle_suspend_battery_sec: ::std::option::Option::None,
+            system_idle_suspend_ac_sec: ::std::option::Option::None,
+            system_enable_low_power_downloads: ::std::option::Option::None,
+            system_allow_battery_low_power_downloads: ::std::option::Option::None,
+            system_idle_screensaver_battery_sec: ::std::option::Option::None,
+            system_idle_screensaver_ac_sec: ::std::option::Option::None,
             vr_show_perf_graph_in_hmd: ::std::option::Option::None,
+            vr_audio_spatialize: ::std::option::Option::None,
+            vr_audio_spatialize_surround: ::std::option::Option::None,
             accessibility_debug_visualizer: ::std::option::Option::None,
             accessibility_screen_reader_enabled: ::std::option::Option::None,
             accessibility_screen_reader_rate: ::std::option::Option::None,
@@ -7838,6 +9560,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientSettings {
             accessibility_color_filter_name: ::std::option::Option::None,
             accessibility_desktop_ui_scale: ::std::option::Option::None,
             accessibility_screen_reader_locale: ::std::option::Option::None,
+            accessibility_mono_audio: ::std::option::Option::None,
+            remote_play_wifi_ap_enabled: ::std::option::Option::None,
+            remote_play_wifi_ap_channel_5ghz: ::std::option::Option::None,
+            remote_play_wifi_ap_channel_6ghz: ::std::option::Option::None,
+            remote_play_wifi_ap_channel_width: ::std::option::Option::None,
+            remote_play_wifi_ap_hotspot_mode: ::std::option::Option::None,
+            remote_play_wifi_ap_hotspot_ssid: ::std::option::Option::None,
+            remote_play_wifi_ap_hotspot_password: ::std::option::Option::None,
+            remote_play_wifi_ap_hotspot_routing: ::std::option::Option::None,
+            remote_play_wifi_ap_show_advanced: ::std::option::Option::None,
+            remote_play_wifi_ap_paired_ssid: ::std::option::Option::None,
+            skip_steamframe_pairing_dialog: ::std::option::Option::None,
+            oobe_completed: ::std::option::Option::None,
+            oobe_test_mode_enabled: ::std::option::Option::None,
+            force_oobe: ::std::option::Option::None,
+            oobe_stage_2_completed: ::std::option::Option::None,
+            oobe_stage_2_test_mode_enabled: ::std::option::Option::None,
+            force_stage_2_oobe: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8115,6 +9855,56 @@ impl ::steam_vent_proto_common::protobuf::Enum for EGRExportLimitType {
 impl ::std::default::Default for EGRExportLimitType {
     fn default() -> Self {
         EGRExportLimitType::k_EGRExportLimitType_Native
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EFrameRateReportEnabled)
+pub enum EFrameRateReportEnabled {
+    // @@protoc_insertion_point(enum_value:EFrameRateReportEnabled.k_EFrameRateReportEnabled_Unset)
+    k_EFrameRateReportEnabled_Unset = 0,
+    // @@protoc_insertion_point(enum_value:EFrameRateReportEnabled.k_EFrameRateReportEnabled_Enabled)
+    k_EFrameRateReportEnabled_Enabled = 1,
+    // @@protoc_insertion_point(enum_value:EFrameRateReportEnabled.k_EFrameRateReportEnabled_Disabled)
+    k_EFrameRateReportEnabled_Disabled = 2,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EFrameRateReportEnabled {
+    const NAME: &'static str = "EFrameRateReportEnabled";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EFrameRateReportEnabled> {
+        match value {
+            0 => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Unset),
+            1 => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Enabled),
+            2 => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Disabled),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EFrameRateReportEnabled> {
+        match str {
+            "k_EFrameRateReportEnabled_Unset" => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Unset),
+            "k_EFrameRateReportEnabled_Enabled" => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Enabled),
+            "k_EFrameRateReportEnabled_Disabled" => ::std::option::Option::Some(EFrameRateReportEnabled::k_EFrameRateReportEnabled_Disabled),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EFrameRateReportEnabled] = &[
+        EFrameRateReportEnabled::k_EFrameRateReportEnabled_Unset,
+        EFrameRateReportEnabled::k_EFrameRateReportEnabled_Enabled,
+        EFrameRateReportEnabled::k_EFrameRateReportEnabled_Disabled,
+    ];
+}
+
+impl ::std::default::Default for EFrameRateReportEnabled {
+    fn default() -> Self {
+        EFrameRateReportEnabled::k_EFrameRateReportEnabled_Unset
     }
 }
 

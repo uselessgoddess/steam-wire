@@ -152,6 +152,8 @@ pub mod cstore_page_filter {
         // message fields
         // @@protoc_insertion_point(field:CStorePageFilter.SalePageFilter.sale_tagid)
         pub sale_tagid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CStorePageFilter.SalePageFilter.creator_clan_account_id)
+        pub creator_clan_account_id: ::std::option::Option<u32>,
         // special fields
         // @@protoc_insertion_point(special_field:CStorePageFilter.SalePageFilter.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -186,6 +188,25 @@ pub mod cstore_page_filter {
         pub fn set_sale_tagid(&mut self, v: u32) {
             self.sale_tagid = ::std::option::Option::Some(v);
         }
+
+        // optional uint32 creator_clan_account_id = 2;
+
+        pub fn creator_clan_account_id(&self) -> u32 {
+            self.creator_clan_account_id.unwrap_or(0)
+        }
+
+        pub fn clear_creator_clan_account_id(&mut self) {
+            self.creator_clan_account_id = ::std::option::Option::None;
+        }
+
+        pub fn has_creator_clan_account_id(&self) -> bool {
+            self.creator_clan_account_id.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_creator_clan_account_id(&mut self, v: u32) {
+            self.creator_clan_account_id = ::std::option::Option::Some(v);
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for SalePageFilter {
@@ -200,6 +221,9 @@ pub mod cstore_page_filter {
                 match tag {
                     8 => {
                         self.sale_tagid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.creator_clan_account_id = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -216,6 +240,9 @@ pub mod cstore_page_filter {
             if let Some(v) = self.sale_tagid {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
             }
+            if let Some(v) = self.creator_clan_account_id {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -224,6 +251,9 @@ pub mod cstore_page_filter {
         fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
             if let Some(v) = self.sale_tagid {
                 os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.creator_clan_account_id {
+                os.write_uint32(2, v)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -243,12 +273,14 @@ pub mod cstore_page_filter {
 
         fn clear(&mut self) {
             self.sale_tagid = ::std::option::Option::None;
+            self.creator_clan_account_id = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
         fn default_instance() -> &'static SalePageFilter {
             static instance: SalePageFilter = SalePageFilter {
                 sale_tagid: ::std::option::Option::None,
+                creator_clan_account_id: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance

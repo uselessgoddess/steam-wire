@@ -1852,16 +1852,12 @@ pub struct CMsgBrowserCreate {
     pub native_dropdowns: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.dpi_scaling)
     pub dpi_scaling: ::std::option::Option<f32>,
-    // @@protoc_insertion_point(field:CMsgBrowserCreate.offscreen)
-    pub offscreen: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.initial_width)
     pub initial_width: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.initial_height)
     pub initial_height: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.window_icon)
     pub window_icon: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:CMsgBrowserCreate.borderless)
-    pub borderless: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.vroverlay_key)
     pub vroverlay_key: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgBrowserCreate.browser_type)
@@ -1913,7 +1909,7 @@ impl CMsgBrowserCreate {
         self.request_id = ::std::option::Option::Some(v);
     }
 
-    // optional string useragent = 3;
+    // optional string useragent = 2;
 
     pub fn useragent(&self) -> &str {
         match self.useragent.as_ref() {
@@ -1949,7 +1945,7 @@ impl CMsgBrowserCreate {
         self.useragent.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional string user_css = 5;
+    // optional string user_css = 3;
 
     pub fn user_css(&self) -> &str {
         match self.user_css.as_ref() {
@@ -1985,7 +1981,7 @@ impl CMsgBrowserCreate {
         self.user_css.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional bool native_dropdowns = 6;
+    // optional bool native_dropdowns = 4;
 
     pub fn native_dropdowns(&self) -> bool {
         self.native_dropdowns.unwrap_or(false)
@@ -2004,7 +2000,7 @@ impl CMsgBrowserCreate {
         self.native_dropdowns = ::std::option::Option::Some(v);
     }
 
-    // optional float dpi_scaling = 7;
+    // optional float dpi_scaling = 5;
 
     pub fn dpi_scaling(&self) -> f32 {
         self.dpi_scaling.unwrap_or(0.)
@@ -2023,29 +2019,10 @@ impl CMsgBrowserCreate {
         self.dpi_scaling = ::std::option::Option::Some(v);
     }
 
-    // optional bool offscreen = 8;
-
-    pub fn offscreen(&self) -> bool {
-        self.offscreen.unwrap_or(true)
-    }
-
-    pub fn clear_offscreen(&mut self) {
-        self.offscreen = ::std::option::Option::None;
-    }
-
-    pub fn has_offscreen(&self) -> bool {
-        self.offscreen.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_offscreen(&mut self, v: bool) {
-        self.offscreen = ::std::option::Option::Some(v);
-    }
-
-    // optional uint32 initial_width = 9;
+    // optional uint32 initial_width = 6;
 
     pub fn initial_width(&self) -> u32 {
-        self.initial_width.unwrap_or(0u32)
+        self.initial_width.unwrap_or(0)
     }
 
     pub fn clear_initial_width(&mut self) {
@@ -2061,10 +2038,10 @@ impl CMsgBrowserCreate {
         self.initial_width = ::std::option::Option::Some(v);
     }
 
-    // optional uint32 initial_height = 10;
+    // optional uint32 initial_height = 7;
 
     pub fn initial_height(&self) -> u32 {
-        self.initial_height.unwrap_or(0u32)
+        self.initial_height.unwrap_or(0)
     }
 
     pub fn clear_initial_height(&mut self) {
@@ -2080,7 +2057,7 @@ impl CMsgBrowserCreate {
         self.initial_height = ::std::option::Option::Some(v);
     }
 
-    // optional string window_icon = 11;
+    // optional string window_icon = 8;
 
     pub fn window_icon(&self) -> &str {
         match self.window_icon.as_ref() {
@@ -2116,26 +2093,7 @@ impl CMsgBrowserCreate {
         self.window_icon.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional bool borderless = 12;
-
-    pub fn borderless(&self) -> bool {
-        self.borderless.unwrap_or(false)
-    }
-
-    pub fn clear_borderless(&mut self) {
-        self.borderless = ::std::option::Option::None;
-    }
-
-    pub fn has_borderless(&self) -> bool {
-        self.borderless.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_borderless(&mut self, v: bool) {
-        self.borderless = ::std::option::Option::Some(v);
-    }
-
-    // optional string vroverlay_key = 13;
+    // optional string vroverlay_key = 9;
 
     pub fn vroverlay_key(&self) -> &str {
         match self.vroverlay_key.as_ref() {
@@ -2171,10 +2129,10 @@ impl CMsgBrowserCreate {
         self.vroverlay_key.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional uint32 browser_type = 14;
+    // optional uint32 browser_type = 10;
 
     pub fn browser_type(&self) -> u32 {
-        self.browser_type.unwrap_or(0u32)
+        self.browser_type.unwrap_or(0)
     }
 
     pub fn clear_browser_type(&mut self) {
@@ -2190,7 +2148,7 @@ impl CMsgBrowserCreate {
         self.browser_type = ::std::option::Option::Some(v);
     }
 
-    // optional int32 initial_top = 15;
+    // optional int32 initial_top = 11;
 
     pub fn initial_top(&self) -> i32 {
         self.initial_top.unwrap_or(-2147483648i32)
@@ -2209,7 +2167,7 @@ impl CMsgBrowserCreate {
         self.initial_top = ::std::option::Option::Some(v);
     }
 
-    // optional int32 initial_left = 16;
+    // optional int32 initial_left = 12;
 
     pub fn initial_left(&self) -> i32 {
         self.initial_left.unwrap_or(-2147483648i32)
@@ -2228,7 +2186,7 @@ impl CMsgBrowserCreate {
         self.initial_left = ::std::option::Option::Some(v);
     }
 
-    // optional bool only_allow_trusted_popups = 17;
+    // optional bool only_allow_trusted_popups = 13;
 
     pub fn only_allow_trusted_popups(&self) -> bool {
         self.only_allow_trusted_popups.unwrap_or(false)
@@ -2247,7 +2205,7 @@ impl CMsgBrowserCreate {
         self.only_allow_trusted_popups = ::std::option::Option::Some(v);
     }
 
-    // optional string initial_url = 18;
+    // optional string initial_url = 14;
 
     pub fn initial_url(&self) -> &str {
         match self.initial_url.as_ref() {
@@ -2283,7 +2241,7 @@ impl CMsgBrowserCreate {
         self.initial_url.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional fixed64 hwnd_parent = 19;
+    // optional fixed64 hwnd_parent = 15;
 
     pub fn hwnd_parent(&self) -> u64 {
         self.hwnd_parent.unwrap_or(0)
@@ -2302,10 +2260,10 @@ impl CMsgBrowserCreate {
         self.hwnd_parent = ::std::option::Option::Some(v);
     }
 
-    // optional uint32 creation_flags = 20;
+    // optional uint32 creation_flags = 16;
 
     pub fn creation_flags(&self) -> u32 {
-        self.creation_flags.unwrap_or(0u32)
+        self.creation_flags.unwrap_or(0)
     }
 
     pub fn clear_creation_flags(&mut self) {
@@ -2335,55 +2293,49 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
                 8 => {
                     self.request_id = ::std::option::Option::Some(is.read_uint32()?);
                 },
-                26 => {
+                18 => {
                     self.useragent = ::std::option::Option::Some(is.read_string()?);
                 },
-                42 => {
+                26 => {
                     self.user_css = ::std::option::Option::Some(is.read_string()?);
                 },
-                48 => {
+                32 => {
                     self.native_dropdowns = ::std::option::Option::Some(is.read_bool()?);
                 },
-                61 => {
+                45 => {
                     self.dpi_scaling = ::std::option::Option::Some(is.read_float()?);
                 },
-                64 => {
-                    self.offscreen = ::std::option::Option::Some(is.read_bool()?);
-                },
-                72 => {
+                48 => {
                     self.initial_width = ::std::option::Option::Some(is.read_uint32()?);
                 },
-                80 => {
+                56 => {
                     self.initial_height = ::std::option::Option::Some(is.read_uint32()?);
                 },
-                90 => {
+                66 => {
                     self.window_icon = ::std::option::Option::Some(is.read_string()?);
                 },
-                96 => {
-                    self.borderless = ::std::option::Option::Some(is.read_bool()?);
-                },
-                106 => {
+                74 => {
                     self.vroverlay_key = ::std::option::Option::Some(is.read_string()?);
                 },
-                112 => {
+                80 => {
                     self.browser_type = ::std::option::Option::Some(is.read_uint32()?);
                 },
-                120 => {
+                88 => {
                     self.initial_top = ::std::option::Option::Some(is.read_int32()?);
                 },
-                128 => {
+                96 => {
                     self.initial_left = ::std::option::Option::Some(is.read_int32()?);
                 },
-                136 => {
+                104 => {
                     self.only_allow_trusted_popups = ::std::option::Option::Some(is.read_bool()?);
                 },
-                146 => {
+                114 => {
                     self.initial_url = ::std::option::Option::Some(is.read_string()?);
                 },
-                153 => {
+                121 => {
                     self.hwnd_parent = ::std::option::Option::Some(is.read_fixed64()?);
                 },
-                160 => {
+                128 => {
                     self.creation_flags = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
@@ -2402,10 +2354,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
         }
         if let Some(v) = self.useragent.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
         }
         if let Some(v) = self.user_css.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
         }
         if let Some(v) = self.native_dropdowns {
             my_size += 1 + 1;
@@ -2413,44 +2365,38 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
         if let Some(v) = self.dpi_scaling {
             my_size += 1 + 4;
         }
-        if let Some(v) = self.offscreen {
-            my_size += 1 + 1;
-        }
         if let Some(v) = self.initial_width {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(9, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, v);
         }
         if let Some(v) = self.initial_height {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(10, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, v);
         }
         if let Some(v) = self.window_icon.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(11, &v);
-        }
-        if let Some(v) = self.borderless {
-            my_size += 1 + 1;
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(8, &v);
         }
         if let Some(v) = self.vroverlay_key.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(13, &v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(9, &v);
         }
         if let Some(v) = self.browser_type {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(14, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(10, v);
         }
         if let Some(v) = self.initial_top {
-            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(15, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(11, v);
         }
         if let Some(v) = self.initial_left {
-            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(16, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(12, v);
         }
         if let Some(v) = self.only_allow_trusted_popups {
-            my_size += 2 + 1;
+            my_size += 1 + 1;
         }
         if let Some(v) = self.initial_url.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(18, &v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(14, &v);
         }
         if let Some(v) = self.hwnd_parent {
-            my_size += 2 + 8;
+            my_size += 1 + 8;
         }
         if let Some(v) = self.creation_flags {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(20, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(16, v);
         }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
@@ -2462,55 +2408,49 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
             os.write_uint32(1, v)?;
         }
         if let Some(v) = self.useragent.as_ref() {
-            os.write_string(3, v)?;
+            os.write_string(2, v)?;
         }
         if let Some(v) = self.user_css.as_ref() {
-            os.write_string(5, v)?;
+            os.write_string(3, v)?;
         }
         if let Some(v) = self.native_dropdowns {
-            os.write_bool(6, v)?;
+            os.write_bool(4, v)?;
         }
         if let Some(v) = self.dpi_scaling {
-            os.write_float(7, v)?;
-        }
-        if let Some(v) = self.offscreen {
-            os.write_bool(8, v)?;
+            os.write_float(5, v)?;
         }
         if let Some(v) = self.initial_width {
-            os.write_uint32(9, v)?;
+            os.write_uint32(6, v)?;
         }
         if let Some(v) = self.initial_height {
-            os.write_uint32(10, v)?;
+            os.write_uint32(7, v)?;
         }
         if let Some(v) = self.window_icon.as_ref() {
-            os.write_string(11, v)?;
-        }
-        if let Some(v) = self.borderless {
-            os.write_bool(12, v)?;
+            os.write_string(8, v)?;
         }
         if let Some(v) = self.vroverlay_key.as_ref() {
-            os.write_string(13, v)?;
+            os.write_string(9, v)?;
         }
         if let Some(v) = self.browser_type {
-            os.write_uint32(14, v)?;
+            os.write_uint32(10, v)?;
         }
         if let Some(v) = self.initial_top {
-            os.write_int32(15, v)?;
+            os.write_int32(11, v)?;
         }
         if let Some(v) = self.initial_left {
-            os.write_int32(16, v)?;
+            os.write_int32(12, v)?;
         }
         if let Some(v) = self.only_allow_trusted_popups {
-            os.write_bool(17, v)?;
+            os.write_bool(13, v)?;
         }
         if let Some(v) = self.initial_url.as_ref() {
-            os.write_string(18, v)?;
+            os.write_string(14, v)?;
         }
         if let Some(v) = self.hwnd_parent {
-            os.write_fixed64(19, v)?;
+            os.write_fixed64(15, v)?;
         }
         if let Some(v) = self.creation_flags {
-            os.write_uint32(20, v)?;
+            os.write_uint32(16, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2534,11 +2474,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
         self.user_css = ::std::option::Option::None;
         self.native_dropdowns = ::std::option::Option::None;
         self.dpi_scaling = ::std::option::Option::None;
-        self.offscreen = ::std::option::Option::None;
         self.initial_width = ::std::option::Option::None;
         self.initial_height = ::std::option::Option::None;
         self.window_icon = ::std::option::Option::None;
-        self.borderless = ::std::option::Option::None;
         self.vroverlay_key = ::std::option::Option::None;
         self.browser_type = ::std::option::Option::None;
         self.initial_top = ::std::option::Option::None;
@@ -2557,11 +2495,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserCreate {
             user_css: ::std::option::Option::None,
             native_dropdowns: ::std::option::Option::None,
             dpi_scaling: ::std::option::Option::None,
-            offscreen: ::std::option::Option::None,
             initial_width: ::std::option::Option::None,
             initial_height: ::std::option::Option::None,
             window_icon: ::std::option::Option::None,
-            borderless: ::std::option::Option::None,
             vroverlay_key: ::std::option::Option::None,
             browser_type: ::std::option::Option::None,
             initial_top: ::std::option::Option::None,
@@ -4522,9 +4458,9 @@ pub struct CMsgBrowserResized {
     // @@protoc_insertion_point(field:CMsgBrowserResized.display_name)
     pub display_name: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgBrowserResized.display_width)
-    pub display_width: ::std::option::Option<u32>,
+    pub display_width: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgBrowserResized.display_height)
-    pub display_height: ::std::option::Option<u32>,
+    pub display_height: ::std::option::Option<i32>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgBrowserResized.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -4729,9 +4665,9 @@ impl CMsgBrowserResized {
         self.display_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional uint32 display_width = 10;
+    // optional int32 display_width = 10;
 
-    pub fn display_width(&self) -> u32 {
+    pub fn display_width(&self) -> i32 {
         self.display_width.unwrap_or(0)
     }
 
@@ -4744,13 +4680,13 @@ impl CMsgBrowserResized {
     }
 
     // Param is passed by value, moved
-    pub fn set_display_width(&mut self, v: u32) {
+    pub fn set_display_width(&mut self, v: i32) {
         self.display_width = ::std::option::Option::Some(v);
     }
 
-    // optional uint32 display_height = 11;
+    // optional int32 display_height = 11;
 
-    pub fn display_height(&self) -> u32 {
+    pub fn display_height(&self) -> i32 {
         self.display_height.unwrap_or(0)
     }
 
@@ -4763,7 +4699,7 @@ impl CMsgBrowserResized {
     }
 
     // Param is passed by value, moved
-    pub fn set_display_height(&mut self, v: u32) {
+    pub fn set_display_height(&mut self, v: i32) {
         self.display_height = ::std::option::Option::Some(v);
     }
 }
@@ -4806,10 +4742,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserResized {
                     self.display_name = ::std::option::Option::Some(is.read_string()?);
                 },
                 80 => {
-                    self.display_width = ::std::option::Option::Some(is.read_uint32()?);
+                    self.display_width = ::std::option::Option::Some(is.read_int32()?);
                 },
                 88 => {
-                    self.display_height = ::std::option::Option::Some(is.read_uint32()?);
+                    self.display_height = ::std::option::Option::Some(is.read_int32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -4851,10 +4787,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserResized {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(9, &v);
         }
         if let Some(v) = self.display_width {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(10, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(10, v);
         }
         if let Some(v) = self.display_height {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(11, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(11, v);
         }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
@@ -4890,10 +4826,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgBrowserResized {
             os.write_string(9, v)?;
         }
         if let Some(v) = self.display_width {
-            os.write_uint32(10, v)?;
+            os.write_int32(10, v)?;
         }
         if let Some(v) = self.display_height {
-            os.write_uint32(11, v)?;
+            os.write_int32(11, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -32004,6 +31940,181 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSetAccessibilitySettin
     }
 }
 
+// @@protoc_insertion_point(message:CMsgSetBrowserViewDomainRequestMapping)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgSetBrowserViewDomainRequestMapping {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgSetBrowserViewDomainRequestMapping.request_domain)
+    pub request_domain: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgSetBrowserViewDomainRequestMapping.default_local_path)
+    pub default_local_path: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgSetBrowserViewDomainRequestMapping.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgSetBrowserViewDomainRequestMapping {
+    fn default() -> &'a CMsgSetBrowserViewDomainRequestMapping {
+        <CMsgSetBrowserViewDomainRequestMapping as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgSetBrowserViewDomainRequestMapping {
+    pub fn new() -> CMsgSetBrowserViewDomainRequestMapping {
+        ::std::default::Default::default()
+    }
+
+    // optional string request_domain = 1;
+
+    pub fn request_domain(&self) -> &str {
+        match self.request_domain.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_request_domain(&mut self) {
+        self.request_domain = ::std::option::Option::None;
+    }
+
+    pub fn has_request_domain(&self) -> bool {
+        self.request_domain.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_request_domain(&mut self, v: ::std::string::String) {
+        self.request_domain = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_request_domain(&mut self) -> &mut ::std::string::String {
+        if self.request_domain.is_none() {
+            self.request_domain = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.request_domain.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_request_domain(&mut self) -> ::std::string::String {
+        self.request_domain.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string default_local_path = 2;
+
+    pub fn default_local_path(&self) -> &str {
+        match self.default_local_path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_default_local_path(&mut self) {
+        self.default_local_path = ::std::option::Option::None;
+    }
+
+    pub fn has_default_local_path(&self) -> bool {
+        self.default_local_path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_default_local_path(&mut self, v: ::std::string::String) {
+        self.default_local_path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_default_local_path(&mut self) -> &mut ::std::string::String {
+        if self.default_local_path.is_none() {
+            self.default_local_path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.default_local_path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_default_local_path(&mut self) -> ::std::string::String {
+        self.default_local_path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgSetBrowserViewDomainRequestMapping {
+    const NAME: &'static str = "CMsgSetBrowserViewDomainRequestMapping";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.request_domain = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.default_local_path = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.request_domain.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.default_local_path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.request_domain.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.default_local_path.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgSetBrowserViewDomainRequestMapping {
+        CMsgSetBrowserViewDomainRequestMapping::new()
+    }
+
+    fn clear(&mut self) {
+        self.request_domain = ::std::option::Option::None;
+        self.default_local_path = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgSetBrowserViewDomainRequestMapping {
+        static instance: CMsgSetBrowserViewDomainRequestMapping = CMsgSetBrowserViewDomainRequestMapping {
+            request_domain: ::std::option::Option::None,
+            default_local_path: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EJSRegisterMethodType)
 pub enum EJSRegisterMethodType {
@@ -34300,6 +34411,19 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgRestartJSContext {
     }
 }
 impl ::steam_vent_proto_common::RpcMessage for CMsgSetAccessibilitySettings {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgSetBrowserViewDomainRequestMapping {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }

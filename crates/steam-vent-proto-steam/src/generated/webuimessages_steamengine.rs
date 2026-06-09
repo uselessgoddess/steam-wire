@@ -49,7 +49,7 @@ impl CSteamEngine_UpdateTextFilterDictionary_Notification {
         ::std::default::Default::default()
     }
 
-    // required string language = 1;
+    // optional string language = 1;
 
     pub fn language(&self) -> &str {
         match self.language.as_ref() {
@@ -85,7 +85,7 @@ impl CSteamEngine_UpdateTextFilterDictionary_Notification {
         self.language.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required string type = 2;
+    // optional string type = 2;
 
     pub fn type_(&self) -> &str {
         match self.type_.as_ref() {
@@ -126,12 +126,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamEngine_UpdateTextFil
     const NAME: &'static str = "CSteamEngine_UpdateTextFilterDictionary_Notification";
 
     fn is_initialized(&self) -> bool {
-        if self.language.is_none() {
-            return false;
-        }
-        if self.type_.is_none() {
-            return false;
-        }
         true
     }
 
@@ -230,7 +224,7 @@ impl CSteamEngine_GetTextFilterDictionary_Request {
         ::std::default::Default::default()
     }
 
-    // required string language = 1;
+    // optional string language = 1;
 
     pub fn language(&self) -> &str {
         match self.language.as_ref() {
@@ -266,7 +260,7 @@ impl CSteamEngine_GetTextFilterDictionary_Request {
         self.language.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required string type = 2;
+    // optional string type = 2;
 
     pub fn type_(&self) -> &str {
         match self.type_.as_ref() {
@@ -307,12 +301,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamEngine_GetTextFilter
     const NAME: &'static str = "CSteamEngine_GetTextFilterDictionary_Request";
 
     fn is_initialized(&self) -> bool {
-        if self.language.is_none() {
-            return false;
-        }
-        if self.type_.is_none() {
-            return false;
-        }
         true
     }
 
@@ -537,7 +525,7 @@ impl CSteamEngine_TextFilterDictionaryChanged_Notification {
         ::std::default::Default::default()
     }
 
-    // required string language = 1;
+    // optional string language = 1;
 
     pub fn language(&self) -> &str {
         match self.language.as_ref() {
@@ -573,7 +561,7 @@ impl CSteamEngine_TextFilterDictionaryChanged_Notification {
         self.language.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required string type = 2;
+    // optional string type = 2;
 
     pub fn type_(&self) -> &str {
         match self.type_.as_ref() {
@@ -614,12 +602,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamEngine_TextFilterDic
     const NAME: &'static str = "CSteamEngine_TextFilterDictionaryChanged_Notification";
 
     fn is_initialized(&self) -> bool {
-        if self.language.is_none() {
-            return false;
-        }
-        if self.type_.is_none() {
-            return false;
-        }
         true
     }
 
@@ -936,7 +918,7 @@ impl CSteamEngine_SetOverlayEscapeKeyHandling_Notification {
         ::std::default::Default::default()
     }
 
-    // required uint64 gameid = 1;
+    // optional uint64 gameid = 1;
 
     pub fn gameid(&self) -> u64 {
         self.gameid.unwrap_or(0)
@@ -955,7 +937,7 @@ impl CSteamEngine_SetOverlayEscapeKeyHandling_Notification {
         self.gameid = ::std::option::Option::Some(v);
     }
 
-    // required bool should_handle = 2;
+    // optional bool should_handle = 2;
 
     pub fn should_handle(&self) -> bool {
         self.should_handle.unwrap_or(false)
@@ -979,12 +961,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamEngine_SetOverlayEsc
     const NAME: &'static str = "CSteamEngine_SetOverlayEscapeKeyHandling_Notification";
 
     fn is_initialized(&self) -> bool {
-        if self.gameid.is_none() {
-            return false;
-        }
-        if self.should_handle.is_none() {
-            return false;
-        }
         true
     }
 

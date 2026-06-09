@@ -91,5 +91,135 @@ impl ::std::default::Default for EContentDescriptorID {
 }
 
 
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ERatingAgency)
+pub enum ERatingAgency {
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_Invalid)
+    k_ERatingAgency_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_ESRB)
+    k_ERatingAgency_ESRB = 1,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_PEGI)
+    k_ERatingAgency_PEGI = 2,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_BBFC)
+    k_ERatingAgency_BBFC = 3,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_USK)
+    k_ERatingAgency_USK = 4,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_OFLC_AU)
+    k_ERatingAgency_OFLC_AU = 5,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_OFLC_NZ)
+    k_ERatingAgency_OFLC_NZ = 6,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_CERO)
+    k_ERatingAgency_CERO = 7,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_GRAC)
+    k_ERatingAgency_GRAC = 8,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_GMEDIA)
+    k_ERatingAgency_GMEDIA = 9,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_DEJUS)
+    k_ERatingAgency_DEJUS = 10,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_IMDA)
+    k_ERatingAgency_IMDA = 11,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_FPB)
+    k_ERatingAgency_FPB = 12,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_TESRI)
+    k_ERatingAgency_TESRI = 13,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_RARS)
+    k_ERatingAgency_RARS = 14,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_AGCOM)
+    k_ERatingAgency_AGCOM = 15,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_IGRS)
+    k_ERatingAgency_IGRS = 16,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_Steam_Germany)
+    k_ERatingAgency_Steam_Germany = 17,
+    // @@protoc_insertion_point(enum_value:ERatingAgency.k_ERatingAgency_Steam_Australia)
+    k_ERatingAgency_Steam_Australia = 18,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ERatingAgency {
+    const NAME: &'static str = "ERatingAgency";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ERatingAgency> {
+        match value {
+            0 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Invalid),
+            1 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_ESRB),
+            2 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_PEGI),
+            3 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_BBFC),
+            4 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_USK),
+            5 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_OFLC_AU),
+            6 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_OFLC_NZ),
+            7 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_CERO),
+            8 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_GRAC),
+            9 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_GMEDIA),
+            10 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_DEJUS),
+            11 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_IMDA),
+            12 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_FPB),
+            13 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_TESRI),
+            14 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_RARS),
+            15 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_AGCOM),
+            16 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_IGRS),
+            17 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Steam_Germany),
+            18 => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Steam_Australia),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ERatingAgency> {
+        match str {
+            "k_ERatingAgency_Invalid" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Invalid),
+            "k_ERatingAgency_ESRB" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_ESRB),
+            "k_ERatingAgency_PEGI" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_PEGI),
+            "k_ERatingAgency_BBFC" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_BBFC),
+            "k_ERatingAgency_USK" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_USK),
+            "k_ERatingAgency_OFLC_AU" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_OFLC_AU),
+            "k_ERatingAgency_OFLC_NZ" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_OFLC_NZ),
+            "k_ERatingAgency_CERO" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_CERO),
+            "k_ERatingAgency_GRAC" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_GRAC),
+            "k_ERatingAgency_GMEDIA" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_GMEDIA),
+            "k_ERatingAgency_DEJUS" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_DEJUS),
+            "k_ERatingAgency_IMDA" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_IMDA),
+            "k_ERatingAgency_FPB" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_FPB),
+            "k_ERatingAgency_TESRI" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_TESRI),
+            "k_ERatingAgency_RARS" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_RARS),
+            "k_ERatingAgency_AGCOM" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_AGCOM),
+            "k_ERatingAgency_IGRS" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_IGRS),
+            "k_ERatingAgency_Steam_Germany" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Steam_Germany),
+            "k_ERatingAgency_Steam_Australia" => ::std::option::Option::Some(ERatingAgency::k_ERatingAgency_Steam_Australia),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ERatingAgency] = &[
+        ERatingAgency::k_ERatingAgency_Invalid,
+        ERatingAgency::k_ERatingAgency_ESRB,
+        ERatingAgency::k_ERatingAgency_PEGI,
+        ERatingAgency::k_ERatingAgency_BBFC,
+        ERatingAgency::k_ERatingAgency_USK,
+        ERatingAgency::k_ERatingAgency_OFLC_AU,
+        ERatingAgency::k_ERatingAgency_OFLC_NZ,
+        ERatingAgency::k_ERatingAgency_CERO,
+        ERatingAgency::k_ERatingAgency_GRAC,
+        ERatingAgency::k_ERatingAgency_GMEDIA,
+        ERatingAgency::k_ERatingAgency_DEJUS,
+        ERatingAgency::k_ERatingAgency_IMDA,
+        ERatingAgency::k_ERatingAgency_FPB,
+        ERatingAgency::k_ERatingAgency_TESRI,
+        ERatingAgency::k_ERatingAgency_RARS,
+        ERatingAgency::k_ERatingAgency_AGCOM,
+        ERatingAgency::k_ERatingAgency_IGRS,
+        ERatingAgency::k_ERatingAgency_Steam_Germany,
+        ERatingAgency::k_ERatingAgency_Steam_Australia,
+    ];
+}
+
+impl ::std::default::Default for ERatingAgency {
+    fn default() -> Self {
+        ERatingAgency::k_ERatingAgency_Invalid
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;

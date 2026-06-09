@@ -240,8 +240,6 @@ pub struct CSteamOSManagerState {
     pub os_version: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CSteamOSManagerState.is_mandatory_update_available)
     pub is_mandatory_update_available: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CSteamOSManagerState.startup_movie_variant)
-    pub startup_movie_variant: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EStartupMovieVariant>>,
     // @@protoc_insertion_point(field:CSteamOSManagerState.is_status_led_control_available)
     pub is_status_led_control_available: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CSteamOSManagerState.factory_reset_state)
@@ -288,6 +286,20 @@ pub struct CSteamOSManagerState {
     pub is_system_tracing_available: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CSteamOSManagerState.is_vrs_available)
     pub is_vrs_available: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.is_wifi_driver_reload_available)
+    pub is_wifi_driver_reload_available: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.is_password_change_supported)
+    pub is_password_change_supported: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.is_session_management_supported)
+    pub is_session_management_supported: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.desktop_sessions_available)
+    pub desktop_sessions_available: ::std::vec::Vec<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.desktop_session_default)
+    pub desktop_session_default: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.is_extended_cec_available)
+    pub is_extended_cec_available: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamOSManagerState.is_extended_cec_wake_device_supported)
+    pub is_extended_cec_wake_device_supported: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CSteamOSManagerState.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -376,28 +388,6 @@ impl CSteamOSManagerState {
     // Param is passed by value, moved
     pub fn set_is_mandatory_update_available(&mut self, v: bool) {
         self.is_mandatory_update_available = ::std::option::Option::Some(v);
-    }
-
-    // optional .EStartupMovieVariant startup_movie_variant = 4;
-
-    pub fn startup_movie_variant(&self) -> super::enums::EStartupMovieVariant {
-        match self.startup_movie_variant {
-            Some(e) => e.enum_value_or(super::enums::EStartupMovieVariant::k_EStartupMovieVariant_Invalid),
-            None => super::enums::EStartupMovieVariant::k_EStartupMovieVariant_Invalid,
-        }
-    }
-
-    pub fn clear_startup_movie_variant(&mut self) {
-        self.startup_movie_variant = ::std::option::Option::None;
-    }
-
-    pub fn has_startup_movie_variant(&self) -> bool {
-        self.startup_movie_variant.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_startup_movie_variant(&mut self, v: super::enums::EStartupMovieVariant) {
-        self.startup_movie_variant = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
 
     // optional bool is_status_led_control_available = 5;
@@ -813,6 +803,137 @@ impl CSteamOSManagerState {
     pub fn set_is_vrs_available(&mut self, v: bool) {
         self.is_vrs_available = ::std::option::Option::Some(v);
     }
+
+    // optional bool is_wifi_driver_reload_available = 29;
+
+    pub fn is_wifi_driver_reload_available(&self) -> bool {
+        self.is_wifi_driver_reload_available.unwrap_or(false)
+    }
+
+    pub fn clear_is_wifi_driver_reload_available(&mut self) {
+        self.is_wifi_driver_reload_available = ::std::option::Option::None;
+    }
+
+    pub fn has_is_wifi_driver_reload_available(&self) -> bool {
+        self.is_wifi_driver_reload_available.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_wifi_driver_reload_available(&mut self, v: bool) {
+        self.is_wifi_driver_reload_available = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_password_change_supported = 30;
+
+    pub fn is_password_change_supported(&self) -> bool {
+        self.is_password_change_supported.unwrap_or(false)
+    }
+
+    pub fn clear_is_password_change_supported(&mut self) {
+        self.is_password_change_supported = ::std::option::Option::None;
+    }
+
+    pub fn has_is_password_change_supported(&self) -> bool {
+        self.is_password_change_supported.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_password_change_supported(&mut self, v: bool) {
+        self.is_password_change_supported = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_session_management_supported = 31;
+
+    pub fn is_session_management_supported(&self) -> bool {
+        self.is_session_management_supported.unwrap_or(false)
+    }
+
+    pub fn clear_is_session_management_supported(&mut self) {
+        self.is_session_management_supported = ::std::option::Option::None;
+    }
+
+    pub fn has_is_session_management_supported(&self) -> bool {
+        self.is_session_management_supported.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_session_management_supported(&mut self, v: bool) {
+        self.is_session_management_supported = ::std::option::Option::Some(v);
+    }
+
+    // optional string desktop_session_default = 33;
+
+    pub fn desktop_session_default(&self) -> &str {
+        match self.desktop_session_default.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_desktop_session_default(&mut self) {
+        self.desktop_session_default = ::std::option::Option::None;
+    }
+
+    pub fn has_desktop_session_default(&self) -> bool {
+        self.desktop_session_default.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_desktop_session_default(&mut self, v: ::std::string::String) {
+        self.desktop_session_default = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_desktop_session_default(&mut self) -> &mut ::std::string::String {
+        if self.desktop_session_default.is_none() {
+            self.desktop_session_default = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.desktop_session_default.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_desktop_session_default(&mut self) -> ::std::string::String {
+        self.desktop_session_default.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool is_extended_cec_available = 34;
+
+    pub fn is_extended_cec_available(&self) -> bool {
+        self.is_extended_cec_available.unwrap_or(false)
+    }
+
+    pub fn clear_is_extended_cec_available(&mut self) {
+        self.is_extended_cec_available = ::std::option::Option::None;
+    }
+
+    pub fn has_is_extended_cec_available(&self) -> bool {
+        self.is_extended_cec_available.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_extended_cec_available(&mut self, v: bool) {
+        self.is_extended_cec_available = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_extended_cec_wake_device_supported = 35;
+
+    pub fn is_extended_cec_wake_device_supported(&self) -> bool {
+        self.is_extended_cec_wake_device_supported.unwrap_or(false)
+    }
+
+    pub fn clear_is_extended_cec_wake_device_supported(&mut self) {
+        self.is_extended_cec_wake_device_supported = ::std::option::Option::None;
+    }
+
+    pub fn has_is_extended_cec_wake_device_supported(&self) -> bool {
+        self.is_extended_cec_wake_device_supported.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_extended_cec_wake_device_supported(&mut self, v: bool) {
+        self.is_extended_cec_wake_device_supported = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
@@ -833,9 +954,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
                 },
                 24 => {
                     self.is_mandatory_update_available = ::std::option::Option::Some(is.read_bool()?);
-                },
-                32 => {
-                    self.startup_movie_variant = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
                 40 => {
                     self.is_status_led_control_available = ::std::option::Option::Some(is.read_bool()?);
@@ -906,6 +1024,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
                 224 => {
                     self.is_vrs_available = ::std::option::Option::Some(is.read_bool()?);
                 },
+                232 => {
+                    self.is_wifi_driver_reload_available = ::std::option::Option::Some(is.read_bool()?);
+                },
+                240 => {
+                    self.is_password_change_supported = ::std::option::Option::Some(is.read_bool()?);
+                },
+                248 => {
+                    self.is_session_management_supported = ::std::option::Option::Some(is.read_bool()?);
+                },
+                258 => {
+                    self.desktop_sessions_available.push(is.read_string()?);
+                },
+                266 => {
+                    self.desktop_session_default = ::std::option::Option::Some(is.read_string()?);
+                },
+                272 => {
+                    self.is_extended_cec_available = ::std::option::Option::Some(is.read_bool()?);
+                },
+                280 => {
+                    self.is_extended_cec_wake_device_supported = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -926,9 +1065,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         }
         if let Some(v) = self.is_mandatory_update_available {
             my_size += 1 + 1;
-        }
-        if let Some(v) = self.startup_movie_variant {
-            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v.value());
         }
         if let Some(v) = self.is_status_led_control_available {
             my_size += 1 + 1;
@@ -1000,6 +1136,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         if let Some(v) = self.is_vrs_available {
             my_size += 2 + 1;
         }
+        if let Some(v) = self.is_wifi_driver_reload_available {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.is_password_change_supported {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.is_session_management_supported {
+            my_size += 2 + 1;
+        }
+        for value in &self.desktop_sessions_available {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(32, &value);
+        };
+        if let Some(v) = self.desktop_session_default.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(33, &v);
+        }
+        if let Some(v) = self.is_extended_cec_available {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.is_extended_cec_wake_device_supported {
+            my_size += 2 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -1014,9 +1171,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         }
         if let Some(v) = self.is_mandatory_update_available {
             os.write_bool(3, v)?;
-        }
-        if let Some(v) = self.startup_movie_variant {
-            os.write_enum(4, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
         }
         if let Some(v) = self.is_status_led_control_available {
             os.write_bool(5, v)?;
@@ -1087,6 +1241,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         if let Some(v) = self.is_vrs_available {
             os.write_bool(28, v)?;
         }
+        if let Some(v) = self.is_wifi_driver_reload_available {
+            os.write_bool(29, v)?;
+        }
+        if let Some(v) = self.is_password_change_supported {
+            os.write_bool(30, v)?;
+        }
+        if let Some(v) = self.is_session_management_supported {
+            os.write_bool(31, v)?;
+        }
+        for v in &self.desktop_sessions_available {
+            os.write_string(32, &v)?;
+        };
+        if let Some(v) = self.desktop_session_default.as_ref() {
+            os.write_string(33, v)?;
+        }
+        if let Some(v) = self.is_extended_cec_available {
+            os.write_bool(34, v)?;
+        }
+        if let Some(v) = self.is_extended_cec_wake_device_supported {
+            os.write_bool(35, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1107,7 +1282,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         self.is_service_available = ::std::option::Option::None;
         self.os_version = ::std::option::Option::None;
         self.is_mandatory_update_available = ::std::option::Option::None;
-        self.startup_movie_variant = ::std::option::Option::None;
         self.is_status_led_control_available = ::std::option::Option::None;
         self.factory_reset_state.clear();
         self.is_tdp_limit_available = ::std::option::Option::None;
@@ -1131,6 +1305,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
         self.screen_reader_locale_default = ::std::option::Option::None;
         self.is_system_tracing_available = ::std::option::Option::None;
         self.is_vrs_available = ::std::option::Option::None;
+        self.is_wifi_driver_reload_available = ::std::option::Option::None;
+        self.is_password_change_supported = ::std::option::Option::None;
+        self.is_session_management_supported = ::std::option::Option::None;
+        self.desktop_sessions_available.clear();
+        self.desktop_session_default = ::std::option::Option::None;
+        self.is_extended_cec_available = ::std::option::Option::None;
+        self.is_extended_cec_wake_device_supported = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -1139,7 +1320,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
             is_service_available: ::std::option::Option::None,
             os_version: ::std::option::Option::None,
             is_mandatory_update_available: ::std::option::Option::None,
-            startup_movie_variant: ::std::option::Option::None,
             is_status_led_control_available: ::std::option::Option::None,
             factory_reset_state: ::steam_vent_proto_common::protobuf::MessageField::none(),
             is_tdp_limit_available: ::std::option::Option::None,
@@ -1163,6 +1343,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManagerState {
             screen_reader_locale_default: ::std::option::Option::None,
             is_system_tracing_available: ::std::option::Option::None,
             is_vrs_available: ::std::option::Option::None,
+            is_wifi_driver_reload_available: ::std::option::Option::None,
+            is_password_change_supported: ::std::option::Option::None,
+            is_session_management_supported: ::std::option::Option::None,
+            desktop_sessions_available: ::std::vec::Vec::new(),
+            desktop_session_default: ::std::option::Option::None,
+            is_extended_cec_available: ::std::option::Option::None,
+            is_extended_cec_wake_device_supported: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2148,6 +2335,1838 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_FactoryRes
 
     fn default_instance() -> &'static CSteamOSManager_FactoryReset_Response {
         static instance: CSteamOSManager_FactoryReset_Response = CSteamOSManager_FactoryReset_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_RefreshScreenReaderAutoLocale_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_RefreshScreenReaderAutoLocale_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    fn default() -> &'a CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+        <CSteamOSManager_RefreshScreenReaderAutoLocale_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    pub fn new() -> CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    const NAME: &'static str = "CSteamOSManager_RefreshScreenReaderAutoLocale_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+        CSteamOSManager_RefreshScreenReaderAutoLocale_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+        static instance: CSteamOSManager_RefreshScreenReaderAutoLocale_Request = CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_RefreshScreenReaderAutoLocale_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_RefreshScreenReaderAutoLocale_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+    fn default() -> &'a CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+        <CSteamOSManager_RefreshScreenReaderAutoLocale_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+    pub fn new() -> CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+    const NAME: &'static str = "CSteamOSManager_RefreshScreenReaderAutoLocale_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+        CSteamOSManager_RefreshScreenReaderAutoLocale_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+        static instance: CSteamOSManager_RefreshScreenReaderAutoLocale_Response = CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOS_SetUserPassword_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOS_SetUserPassword_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOS_SetUserPassword_Request.current_password)
+    pub current_password: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOS_SetUserPassword_Request.new_password)
+    pub new_password: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOS_SetUserPassword_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOS_SetUserPassword_Request {
+    fn default() -> &'a CSteamOS_SetUserPassword_Request {
+        <CSteamOS_SetUserPassword_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOS_SetUserPassword_Request {
+    pub fn new() -> CSteamOS_SetUserPassword_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string current_password = 1;
+
+    pub fn current_password(&self) -> &str {
+        match self.current_password.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_current_password(&mut self) {
+        self.current_password = ::std::option::Option::None;
+    }
+
+    pub fn has_current_password(&self) -> bool {
+        self.current_password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_current_password(&mut self, v: ::std::string::String) {
+        self.current_password = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_current_password(&mut self) -> &mut ::std::string::String {
+        if self.current_password.is_none() {
+            self.current_password = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.current_password.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_current_password(&mut self) -> ::std::string::String {
+        self.current_password.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string new_password = 2;
+
+    pub fn new_password(&self) -> &str {
+        match self.new_password.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_new_password(&mut self) {
+        self.new_password = ::std::option::Option::None;
+    }
+
+    pub fn has_new_password(&self) -> bool {
+        self.new_password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_new_password(&mut self, v: ::std::string::String) {
+        self.new_password = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_new_password(&mut self) -> &mut ::std::string::String {
+        if self.new_password.is_none() {
+            self.new_password = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.new_password.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_new_password(&mut self) -> ::std::string::String {
+        self.new_password.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOS_SetUserPassword_Request {
+    const NAME: &'static str = "CSteamOS_SetUserPassword_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.current_password = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.new_password = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.current_password.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.new_password.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.current_password.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.new_password.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOS_SetUserPassword_Request {
+        CSteamOS_SetUserPassword_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.current_password = ::std::option::Option::None;
+        self.new_password = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOS_SetUserPassword_Request {
+        static instance: CSteamOS_SetUserPassword_Request = CSteamOS_SetUserPassword_Request {
+            current_password: ::std::option::Option::None,
+            new_password: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOS_SetUserPassword_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOS_SetUserPassword_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOS_SetUserPassword_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOS_SetUserPassword_Response {
+    fn default() -> &'a CSteamOS_SetUserPassword_Response {
+        <CSteamOS_SetUserPassword_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOS_SetUserPassword_Response {
+    pub fn new() -> CSteamOS_SetUserPassword_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOS_SetUserPassword_Response {
+    const NAME: &'static str = "CSteamOS_SetUserPassword_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOS_SetUserPassword_Response {
+        CSteamOS_SetUserPassword_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOS_SetUserPassword_Response {
+        static instance: CSteamOS_SetUserPassword_Response = CSteamOS_SetUserPassword_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOS_GetUserHasPassword_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOS_GetUserHasPassword_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOS_GetUserHasPassword_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOS_GetUserHasPassword_Request {
+    fn default() -> &'a CSteamOS_GetUserHasPassword_Request {
+        <CSteamOS_GetUserHasPassword_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOS_GetUserHasPassword_Request {
+    pub fn new() -> CSteamOS_GetUserHasPassword_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOS_GetUserHasPassword_Request {
+    const NAME: &'static str = "CSteamOS_GetUserHasPassword_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOS_GetUserHasPassword_Request {
+        CSteamOS_GetUserHasPassword_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOS_GetUserHasPassword_Request {
+        static instance: CSteamOS_GetUserHasPassword_Request = CSteamOS_GetUserHasPassword_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOS_GetUserHasPassword_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOS_GetUserHasPassword_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOS_GetUserHasPassword_Response.has_password)
+    pub has_password: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOS_GetUserHasPassword_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOS_GetUserHasPassword_Response {
+    fn default() -> &'a CSteamOS_GetUserHasPassword_Response {
+        <CSteamOS_GetUserHasPassword_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOS_GetUserHasPassword_Response {
+    pub fn new() -> CSteamOS_GetUserHasPassword_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional bool has_password = 1;
+
+    pub fn has_password(&self) -> bool {
+        self.has_password.unwrap_or(false)
+    }
+
+    pub fn clear_has_password(&mut self) {
+        self.has_password = ::std::option::Option::None;
+    }
+
+    pub fn has_has_password(&self) -> bool {
+        self.has_password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_has_password(&mut self, v: bool) {
+        self.has_password = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOS_GetUserHasPassword_Response {
+    const NAME: &'static str = "CSteamOS_GetUserHasPassword_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.has_password = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.has_password {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.has_password {
+            os.write_bool(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOS_GetUserHasPassword_Response {
+        CSteamOS_GetUserHasPassword_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.has_password = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOS_GetUserHasPassword_Response {
+        static instance: CSteamOS_GetUserHasPassword_Response = CSteamOS_GetUserHasPassword_Response {
+            has_password: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_PrepareFactoryImageTest_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_PrepareFactoryImageTest_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOSManager_PrepareFactoryImageTest_Request.factory_reset)
+    pub factory_reset: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_PrepareFactoryImageTest_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_PrepareFactoryImageTest_Request {
+    fn default() -> &'a CSteamOSManager_PrepareFactoryImageTest_Request {
+        <CSteamOSManager_PrepareFactoryImageTest_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_PrepareFactoryImageTest_Request {
+    pub fn new() -> CSteamOSManager_PrepareFactoryImageTest_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional bool factory_reset = 1;
+
+    pub fn factory_reset(&self) -> bool {
+        self.factory_reset.unwrap_or(false)
+    }
+
+    pub fn clear_factory_reset(&mut self) {
+        self.factory_reset = ::std::option::Option::None;
+    }
+
+    pub fn has_factory_reset(&self) -> bool {
+        self.factory_reset.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_factory_reset(&mut self, v: bool) {
+        self.factory_reset = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_PrepareFactoryImageTest_Request {
+    const NAME: &'static str = "CSteamOSManager_PrepareFactoryImageTest_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.factory_reset = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.factory_reset {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.factory_reset {
+            os.write_bool(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_PrepareFactoryImageTest_Request {
+        CSteamOSManager_PrepareFactoryImageTest_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.factory_reset = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_PrepareFactoryImageTest_Request {
+        static instance: CSteamOSManager_PrepareFactoryImageTest_Request = CSteamOSManager_PrepareFactoryImageTest_Request {
+            factory_reset: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_PrepareFactoryImageTest_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_PrepareFactoryImageTest_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_PrepareFactoryImageTest_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_PrepareFactoryImageTest_Response {
+    fn default() -> &'a CSteamOSManager_PrepareFactoryImageTest_Response {
+        <CSteamOSManager_PrepareFactoryImageTest_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_PrepareFactoryImageTest_Response {
+    pub fn new() -> CSteamOSManager_PrepareFactoryImageTest_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_PrepareFactoryImageTest_Response {
+    const NAME: &'static str = "CSteamOSManager_PrepareFactoryImageTest_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_PrepareFactoryImageTest_Response {
+        CSteamOSManager_PrepareFactoryImageTest_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_PrepareFactoryImageTest_Response {
+        static instance: CSteamOSManager_PrepareFactoryImageTest_Response = CSteamOSManager_PrepareFactoryImageTest_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SwitchToDesktop_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SwitchToDesktop_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SwitchToDesktop_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SwitchToDesktop_Request {
+    fn default() -> &'a CSteamOSManager_SwitchToDesktop_Request {
+        <CSteamOSManager_SwitchToDesktop_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SwitchToDesktop_Request {
+    pub fn new() -> CSteamOSManager_SwitchToDesktop_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SwitchToDesktop_Request {
+    const NAME: &'static str = "CSteamOSManager_SwitchToDesktop_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SwitchToDesktop_Request {
+        CSteamOSManager_SwitchToDesktop_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SwitchToDesktop_Request {
+        static instance: CSteamOSManager_SwitchToDesktop_Request = CSteamOSManager_SwitchToDesktop_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SwitchToDesktop_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SwitchToDesktop_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SwitchToDesktop_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SwitchToDesktop_Response {
+    fn default() -> &'a CSteamOSManager_SwitchToDesktop_Response {
+        <CSteamOSManager_SwitchToDesktop_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SwitchToDesktop_Response {
+    pub fn new() -> CSteamOSManager_SwitchToDesktop_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SwitchToDesktop_Response {
+    const NAME: &'static str = "CSteamOSManager_SwitchToDesktop_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SwitchToDesktop_Response {
+        CSteamOSManager_SwitchToDesktop_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SwitchToDesktop_Response {
+        static instance: CSteamOSManager_SwitchToDesktop_Response = CSteamOSManager_SwitchToDesktop_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SetDefaultDesktopSession_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SetDefaultDesktopSession_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOSManager_SetDefaultDesktopSession_Request.session_name)
+    pub session_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SetDefaultDesktopSession_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SetDefaultDesktopSession_Request {
+    fn default() -> &'a CSteamOSManager_SetDefaultDesktopSession_Request {
+        <CSteamOSManager_SetDefaultDesktopSession_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SetDefaultDesktopSession_Request {
+    pub fn new() -> CSteamOSManager_SetDefaultDesktopSession_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string session_name = 1;
+
+    pub fn session_name(&self) -> &str {
+        match self.session_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_session_name(&mut self) {
+        self.session_name = ::std::option::Option::None;
+    }
+
+    pub fn has_session_name(&self) -> bool {
+        self.session_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_session_name(&mut self, v: ::std::string::String) {
+        self.session_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_session_name(&mut self) -> &mut ::std::string::String {
+        if self.session_name.is_none() {
+            self.session_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.session_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_session_name(&mut self) -> ::std::string::String {
+        self.session_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SetDefaultDesktopSession_Request {
+    const NAME: &'static str = "CSteamOSManager_SetDefaultDesktopSession_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.session_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.session_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.session_name.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SetDefaultDesktopSession_Request {
+        CSteamOSManager_SetDefaultDesktopSession_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.session_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SetDefaultDesktopSession_Request {
+        static instance: CSteamOSManager_SetDefaultDesktopSession_Request = CSteamOSManager_SetDefaultDesktopSession_Request {
+            session_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SetDefaultDesktopSession_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SetDefaultDesktopSession_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SetDefaultDesktopSession_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SetDefaultDesktopSession_Response {
+    fn default() -> &'a CSteamOSManager_SetDefaultDesktopSession_Response {
+        <CSteamOSManager_SetDefaultDesktopSession_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SetDefaultDesktopSession_Response {
+    pub fn new() -> CSteamOSManager_SetDefaultDesktopSession_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SetDefaultDesktopSession_Response {
+    const NAME: &'static str = "CSteamOSManager_SetDefaultDesktopSession_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SetDefaultDesktopSession_Response {
+        CSteamOSManager_SetDefaultDesktopSession_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SetDefaultDesktopSession_Response {
+        static instance: CSteamOSManager_SetDefaultDesktopSession_Response = CSteamOSManager_SetDefaultDesktopSession_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_GetSteamVRPaths_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_GetSteamVRPaths_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_GetSteamVRPaths_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_GetSteamVRPaths_Request {
+    fn default() -> &'a CSteamOSManager_GetSteamVRPaths_Request {
+        <CSteamOSManager_GetSteamVRPaths_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_GetSteamVRPaths_Request {
+    pub fn new() -> CSteamOSManager_GetSteamVRPaths_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_GetSteamVRPaths_Request {
+    const NAME: &'static str = "CSteamOSManager_GetSteamVRPaths_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_GetSteamVRPaths_Request {
+        CSteamOSManager_GetSteamVRPaths_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_GetSteamVRPaths_Request {
+        static instance: CSteamOSManager_GetSteamVRPaths_Request = CSteamOSManager_GetSteamVRPaths_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamVRPathRecord)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamVRPathRecord {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamVRPathRecord.path)
+    pub path: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamVRPathRecord.version)
+    pub version: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamVRPathRecord.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamVRPathRecord {
+    fn default() -> &'a CSteamVRPathRecord {
+        <CSteamVRPathRecord as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamVRPathRecord {
+    pub fn new() -> CSteamVRPathRecord {
+        ::std::default::Default::default()
+    }
+
+    // optional string path = 1;
+
+    pub fn path(&self) -> &str {
+        match self.path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_path(&mut self) {
+        self.path = ::std::option::Option::None;
+    }
+
+    pub fn has_path(&self) -> bool {
+        self.path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_path(&mut self, v: ::std::string::String) {
+        self.path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_path(&mut self) -> &mut ::std::string::String {
+        if self.path.is_none() {
+            self.path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_path(&mut self) -> ::std::string::String {
+        self.path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string version = 2;
+
+    pub fn version(&self) -> &str {
+        match self.version.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_version(&mut self) {
+        self.version = ::std::option::Option::None;
+    }
+
+    pub fn has_version(&self) -> bool {
+        self.version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_version(&mut self, v: ::std::string::String) {
+        self.version = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_version(&mut self) -> &mut ::std::string::String {
+        if self.version.is_none() {
+            self.version = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.version.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_version(&mut self) -> ::std::string::String {
+        self.version.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamVRPathRecord {
+    const NAME: &'static str = "CSteamVRPathRecord";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.path = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.version = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.version.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.path.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.version.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamVRPathRecord {
+        CSteamVRPathRecord::new()
+    }
+
+    fn clear(&mut self) {
+        self.path = ::std::option::Option::None;
+        self.version = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamVRPathRecord {
+        static instance: CSteamVRPathRecord = CSteamVRPathRecord {
+            path: ::std::option::Option::None,
+            version: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_GetSteamVRPaths_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_GetSteamVRPaths_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOSManager_GetSteamVRPaths_Response.active_path)
+    pub active_path: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOSManager_GetSteamVRPaths_Response.default_path)
+    pub default_path: ::steam_vent_proto_common::protobuf::MessageField<CSteamVRPathRecord>,
+    // @@protoc_insertion_point(field:CSteamOSManager_GetSteamVRPaths_Response.main_lowerdir_path)
+    pub main_lowerdir_path: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOSManager_GetSteamVRPaths_Response.rel_lowerdir_path)
+    pub rel_lowerdir_path: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamOSManager_GetSteamVRPaths_Response.sideloaded_paths)
+    pub sideloaded_paths: ::std::vec::Vec<CSteamVRPathRecord>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_GetSteamVRPaths_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_GetSteamVRPaths_Response {
+    fn default() -> &'a CSteamOSManager_GetSteamVRPaths_Response {
+        <CSteamOSManager_GetSteamVRPaths_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_GetSteamVRPaths_Response {
+    pub fn new() -> CSteamOSManager_GetSteamVRPaths_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional string active_path = 1;
+
+    pub fn active_path(&self) -> &str {
+        match self.active_path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_active_path(&mut self) {
+        self.active_path = ::std::option::Option::None;
+    }
+
+    pub fn has_active_path(&self) -> bool {
+        self.active_path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_active_path(&mut self, v: ::std::string::String) {
+        self.active_path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_active_path(&mut self) -> &mut ::std::string::String {
+        if self.active_path.is_none() {
+            self.active_path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.active_path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_active_path(&mut self) -> ::std::string::String {
+        self.active_path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string main_lowerdir_path = 3;
+
+    pub fn main_lowerdir_path(&self) -> &str {
+        match self.main_lowerdir_path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_main_lowerdir_path(&mut self) {
+        self.main_lowerdir_path = ::std::option::Option::None;
+    }
+
+    pub fn has_main_lowerdir_path(&self) -> bool {
+        self.main_lowerdir_path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_main_lowerdir_path(&mut self, v: ::std::string::String) {
+        self.main_lowerdir_path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_main_lowerdir_path(&mut self) -> &mut ::std::string::String {
+        if self.main_lowerdir_path.is_none() {
+            self.main_lowerdir_path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.main_lowerdir_path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_main_lowerdir_path(&mut self) -> ::std::string::String {
+        self.main_lowerdir_path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string rel_lowerdir_path = 4;
+
+    pub fn rel_lowerdir_path(&self) -> &str {
+        match self.rel_lowerdir_path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_rel_lowerdir_path(&mut self) {
+        self.rel_lowerdir_path = ::std::option::Option::None;
+    }
+
+    pub fn has_rel_lowerdir_path(&self) -> bool {
+        self.rel_lowerdir_path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rel_lowerdir_path(&mut self, v: ::std::string::String) {
+        self.rel_lowerdir_path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_rel_lowerdir_path(&mut self) -> &mut ::std::string::String {
+        if self.rel_lowerdir_path.is_none() {
+            self.rel_lowerdir_path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.rel_lowerdir_path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_rel_lowerdir_path(&mut self) -> ::std::string::String {
+        self.rel_lowerdir_path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_GetSteamVRPaths_Response {
+    const NAME: &'static str = "CSteamOSManager_GetSteamVRPaths_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.active_path = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.default_path)?;
+                },
+                26 => {
+                    self.main_lowerdir_path = ::std::option::Option::Some(is.read_string()?);
+                },
+                34 => {
+                    self.rel_lowerdir_path = ::std::option::Option::Some(is.read_string()?);
+                },
+                42 => {
+                    self.sideloaded_paths.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.active_path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.default_path.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.main_lowerdir_path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        if let Some(v) = self.rel_lowerdir_path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
+        }
+        for value in &self.sideloaded_paths {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.active_path.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.default_path.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        if let Some(v) = self.main_lowerdir_path.as_ref() {
+            os.write_string(3, v)?;
+        }
+        if let Some(v) = self.rel_lowerdir_path.as_ref() {
+            os.write_string(4, v)?;
+        }
+        for v in &self.sideloaded_paths {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_GetSteamVRPaths_Response {
+        CSteamOSManager_GetSteamVRPaths_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.active_path = ::std::option::Option::None;
+        self.default_path.clear();
+        self.main_lowerdir_path = ::std::option::Option::None;
+        self.rel_lowerdir_path = ::std::option::Option::None;
+        self.sideloaded_paths.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_GetSteamVRPaths_Response {
+        static instance: CSteamOSManager_GetSteamVRPaths_Response = CSteamOSManager_GetSteamVRPaths_Response {
+            active_path: ::std::option::Option::None,
+            default_path: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            main_lowerdir_path: ::std::option::Option::None,
+            rel_lowerdir_path: ::std::option::Option::None,
+            sideloaded_paths: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SetSteamVRPath_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SetSteamVRPath_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamOSManager_SetSteamVRPath_Request.path)
+    pub path: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SetSteamVRPath_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SetSteamVRPath_Request {
+    fn default() -> &'a CSteamOSManager_SetSteamVRPath_Request {
+        <CSteamOSManager_SetSteamVRPath_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SetSteamVRPath_Request {
+    pub fn new() -> CSteamOSManager_SetSteamVRPath_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string path = 1;
+
+    pub fn path(&self) -> &str {
+        match self.path.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_path(&mut self) {
+        self.path = ::std::option::Option::None;
+    }
+
+    pub fn has_path(&self) -> bool {
+        self.path.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_path(&mut self, v: ::std::string::String) {
+        self.path = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_path(&mut self) -> &mut ::std::string::String {
+        if self.path.is_none() {
+            self.path = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.path.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_path(&mut self) -> ::std::string::String {
+        self.path.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SetSteamVRPath_Request {
+    const NAME: &'static str = "CSteamOSManager_SetSteamVRPath_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.path = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.path.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.path.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SetSteamVRPath_Request {
+        CSteamOSManager_SetSteamVRPath_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.path = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SetSteamVRPath_Request {
+        static instance: CSteamOSManager_SetSteamVRPath_Request = CSteamOSManager_SetSteamVRPath_Request {
+            path: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamOSManager_SetSteamVRPath_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamOSManager_SetSteamVRPath_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamOSManager_SetSteamVRPath_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamOSManager_SetSteamVRPath_Response {
+    fn default() -> &'a CSteamOSManager_SetSteamVRPath_Response {
+        <CSteamOSManager_SetSteamVRPath_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamOSManager_SetSteamVRPath_Response {
+    pub fn new() -> CSteamOSManager_SetSteamVRPath_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamOSManager_SetSteamVRPath_Response {
+    const NAME: &'static str = "CSteamOSManager_SetSteamVRPath_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamOSManager_SetSteamVRPath_Response {
+        CSteamOSManager_SetSteamVRPath_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamOSManager_SetSteamVRPath_Response {
+        static instance: CSteamOSManager_SetSteamVRPath_Response = CSteamOSManager_SetSteamVRPath_Response {
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3318,6 +5337,233 @@ impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_FactoryReset_Resp
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_RefreshScreenReaderAutoLocale_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOS_SetUserPassword_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOS_SetUserPassword_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOS_GetUserHasPassword_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOS_GetUserHasPassword_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_PrepareFactoryImageTest_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_PrepareFactoryImageTest_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_SwitchToDesktop_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_SwitchToDesktop_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_SetDefaultDesktopSession_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamOSManager_SetDefaultDesktopSession_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_GetSteamVRPaths_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamVRPathRecord {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_GetSteamVRPaths_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_SetSteamVRPath_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamOSManager_SetSteamVRPath_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage for CSteamOSSLSPlugin {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -3458,14 +5704,41 @@ impl ::steam_vent_proto_common::RpcMethod for CSteamOSManager_GetState_Request {
     const METHOD_NAME: &'static str = "SteamOSManager.GetState#1";
     type Response = CSteamOSManager_GetState_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod for CSteamOSManager_GetSteamVRPaths_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.GetSteamVRPaths#1";
+    type Response = CSteamOSManager_GetSteamVRPaths_Response;
+}
 impl ::steam_vent_proto_common::RpcMethod
 for CSteamOSManager_OptOutOfSideloadedClient_Request {
     const METHOD_NAME: &'static str = "SteamOSManager.OptOutOfSideloadedClient#1";
     type Response = CSteamOSManager_OptOutOfSideloadedClient_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamOSManager_PrepareFactoryImageTest_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.PrepareFactoryImageTest#1";
+    type Response = CSteamOSManager_PrepareFactoryImageTest_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamOSManager_RefreshScreenReaderAutoLocale_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.RefreshScreenReaderAutoLocale#1";
+    type Response = CSteamOSManager_RefreshScreenReaderAutoLocale_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamOSManager_SetDefaultDesktopSession_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.SetDefaultDesktopSession#1";
+    type Response = CSteamOSManager_SetDefaultDesktopSession_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamOSManager_SetSteamVRPath_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.SetSteamVRPath#1";
+    type Response = CSteamOSManager_SetSteamVRPath_Response;
+}
 impl ::steam_vent_proto_common::RpcMethod for CSteamOSManager_StateChanged_Notification {
     const METHOD_NAME: &'static str = "SteamOSManager.NotifyStateChanged#1";
     type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamOSManager_SwitchToDesktop_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.SwitchToDesktop#1";
+    type Response = CSteamOSManager_SwitchToDesktop_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CSteamOSSLS_GetState_Request {
     const METHOD_NAME: &'static str = "SteamOSSLS.GetState#1";
@@ -3482,4 +5755,12 @@ impl ::steam_vent_proto_common::RpcMethod for CSteamOSSLS_SetPluginEnabled_Reque
 impl ::steam_vent_proto_common::RpcMethod for CSteamOSSLS_StateChanged_Notification {
     const METHOD_NAME: &'static str = "SteamOSSLS.NotifyStateChanged#1";
     type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamOS_GetUserHasPassword_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.GetUserHasPassword#1";
+    type Response = CSteamOS_GetUserHasPassword_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamOS_SetUserPassword_Request {
+    const METHOD_NAME: &'static str = "SteamOSManager.SetUserPassword#1";
+    type Response = CSteamOS_SetUserPassword_Response;
 }

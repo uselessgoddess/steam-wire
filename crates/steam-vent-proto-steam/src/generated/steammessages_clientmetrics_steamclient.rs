@@ -2308,6 +2308,8 @@ pub mod cclient_metrics_report_client_error_notification {
         pub count: ::std::option::Option<u32>,
         // @@protoc_insertion_point(field:CClientMetrics_ReportClientError_Notification.Error.context)
         pub context: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CClientMetrics_ReportClientError_Notification.Error.url)
+        pub url: ::std::option::Option<::std::string::String>,
         // special fields
         // @@protoc_insertion_point(special_field:CClientMetrics_ReportClientError_Notification.Error.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2450,6 +2452,42 @@ pub mod cclient_metrics_report_client_error_notification {
         pub fn take_context(&mut self) -> ::std::string::String {
             self.context.take().unwrap_or_else(|| ::std::string::String::new())
         }
+
+        // optional string url = 5;
+
+        pub fn url(&self) -> &str {
+            match self.url.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_url(&mut self) {
+            self.url = ::std::option::Option::None;
+        }
+
+        pub fn has_url(&self) -> bool {
+            self.url.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_url(&mut self, v: ::std::string::String) {
+            self.url = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_url(&mut self) -> &mut ::std::string::String {
+            if self.url.is_none() {
+                self.url = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.url.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_url(&mut self) -> ::std::string::String {
+            self.url.take().unwrap_or_else(|| ::std::string::String::new())
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for Error {
@@ -2473,6 +2511,9 @@ pub mod cclient_metrics_report_client_error_notification {
                     },
                     34 => {
                         self.context = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    42 => {
+                        self.url = ::std::option::Option::Some(is.read_string()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2498,6 +2539,9 @@ pub mod cclient_metrics_report_client_error_notification {
             if let Some(v) = self.context.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
             }
+            if let Some(v) = self.url.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -2515,6 +2559,9 @@ pub mod cclient_metrics_report_client_error_notification {
             }
             if let Some(v) = self.context.as_ref() {
                 os.write_string(4, v)?;
+            }
+            if let Some(v) = self.url.as_ref() {
+                os.write_string(5, v)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -2537,6 +2584,7 @@ pub mod cclient_metrics_report_client_error_notification {
             self.message = ::std::option::Option::None;
             self.count = ::std::option::Option::None;
             self.context = ::std::option::Option::None;
+            self.url = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -2546,6 +2594,7 @@ pub mod cclient_metrics_report_client_error_notification {
                 message: ::std::option::Option::None,
                 count: ::std::option::Option::None,
                 context: ::std::option::Option::None,
+                url: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -2893,6 +2942,10 @@ pub mod cclient_metrics_download_rates_notification {
         pub hit_bytes: ::std::option::Option<u64>,
         // @@protoc_insertion_point(field:CClientMetrics_DownloadRates_Notification.StatsInfo.miss_bytes)
         pub miss_bytes: ::std::option::Option<u64>,
+        // @@protoc_insertion_point(field:CClientMetrics_DownloadRates_Notification.StatsInfo.chunks_scored)
+        pub chunks_scored: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CClientMetrics_DownloadRates_Notification.StatsInfo.sum_chunk_scores)
+        pub sum_chunk_scores: ::std::option::Option<f64>,
         // special fields
         // @@protoc_insertion_point(special_field:CClientMetrics_DownloadRates_Notification.StatsInfo.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3153,6 +3206,44 @@ pub mod cclient_metrics_download_rates_notification {
         pub fn set_miss_bytes(&mut self, v: u64) {
             self.miss_bytes = ::std::option::Option::Some(v);
         }
+
+        // optional uint32 chunks_scored = 13;
+
+        pub fn chunks_scored(&self) -> u32 {
+            self.chunks_scored.unwrap_or(0)
+        }
+
+        pub fn clear_chunks_scored(&mut self) {
+            self.chunks_scored = ::std::option::Option::None;
+        }
+
+        pub fn has_chunks_scored(&self) -> bool {
+            self.chunks_scored.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_chunks_scored(&mut self, v: u32) {
+            self.chunks_scored = ::std::option::Option::Some(v);
+        }
+
+        // optional double sum_chunk_scores = 14;
+
+        pub fn sum_chunk_scores(&self) -> f64 {
+            self.sum_chunk_scores.unwrap_or(0.)
+        }
+
+        pub fn clear_sum_chunk_scores(&mut self) {
+            self.sum_chunk_scores = ::std::option::Option::None;
+        }
+
+        pub fn has_sum_chunk_scores(&self) -> bool {
+            self.sum_chunk_scores.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_sum_chunk_scores(&mut self, v: f64) {
+            self.sum_chunk_scores = ::std::option::Option::Some(v);
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for StatsInfo {
@@ -3200,6 +3291,12 @@ pub mod cclient_metrics_download_rates_notification {
                     },
                     96 => {
                         self.miss_bytes = ::std::option::Option::Some(is.read_uint64()?);
+                    },
+                    104 => {
+                        self.chunks_scored = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    113 => {
+                        self.sum_chunk_scores = ::std::option::Option::Some(is.read_double()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -3249,6 +3346,12 @@ pub mod cclient_metrics_download_rates_notification {
             if let Some(v) = self.miss_bytes {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(12, v);
             }
+            if let Some(v) = self.chunks_scored {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(13, v);
+            }
+            if let Some(v) = self.sum_chunk_scores {
+                my_size += 1 + 8;
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -3291,6 +3394,12 @@ pub mod cclient_metrics_download_rates_notification {
             if let Some(v) = self.miss_bytes {
                 os.write_uint64(12, v)?;
             }
+            if let Some(v) = self.chunks_scored {
+                os.write_uint32(13, v)?;
+            }
+            if let Some(v) = self.sum_chunk_scores {
+                os.write_double(14, v)?;
+            }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
         }
@@ -3320,6 +3429,8 @@ pub mod cclient_metrics_download_rates_notification {
             self.cache_misses = ::std::option::Option::None;
             self.hit_bytes = ::std::option::Option::None;
             self.miss_bytes = ::std::option::Option::None;
+            self.chunks_scored = ::std::option::Option::None;
+            self.sum_chunk_scores = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -3337,6 +3448,8 @@ pub mod cclient_metrics_download_rates_notification {
                 cache_misses: ::std::option::Option::None,
                 hit_bytes: ::std::option::Option::None,
                 miss_bytes: ::std::option::Option::None,
+                chunks_scored: ::std::option::Option::None,
+                sum_chunk_scores: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -6404,8 +6517,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientMetrics_EndGameReco
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CClientMetrics_GamePerformance_Notification {
     // message fields
-    // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.reports)
-    pub reports: ::std::vec::Vec<cclient_metrics_game_performance_notification::FrameRateReport>,
+    // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.frame_rates)
+    pub frame_rates: ::std::vec::Vec<cclient_metrics_game_performance_notification::FrameRate>,
+    // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.system_info)
+    pub system_info: ::steam_vent_proto_common::protobuf::MessageField<super::steammessages_base::UserSystemInformation>,
     // special fields
     // @@protoc_insertion_point(special_field:CClientMetrics_GamePerformance_Notification.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -6433,8 +6548,11 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientMetrics_GamePerform
     fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
-                10 => {
-                    self.reports.push(is.read_message()?);
+                18 => {
+                    self.frame_rates.push(is.read_message()?);
+                },
+                26 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.system_info)?;
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -6448,19 +6566,26 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientMetrics_GamePerform
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
-        for value in &self.reports {
+        for value in &self.frame_rates {
             let len = value.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
+        if let Some(v) = self.system_info.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
-        for v in &self.reports {
-            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        for v in &self.frame_rates {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
         };
+        if let Some(v) = self.system_info.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -6478,13 +6603,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientMetrics_GamePerform
     }
 
     fn clear(&mut self) {
-        self.reports.clear();
+        self.frame_rates.clear();
+        self.system_info.clear();
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CClientMetrics_GamePerformance_Notification {
         static instance: CClientMetrics_GamePerformance_Notification = CClientMetrics_GamePerformance_Notification {
-            reports: ::std::vec::Vec::new(),
+            frame_rates: ::std::vec::Vec::new(),
+            system_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -6493,43 +6620,33 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientMetrics_GamePerform
 
 /// Nested message and enums of message `CClientMetrics_GamePerformance_Notification`
 pub mod cclient_metrics_game_performance_notification {
-    // @@protoc_insertion_point(message:CClientMetrics_GamePerformance_Notification.FrameRateReport)
+    // @@protoc_insertion_point(message:CClientMetrics_GamePerformance_Notification.FrameRate)
     #[derive(PartialEq,Clone,Default,Debug)]
-    pub struct FrameRateReport {
+    pub struct FrameRate {
         // message fields
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.gameid)
+        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRate.gameid)
         pub gameid: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.frame_rate)
+        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRate.frame_rate)
         pub frame_rate: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.manufacturer)
-        pub manufacturer: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.model)
-        pub model: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.dx_video_card)
-        pub dx_video_card: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.dx_vendorid)
-        pub dx_vendorid: ::std::option::Option<i32>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.dx_deviceid)
-        pub dx_deviceid: ::std::option::Option<i32>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.num_gpu)
-        pub num_gpu: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.system_ram)
-        pub system_ram: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRateReport.session_seconds)
+        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRate.session_seconds)
         pub session_seconds: ::std::option::Option<i32>,
+        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRate.framegen_frame_rate)
+        pub framegen_frame_rate: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CClientMetrics_GamePerformance_Notification.FrameRate.game_settings)
+        pub game_settings: ::steam_vent_proto_common::protobuf::MessageField<super::super::steammessages_base::GamePerformanceSettings>,
         // special fields
-        // @@protoc_insertion_point(special_field:CClientMetrics_GamePerformance_Notification.FrameRateReport.special_fields)
+        // @@protoc_insertion_point(special_field:CClientMetrics_GamePerformance_Notification.FrameRate.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
     }
 
-    impl<'a> ::std::default::Default for &'a FrameRateReport {
-        fn default() -> &'a FrameRateReport {
-            <FrameRateReport as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    impl<'a> ::std::default::Default for &'a FrameRate {
+        fn default() -> &'a FrameRate {
+            <FrameRate as ::steam_vent_proto_common::protobuf::Message>::default_instance()
         }
     }
 
-    impl FrameRateReport {
-        pub fn new() -> FrameRateReport {
+    impl FrameRate {
+        pub fn new() -> FrameRate {
             ::std::default::Default::default()
         }
 
@@ -6571,191 +6688,7 @@ pub mod cclient_metrics_game_performance_notification {
             self.frame_rate = ::std::option::Option::Some(v);
         }
 
-        // optional string manufacturer = 3;
-
-        pub fn manufacturer(&self) -> &str {
-            match self.manufacturer.as_ref() {
-                Some(v) => v,
-                None => "",
-            }
-        }
-
-        pub fn clear_manufacturer(&mut self) {
-            self.manufacturer = ::std::option::Option::None;
-        }
-
-        pub fn has_manufacturer(&self) -> bool {
-            self.manufacturer.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_manufacturer(&mut self, v: ::std::string::String) {
-            self.manufacturer = ::std::option::Option::Some(v);
-        }
-
-        // Mutable pointer to the field.
-        // If field is not initialized, it is initialized with default value first.
-        pub fn mut_manufacturer(&mut self) -> &mut ::std::string::String {
-            if self.manufacturer.is_none() {
-                self.manufacturer = ::std::option::Option::Some(::std::string::String::new());
-            }
-            self.manufacturer.as_mut().unwrap()
-        }
-
-        // Take field
-        pub fn take_manufacturer(&mut self) -> ::std::string::String {
-            self.manufacturer.take().unwrap_or_else(|| ::std::string::String::new())
-        }
-
-        // optional string model = 4;
-
-        pub fn model(&self) -> &str {
-            match self.model.as_ref() {
-                Some(v) => v,
-                None => "",
-            }
-        }
-
-        pub fn clear_model(&mut self) {
-            self.model = ::std::option::Option::None;
-        }
-
-        pub fn has_model(&self) -> bool {
-            self.model.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_model(&mut self, v: ::std::string::String) {
-            self.model = ::std::option::Option::Some(v);
-        }
-
-        // Mutable pointer to the field.
-        // If field is not initialized, it is initialized with default value first.
-        pub fn mut_model(&mut self) -> &mut ::std::string::String {
-            if self.model.is_none() {
-                self.model = ::std::option::Option::Some(::std::string::String::new());
-            }
-            self.model.as_mut().unwrap()
-        }
-
-        // Take field
-        pub fn take_model(&mut self) -> ::std::string::String {
-            self.model.take().unwrap_or_else(|| ::std::string::String::new())
-        }
-
-        // optional string dx_video_card = 5;
-
-        pub fn dx_video_card(&self) -> &str {
-            match self.dx_video_card.as_ref() {
-                Some(v) => v,
-                None => "",
-            }
-        }
-
-        pub fn clear_dx_video_card(&mut self) {
-            self.dx_video_card = ::std::option::Option::None;
-        }
-
-        pub fn has_dx_video_card(&self) -> bool {
-            self.dx_video_card.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_dx_video_card(&mut self, v: ::std::string::String) {
-            self.dx_video_card = ::std::option::Option::Some(v);
-        }
-
-        // Mutable pointer to the field.
-        // If field is not initialized, it is initialized with default value first.
-        pub fn mut_dx_video_card(&mut self) -> &mut ::std::string::String {
-            if self.dx_video_card.is_none() {
-                self.dx_video_card = ::std::option::Option::Some(::std::string::String::new());
-            }
-            self.dx_video_card.as_mut().unwrap()
-        }
-
-        // Take field
-        pub fn take_dx_video_card(&mut self) -> ::std::string::String {
-            self.dx_video_card.take().unwrap_or_else(|| ::std::string::String::new())
-        }
-
-        // optional int32 dx_vendorid = 6;
-
-        pub fn dx_vendorid(&self) -> i32 {
-            self.dx_vendorid.unwrap_or(0)
-        }
-
-        pub fn clear_dx_vendorid(&mut self) {
-            self.dx_vendorid = ::std::option::Option::None;
-        }
-
-        pub fn has_dx_vendorid(&self) -> bool {
-            self.dx_vendorid.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_dx_vendorid(&mut self, v: i32) {
-            self.dx_vendorid = ::std::option::Option::Some(v);
-        }
-
-        // optional int32 dx_deviceid = 7;
-
-        pub fn dx_deviceid(&self) -> i32 {
-            self.dx_deviceid.unwrap_or(0)
-        }
-
-        pub fn clear_dx_deviceid(&mut self) {
-            self.dx_deviceid = ::std::option::Option::None;
-        }
-
-        pub fn has_dx_deviceid(&self) -> bool {
-            self.dx_deviceid.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_dx_deviceid(&mut self, v: i32) {
-            self.dx_deviceid = ::std::option::Option::Some(v);
-        }
-
-        // optional uint32 num_gpu = 8;
-
-        pub fn num_gpu(&self) -> u32 {
-            self.num_gpu.unwrap_or(0)
-        }
-
-        pub fn clear_num_gpu(&mut self) {
-            self.num_gpu = ::std::option::Option::None;
-        }
-
-        pub fn has_num_gpu(&self) -> bool {
-            self.num_gpu.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_num_gpu(&mut self, v: u32) {
-            self.num_gpu = ::std::option::Option::Some(v);
-        }
-
-        // optional uint64 system_ram = 9;
-
-        pub fn system_ram(&self) -> u64 {
-            self.system_ram.unwrap_or(0)
-        }
-
-        pub fn clear_system_ram(&mut self) {
-            self.system_ram = ::std::option::Option::None;
-        }
-
-        pub fn has_system_ram(&self) -> bool {
-            self.system_ram.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_system_ram(&mut self, v: u64) {
-            self.system_ram = ::std::option::Option::Some(v);
-        }
-
-        // optional int32 session_seconds = 10;
+        // optional int32 session_seconds = 3;
 
         pub fn session_seconds(&self) -> i32 {
             self.session_seconds.unwrap_or(0)
@@ -6773,10 +6706,29 @@ pub mod cclient_metrics_game_performance_notification {
         pub fn set_session_seconds(&mut self, v: i32) {
             self.session_seconds = ::std::option::Option::Some(v);
         }
+
+        // optional uint32 framegen_frame_rate = 4;
+
+        pub fn framegen_frame_rate(&self) -> u32 {
+            self.framegen_frame_rate.unwrap_or(0)
+        }
+
+        pub fn clear_framegen_frame_rate(&mut self) {
+            self.framegen_frame_rate = ::std::option::Option::None;
+        }
+
+        pub fn has_framegen_frame_rate(&self) -> bool {
+            self.framegen_frame_rate.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_framegen_frame_rate(&mut self, v: u32) {
+            self.framegen_frame_rate = ::std::option::Option::Some(v);
+        }
     }
 
-    impl ::steam_vent_proto_common::protobuf::Message for FrameRateReport {
-        const NAME: &'static str = "FrameRateReport";
+    impl ::steam_vent_proto_common::protobuf::Message for FrameRate {
+        const NAME: &'static str = "FrameRate";
 
         fn is_initialized(&self) -> bool {
             true
@@ -6791,29 +6743,14 @@ pub mod cclient_metrics_game_performance_notification {
                     16 => {
                         self.frame_rate = ::std::option::Option::Some(is.read_uint32()?);
                     },
-                    26 => {
-                        self.manufacturer = ::std::option::Option::Some(is.read_string()?);
+                    24 => {
+                        self.session_seconds = ::std::option::Option::Some(is.read_int32()?);
                     },
-                    34 => {
-                        self.model = ::std::option::Option::Some(is.read_string()?);
+                    32 => {
+                        self.framegen_frame_rate = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     42 => {
-                        self.dx_video_card = ::std::option::Option::Some(is.read_string()?);
-                    },
-                    48 => {
-                        self.dx_vendorid = ::std::option::Option::Some(is.read_int32()?);
-                    },
-                    56 => {
-                        self.dx_deviceid = ::std::option::Option::Some(is.read_int32()?);
-                    },
-                    64 => {
-                        self.num_gpu = ::std::option::Option::Some(is.read_uint32()?);
-                    },
-                    72 => {
-                        self.system_ram = ::std::option::Option::Some(is.read_uint64()?);
-                    },
-                    80 => {
-                        self.session_seconds = ::std::option::Option::Some(is.read_int32()?);
+                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.game_settings)?;
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -6833,29 +6770,15 @@ pub mod cclient_metrics_game_performance_notification {
             if let Some(v) = self.frame_rate {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
             }
-            if let Some(v) = self.manufacturer.as_ref() {
-                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
-            }
-            if let Some(v) = self.model.as_ref() {
-                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
-            }
-            if let Some(v) = self.dx_video_card.as_ref() {
-                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
-            }
-            if let Some(v) = self.dx_vendorid {
-                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(6, v);
-            }
-            if let Some(v) = self.dx_deviceid {
-                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(7, v);
-            }
-            if let Some(v) = self.num_gpu {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
-            }
-            if let Some(v) = self.system_ram {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(9, v);
-            }
             if let Some(v) = self.session_seconds {
-                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(10, v);
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v);
+            }
+            if let Some(v) = self.framegen_frame_rate {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+            }
+            if let Some(v) = self.game_settings.as_ref() {
+                let len = v.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
             }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
@@ -6869,29 +6792,14 @@ pub mod cclient_metrics_game_performance_notification {
             if let Some(v) = self.frame_rate {
                 os.write_uint32(2, v)?;
             }
-            if let Some(v) = self.manufacturer.as_ref() {
-                os.write_string(3, v)?;
-            }
-            if let Some(v) = self.model.as_ref() {
-                os.write_string(4, v)?;
-            }
-            if let Some(v) = self.dx_video_card.as_ref() {
-                os.write_string(5, v)?;
-            }
-            if let Some(v) = self.dx_vendorid {
-                os.write_int32(6, v)?;
-            }
-            if let Some(v) = self.dx_deviceid {
-                os.write_int32(7, v)?;
-            }
-            if let Some(v) = self.num_gpu {
-                os.write_uint32(8, v)?;
-            }
-            if let Some(v) = self.system_ram {
-                os.write_uint64(9, v)?;
-            }
             if let Some(v) = self.session_seconds {
-                os.write_int32(10, v)?;
+                os.write_int32(3, v)?;
+            }
+            if let Some(v) = self.framegen_frame_rate {
+                os.write_uint32(4, v)?;
+            }
+            if let Some(v) = self.game_settings.as_ref() {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -6905,36 +6813,26 @@ pub mod cclient_metrics_game_performance_notification {
             &mut self.special_fields
         }
 
-        fn new() -> FrameRateReport {
-            FrameRateReport::new()
+        fn new() -> FrameRate {
+            FrameRate::new()
         }
 
         fn clear(&mut self) {
             self.gameid = ::std::option::Option::None;
             self.frame_rate = ::std::option::Option::None;
-            self.manufacturer = ::std::option::Option::None;
-            self.model = ::std::option::Option::None;
-            self.dx_video_card = ::std::option::Option::None;
-            self.dx_vendorid = ::std::option::Option::None;
-            self.dx_deviceid = ::std::option::Option::None;
-            self.num_gpu = ::std::option::Option::None;
-            self.system_ram = ::std::option::Option::None;
             self.session_seconds = ::std::option::Option::None;
+            self.framegen_frame_rate = ::std::option::Option::None;
+            self.game_settings.clear();
             self.special_fields.clear();
         }
 
-        fn default_instance() -> &'static FrameRateReport {
-            static instance: FrameRateReport = FrameRateReport {
+        fn default_instance() -> &'static FrameRate {
+            static instance: FrameRate = FrameRate {
                 gameid: ::std::option::Option::None,
                 frame_rate: ::std::option::Option::None,
-                manufacturer: ::std::option::Option::None,
-                model: ::std::option::Option::None,
-                dx_video_card: ::std::option::Option::None,
-                dx_vendorid: ::std::option::Option::None,
-                dx_deviceid: ::std::option::Option::None,
-                num_gpu: ::std::option::Option::None,
-                system_ram: ::std::option::Option::None,
                 session_seconds: ::std::option::Option::None,
+                framegen_frame_rate: ::std::option::Option::None,
+                game_settings: ::steam_vent_proto_common::protobuf::MessageField::none(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance

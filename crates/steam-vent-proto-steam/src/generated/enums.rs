@@ -72,6 +72,10 @@ pub enum EPublishedFileQueryType {
     k_PublishedFileQueryType_RankedByBanContentCheck = 20,
     // @@protoc_insertion_point(enum_value:EPublishedFileQueryType.k_PublishedFileQueryType_RankedByLastUpdatedDate)
     k_PublishedFileQueryType_RankedByLastUpdatedDate = 21,
+    // @@protoc_insertion_point(enum_value:EPublishedFileQueryType.k_PublishedFileQueryType_RankedByNumParentItems)
+    k_PublishedFileQueryType_RankedByNumParentItems = 22,
+    // @@protoc_insertion_point(enum_value:EPublishedFileQueryType.k_PublishedFileQueryType_RankedByNumParentCollections)
+    k_PublishedFileQueryType_RankedByNumParentCollections = 23,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EPublishedFileQueryType {
@@ -105,6 +109,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for EPublishedFileQueryType {
             19 => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByInappropriateContentRating),
             20 => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByBanContentCheck),
             21 => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByLastUpdatedDate),
+            22 => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentItems),
+            23 => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentCollections),
             _ => ::std::option::Option::None
         }
     }
@@ -133,6 +139,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for EPublishedFileQueryType {
             "k_PublishedFileQueryType_RankedByInappropriateContentRating" => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByInappropriateContentRating),
             "k_PublishedFileQueryType_RankedByBanContentCheck" => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByBanContentCheck),
             "k_PublishedFileQueryType_RankedByLastUpdatedDate" => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByLastUpdatedDate),
+            "k_PublishedFileQueryType_RankedByNumParentItems" => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentItems),
+            "k_PublishedFileQueryType_RankedByNumParentCollections" => ::std::option::Option::Some(EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentCollections),
             _ => ::std::option::Option::None
         }
     }
@@ -160,6 +168,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for EPublishedFileQueryType {
         EPublishedFileQueryType::k_PublishedFileQueryType_RankedByInappropriateContentRating,
         EPublishedFileQueryType::k_PublishedFileQueryType_RankedByBanContentCheck,
         EPublishedFileQueryType::k_PublishedFileQueryType_RankedByLastUpdatedDate,
+        EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentItems,
+        EPublishedFileQueryType::k_PublishedFileQueryType_RankedByNumParentCollections,
     ];
 }
 
@@ -892,61 +902,6 @@ impl ::std::default::Default for ESystemFanControlMode {
 
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:EStartupMovieVariant)
-pub enum EStartupMovieVariant {
-    // @@protoc_insertion_point(enum_value:EStartupMovieVariant.k_EStartupMovieVariant_Invalid)
-    k_EStartupMovieVariant_Invalid = 0,
-    // @@protoc_insertion_point(enum_value:EStartupMovieVariant.k_EStartupMovieVariant_Generic)
-    k_EStartupMovieVariant_Generic = 1,
-    // @@protoc_insertion_point(enum_value:EStartupMovieVariant.k_EStartupMovieVariant_DeckBlue)
-    k_EStartupMovieVariant_DeckBlue = 2,
-    // @@protoc_insertion_point(enum_value:EStartupMovieVariant.k_EStartupMovieVariant_DeckOrange)
-    k_EStartupMovieVariant_DeckOrange = 3,
-}
-
-impl ::steam_vent_proto_common::protobuf::Enum for EStartupMovieVariant {
-    const NAME: &'static str = "EStartupMovieVariant";
-
-    fn value(&self) -> i32 {
-        *self as i32
-    }
-
-    fn from_i32(value: i32) -> ::std::option::Option<EStartupMovieVariant> {
-        match value {
-            0 => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_Invalid),
-            1 => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_Generic),
-            2 => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_DeckBlue),
-            3 => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_DeckOrange),
-            _ => ::std::option::Option::None
-        }
-    }
-
-    fn from_str(str: &str) -> ::std::option::Option<EStartupMovieVariant> {
-        match str {
-            "k_EStartupMovieVariant_Invalid" => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_Invalid),
-            "k_EStartupMovieVariant_Generic" => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_Generic),
-            "k_EStartupMovieVariant_DeckBlue" => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_DeckBlue),
-            "k_EStartupMovieVariant_DeckOrange" => ::std::option::Option::Some(EStartupMovieVariant::k_EStartupMovieVariant_DeckOrange),
-            _ => ::std::option::Option::None
-        }
-    }
-
-    const VALUES: &'static [EStartupMovieVariant] = &[
-        EStartupMovieVariant::k_EStartupMovieVariant_Invalid,
-        EStartupMovieVariant::k_EStartupMovieVariant_Generic,
-        EStartupMovieVariant::k_EStartupMovieVariant_DeckBlue,
-        EStartupMovieVariant::k_EStartupMovieVariant_DeckOrange,
-    ];
-}
-
-impl ::std::default::Default for EStartupMovieVariant {
-    fn default() -> Self {
-        EStartupMovieVariant::k_EStartupMovieVariant_Invalid
-    }
-}
-
-
-#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EColorGamutLabelSet)
 pub enum EColorGamutLabelSet {
     // @@protoc_insertion_point(enum_value:EColorGamutLabelSet.k_ColorGamutLabelSet_Default)
@@ -1137,6 +1092,61 @@ impl ::steam_vent_proto_common::protobuf::Enum for EBluetoothDeviceType {
 impl ::std::default::Default for EBluetoothDeviceType {
     fn default() -> Self {
         EBluetoothDeviceType::k_BluetoothDeviceType_Invalid
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ESpeakerConfiguration)
+pub enum ESpeakerConfiguration {
+    // @@protoc_insertion_point(enum_value:ESpeakerConfiguration.k_ESpeakerConfiguration_Other)
+    k_ESpeakerConfiguration_Other = 0,
+    // @@protoc_insertion_point(enum_value:ESpeakerConfiguration.k_ESpeakerConfiguration_Stereo)
+    k_ESpeakerConfiguration_Stereo = 1,
+    // @@protoc_insertion_point(enum_value:ESpeakerConfiguration.k_ESpeakerConfiguration_51)
+    k_ESpeakerConfiguration_51 = 2,
+    // @@protoc_insertion_point(enum_value:ESpeakerConfiguration.k_ESpeakerConfiguration_71)
+    k_ESpeakerConfiguration_71 = 3,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ESpeakerConfiguration {
+    const NAME: &'static str = "ESpeakerConfiguration";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ESpeakerConfiguration> {
+        match value {
+            0 => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_Other),
+            1 => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_Stereo),
+            2 => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_51),
+            3 => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_71),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ESpeakerConfiguration> {
+        match str {
+            "k_ESpeakerConfiguration_Other" => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_Other),
+            "k_ESpeakerConfiguration_Stereo" => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_Stereo),
+            "k_ESpeakerConfiguration_51" => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_51),
+            "k_ESpeakerConfiguration_71" => ::std::option::Option::Some(ESpeakerConfiguration::k_ESpeakerConfiguration_71),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ESpeakerConfiguration] = &[
+        ESpeakerConfiguration::k_ESpeakerConfiguration_Other,
+        ESpeakerConfiguration::k_ESpeakerConfiguration_Stereo,
+        ESpeakerConfiguration::k_ESpeakerConfiguration_51,
+        ESpeakerConfiguration::k_ESpeakerConfiguration_71,
+    ];
+}
+
+impl ::std::default::Default for ESpeakerConfiguration {
+    fn default() -> Self {
+        ESpeakerConfiguration::k_ESpeakerConfiguration_Other
     }
 }
 
@@ -3372,6 +3382,126 @@ impl ::std::default::Default for EProvideDeckFeedbackPreference {
 
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EHardwareCompatibilityFeedbackDetails)
+pub enum EHardwareCompatibilityFeedbackDetails {
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Unset)
+    k_EHardwareCompatibilityFeedbackDetails_Unset = 0,
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Performance)
+    k_EHardwareCompatibilityFeedbackDetails_Performance = 1,
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Stability)
+    k_EHardwareCompatibilityFeedbackDetails_Stability = 2,
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Legibility)
+    k_EHardwareCompatibilityFeedbackDetails_Legibility = 4,
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Input)
+    k_EHardwareCompatibilityFeedbackDetails_Input = 8,
+    // @@protoc_insertion_point(enum_value:EHardwareCompatibilityFeedbackDetails.k_EHardwareCompatibilityFeedbackDetails_Other)
+    k_EHardwareCompatibilityFeedbackDetails_Other = 16,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EHardwareCompatibilityFeedbackDetails {
+    const NAME: &'static str = "EHardwareCompatibilityFeedbackDetails";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EHardwareCompatibilityFeedbackDetails> {
+        match value {
+            0 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Unset),
+            1 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Performance),
+            2 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Stability),
+            4 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Legibility),
+            8 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Input),
+            16 => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Other),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EHardwareCompatibilityFeedbackDetails> {
+        match str {
+            "k_EHardwareCompatibilityFeedbackDetails_Unset" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Unset),
+            "k_EHardwareCompatibilityFeedbackDetails_Performance" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Performance),
+            "k_EHardwareCompatibilityFeedbackDetails_Stability" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Stability),
+            "k_EHardwareCompatibilityFeedbackDetails_Legibility" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Legibility),
+            "k_EHardwareCompatibilityFeedbackDetails_Input" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Input),
+            "k_EHardwareCompatibilityFeedbackDetails_Other" => ::std::option::Option::Some(EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Other),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EHardwareCompatibilityFeedbackDetails] = &[
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Unset,
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Performance,
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Stability,
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Legibility,
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Input,
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Other,
+    ];
+}
+
+impl ::std::default::Default for EHardwareCompatibilityFeedbackDetails {
+    fn default() -> Self {
+        EHardwareCompatibilityFeedbackDetails::k_EHardwareCompatibilityFeedbackDetails_Unset
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EGameFrameRateReportingPreference)
+pub enum EGameFrameRateReportingPreference {
+    // @@protoc_insertion_point(enum_value:EGameFrameRateReportingPreference.k_EGameFrameRateReportingPreference_Unset)
+    k_EGameFrameRateReportingPreference_Unset = 0,
+    // @@protoc_insertion_point(enum_value:EGameFrameRateReportingPreference.k_EGameFrameRateReportingPreference_No)
+    k_EGameFrameRateReportingPreference_No = 1,
+    // @@protoc_insertion_point(enum_value:EGameFrameRateReportingPreference.k_EGameFrameRateReportingPreference_Yes_Anonymous)
+    k_EGameFrameRateReportingPreference_Yes_Anonymous = 2,
+    // @@protoc_insertion_point(enum_value:EGameFrameRateReportingPreference.k_EGameFrameRateReportingPreference_Yes_NonAnonymous)
+    k_EGameFrameRateReportingPreference_Yes_NonAnonymous = 3,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EGameFrameRateReportingPreference {
+    const NAME: &'static str = "EGameFrameRateReportingPreference";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EGameFrameRateReportingPreference> {
+        match value {
+            0 => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset),
+            1 => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_No),
+            2 => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_Anonymous),
+            3 => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_NonAnonymous),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EGameFrameRateReportingPreference> {
+        match str {
+            "k_EGameFrameRateReportingPreference_Unset" => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset),
+            "k_EGameFrameRateReportingPreference_No" => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_No),
+            "k_EGameFrameRateReportingPreference_Yes_Anonymous" => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_Anonymous),
+            "k_EGameFrameRateReportingPreference_Yes_NonAnonymous" => ::std::option::Option::Some(EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_NonAnonymous),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EGameFrameRateReportingPreference] = &[
+        EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset,
+        EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_No,
+        EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_Anonymous,
+        EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Yes_NonAnonymous,
+    ];
+}
+
+impl ::std::default::Default for EGameFrameRateReportingPreference {
+    fn default() -> Self {
+        EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:ETouchGesture)
 pub enum ETouchGesture {
     // @@protoc_insertion_point(enum_value:ETouchGesture.k_ETouchGestureNone)
@@ -4439,6 +4569,81 @@ impl ::std::default::Default for EProtoAppType {
 
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EAppTestType)
+pub enum EAppTestType {
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_BuildReview)
+    k_EAppTestType_BuildReview = 0,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_StorePageReview)
+    k_EAppTestType_StorePageReview = 1,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamChina_BuildReview)
+    k_EAppTestType_SteamChina_BuildReview = 2,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamChina_StorePageReview)
+    k_EAppTestType_SteamChina_StorePageReview = 3,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamChinaPlatformOperator_StorePageReview)
+    k_EAppTestType_SteamChinaPlatformOperator_StorePageReview = 4,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamChinaPlatformOperator_BuildReview)
+    k_EAppTestType_SteamChinaPlatformOperator_BuildReview = 5,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamDeckCompatibilityReview)
+    k_EAppTestType_SteamDeckCompatibilityReview = 6,
+    // @@protoc_insertion_point(enum_value:EAppTestType.k_EAppTestType_SteamFrameCompatibilityReview)
+    k_EAppTestType_SteamFrameCompatibilityReview = 7,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EAppTestType {
+    const NAME: &'static str = "EAppTestType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EAppTestType> {
+        match value {
+            0 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_BuildReview),
+            1 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_StorePageReview),
+            2 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChina_BuildReview),
+            3 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChina_StorePageReview),
+            4 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_StorePageReview),
+            5 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_BuildReview),
+            6 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamDeckCompatibilityReview),
+            7 => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamFrameCompatibilityReview),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EAppTestType> {
+        match str {
+            "k_EAppTestType_BuildReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_BuildReview),
+            "k_EAppTestType_StorePageReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_StorePageReview),
+            "k_EAppTestType_SteamChina_BuildReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChina_BuildReview),
+            "k_EAppTestType_SteamChina_StorePageReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChina_StorePageReview),
+            "k_EAppTestType_SteamChinaPlatformOperator_StorePageReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_StorePageReview),
+            "k_EAppTestType_SteamChinaPlatformOperator_BuildReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_BuildReview),
+            "k_EAppTestType_SteamDeckCompatibilityReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamDeckCompatibilityReview),
+            "k_EAppTestType_SteamFrameCompatibilityReview" => ::std::option::Option::Some(EAppTestType::k_EAppTestType_SteamFrameCompatibilityReview),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EAppTestType] = &[
+        EAppTestType::k_EAppTestType_BuildReview,
+        EAppTestType::k_EAppTestType_StorePageReview,
+        EAppTestType::k_EAppTestType_SteamChina_BuildReview,
+        EAppTestType::k_EAppTestType_SteamChina_StorePageReview,
+        EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_StorePageReview,
+        EAppTestType::k_EAppTestType_SteamChinaPlatformOperator_BuildReview,
+        EAppTestType::k_EAppTestType_SteamDeckCompatibilityReview,
+        EAppTestType::k_EAppTestType_SteamFrameCompatibilityReview,
+    ];
+}
+
+impl ::std::default::Default for EAppTestType {
+    fn default() -> Self {
+        EAppTestType::k_EAppTestType_BuildReview
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EChildProcessQueryCommand)
 pub enum EChildProcessQueryCommand {
     // @@protoc_insertion_point(enum_value:EChildProcessQueryCommand.k_EChildProcessQueryCommand_Invalid)
@@ -4800,8 +5005,10 @@ pub enum EContentReportSubjectType {
     k_EContentReportSubjectType_FriendChatMsg = 4,
     // @@protoc_insertion_point(enum_value:EContentReportSubjectType.k_EContentReportSubjectType_ChatRoomMsg)
     k_EContentReportSubjectType_ChatRoomMsg = 5,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectType.k_EContentReportSubjectType_ChatGroup)
+    k_EContentReportSubjectType_ChatGroup = 6,
     // @@protoc_insertion_point(enum_value:EContentReportSubjectType.k_EContentReportSubjectType_MAX)
-    k_EContentReportSubjectType_MAX = 6,
+    k_EContentReportSubjectType_MAX = 7,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectType {
@@ -4819,7 +5026,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectType {
             3 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_UGCFile),
             4 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_FriendChatMsg),
             5 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_ChatRoomMsg),
-            6 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_MAX),
+            6 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_ChatGroup),
+            7 => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_MAX),
             _ => ::std::option::Option::None
         }
     }
@@ -4832,6 +5040,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectType {
             "k_EContentReportSubjectType_UGCFile" => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_UGCFile),
             "k_EContentReportSubjectType_FriendChatMsg" => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_FriendChatMsg),
             "k_EContentReportSubjectType_ChatRoomMsg" => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_ChatRoomMsg),
+            "k_EContentReportSubjectType_ChatGroup" => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_ChatGroup),
             "k_EContentReportSubjectType_MAX" => ::std::option::Option::Some(EContentReportSubjectType::k_EContentReportSubjectType_MAX),
             _ => ::std::option::Option::None
         }
@@ -4844,6 +5053,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectType {
         EContentReportSubjectType::k_EContentReportSubjectType_UGCFile,
         EContentReportSubjectType::k_EContentReportSubjectType_FriendChatMsg,
         EContentReportSubjectType::k_EContentReportSubjectType_ChatRoomMsg,
+        EContentReportSubjectType::k_EContentReportSubjectType_ChatGroup,
         EContentReportSubjectType::k_EContentReportSubjectType_MAX,
     ];
 }
@@ -4990,8 +5200,20 @@ pub enum EContentReportResolution {
     k_EContentReportResolution_VisibilityChanged = 9,
     // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_CountryRestrictionsChanged)
     k_EContentReportResolution_CountryRestrictionsChanged = 10,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_RemoveAndWarn)
+    k_EContentReportResolution_RemoveAndWarn = 11,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_RemoveAndBan)
+    k_EContentReportResolution_RemoveAndBan = 12,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_RemoveAndKick)
+    k_EContentReportResolution_RemoveAndKick = 13,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_Sanctioned)
+    k_EContentReportResolution_Sanctioned = 14,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_Sustained)
+    k_EContentReportResolution_Sustained = 15,
+    // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_Broken)
+    k_EContentReportResolution_Broken = 16,
     // @@protoc_insertion_point(enum_value:EContentReportResolution.k_EContentReportResolution_MAX)
-    k_EContentReportResolution_MAX = 11,
+    k_EContentReportResolution_MAX = 17,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EContentReportResolution {
@@ -5014,7 +5236,13 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportResolution {
             8 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_SuspiciousIncludingUpvoters),
             9 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_VisibilityChanged),
             10 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_CountryRestrictionsChanged),
-            11 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_MAX),
+            11 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndWarn),
+            12 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndBan),
+            13 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndKick),
+            14 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Sanctioned),
+            15 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Sustained),
+            16 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Broken),
+            17 => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_MAX),
             _ => ::std::option::Option::None
         }
     }
@@ -5032,6 +5260,12 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportResolution {
             "k_EContentReportResolution_SuspiciousIncludingUpvoters" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_SuspiciousIncludingUpvoters),
             "k_EContentReportResolution_VisibilityChanged" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_VisibilityChanged),
             "k_EContentReportResolution_CountryRestrictionsChanged" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_CountryRestrictionsChanged),
+            "k_EContentReportResolution_RemoveAndWarn" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndWarn),
+            "k_EContentReportResolution_RemoveAndBan" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndBan),
+            "k_EContentReportResolution_RemoveAndKick" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_RemoveAndKick),
+            "k_EContentReportResolution_Sanctioned" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Sanctioned),
+            "k_EContentReportResolution_Sustained" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Sustained),
+            "k_EContentReportResolution_Broken" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_Broken),
             "k_EContentReportResolution_MAX" => ::std::option::Option::Some(EContentReportResolution::k_EContentReportResolution_MAX),
             _ => ::std::option::Option::None
         }
@@ -5049,6 +5283,12 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportResolution {
         EContentReportResolution::k_EContentReportResolution_SuspiciousIncludingUpvoters,
         EContentReportResolution::k_EContentReportResolution_VisibilityChanged,
         EContentReportResolution::k_EContentReportResolution_CountryRestrictionsChanged,
+        EContentReportResolution::k_EContentReportResolution_RemoveAndWarn,
+        EContentReportResolution::k_EContentReportResolution_RemoveAndBan,
+        EContentReportResolution::k_EContentReportResolution_RemoveAndKick,
+        EContentReportResolution::k_EContentReportResolution_Sanctioned,
+        EContentReportResolution::k_EContentReportResolution_Sustained,
+        EContentReportResolution::k_EContentReportResolution_Broken,
         EContentReportResolution::k_EContentReportResolution_MAX,
     ];
 }
@@ -5056,6 +5296,101 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportResolution {
 impl ::std::default::Default for EContentReportResolution {
     fn default() -> Self {
         EContentReportResolution::k_EContentReportResolution_Unresolved
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EContentModerationSanction)
+pub enum EContentModerationSanction {
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_Invalid)
+    k_EContentModerationSanction_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_Deleted)
+    k_EContentModerationSanction_Deleted = 1,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_CommunityBanned)
+    k_EContentModerationSanction_CommunityBanned = 2,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_HubBanned)
+    k_EContentModerationSanction_HubBanned = 3,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_TradeBanned)
+    k_EContentModerationSanction_TradeBanned = 4,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_CommentHistoryDeleted)
+    k_EContentModerationSanction_CommentHistoryDeleted = 5,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_Relabelled)
+    k_EContentModerationSanction_Relabelled = 6,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_MarkAsSuspicious)
+    k_EContentModerationSanction_MarkAsSuspicious = 7,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_Warned)
+    k_EContentModerationSanction_Warned = 8,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_KickedFromGroup)
+    k_EContentModerationSanction_KickedFromGroup = 9,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_HarassmentBanned)
+    k_EContentModerationSanction_HarassmentBanned = 10,
+    // @@protoc_insertion_point(enum_value:EContentModerationSanction.k_EContentModerationSanction_MAX)
+    k_EContentModerationSanction_MAX = 11,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EContentModerationSanction {
+    const NAME: &'static str = "EContentModerationSanction";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EContentModerationSanction> {
+        match value {
+            0 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Invalid),
+            1 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Deleted),
+            2 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_CommunityBanned),
+            3 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_HubBanned),
+            4 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_TradeBanned),
+            5 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_CommentHistoryDeleted),
+            6 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Relabelled),
+            7 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_MarkAsSuspicious),
+            8 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Warned),
+            9 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_KickedFromGroup),
+            10 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_HarassmentBanned),
+            11 => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EContentModerationSanction> {
+        match str {
+            "k_EContentModerationSanction_Invalid" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Invalid),
+            "k_EContentModerationSanction_Deleted" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Deleted),
+            "k_EContentModerationSanction_CommunityBanned" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_CommunityBanned),
+            "k_EContentModerationSanction_HubBanned" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_HubBanned),
+            "k_EContentModerationSanction_TradeBanned" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_TradeBanned),
+            "k_EContentModerationSanction_CommentHistoryDeleted" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_CommentHistoryDeleted),
+            "k_EContentModerationSanction_Relabelled" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Relabelled),
+            "k_EContentModerationSanction_MarkAsSuspicious" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_MarkAsSuspicious),
+            "k_EContentModerationSanction_Warned" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_Warned),
+            "k_EContentModerationSanction_KickedFromGroup" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_KickedFromGroup),
+            "k_EContentModerationSanction_HarassmentBanned" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_HarassmentBanned),
+            "k_EContentModerationSanction_MAX" => ::std::option::Option::Some(EContentModerationSanction::k_EContentModerationSanction_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EContentModerationSanction] = &[
+        EContentModerationSanction::k_EContentModerationSanction_Invalid,
+        EContentModerationSanction::k_EContentModerationSanction_Deleted,
+        EContentModerationSanction::k_EContentModerationSanction_CommunityBanned,
+        EContentModerationSanction::k_EContentModerationSanction_HubBanned,
+        EContentModerationSanction::k_EContentModerationSanction_TradeBanned,
+        EContentModerationSanction::k_EContentModerationSanction_CommentHistoryDeleted,
+        EContentModerationSanction::k_EContentModerationSanction_Relabelled,
+        EContentModerationSanction::k_EContentModerationSanction_MarkAsSuspicious,
+        EContentModerationSanction::k_EContentModerationSanction_Warned,
+        EContentModerationSanction::k_EContentModerationSanction_KickedFromGroup,
+        EContentModerationSanction::k_EContentModerationSanction_HarassmentBanned,
+        EContentModerationSanction::k_EContentModerationSanction_MAX,
+    ];
+}
+
+impl ::std::default::Default for EContentModerationSanction {
+    fn default() -> Self {
+        EContentModerationSanction::k_EContentModerationSanction_Invalid
     }
 }
 
@@ -5085,6 +5420,32 @@ pub enum EContentReportSubjectAction {
     k_EContentReportSubjectAction_Locked = 9,
     // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_Unlocked)
     k_EContentReportSubjectAction_Unlocked = 10,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_Deleted)
+    k_EContentReportSubjectAction_Deleted = 11,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_Warned)
+    k_EContentReportSubjectAction_Warned = 12,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_BannedFromHub)
+    k_EContentReportSubjectAction_BannedFromHub = 13,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_BannedFromCommunity)
+    k_EContentReportSubjectAction_BannedFromCommunity = 14,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_TradeBanned)
+    k_EContentReportSubjectAction_TradeBanned = 15,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_MarkedAsSuspicious)
+    k_EContentReportSubjectAction_MarkedAsSuspicious = 16,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_ResetContent)
+    k_EContentReportSubjectAction_ResetContent = 17,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_EscalatedForCSAM)
+    k_EContentReportSubjectAction_EscalatedForCSAM = 18,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_EscalatedForTerrorism)
+    k_EContentReportSubjectAction_EscalatedForTerrorism = 19,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_Claimed)
+    k_EContentReportSubjectAction_Claimed = 20,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_Released)
+    k_EContentReportSubjectAction_Released = 21,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_PrivateMessaged)
+    k_EContentReportSubjectAction_PrivateMessaged = 22,
+    // @@protoc_insertion_point(enum_value:EContentReportSubjectAction.k_EContentReportSubjectAction_OwnerDisputed)
+    k_EContentReportSubjectAction_OwnerDisputed = 23,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectAction {
@@ -5107,6 +5468,19 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectAction {
             8 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_SustainedOnDispute),
             9 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Locked),
             10 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Unlocked),
+            11 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Deleted),
+            12 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Warned),
+            13 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromHub),
+            14 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromCommunity),
+            15 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_TradeBanned),
+            16 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_MarkedAsSuspicious),
+            17 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_ResetContent),
+            18 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForCSAM),
+            19 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForTerrorism),
+            20 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Claimed),
+            21 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Released),
+            22 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_PrivateMessaged),
+            23 => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_OwnerDisputed),
             _ => ::std::option::Option::None
         }
     }
@@ -5124,6 +5498,19 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectAction {
             "k_EContentReportSubjectAction_SustainedOnDispute" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_SustainedOnDispute),
             "k_EContentReportSubjectAction_Locked" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Locked),
             "k_EContentReportSubjectAction_Unlocked" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Unlocked),
+            "k_EContentReportSubjectAction_Deleted" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Deleted),
+            "k_EContentReportSubjectAction_Warned" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Warned),
+            "k_EContentReportSubjectAction_BannedFromHub" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromHub),
+            "k_EContentReportSubjectAction_BannedFromCommunity" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromCommunity),
+            "k_EContentReportSubjectAction_TradeBanned" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_TradeBanned),
+            "k_EContentReportSubjectAction_MarkedAsSuspicious" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_MarkedAsSuspicious),
+            "k_EContentReportSubjectAction_ResetContent" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_ResetContent),
+            "k_EContentReportSubjectAction_EscalatedForCSAM" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForCSAM),
+            "k_EContentReportSubjectAction_EscalatedForTerrorism" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForTerrorism),
+            "k_EContentReportSubjectAction_Claimed" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Claimed),
+            "k_EContentReportSubjectAction_Released" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_Released),
+            "k_EContentReportSubjectAction_PrivateMessaged" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_PrivateMessaged),
+            "k_EContentReportSubjectAction_OwnerDisputed" => ::std::option::Option::Some(EContentReportSubjectAction::k_EContentReportSubjectAction_OwnerDisputed),
             _ => ::std::option::Option::None
         }
     }
@@ -5140,6 +5527,19 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportSubjectAction {
         EContentReportSubjectAction::k_EContentReportSubjectAction_SustainedOnDispute,
         EContentReportSubjectAction::k_EContentReportSubjectAction_Locked,
         EContentReportSubjectAction::k_EContentReportSubjectAction_Unlocked,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_Deleted,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_Warned,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromHub,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_BannedFromCommunity,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_TradeBanned,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_MarkedAsSuspicious,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_ResetContent,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForCSAM,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_EscalatedForTerrorism,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_Claimed,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_Released,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_PrivateMessaged,
+        EContentReportSubjectAction::k_EContentReportSubjectAction_OwnerDisputed,
     ];
 }
 
@@ -5277,8 +5677,14 @@ pub enum EContentReportReason {
     k_EContentReportReason_FakedNonConsensualMaterial = 60,
     // @@protoc_insertion_point(enum_value:EContentReportReason.k_EContentReportReason_NegativeEffectonDiscourseOrElections)
     k_EContentReportReason_NegativeEffectonDiscourseOrElections = 61,
+    // @@protoc_insertion_point(enum_value:EContentReportReason.k_EContentReportReason_QuotesModeratedContent)
+    k_EContentReportReason_QuotesModeratedContent = 62,
+    // @@protoc_insertion_point(enum_value:EContentReportReason.k_EContentReportReason_CredibleThreatOfViolence)
+    k_EContentReportReason_CredibleThreatOfViolence = 63,
+    // @@protoc_insertion_point(enum_value:EContentReportReason.k_EContentReportReason_AutoCreatedOnModeration)
+    k_EContentReportReason_AutoCreatedOnModeration = 64,
     // @@protoc_insertion_point(enum_value:EContentReportReason.k_EContentReportReason_MAX)
-    k_EContentReportReason_MAX = 62,
+    k_EContentReportReason_MAX = 65,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EContentReportReason {
@@ -5352,7 +5758,10 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportReason {
             59 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_FakedGenderedNonConsensualMaterial),
             60 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_FakedNonConsensualMaterial),
             61 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_NegativeEffectonDiscourseOrElections),
-            62 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_MAX),
+            62 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_QuotesModeratedContent),
+            63 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_CredibleThreatOfViolence),
+            64 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_AutoCreatedOnModeration),
+            65 => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_MAX),
             _ => ::std::option::Option::None
         }
     }
@@ -5421,6 +5830,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportReason {
             "k_EContentReportReason_FakedGenderedNonConsensualMaterial" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_FakedGenderedNonConsensualMaterial),
             "k_EContentReportReason_FakedNonConsensualMaterial" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_FakedNonConsensualMaterial),
             "k_EContentReportReason_NegativeEffectonDiscourseOrElections" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_NegativeEffectonDiscourseOrElections),
+            "k_EContentReportReason_QuotesModeratedContent" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_QuotesModeratedContent),
+            "k_EContentReportReason_CredibleThreatOfViolence" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_CredibleThreatOfViolence),
+            "k_EContentReportReason_AutoCreatedOnModeration" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_AutoCreatedOnModeration),
             "k_EContentReportReason_MAX" => ::std::option::Option::Some(EContentReportReason::k_EContentReportReason_MAX),
             _ => ::std::option::Option::None
         }
@@ -5489,6 +5901,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EContentReportReason {
         EContentReportReason::k_EContentReportReason_FakedGenderedNonConsensualMaterial,
         EContentReportReason::k_EContentReportReason_FakedNonConsensualMaterial,
         EContentReportReason::k_EContentReportReason_NegativeEffectonDiscourseOrElections,
+        EContentReportReason::k_EContentReportReason_QuotesModeratedContent,
+        EContentReportReason::k_EContentReportReason_CredibleThreatOfViolence,
+        EContentReportReason::k_EContentReportReason_AutoCreatedOnModeration,
         EContentReportReason::k_EContentReportReason_MAX,
     ];
 }
@@ -5551,6 +5966,236 @@ impl ::steam_vent_proto_common::protobuf::Enum for EResolutionAutomation {
 impl ::std::default::Default for EResolutionAutomation {
     fn default() -> Self {
         EResolutionAutomation::k_EResolutionAutomation_Manual
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EPressOutletAction)
+pub enum EPressOutletAction {
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Invalid)
+    k_EPressOutletAction_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Granted)
+    k_EPressOutletAction_Granted = 1,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Removed)
+    k_EPressOutletAction_Removed = 2,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Created)
+    k_EPressOutletAction_Created = 3,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Updated)
+    k_EPressOutletAction_Updated = 4,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Deleted)
+    k_EPressOutletAction_Deleted = 5,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_Undeleted)
+    k_EPressOutletAction_Undeleted = 6,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_StagedAdd)
+    k_EPressOutletAction_StagedAdd = 7,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_StagedDelete)
+    k_EPressOutletAction_StagedDelete = 8,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_EnterStaging)
+    k_EPressOutletAction_EnterStaging = 9,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_ExitStaging)
+    k_EPressOutletAction_ExitStaging = 10,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_ReverseStagedAdd)
+    k_EPressOutletAction_ReverseStagedAdd = 11,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_ReverseStagedDelete)
+    k_EPressOutletAction_ReverseStagedDelete = 12,
+    // @@protoc_insertion_point(enum_value:EPressOutletAction.k_EPressOutletAction_MAX)
+    k_EPressOutletAction_MAX = 13,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EPressOutletAction {
+    const NAME: &'static str = "EPressOutletAction";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EPressOutletAction> {
+        match value {
+            0 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Invalid),
+            1 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Granted),
+            2 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Removed),
+            3 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Created),
+            4 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Updated),
+            5 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Deleted),
+            6 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Undeleted),
+            7 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_StagedAdd),
+            8 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_StagedDelete),
+            9 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_EnterStaging),
+            10 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ExitStaging),
+            11 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ReverseStagedAdd),
+            12 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ReverseStagedDelete),
+            13 => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EPressOutletAction> {
+        match str {
+            "k_EPressOutletAction_Invalid" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Invalid),
+            "k_EPressOutletAction_Granted" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Granted),
+            "k_EPressOutletAction_Removed" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Removed),
+            "k_EPressOutletAction_Created" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Created),
+            "k_EPressOutletAction_Updated" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Updated),
+            "k_EPressOutletAction_Deleted" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Deleted),
+            "k_EPressOutletAction_Undeleted" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_Undeleted),
+            "k_EPressOutletAction_StagedAdd" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_StagedAdd),
+            "k_EPressOutletAction_StagedDelete" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_StagedDelete),
+            "k_EPressOutletAction_EnterStaging" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_EnterStaging),
+            "k_EPressOutletAction_ExitStaging" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ExitStaging),
+            "k_EPressOutletAction_ReverseStagedAdd" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ReverseStagedAdd),
+            "k_EPressOutletAction_ReverseStagedDelete" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_ReverseStagedDelete),
+            "k_EPressOutletAction_MAX" => ::std::option::Option::Some(EPressOutletAction::k_EPressOutletAction_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EPressOutletAction] = &[
+        EPressOutletAction::k_EPressOutletAction_Invalid,
+        EPressOutletAction::k_EPressOutletAction_Granted,
+        EPressOutletAction::k_EPressOutletAction_Removed,
+        EPressOutletAction::k_EPressOutletAction_Created,
+        EPressOutletAction::k_EPressOutletAction_Updated,
+        EPressOutletAction::k_EPressOutletAction_Deleted,
+        EPressOutletAction::k_EPressOutletAction_Undeleted,
+        EPressOutletAction::k_EPressOutletAction_StagedAdd,
+        EPressOutletAction::k_EPressOutletAction_StagedDelete,
+        EPressOutletAction::k_EPressOutletAction_EnterStaging,
+        EPressOutletAction::k_EPressOutletAction_ExitStaging,
+        EPressOutletAction::k_EPressOutletAction_ReverseStagedAdd,
+        EPressOutletAction::k_EPressOutletAction_ReverseStagedDelete,
+        EPressOutletAction::k_EPressOutletAction_MAX,
+    ];
+}
+
+impl ::std::default::Default for EPressOutletAction {
+    fn default() -> Self {
+        EPressOutletAction::k_EPressOutletAction_Invalid
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EPressOutletMemberPendingState)
+pub enum EPressOutletMemberPendingState {
+    // @@protoc_insertion_point(enum_value:EPressOutletMemberPendingState.k_EPressOutletMemberPendingState_Member)
+    k_EPressOutletMemberPendingState_Member = 0,
+    // @@protoc_insertion_point(enum_value:EPressOutletMemberPendingState.k_EPressOutletMemberPendingState_StagedDelete)
+    k_EPressOutletMemberPendingState_StagedDelete = 1,
+    // @@protoc_insertion_point(enum_value:EPressOutletMemberPendingState.k_EPressOutletMemberPendingState_StagedAdd)
+    k_EPressOutletMemberPendingState_StagedAdd = 2,
+    // @@protoc_insertion_point(enum_value:EPressOutletMemberPendingState.k_EPressOutletMemberPendingState_MAX)
+    k_EPressOutletMemberPendingState_MAX = 3,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EPressOutletMemberPendingState {
+    const NAME: &'static str = "EPressOutletMemberPendingState";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EPressOutletMemberPendingState> {
+        match value {
+            0 => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_Member),
+            1 => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedDelete),
+            2 => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedAdd),
+            3 => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EPressOutletMemberPendingState> {
+        match str {
+            "k_EPressOutletMemberPendingState_Member" => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_Member),
+            "k_EPressOutletMemberPendingState_StagedDelete" => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedDelete),
+            "k_EPressOutletMemberPendingState_StagedAdd" => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedAdd),
+            "k_EPressOutletMemberPendingState_MAX" => ::std::option::Option::Some(EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EPressOutletMemberPendingState] = &[
+        EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_Member,
+        EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedDelete,
+        EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_StagedAdd,
+        EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_MAX,
+    ];
+}
+
+impl ::std::default::Default for EPressOutletMemberPendingState {
+    fn default() -> Self {
+        EPressOutletMemberPendingState::k_EPressOutletMemberPendingState_Member
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ECommentDeleteReason)
+pub enum ECommentDeleteReason {
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_Invalid)
+    k_ECommentDeleteReason_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_User)
+    k_ECommentDeleteReason_User = 1,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_ThreadOwner)
+    k_ECommentDeleteReason_ThreadOwner = 2,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_Moderator)
+    k_ECommentDeleteReason_Moderator = 3,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_Support)
+    k_ECommentDeleteReason_Support = 4,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_Spam)
+    k_ECommentDeleteReason_Spam = 5,
+    // @@protoc_insertion_point(enum_value:ECommentDeleteReason.k_ECommentDeleteReason_AccountDeletion)
+    k_ECommentDeleteReason_AccountDeletion = 6,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ECommentDeleteReason {
+    const NAME: &'static str = "ECommentDeleteReason";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ECommentDeleteReason> {
+        match value {
+            0 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Invalid),
+            1 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_User),
+            2 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_ThreadOwner),
+            3 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Moderator),
+            4 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Support),
+            5 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Spam),
+            6 => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_AccountDeletion),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ECommentDeleteReason> {
+        match str {
+            "k_ECommentDeleteReason_Invalid" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Invalid),
+            "k_ECommentDeleteReason_User" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_User),
+            "k_ECommentDeleteReason_ThreadOwner" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_ThreadOwner),
+            "k_ECommentDeleteReason_Moderator" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Moderator),
+            "k_ECommentDeleteReason_Support" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Support),
+            "k_ECommentDeleteReason_Spam" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_Spam),
+            "k_ECommentDeleteReason_AccountDeletion" => ::std::option::Option::Some(ECommentDeleteReason::k_ECommentDeleteReason_AccountDeletion),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ECommentDeleteReason] = &[
+        ECommentDeleteReason::k_ECommentDeleteReason_Invalid,
+        ECommentDeleteReason::k_ECommentDeleteReason_User,
+        ECommentDeleteReason::k_ECommentDeleteReason_ThreadOwner,
+        ECommentDeleteReason::k_ECommentDeleteReason_Moderator,
+        ECommentDeleteReason::k_ECommentDeleteReason_Support,
+        ECommentDeleteReason::k_ECommentDeleteReason_Spam,
+        ECommentDeleteReason::k_ECommentDeleteReason_AccountDeletion,
+    ];
+}
+
+impl ::std::default::Default for ECommentDeleteReason {
+    fn default() -> Self {
+        ECommentDeleteReason::k_ECommentDeleteReason_Invalid
     }
 }
 

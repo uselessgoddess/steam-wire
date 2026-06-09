@@ -2431,6 +2431,289 @@ impl ::steam_vent_proto_common::protobuf::Message for CShader_ReportExternalBuil
     }
 }
 
+// @@protoc_insertion_point(message:CShader_ReportBucketProcessingComplete_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CShader_ReportBucketProcessingComplete_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CShader_ReportBucketProcessingComplete_Request.appid)
+    pub appid: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CShader_ReportBucketProcessingComplete_Request.gpu_desc)
+    pub gpu_desc: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CShader_ReportBucketProcessingComplete_Request.driver_desc)
+    pub driver_desc: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CShader_ReportBucketProcessingComplete_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CShader_ReportBucketProcessingComplete_Request {
+    fn default() -> &'a CShader_ReportBucketProcessingComplete_Request {
+        <CShader_ReportBucketProcessingComplete_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CShader_ReportBucketProcessingComplete_Request {
+    pub fn new() -> CShader_ReportBucketProcessingComplete_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 appid = 1;
+
+    pub fn appid(&self) -> u32 {
+        self.appid.unwrap_or(0)
+    }
+
+    pub fn clear_appid(&mut self) {
+        self.appid = ::std::option::Option::None;
+    }
+
+    pub fn has_appid(&self) -> bool {
+        self.appid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid(&mut self, v: u32) {
+        self.appid = ::std::option::Option::Some(v);
+    }
+
+    // optional string gpu_desc = 2;
+
+    pub fn gpu_desc(&self) -> &str {
+        match self.gpu_desc.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_gpu_desc(&mut self) {
+        self.gpu_desc = ::std::option::Option::None;
+    }
+
+    pub fn has_gpu_desc(&self) -> bool {
+        self.gpu_desc.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gpu_desc(&mut self, v: ::std::string::String) {
+        self.gpu_desc = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_gpu_desc(&mut self) -> &mut ::std::string::String {
+        if self.gpu_desc.is_none() {
+            self.gpu_desc = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.gpu_desc.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_gpu_desc(&mut self) -> ::std::string::String {
+        self.gpu_desc.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string driver_desc = 3;
+
+    pub fn driver_desc(&self) -> &str {
+        match self.driver_desc.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_driver_desc(&mut self) {
+        self.driver_desc = ::std::option::Option::None;
+    }
+
+    pub fn has_driver_desc(&self) -> bool {
+        self.driver_desc.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_driver_desc(&mut self, v: ::std::string::String) {
+        self.driver_desc = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_driver_desc(&mut self) -> &mut ::std::string::String {
+        if self.driver_desc.is_none() {
+            self.driver_desc = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.driver_desc.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_driver_desc(&mut self) -> ::std::string::String {
+        self.driver_desc.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CShader_ReportBucketProcessingComplete_Request {
+    const NAME: &'static str = "CShader_ReportBucketProcessingComplete_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.gpu_desc = ::std::option::Option::Some(is.read_string()?);
+                },
+                26 => {
+                    self.driver_desc = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.appid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.gpu_desc.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        if let Some(v) = self.driver_desc.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.appid {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.gpu_desc.as_ref() {
+            os.write_string(2, v)?;
+        }
+        if let Some(v) = self.driver_desc.as_ref() {
+            os.write_string(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CShader_ReportBucketProcessingComplete_Request {
+        CShader_ReportBucketProcessingComplete_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.appid = ::std::option::Option::None;
+        self.gpu_desc = ::std::option::Option::None;
+        self.driver_desc = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CShader_ReportBucketProcessingComplete_Request {
+        static instance: CShader_ReportBucketProcessingComplete_Request = CShader_ReportBucketProcessingComplete_Request {
+            appid: ::std::option::Option::None,
+            gpu_desc: ::std::option::Option::None,
+            driver_desc: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CShader_ReportBucketProcessingComplete_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CShader_ReportBucketProcessingComplete_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CShader_ReportBucketProcessingComplete_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CShader_ReportBucketProcessingComplete_Response {
+    fn default() -> &'a CShader_ReportBucketProcessingComplete_Response {
+        <CShader_ReportBucketProcessingComplete_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CShader_ReportBucketProcessingComplete_Response {
+    pub fn new() -> CShader_ReportBucketProcessingComplete_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CShader_ReportBucketProcessingComplete_Response {
+    const NAME: &'static str = "CShader_ReportBucketProcessingComplete_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CShader_ReportBucketProcessingComplete_Response {
+        CShader_ReportBucketProcessingComplete_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CShader_ReportBucketProcessingComplete_Response {
+        static instance: CShader_ReportBucketProcessingComplete_Response = CShader_ReportBucketProcessingComplete_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -2596,6 +2879,34 @@ impl ::steam_vent_proto_common::RpcMessage for CShader_ReportExternalBuild_Respo
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CShader_ReportBucketProcessingComplete_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CShader_ReportBucketProcessingComplete_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct Shader {}
 impl ::steam_vent_proto_common::RpcService for Shader {
@@ -2616,6 +2927,11 @@ impl ::steam_vent_proto_common::RpcMethod for CShader_GetStaleBucket_Request {
 impl ::steam_vent_proto_common::RpcMethod for CShader_RegisterShader_Request {
     const METHOD_NAME: &'static str = "Shader.RegisterShader#1";
     type Response = CShader_RegisterShader_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CShader_ReportBucketProcessingComplete_Request {
+    const METHOD_NAME: &'static str = "Shader.ReportBucketProcessingComplete#1";
+    type Response = CShader_ReportBucketProcessingComplete_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CShader_ReportExternalBuild_Request {
     const METHOD_NAME: &'static str = "Shader.ReportExternalBuild#1";

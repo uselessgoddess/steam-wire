@@ -5603,6 +5603,426 @@ pub mod cstore_get_user_game_interest_state_response {
     }
 }
 
+// @@protoc_insertion_point(message:CStore_GetGamesFollowed_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CStore_GetGamesFollowed_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CStore_GetGamesFollowed_Request.steamid)
+    pub steamid: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CStore_GetGamesFollowed_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CStore_GetGamesFollowed_Request {
+    fn default() -> &'a CStore_GetGamesFollowed_Request {
+        <CStore_GetGamesFollowed_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CStore_GetGamesFollowed_Request {
+    pub fn new() -> CStore_GetGamesFollowed_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 steamid = 1;
+
+    pub fn steamid(&self) -> u64 {
+        self.steamid.unwrap_or(0)
+    }
+
+    pub fn clear_steamid(&mut self) {
+        self.steamid = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid(&self) -> bool {
+        self.steamid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid(&mut self, v: u64) {
+        self.steamid = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CStore_GetGamesFollowed_Request {
+    const NAME: &'static str = "CStore_GetGamesFollowed_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.steamid = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid {
+            my_size += 1 + 8;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid {
+            os.write_fixed64(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CStore_GetGamesFollowed_Request {
+        CStore_GetGamesFollowed_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CStore_GetGamesFollowed_Request {
+        static instance: CStore_GetGamesFollowed_Request = CStore_GetGamesFollowed_Request {
+            steamid: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CStore_GetGamesFollowed_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CStore_GetGamesFollowed_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CStore_GetGamesFollowed_Response.appids)
+    pub appids: ::std::vec::Vec<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CStore_GetGamesFollowed_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CStore_GetGamesFollowed_Response {
+    fn default() -> &'a CStore_GetGamesFollowed_Response {
+        <CStore_GetGamesFollowed_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CStore_GetGamesFollowed_Response {
+    pub fn new() -> CStore_GetGamesFollowed_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CStore_GetGamesFollowed_Response {
+    const NAME: &'static str = "CStore_GetGamesFollowed_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    is.read_repeated_packed_uint32_into(&mut self.appids)?;
+                },
+                8 => {
+                    self.appids.push(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.appids {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, *value);
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.appids {
+            os.write_uint32(1, *v)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CStore_GetGamesFollowed_Response {
+        CStore_GetGamesFollowed_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.appids.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CStore_GetGamesFollowed_Response {
+        static instance: CStore_GetGamesFollowed_Response = CStore_GetGamesFollowed_Response {
+            appids: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CStore_GetGamesFollowedCount_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CStore_GetGamesFollowedCount_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CStore_GetGamesFollowedCount_Request.steamid)
+    pub steamid: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CStore_GetGamesFollowedCount_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CStore_GetGamesFollowedCount_Request {
+    fn default() -> &'a CStore_GetGamesFollowedCount_Request {
+        <CStore_GetGamesFollowedCount_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CStore_GetGamesFollowedCount_Request {
+    pub fn new() -> CStore_GetGamesFollowedCount_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 steamid = 1;
+
+    pub fn steamid(&self) -> u64 {
+        self.steamid.unwrap_or(0)
+    }
+
+    pub fn clear_steamid(&mut self) {
+        self.steamid = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid(&self) -> bool {
+        self.steamid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid(&mut self, v: u64) {
+        self.steamid = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CStore_GetGamesFollowedCount_Request {
+    const NAME: &'static str = "CStore_GetGamesFollowedCount_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.steamid = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid {
+            my_size += 1 + 8;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid {
+            os.write_fixed64(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CStore_GetGamesFollowedCount_Request {
+        CStore_GetGamesFollowedCount_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CStore_GetGamesFollowedCount_Request {
+        static instance: CStore_GetGamesFollowedCount_Request = CStore_GetGamesFollowedCount_Request {
+            steamid: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CStore_GetGamesFollowedCount_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CStore_GetGamesFollowedCount_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CStore_GetGamesFollowedCount_Response.followed_game_count)
+    pub followed_game_count: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CStore_GetGamesFollowedCount_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CStore_GetGamesFollowedCount_Response {
+    fn default() -> &'a CStore_GetGamesFollowedCount_Response {
+        <CStore_GetGamesFollowedCount_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CStore_GetGamesFollowedCount_Response {
+    pub fn new() -> CStore_GetGamesFollowedCount_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 followed_game_count = 1;
+
+    pub fn followed_game_count(&self) -> u32 {
+        self.followed_game_count.unwrap_or(0)
+    }
+
+    pub fn clear_followed_game_count(&mut self) {
+        self.followed_game_count = ::std::option::Option::None;
+    }
+
+    pub fn has_followed_game_count(&self) -> bool {
+        self.followed_game_count.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_followed_game_count(&mut self, v: u32) {
+        self.followed_game_count = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CStore_GetGamesFollowedCount_Response {
+    const NAME: &'static str = "CStore_GetGamesFollowedCount_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.followed_game_count = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.followed_game_count {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.followed_game_count {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CStore_GetGamesFollowedCount_Response {
+        CStore_GetGamesFollowedCount_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.followed_game_count = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CStore_GetGamesFollowedCount_Response {
+        static instance: CStore_GetGamesFollowedCount_Response = CStore_GetGamesFollowedCount_Response {
+            followed_game_count: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CStore_GetDiscoveryQueueSkippedApps_Request)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CStore_GetDiscoveryQueueSkippedApps_Request {
@@ -6275,6 +6695,12 @@ pub struct CStore_UserPreferences {
     pub provide_deck_feedback: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EProvideDeckFeedbackPreference>>,
     // @@protoc_insertion_point(field:CStore_UserPreferences.additional_languages)
     pub additional_languages: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CStore_UserPreferences.game_frame_rate_reporting)
+    pub game_frame_rate_reporting: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EGameFrameRateReportingPreference>>,
+    // @@protoc_insertion_point(field:CStore_UserPreferences.disable_microtrailers)
+    pub disable_microtrailers: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CStore_UserPreferences.disable_animated_marketing)
+    pub disable_animated_marketing: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CStore_UserPreferences.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -6522,6 +6948,66 @@ impl CStore_UserPreferences {
     pub fn take_additional_languages(&mut self) -> ::std::string::String {
         self.additional_languages.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional .EGameFrameRateReportingPreference game_frame_rate_reporting = 14;
+
+    pub fn game_frame_rate_reporting(&self) -> super::enums::EGameFrameRateReportingPreference {
+        match self.game_frame_rate_reporting {
+            Some(e) => e.enum_value_or(super::enums::EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset),
+            None => super::enums::EGameFrameRateReportingPreference::k_EGameFrameRateReportingPreference_Unset,
+        }
+    }
+
+    pub fn clear_game_frame_rate_reporting(&mut self) {
+        self.game_frame_rate_reporting = ::std::option::Option::None;
+    }
+
+    pub fn has_game_frame_rate_reporting(&self) -> bool {
+        self.game_frame_rate_reporting.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_game_frame_rate_reporting(&mut self, v: super::enums::EGameFrameRateReportingPreference) {
+        self.game_frame_rate_reporting = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional bool disable_microtrailers = 15;
+
+    pub fn disable_microtrailers(&self) -> bool {
+        self.disable_microtrailers.unwrap_or(false)
+    }
+
+    pub fn clear_disable_microtrailers(&mut self) {
+        self.disable_microtrailers = ::std::option::Option::None;
+    }
+
+    pub fn has_disable_microtrailers(&self) -> bool {
+        self.disable_microtrailers.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_disable_microtrailers(&mut self, v: bool) {
+        self.disable_microtrailers = ::std::option::Option::Some(v);
+    }
+
+    // optional bool disable_animated_marketing = 16;
+
+    pub fn disable_animated_marketing(&self) -> bool {
+        self.disable_animated_marketing.unwrap_or(false)
+    }
+
+    pub fn clear_disable_animated_marketing(&mut self) {
+        self.disable_animated_marketing = ::std::option::Option::None;
+    }
+
+    pub fn has_disable_animated_marketing(&self) -> bool {
+        self.disable_animated_marketing.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_disable_animated_marketing(&mut self, v: bool) {
+        self.disable_animated_marketing = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
@@ -6566,6 +7052,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
                 },
                 106 => {
                     self.additional_languages = ::std::option::Option::Some(is.read_string()?);
+                },
+                112 => {
+                    self.game_frame_rate_reporting = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                120 => {
+                    self.disable_microtrailers = ::std::option::Option::Some(is.read_bool()?);
+                },
+                128 => {
+                    self.disable_animated_marketing = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -6612,6 +7107,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
         if let Some(v) = self.additional_languages.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(13, &v);
         }
+        if let Some(v) = self.game_frame_rate_reporting {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(14, v.value());
+        }
+        if let Some(v) = self.disable_microtrailers {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.disable_animated_marketing {
+            my_size += 2 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -6651,6 +7155,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
         if let Some(v) = self.additional_languages.as_ref() {
             os.write_string(13, v)?;
         }
+        if let Some(v) = self.game_frame_rate_reporting {
+            os.write_enum(14, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.disable_microtrailers {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.disable_animated_marketing {
+            os.write_bool(16, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -6679,6 +7192,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
         self.timestamp_content_descriptor_preferences_updated = ::std::option::Option::None;
         self.provide_deck_feedback = ::std::option::Option::None;
         self.additional_languages = ::std::option::Option::None;
+        self.game_frame_rate_reporting = ::std::option::Option::None;
+        self.disable_microtrailers = ::std::option::Option::None;
+        self.disable_animated_marketing = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -6695,6 +7211,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CStore_UserPreferences {
             timestamp_content_descriptor_preferences_updated: ::std::option::Option::None,
             provide_deck_feedback: ::std::option::Option::None,
             additional_languages: ::std::option::Option::None,
+            game_frame_rate_reporting: ::std::option::Option::None,
+            disable_microtrailers: ::std::option::Option::None,
+            disable_animated_marketing: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -9535,6 +10054,8 @@ pub struct CSteamDeckCompatibility_SetFeedback_Request {
     pub appid: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CSteamDeckCompatibility_SetFeedback_Request.feedback)
     pub feedback: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::ESteamDeckCompatibilityFeedback>>,
+    // @@protoc_insertion_point(field:CSteamDeckCompatibility_SetFeedback_Request.feedback_details)
+    pub feedback_details: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CSteamDeckCompatibility_SetFeedback_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -9591,6 +10112,25 @@ impl CSteamDeckCompatibility_SetFeedback_Request {
     pub fn set_feedback(&mut self, v: super::enums::ESteamDeckCompatibilityFeedback) {
         self.feedback = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
+
+    // optional uint32 feedback_details = 3;
+
+    pub fn feedback_details(&self) -> u32 {
+        self.feedback_details.unwrap_or(0)
+    }
+
+    pub fn clear_feedback_details(&mut self) {
+        self.feedback_details = ::std::option::Option::None;
+    }
+
+    pub fn has_feedback_details(&self) -> bool {
+        self.feedback_details.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_feedback_details(&mut self, v: u32) {
+        self.feedback_details = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_SetFeedback_Request {
@@ -9608,6 +10148,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_Se
                 },
                 16 => {
                     self.feedback = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                24 => {
+                    self.feedback_details = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -9627,6 +10170,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_Se
         if let Some(v) = self.feedback {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v.value());
         }
+        if let Some(v) = self.feedback_details {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -9638,6 +10184,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_Se
         }
         if let Some(v) = self.feedback {
             os.write_enum(2, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.feedback_details {
+            os.write_uint32(3, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -9658,6 +10207,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_Se
     fn clear(&mut self) {
         self.appid = ::std::option::Option::None;
         self.feedback = ::std::option::Option::None;
+        self.feedback_details = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -9665,6 +10215,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamDeckCompatibility_Se
         static instance: CSteamDeckCompatibility_SetFeedback_Request = CSteamDeckCompatibility_SetFeedback_Request {
             appid: ::std::option::Option::None,
             feedback: ::std::option::Option::None,
+            feedback_details: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -10816,6 +11367,58 @@ impl ::steam_vent_proto_common::RpcMessage for CStore_GetUserGameInterestState_R
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CStore_GetGamesFollowed_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CStore_GetGamesFollowed_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CStore_GetGamesFollowedCount_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CStore_GetGamesFollowedCount_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage
 for CStore_GetDiscoveryQueueSkippedApps_Request {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
@@ -11270,6 +11873,14 @@ for CStore_GetDiscoveryQueueSkippedApps_Request {
 impl ::steam_vent_proto_common::RpcMethod for CStore_GetDiscoveryQueue_Request {
     const METHOD_NAME: &'static str = "Store.GetDiscoveryQueue#1";
     type Response = CStore_GetDiscoveryQueue_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CStore_GetGamesFollowedCount_Request {
+    const METHOD_NAME: &'static str = "Store.GetGamesFollowedCount#1";
+    type Response = CStore_GetGamesFollowedCount_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CStore_GetGamesFollowed_Request {
+    const METHOD_NAME: &'static str = "Store.GetGamesFollowed#1";
+    type Response = CStore_GetGamesFollowed_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CStore_GetLocalizedNameForTags_Request {
     const METHOD_NAME: &'static str = "Store.GetLocalizedNameForTags#1";

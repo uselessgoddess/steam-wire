@@ -20205,10 +20205,6 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgClientPurchaseWithMachineID {
         self.compute_size() as usize
     }
 }
-impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgClientPurchaseWithMachineID {
-    type KindEnum = crate::enums_clientserver::EMsg;
-    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgClientPurchaseWithMachineID;
-}
 impl ::steam_vent_proto_common::RpcMessage for CMsgTrading_InitiateTradeRequest {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)

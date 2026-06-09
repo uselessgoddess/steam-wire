@@ -180,6 +180,1796 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStatus {
     }
 }
 
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadStatus)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadStatus {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.current_connections)
+    pub current_connections: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.current_bps)
+    pub current_bps: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.total_bytes_downloaded)
+    pub total_bytes_downloaded: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.recent_bps)
+    pub recent_bps: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.remote_client_id)
+    pub remote_client_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.download_throttle_rate)
+    pub download_throttle_rate: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadStatus.remote_client_name)
+    pub remote_client_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadStatus.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadStatus {
+    fn default() -> &'a CMsgRemoteClientDownloadStatus {
+        <CMsgRemoteClientDownloadStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadStatus {
+    pub fn new() -> CMsgRemoteClientDownloadStatus {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 current_connections = 1;
+
+    pub fn current_connections(&self) -> u32 {
+        self.current_connections.unwrap_or(0)
+    }
+
+    pub fn clear_current_connections(&mut self) {
+        self.current_connections = ::std::option::Option::None;
+    }
+
+    pub fn has_current_connections(&self) -> bool {
+        self.current_connections.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_current_connections(&mut self, v: u32) {
+        self.current_connections = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 current_bps = 2;
+
+    pub fn current_bps(&self) -> u32 {
+        self.current_bps.unwrap_or(0)
+    }
+
+    pub fn clear_current_bps(&mut self) {
+        self.current_bps = ::std::option::Option::None;
+    }
+
+    pub fn has_current_bps(&self) -> bool {
+        self.current_bps.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_current_bps(&mut self, v: u32) {
+        self.current_bps = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 total_bytes_downloaded = 3;
+
+    pub fn total_bytes_downloaded(&self) -> u64 {
+        self.total_bytes_downloaded.unwrap_or(0)
+    }
+
+    pub fn clear_total_bytes_downloaded(&mut self) {
+        self.total_bytes_downloaded = ::std::option::Option::None;
+    }
+
+    pub fn has_total_bytes_downloaded(&self) -> bool {
+        self.total_bytes_downloaded.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_total_bytes_downloaded(&mut self, v: u64) {
+        self.total_bytes_downloaded = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 recent_bps = 4;
+
+    pub fn recent_bps(&self) -> u32 {
+        self.recent_bps.unwrap_or(0)
+    }
+
+    pub fn clear_recent_bps(&mut self) {
+        self.recent_bps = ::std::option::Option::None;
+    }
+
+    pub fn has_recent_bps(&self) -> bool {
+        self.recent_bps.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_recent_bps(&mut self, v: u32) {
+        self.recent_bps = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 remote_client_id = 5;
+
+    pub fn remote_client_id(&self) -> u64 {
+        self.remote_client_id.unwrap_or(0)
+    }
+
+    pub fn clear_remote_client_id(&mut self) {
+        self.remote_client_id = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_client_id(&self) -> bool {
+        self.remote_client_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_client_id(&mut self, v: u64) {
+        self.remote_client_id = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 download_throttle_rate = 6;
+
+    pub fn download_throttle_rate(&self) -> i32 {
+        self.download_throttle_rate.unwrap_or(0)
+    }
+
+    pub fn clear_download_throttle_rate(&mut self) {
+        self.download_throttle_rate = ::std::option::Option::None;
+    }
+
+    pub fn has_download_throttle_rate(&self) -> bool {
+        self.download_throttle_rate.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_download_throttle_rate(&mut self, v: i32) {
+        self.download_throttle_rate = ::std::option::Option::Some(v);
+    }
+
+    // optional string remote_client_name = 7;
+
+    pub fn remote_client_name(&self) -> &str {
+        match self.remote_client_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_client_name(&mut self) {
+        self.remote_client_name = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_client_name(&self) -> bool {
+        self.remote_client_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_client_name(&mut self, v: ::std::string::String) {
+        self.remote_client_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_client_name(&mut self) -> &mut ::std::string::String {
+        if self.remote_client_name.is_none() {
+            self.remote_client_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_client_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_client_name(&mut self) -> ::std::string::String {
+        self.remote_client_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadStatus {
+    const NAME: &'static str = "CMsgRemoteClientDownloadStatus";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.current_connections = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.current_bps = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.total_bytes_downloaded = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                32 => {
+                    self.recent_bps = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.remote_client_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                48 => {
+                    self.download_throttle_rate = ::std::option::Option::Some(is.read_int32()?);
+                },
+                58 => {
+                    self.remote_client_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.current_connections {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.current_bps {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.total_bytes_downloaded {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(3, v);
+        }
+        if let Some(v) = self.recent_bps {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.remote_client_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(5, v);
+        }
+        if let Some(v) = self.download_throttle_rate {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(6, v);
+        }
+        if let Some(v) = self.remote_client_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(7, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.current_connections {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.current_bps {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.total_bytes_downloaded {
+            os.write_uint64(3, v)?;
+        }
+        if let Some(v) = self.recent_bps {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.remote_client_id {
+            os.write_uint64(5, v)?;
+        }
+        if let Some(v) = self.download_throttle_rate {
+            os.write_int32(6, v)?;
+        }
+        if let Some(v) = self.remote_client_name.as_ref() {
+            os.write_string(7, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadStatus {
+        CMsgRemoteClientDownloadStatus::new()
+    }
+
+    fn clear(&mut self) {
+        self.current_connections = ::std::option::Option::None;
+        self.current_bps = ::std::option::Option::None;
+        self.total_bytes_downloaded = ::std::option::Option::None;
+        self.recent_bps = ::std::option::Option::None;
+        self.remote_client_id = ::std::option::Option::None;
+        self.download_throttle_rate = ::std::option::Option::None;
+        self.remote_client_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadStatus {
+        static instance: CMsgRemoteClientDownloadStatus = CMsgRemoteClientDownloadStatus {
+            current_connections: ::std::option::Option::None,
+            current_bps: ::std::option::Option::None,
+            total_bytes_downloaded: ::std::option::Option::None,
+            recent_bps: ::std::option::Option::None,
+            remote_client_id: ::std::option::Option::None,
+            download_throttle_rate: ::std::option::Option::None,
+            remote_client_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientUploadStatus)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientUploadStatus {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.served_app_id)
+    pub served_app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.num_clients)
+    pub num_clients: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.send_bytes_per_sec)
+    pub send_bytes_per_sec: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.read_bytes_per_sec)
+    pub read_bytes_per_sec: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.send_bytes_total)
+    pub send_bytes_total: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.read_bytes_total)
+    pub read_bytes_total: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.remote_client_id)
+    pub remote_client_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUploadStatus.remote_client_name)
+    pub remote_client_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientUploadStatus.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientUploadStatus {
+    fn default() -> &'a CMsgRemoteClientUploadStatus {
+        <CMsgRemoteClientUploadStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientUploadStatus {
+    pub fn new() -> CMsgRemoteClientUploadStatus {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 served_app_id = 1;
+
+    pub fn served_app_id(&self) -> u32 {
+        self.served_app_id.unwrap_or(0)
+    }
+
+    pub fn clear_served_app_id(&mut self) {
+        self.served_app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_served_app_id(&self) -> bool {
+        self.served_app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_served_app_id(&mut self, v: u32) {
+        self.served_app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 num_clients = 2;
+
+    pub fn num_clients(&self) -> u32 {
+        self.num_clients.unwrap_or(0)
+    }
+
+    pub fn clear_num_clients(&mut self) {
+        self.num_clients = ::std::option::Option::None;
+    }
+
+    pub fn has_num_clients(&self) -> bool {
+        self.num_clients.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_num_clients(&mut self, v: u32) {
+        self.num_clients = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 send_bytes_per_sec = 3;
+
+    pub fn send_bytes_per_sec(&self) -> u32 {
+        self.send_bytes_per_sec.unwrap_or(0)
+    }
+
+    pub fn clear_send_bytes_per_sec(&mut self) {
+        self.send_bytes_per_sec = ::std::option::Option::None;
+    }
+
+    pub fn has_send_bytes_per_sec(&self) -> bool {
+        self.send_bytes_per_sec.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_send_bytes_per_sec(&mut self, v: u32) {
+        self.send_bytes_per_sec = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 read_bytes_per_sec = 4;
+
+    pub fn read_bytes_per_sec(&self) -> u32 {
+        self.read_bytes_per_sec.unwrap_or(0)
+    }
+
+    pub fn clear_read_bytes_per_sec(&mut self) {
+        self.read_bytes_per_sec = ::std::option::Option::None;
+    }
+
+    pub fn has_read_bytes_per_sec(&self) -> bool {
+        self.read_bytes_per_sec.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_read_bytes_per_sec(&mut self, v: u32) {
+        self.read_bytes_per_sec = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 send_bytes_total = 5;
+
+    pub fn send_bytes_total(&self) -> u64 {
+        self.send_bytes_total.unwrap_or(0)
+    }
+
+    pub fn clear_send_bytes_total(&mut self) {
+        self.send_bytes_total = ::std::option::Option::None;
+    }
+
+    pub fn has_send_bytes_total(&self) -> bool {
+        self.send_bytes_total.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_send_bytes_total(&mut self, v: u64) {
+        self.send_bytes_total = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 read_bytes_total = 6;
+
+    pub fn read_bytes_total(&self) -> u64 {
+        self.read_bytes_total.unwrap_or(0)
+    }
+
+    pub fn clear_read_bytes_total(&mut self) {
+        self.read_bytes_total = ::std::option::Option::None;
+    }
+
+    pub fn has_read_bytes_total(&self) -> bool {
+        self.read_bytes_total.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_read_bytes_total(&mut self, v: u64) {
+        self.read_bytes_total = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 remote_client_id = 7;
+
+    pub fn remote_client_id(&self) -> u64 {
+        self.remote_client_id.unwrap_or(0)
+    }
+
+    pub fn clear_remote_client_id(&mut self) {
+        self.remote_client_id = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_client_id(&self) -> bool {
+        self.remote_client_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_client_id(&mut self, v: u64) {
+        self.remote_client_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string remote_client_name = 8;
+
+    pub fn remote_client_name(&self) -> &str {
+        match self.remote_client_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_remote_client_name(&mut self) {
+        self.remote_client_name = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_client_name(&self) -> bool {
+        self.remote_client_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_client_name(&mut self, v: ::std::string::String) {
+        self.remote_client_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_remote_client_name(&mut self) -> &mut ::std::string::String {
+        if self.remote_client_name.is_none() {
+            self.remote_client_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.remote_client_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_remote_client_name(&mut self) -> ::std::string::String {
+        self.remote_client_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientUploadStatus {
+    const NAME: &'static str = "CMsgRemoteClientUploadStatus";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.served_app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.num_clients = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.send_bytes_per_sec = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                32 => {
+                    self.read_bytes_per_sec = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.send_bytes_total = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                48 => {
+                    self.read_bytes_total = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                56 => {
+                    self.remote_client_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                66 => {
+                    self.remote_client_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.served_app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.num_clients {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.send_bytes_per_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        if let Some(v) = self.read_bytes_per_sec {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.send_bytes_total {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(5, v);
+        }
+        if let Some(v) = self.read_bytes_total {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(6, v);
+        }
+        if let Some(v) = self.remote_client_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(7, v);
+        }
+        if let Some(v) = self.remote_client_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(8, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.served_app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.num_clients {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.send_bytes_per_sec {
+            os.write_uint32(3, v)?;
+        }
+        if let Some(v) = self.read_bytes_per_sec {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.send_bytes_total {
+            os.write_uint64(5, v)?;
+        }
+        if let Some(v) = self.read_bytes_total {
+            os.write_uint64(6, v)?;
+        }
+        if let Some(v) = self.remote_client_id {
+            os.write_uint64(7, v)?;
+        }
+        if let Some(v) = self.remote_client_name.as_ref() {
+            os.write_string(8, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientUploadStatus {
+        CMsgRemoteClientUploadStatus::new()
+    }
+
+    fn clear(&mut self) {
+        self.served_app_id = ::std::option::Option::None;
+        self.num_clients = ::std::option::Option::None;
+        self.send_bytes_per_sec = ::std::option::Option::None;
+        self.read_bytes_per_sec = ::std::option::Option::None;
+        self.send_bytes_total = ::std::option::Option::None;
+        self.read_bytes_total = ::std::option::Option::None;
+        self.remote_client_id = ::std::option::Option::None;
+        self.remote_client_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientUploadStatus {
+        static instance: CMsgRemoteClientUploadStatus = CMsgRemoteClientUploadStatus {
+            served_app_id: ::std::option::Option::None,
+            num_clients: ::std::option::Option::None,
+            send_bytes_per_sec: ::std::option::Option::None,
+            read_bytes_per_sec: ::std::option::Option::None,
+            send_bytes_total: ::std::option::Option::None,
+            read_bytes_total: ::std::option::Option::None,
+            remote_client_id: ::std::option::Option::None,
+            remote_client_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientRestrictAutoUpdates)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientRestrictAutoUpdates {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientRestrictAutoUpdates.restrict_auto_updates)
+    pub restrict_auto_updates: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientRestrictAutoUpdates.restrict_auto_updates_start)
+    pub restrict_auto_updates_start: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientRestrictAutoUpdates.restrict_auto_updates_end)
+    pub restrict_auto_updates_end: ::std::option::Option<i32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientRestrictAutoUpdates.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientRestrictAutoUpdates {
+    fn default() -> &'a CMsgRemoteClientRestrictAutoUpdates {
+        <CMsgRemoteClientRestrictAutoUpdates as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientRestrictAutoUpdates {
+    pub fn new() -> CMsgRemoteClientRestrictAutoUpdates {
+        ::std::default::Default::default()
+    }
+
+    // optional bool restrict_auto_updates = 1;
+
+    pub fn restrict_auto_updates(&self) -> bool {
+        self.restrict_auto_updates.unwrap_or(false)
+    }
+
+    pub fn clear_restrict_auto_updates(&mut self) {
+        self.restrict_auto_updates = ::std::option::Option::None;
+    }
+
+    pub fn has_restrict_auto_updates(&self) -> bool {
+        self.restrict_auto_updates.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_restrict_auto_updates(&mut self, v: bool) {
+        self.restrict_auto_updates = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 restrict_auto_updates_start = 2;
+
+    pub fn restrict_auto_updates_start(&self) -> i32 {
+        self.restrict_auto_updates_start.unwrap_or(0)
+    }
+
+    pub fn clear_restrict_auto_updates_start(&mut self) {
+        self.restrict_auto_updates_start = ::std::option::Option::None;
+    }
+
+    pub fn has_restrict_auto_updates_start(&self) -> bool {
+        self.restrict_auto_updates_start.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_restrict_auto_updates_start(&mut self, v: i32) {
+        self.restrict_auto_updates_start = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 restrict_auto_updates_end = 3;
+
+    pub fn restrict_auto_updates_end(&self) -> i32 {
+        self.restrict_auto_updates_end.unwrap_or(0)
+    }
+
+    pub fn clear_restrict_auto_updates_end(&mut self) {
+        self.restrict_auto_updates_end = ::std::option::Option::None;
+    }
+
+    pub fn has_restrict_auto_updates_end(&self) -> bool {
+        self.restrict_auto_updates_end.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_restrict_auto_updates_end(&mut self, v: i32) {
+        self.restrict_auto_updates_end = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientRestrictAutoUpdates {
+    const NAME: &'static str = "CMsgRemoteClientRestrictAutoUpdates";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.restrict_auto_updates = ::std::option::Option::Some(is.read_bool()?);
+                },
+                16 => {
+                    self.restrict_auto_updates_start = ::std::option::Option::Some(is.read_int32()?);
+                },
+                24 => {
+                    self.restrict_auto_updates_end = ::std::option::Option::Some(is.read_int32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.restrict_auto_updates {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.restrict_auto_updates_start {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v);
+        }
+        if let Some(v) = self.restrict_auto_updates_end {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.restrict_auto_updates {
+            os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.restrict_auto_updates_start {
+            os.write_int32(2, v)?;
+        }
+        if let Some(v) = self.restrict_auto_updates_end {
+            os.write_int32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientRestrictAutoUpdates {
+        CMsgRemoteClientRestrictAutoUpdates::new()
+    }
+
+    fn clear(&mut self) {
+        self.restrict_auto_updates = ::std::option::Option::None;
+        self.restrict_auto_updates_start = ::std::option::Option::None;
+        self.restrict_auto_updates_end = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientRestrictAutoUpdates {
+        static instance: CMsgRemoteClientRestrictAutoUpdates = CMsgRemoteClientRestrictAutoUpdates {
+            restrict_auto_updates: ::std::option::Option::None,
+            restrict_auto_updates_start: ::std::option::Option::None,
+            restrict_auto_updates_end: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:AppStageProgress)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct AppStageProgress {
+    // message fields
+    // @@protoc_insertion_point(field:AppStageProgress.in_progress)
+    pub in_progress: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppStageProgress.total)
+    pub total: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppStageProgress.estimated_time_remaining_secs)
+    pub estimated_time_remaining_secs: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:AppStageProgress.weight)
+    pub weight: ::std::option::Option<f32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:AppStageProgress.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a AppStageProgress {
+    fn default() -> &'a AppStageProgress {
+        <AppStageProgress as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl AppStageProgress {
+    pub fn new() -> AppStageProgress {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 in_progress = 1;
+
+    pub fn in_progress(&self) -> u64 {
+        self.in_progress.unwrap_or(0)
+    }
+
+    pub fn clear_in_progress(&mut self) {
+        self.in_progress = ::std::option::Option::None;
+    }
+
+    pub fn has_in_progress(&self) -> bool {
+        self.in_progress.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_in_progress(&mut self, v: u64) {
+        self.in_progress = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 total = 2;
+
+    pub fn total(&self) -> u64 {
+        self.total.unwrap_or(0)
+    }
+
+    pub fn clear_total(&mut self) {
+        self.total = ::std::option::Option::None;
+    }
+
+    pub fn has_total(&self) -> bool {
+        self.total.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_total(&mut self, v: u64) {
+        self.total = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 estimated_time_remaining_secs = 3;
+
+    pub fn estimated_time_remaining_secs(&self) -> i32 {
+        self.estimated_time_remaining_secs.unwrap_or(0)
+    }
+
+    pub fn clear_estimated_time_remaining_secs(&mut self) {
+        self.estimated_time_remaining_secs = ::std::option::Option::None;
+    }
+
+    pub fn has_estimated_time_remaining_secs(&self) -> bool {
+        self.estimated_time_remaining_secs.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_estimated_time_remaining_secs(&mut self, v: i32) {
+        self.estimated_time_remaining_secs = ::std::option::Option::Some(v);
+    }
+
+    // optional float weight = 4;
+
+    pub fn weight(&self) -> f32 {
+        self.weight.unwrap_or(0.)
+    }
+
+    pub fn clear_weight(&mut self) {
+        self.weight = ::std::option::Option::None;
+    }
+
+    pub fn has_weight(&self) -> bool {
+        self.weight.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_weight(&mut self, v: f32) {
+        self.weight = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for AppStageProgress {
+    const NAME: &'static str = "AppStageProgress";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.in_progress = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.total = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                24 => {
+                    self.estimated_time_remaining_secs = ::std::option::Option::Some(is.read_int32()?);
+                },
+                37 => {
+                    self.weight = ::std::option::Option::Some(is.read_float()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.in_progress {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.total {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+        }
+        if let Some(v) = self.estimated_time_remaining_secs {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v);
+        }
+        if let Some(v) = self.weight {
+            my_size += 1 + 4;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.in_progress {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.total {
+            os.write_uint64(2, v)?;
+        }
+        if let Some(v) = self.estimated_time_remaining_secs {
+            os.write_int32(3, v)?;
+        }
+        if let Some(v) = self.weight {
+            os.write_float(4, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> AppStageProgress {
+        AppStageProgress::new()
+    }
+
+    fn clear(&mut self) {
+        self.in_progress = ::std::option::Option::None;
+        self.total = ::std::option::Option::None;
+        self.estimated_time_remaining_secs = ::std::option::Option::None;
+        self.weight = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static AppStageProgress {
+        static instance: AppStageProgress = AppStageProgress {
+            in_progress: ::std::option::Option::None,
+            total: ::std::option::Option::None,
+            estimated_time_remaining_secs: ::std::option::Option::None,
+            weight: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:AppUpdateInfo)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct AppUpdateInfo {
+    // message fields
+    // @@protoc_insertion_point(field:AppUpdateInfo.time_update_start)
+    pub time_update_start: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.bytes_to_download)
+    pub bytes_to_download: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.bytes_downloaded)
+    pub bytes_downloaded: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.bytes_to_process)
+    pub bytes_to_process: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.bytes_processed)
+    pub bytes_processed: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.estimated_seconds_remaining)
+    pub estimated_seconds_remaining: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.update_result)
+    pub update_result: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.update_state)
+    pub update_state: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.download_type)
+    pub download_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.staging_bytes_staged)
+    pub staging_bytes_staged: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.staging_bytes_to_stage)
+    pub staging_bytes_to_stage: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.bytes_to_disc_per_second)
+    pub bytes_to_disc_per_second: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.progress_weights)
+    pub progress_weights: ::std::vec::Vec<AppStageProgress>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.time_deferred_until)
+    pub time_deferred_until: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.source_build_id)
+    pub source_build_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppUpdateInfo.target_build_id)
+    pub target_build_id: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:AppUpdateInfo.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a AppUpdateInfo {
+    fn default() -> &'a AppUpdateInfo {
+        <AppUpdateInfo as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl AppUpdateInfo {
+    pub fn new() -> AppUpdateInfo {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed32 time_update_start = 1;
+
+    pub fn time_update_start(&self) -> u32 {
+        self.time_update_start.unwrap_or(0)
+    }
+
+    pub fn clear_time_update_start(&mut self) {
+        self.time_update_start = ::std::option::Option::None;
+    }
+
+    pub fn has_time_update_start(&self) -> bool {
+        self.time_update_start.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_time_update_start(&mut self, v: u32) {
+        self.time_update_start = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 bytes_to_download = 2;
+
+    pub fn bytes_to_download(&self) -> u64 {
+        self.bytes_to_download.unwrap_or(0)
+    }
+
+    pub fn clear_bytes_to_download(&mut self) {
+        self.bytes_to_download = ::std::option::Option::None;
+    }
+
+    pub fn has_bytes_to_download(&self) -> bool {
+        self.bytes_to_download.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bytes_to_download(&mut self, v: u64) {
+        self.bytes_to_download = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 bytes_downloaded = 3;
+
+    pub fn bytes_downloaded(&self) -> u64 {
+        self.bytes_downloaded.unwrap_or(0)
+    }
+
+    pub fn clear_bytes_downloaded(&mut self) {
+        self.bytes_downloaded = ::std::option::Option::None;
+    }
+
+    pub fn has_bytes_downloaded(&self) -> bool {
+        self.bytes_downloaded.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bytes_downloaded(&mut self, v: u64) {
+        self.bytes_downloaded = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 bytes_to_process = 4;
+
+    pub fn bytes_to_process(&self) -> u64 {
+        self.bytes_to_process.unwrap_or(0)
+    }
+
+    pub fn clear_bytes_to_process(&mut self) {
+        self.bytes_to_process = ::std::option::Option::None;
+    }
+
+    pub fn has_bytes_to_process(&self) -> bool {
+        self.bytes_to_process.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bytes_to_process(&mut self, v: u64) {
+        self.bytes_to_process = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 bytes_processed = 5;
+
+    pub fn bytes_processed(&self) -> u64 {
+        self.bytes_processed.unwrap_or(0)
+    }
+
+    pub fn clear_bytes_processed(&mut self) {
+        self.bytes_processed = ::std::option::Option::None;
+    }
+
+    pub fn has_bytes_processed(&self) -> bool {
+        self.bytes_processed.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bytes_processed(&mut self, v: u64) {
+        self.bytes_processed = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 estimated_seconds_remaining = 6;
+
+    pub fn estimated_seconds_remaining(&self) -> i32 {
+        self.estimated_seconds_remaining.unwrap_or(-1i32)
+    }
+
+    pub fn clear_estimated_seconds_remaining(&mut self) {
+        self.estimated_seconds_remaining = ::std::option::Option::None;
+    }
+
+    pub fn has_estimated_seconds_remaining(&self) -> bool {
+        self.estimated_seconds_remaining.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_estimated_seconds_remaining(&mut self, v: i32) {
+        self.estimated_seconds_remaining = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 update_result = 7;
+
+    pub fn update_result(&self) -> i32 {
+        self.update_result.unwrap_or(0)
+    }
+
+    pub fn clear_update_result(&mut self) {
+        self.update_result = ::std::option::Option::None;
+    }
+
+    pub fn has_update_result(&self) -> bool {
+        self.update_result.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_update_result(&mut self, v: i32) {
+        self.update_result = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 update_state = 8;
+
+    pub fn update_state(&self) -> u32 {
+        self.update_state.unwrap_or(0)
+    }
+
+    pub fn clear_update_state(&mut self) {
+        self.update_state = ::std::option::Option::None;
+    }
+
+    pub fn has_update_state(&self) -> bool {
+        self.update_state.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_update_state(&mut self, v: u32) {
+        self.update_state = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 download_type = 9;
+
+    pub fn download_type(&self) -> u32 {
+        self.download_type.unwrap_or(0)
+    }
+
+    pub fn clear_download_type(&mut self) {
+        self.download_type = ::std::option::Option::None;
+    }
+
+    pub fn has_download_type(&self) -> bool {
+        self.download_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_download_type(&mut self, v: u32) {
+        self.download_type = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 staging_bytes_staged = 10;
+
+    pub fn staging_bytes_staged(&self) -> u64 {
+        self.staging_bytes_staged.unwrap_or(0)
+    }
+
+    pub fn clear_staging_bytes_staged(&mut self) {
+        self.staging_bytes_staged = ::std::option::Option::None;
+    }
+
+    pub fn has_staging_bytes_staged(&self) -> bool {
+        self.staging_bytes_staged.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_staging_bytes_staged(&mut self, v: u64) {
+        self.staging_bytes_staged = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 staging_bytes_to_stage = 11;
+
+    pub fn staging_bytes_to_stage(&self) -> u64 {
+        self.staging_bytes_to_stage.unwrap_or(0)
+    }
+
+    pub fn clear_staging_bytes_to_stage(&mut self) {
+        self.staging_bytes_to_stage = ::std::option::Option::None;
+    }
+
+    pub fn has_staging_bytes_to_stage(&self) -> bool {
+        self.staging_bytes_to_stage.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_staging_bytes_to_stage(&mut self, v: u64) {
+        self.staging_bytes_to_stage = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 bytes_to_disc_per_second = 12;
+
+    pub fn bytes_to_disc_per_second(&self) -> u32 {
+        self.bytes_to_disc_per_second.unwrap_or(0)
+    }
+
+    pub fn clear_bytes_to_disc_per_second(&mut self) {
+        self.bytes_to_disc_per_second = ::std::option::Option::None;
+    }
+
+    pub fn has_bytes_to_disc_per_second(&self) -> bool {
+        self.bytes_to_disc_per_second.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bytes_to_disc_per_second(&mut self, v: u32) {
+        self.bytes_to_disc_per_second = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 time_deferred_until = 14;
+
+    pub fn time_deferred_until(&self) -> u32 {
+        self.time_deferred_until.unwrap_or(0)
+    }
+
+    pub fn clear_time_deferred_until(&mut self) {
+        self.time_deferred_until = ::std::option::Option::None;
+    }
+
+    pub fn has_time_deferred_until(&self) -> bool {
+        self.time_deferred_until.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_time_deferred_until(&mut self, v: u32) {
+        self.time_deferred_until = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 source_build_id = 15;
+
+    pub fn source_build_id(&self) -> u32 {
+        self.source_build_id.unwrap_or(0)
+    }
+
+    pub fn clear_source_build_id(&mut self) {
+        self.source_build_id = ::std::option::Option::None;
+    }
+
+    pub fn has_source_build_id(&self) -> bool {
+        self.source_build_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_source_build_id(&mut self, v: u32) {
+        self.source_build_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 target_build_id = 16;
+
+    pub fn target_build_id(&self) -> u32 {
+        self.target_build_id.unwrap_or(0)
+    }
+
+    pub fn clear_target_build_id(&mut self) {
+        self.target_build_id = ::std::option::Option::None;
+    }
+
+    pub fn has_target_build_id(&self) -> bool {
+        self.target_build_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_target_build_id(&mut self, v: u32) {
+        self.target_build_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for AppUpdateInfo {
+    const NAME: &'static str = "AppUpdateInfo";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                13 => {
+                    self.time_update_start = ::std::option::Option::Some(is.read_fixed32()?);
+                },
+                16 => {
+                    self.bytes_to_download = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                24 => {
+                    self.bytes_downloaded = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                32 => {
+                    self.bytes_to_process = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                40 => {
+                    self.bytes_processed = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                48 => {
+                    self.estimated_seconds_remaining = ::std::option::Option::Some(is.read_int32()?);
+                },
+                56 => {
+                    self.update_result = ::std::option::Option::Some(is.read_int32()?);
+                },
+                64 => {
+                    self.update_state = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                72 => {
+                    self.download_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                80 => {
+                    self.staging_bytes_staged = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                88 => {
+                    self.staging_bytes_to_stage = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                96 => {
+                    self.bytes_to_disc_per_second = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                106 => {
+                    self.progress_weights.push(is.read_message()?);
+                },
+                112 => {
+                    self.time_deferred_until = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                120 => {
+                    self.source_build_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                128 => {
+                    self.target_build_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.time_update_start {
+            my_size += 1 + 4;
+        }
+        if let Some(v) = self.bytes_to_download {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+        }
+        if let Some(v) = self.bytes_downloaded {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(3, v);
+        }
+        if let Some(v) = self.bytes_to_process {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(4, v);
+        }
+        if let Some(v) = self.bytes_processed {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(5, v);
+        }
+        if let Some(v) = self.estimated_seconds_remaining {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(6, v);
+        }
+        if let Some(v) = self.update_result {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(7, v);
+        }
+        if let Some(v) = self.update_state {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
+        }
+        if let Some(v) = self.download_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(9, v);
+        }
+        if let Some(v) = self.staging_bytes_staged {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(10, v);
+        }
+        if let Some(v) = self.staging_bytes_to_stage {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(11, v);
+        }
+        if let Some(v) = self.bytes_to_disc_per_second {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(12, v);
+        }
+        for value in &self.progress_weights {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.time_deferred_until {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(14, v);
+        }
+        if let Some(v) = self.source_build_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(15, v);
+        }
+        if let Some(v) = self.target_build_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(16, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.time_update_start {
+            os.write_fixed32(1, v)?;
+        }
+        if let Some(v) = self.bytes_to_download {
+            os.write_uint64(2, v)?;
+        }
+        if let Some(v) = self.bytes_downloaded {
+            os.write_uint64(3, v)?;
+        }
+        if let Some(v) = self.bytes_to_process {
+            os.write_uint64(4, v)?;
+        }
+        if let Some(v) = self.bytes_processed {
+            os.write_uint64(5, v)?;
+        }
+        if let Some(v) = self.estimated_seconds_remaining {
+            os.write_int32(6, v)?;
+        }
+        if let Some(v) = self.update_result {
+            os.write_int32(7, v)?;
+        }
+        if let Some(v) = self.update_state {
+            os.write_uint32(8, v)?;
+        }
+        if let Some(v) = self.download_type {
+            os.write_uint32(9, v)?;
+        }
+        if let Some(v) = self.staging_bytes_staged {
+            os.write_uint64(10, v)?;
+        }
+        if let Some(v) = self.staging_bytes_to_stage {
+            os.write_uint64(11, v)?;
+        }
+        if let Some(v) = self.bytes_to_disc_per_second {
+            os.write_uint32(12, v)?;
+        }
+        for v in &self.progress_weights {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(13, v, os)?;
+        };
+        if let Some(v) = self.time_deferred_until {
+            os.write_uint32(14, v)?;
+        }
+        if let Some(v) = self.source_build_id {
+            os.write_uint32(15, v)?;
+        }
+        if let Some(v) = self.target_build_id {
+            os.write_uint32(16, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> AppUpdateInfo {
+        AppUpdateInfo::new()
+    }
+
+    fn clear(&mut self) {
+        self.time_update_start = ::std::option::Option::None;
+        self.bytes_to_download = ::std::option::Option::None;
+        self.bytes_downloaded = ::std::option::Option::None;
+        self.bytes_to_process = ::std::option::Option::None;
+        self.bytes_processed = ::std::option::Option::None;
+        self.estimated_seconds_remaining = ::std::option::Option::None;
+        self.update_result = ::std::option::Option::None;
+        self.update_state = ::std::option::Option::None;
+        self.download_type = ::std::option::Option::None;
+        self.staging_bytes_staged = ::std::option::Option::None;
+        self.staging_bytes_to_stage = ::std::option::Option::None;
+        self.bytes_to_disc_per_second = ::std::option::Option::None;
+        self.progress_weights.clear();
+        self.time_deferred_until = ::std::option::Option::None;
+        self.source_build_id = ::std::option::Option::None;
+        self.target_build_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static AppUpdateInfo {
+        static instance: AppUpdateInfo = AppUpdateInfo {
+            time_update_start: ::std::option::Option::None,
+            bytes_to_download: ::std::option::Option::None,
+            bytes_downloaded: ::std::option::Option::None,
+            bytes_to_process: ::std::option::Option::None,
+            bytes_processed: ::std::option::Option::None,
+            estimated_seconds_remaining: ::std::option::Option::None,
+            update_result: ::std::option::Option::None,
+            update_state: ::std::option::Option::None,
+            download_type: ::std::option::Option::None,
+            staging_bytes_staged: ::std::option::Option::None,
+            staging_bytes_to_stage: ::std::option::Option::None,
+            bytes_to_disc_per_second: ::std::option::Option::None,
+            progress_weights: ::std::vec::Vec::new(),
+            time_deferred_until: ::std::option::Option::None,
+            source_build_id: ::std::option::Option::None,
+            target_build_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:AppCloudStatus)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct AppCloudStatus {
+    // message fields
+    // @@protoc_insertion_point(field:AppCloudStatus.status)
+    pub status: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppCloudStatus.sync_state)
+    pub sync_state: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:AppCloudStatus.transfer_percentage)
+    pub transfer_percentage: ::std::option::Option<f64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:AppCloudStatus.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a AppCloudStatus {
+    fn default() -> &'a AppCloudStatus {
+        <AppCloudStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl AppCloudStatus {
+    pub fn new() -> AppCloudStatus {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 status = 1;
+
+    pub fn status(&self) -> u32 {
+        self.status.unwrap_or(0)
+    }
+
+    pub fn clear_status(&mut self) {
+        self.status = ::std::option::Option::None;
+    }
+
+    pub fn has_status(&self) -> bool {
+        self.status.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_status(&mut self, v: u32) {
+        self.status = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 sync_state = 2;
+
+    pub fn sync_state(&self) -> u32 {
+        self.sync_state.unwrap_or(0)
+    }
+
+    pub fn clear_sync_state(&mut self) {
+        self.sync_state = ::std::option::Option::None;
+    }
+
+    pub fn has_sync_state(&self) -> bool {
+        self.sync_state.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sync_state(&mut self, v: u32) {
+        self.sync_state = ::std::option::Option::Some(v);
+    }
+
+    // optional double transfer_percentage = 3;
+
+    pub fn transfer_percentage(&self) -> f64 {
+        self.transfer_percentage.unwrap_or(0.)
+    }
+
+    pub fn clear_transfer_percentage(&mut self) {
+        self.transfer_percentage = ::std::option::Option::None;
+    }
+
+    pub fn has_transfer_percentage(&self) -> bool {
+        self.transfer_percentage.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_transfer_percentage(&mut self, v: f64) {
+        self.transfer_percentage = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for AppCloudStatus {
+    const NAME: &'static str = "AppCloudStatus";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.status = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.sync_state = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                25 => {
+                    self.transfer_percentage = ::std::option::Option::Some(is.read_double()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.status {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.sync_state {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.transfer_percentage {
+            my_size += 1 + 8;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.status {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.sync_state {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.transfer_percentage {
+            os.write_double(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> AppCloudStatus {
+        AppCloudStatus::new()
+    }
+
+    fn clear(&mut self) {
+        self.status = ::std::option::Option::None;
+        self.sync_state = ::std::option::Option::None;
+        self.transfer_percentage = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static AppCloudStatus {
+        static instance: AppCloudStatus = AppCloudStatus {
+            status: ::std::option::Option::None,
+            sync_state: ::std::option::Option::None,
+            transfer_percentage: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CMsgRemoteClientAppStatus)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CMsgRemoteClientAppStatus {
@@ -273,197 +2063,161 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientAppStatus 
 
 /// Nested message and enums of message `CMsgRemoteClientAppStatus`
 pub mod cmsg_remote_client_app_status {
-    // @@protoc_insertion_point(message:CMsgRemoteClientAppStatus.AppUpdateInfo)
+    // @@protoc_insertion_point(message:CMsgRemoteClientAppStatus.AppStatus)
     #[derive(PartialEq,Clone,Default,Debug)]
-    pub struct AppUpdateInfo {
+    pub struct AppStatus {
         // message fields
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.time_update_start)
-        pub time_update_start: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.bytes_to_download)
-        pub bytes_to_download: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.bytes_downloaded)
-        pub bytes_downloaded: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.bytes_to_process)
-        pub bytes_to_process: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.bytes_processed)
-        pub bytes_processed: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.estimated_seconds_remaining)
-        pub estimated_seconds_remaining: ::std::option::Option<i32>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.update_result)
-        pub update_result: ::std::option::Option<i32>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppUpdateInfo.update_state)
-        pub update_state: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.app_id)
+        pub app_id: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.app_install_state)
+        pub app_install_state: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.update_info)
+        pub update_info: ::steam_vent_proto_common::protobuf::MessageField<super::AppUpdateInfo>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.shortcut_info)
+        pub shortcut_info: ::steam_vent_proto_common::protobuf::MessageField<ShortcutInfo>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.vr_not_required)
+        pub vr_not_required: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.shader_update_available)
+        pub shader_update_available: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.workshop_update_avilable)
+        pub workshop_update_avilable: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.download_complete)
+        pub download_complete: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.cloud_status)
+        pub cloud_status: ::steam_vent_proto_common::protobuf::MessageField<super::AppCloudStatus>,
         // special fields
-        // @@protoc_insertion_point(special_field:CMsgRemoteClientAppStatus.AppUpdateInfo.special_fields)
+        // @@protoc_insertion_point(special_field:CMsgRemoteClientAppStatus.AppStatus.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
     }
 
-    impl<'a> ::std::default::Default for &'a AppUpdateInfo {
-        fn default() -> &'a AppUpdateInfo {
-            <AppUpdateInfo as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    impl<'a> ::std::default::Default for &'a AppStatus {
+        fn default() -> &'a AppStatus {
+            <AppStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
         }
     }
 
-    impl AppUpdateInfo {
-        pub fn new() -> AppUpdateInfo {
+    impl AppStatus {
+        pub fn new() -> AppStatus {
             ::std::default::Default::default()
         }
 
-        // optional fixed32 time_update_start = 1;
+        // optional uint32 app_id = 1;
 
-        pub fn time_update_start(&self) -> u32 {
-            self.time_update_start.unwrap_or(0)
+        pub fn app_id(&self) -> u32 {
+            self.app_id.unwrap_or(0)
         }
 
-        pub fn clear_time_update_start(&mut self) {
-            self.time_update_start = ::std::option::Option::None;
+        pub fn clear_app_id(&mut self) {
+            self.app_id = ::std::option::Option::None;
         }
 
-        pub fn has_time_update_start(&self) -> bool {
-            self.time_update_start.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_time_update_start(&mut self, v: u32) {
-            self.time_update_start = ::std::option::Option::Some(v);
-        }
-
-        // optional uint64 bytes_to_download = 2;
-
-        pub fn bytes_to_download(&self) -> u64 {
-            self.bytes_to_download.unwrap_or(0)
-        }
-
-        pub fn clear_bytes_to_download(&mut self) {
-            self.bytes_to_download = ::std::option::Option::None;
-        }
-
-        pub fn has_bytes_to_download(&self) -> bool {
-            self.bytes_to_download.is_some()
+        pub fn has_app_id(&self) -> bool {
+            self.app_id.is_some()
         }
 
         // Param is passed by value, moved
-        pub fn set_bytes_to_download(&mut self, v: u64) {
-            self.bytes_to_download = ::std::option::Option::Some(v);
+        pub fn set_app_id(&mut self, v: u32) {
+            self.app_id = ::std::option::Option::Some(v);
         }
 
-        // optional uint64 bytes_downloaded = 3;
+        // optional uint32 app_install_state = 2;
 
-        pub fn bytes_downloaded(&self) -> u64 {
-            self.bytes_downloaded.unwrap_or(0)
+        pub fn app_install_state(&self) -> u32 {
+            self.app_install_state.unwrap_or(0)
         }
 
-        pub fn clear_bytes_downloaded(&mut self) {
-            self.bytes_downloaded = ::std::option::Option::None;
+        pub fn clear_app_install_state(&mut self) {
+            self.app_install_state = ::std::option::Option::None;
         }
 
-        pub fn has_bytes_downloaded(&self) -> bool {
-            self.bytes_downloaded.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_bytes_downloaded(&mut self, v: u64) {
-            self.bytes_downloaded = ::std::option::Option::Some(v);
-        }
-
-        // optional uint64 bytes_to_process = 4;
-
-        pub fn bytes_to_process(&self) -> u64 {
-            self.bytes_to_process.unwrap_or(0)
-        }
-
-        pub fn clear_bytes_to_process(&mut self) {
-            self.bytes_to_process = ::std::option::Option::None;
-        }
-
-        pub fn has_bytes_to_process(&self) -> bool {
-            self.bytes_to_process.is_some()
+        pub fn has_app_install_state(&self) -> bool {
+            self.app_install_state.is_some()
         }
 
         // Param is passed by value, moved
-        pub fn set_bytes_to_process(&mut self, v: u64) {
-            self.bytes_to_process = ::std::option::Option::Some(v);
+        pub fn set_app_install_state(&mut self, v: u32) {
+            self.app_install_state = ::std::option::Option::Some(v);
         }
 
-        // optional uint64 bytes_processed = 5;
+        // optional bool vr_not_required = 5;
 
-        pub fn bytes_processed(&self) -> u64 {
-            self.bytes_processed.unwrap_or(0)
+        pub fn vr_not_required(&self) -> bool {
+            self.vr_not_required.unwrap_or(true)
         }
 
-        pub fn clear_bytes_processed(&mut self) {
-            self.bytes_processed = ::std::option::Option::None;
+        pub fn clear_vr_not_required(&mut self) {
+            self.vr_not_required = ::std::option::Option::None;
         }
 
-        pub fn has_bytes_processed(&self) -> bool {
-            self.bytes_processed.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_bytes_processed(&mut self, v: u64) {
-            self.bytes_processed = ::std::option::Option::Some(v);
-        }
-
-        // optional int32 estimated_seconds_remaining = 6;
-
-        pub fn estimated_seconds_remaining(&self) -> i32 {
-            self.estimated_seconds_remaining.unwrap_or(-1i32)
-        }
-
-        pub fn clear_estimated_seconds_remaining(&mut self) {
-            self.estimated_seconds_remaining = ::std::option::Option::None;
-        }
-
-        pub fn has_estimated_seconds_remaining(&self) -> bool {
-            self.estimated_seconds_remaining.is_some()
+        pub fn has_vr_not_required(&self) -> bool {
+            self.vr_not_required.is_some()
         }
 
         // Param is passed by value, moved
-        pub fn set_estimated_seconds_remaining(&mut self, v: i32) {
-            self.estimated_seconds_remaining = ::std::option::Option::Some(v);
+        pub fn set_vr_not_required(&mut self, v: bool) {
+            self.vr_not_required = ::std::option::Option::Some(v);
         }
 
-        // optional int32 update_result = 7;
+        // optional bool shader_update_available = 6;
 
-        pub fn update_result(&self) -> i32 {
-            self.update_result.unwrap_or(0)
+        pub fn shader_update_available(&self) -> bool {
+            self.shader_update_available.unwrap_or(false)
         }
 
-        pub fn clear_update_result(&mut self) {
-            self.update_result = ::std::option::Option::None;
+        pub fn clear_shader_update_available(&mut self) {
+            self.shader_update_available = ::std::option::Option::None;
         }
 
-        pub fn has_update_result(&self) -> bool {
-            self.update_result.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_update_result(&mut self, v: i32) {
-            self.update_result = ::std::option::Option::Some(v);
-        }
-
-        // optional uint32 update_state = 8;
-
-        pub fn update_state(&self) -> u32 {
-            self.update_state.unwrap_or(0)
-        }
-
-        pub fn clear_update_state(&mut self) {
-            self.update_state = ::std::option::Option::None;
-        }
-
-        pub fn has_update_state(&self) -> bool {
-            self.update_state.is_some()
+        pub fn has_shader_update_available(&self) -> bool {
+            self.shader_update_available.is_some()
         }
 
         // Param is passed by value, moved
-        pub fn set_update_state(&mut self, v: u32) {
-            self.update_state = ::std::option::Option::Some(v);
+        pub fn set_shader_update_available(&mut self, v: bool) {
+            self.shader_update_available = ::std::option::Option::Some(v);
+        }
+
+        // optional bool workshop_update_avilable = 7;
+
+        pub fn workshop_update_avilable(&self) -> bool {
+            self.workshop_update_avilable.unwrap_or(false)
+        }
+
+        pub fn clear_workshop_update_avilable(&mut self) {
+            self.workshop_update_avilable = ::std::option::Option::None;
+        }
+
+        pub fn has_workshop_update_avilable(&self) -> bool {
+            self.workshop_update_avilable.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_workshop_update_avilable(&mut self, v: bool) {
+            self.workshop_update_avilable = ::std::option::Option::Some(v);
+        }
+
+        // optional bool download_complete = 8;
+
+        pub fn download_complete(&self) -> bool {
+            self.download_complete.unwrap_or(false)
+        }
+
+        pub fn clear_download_complete(&mut self) {
+            self.download_complete = ::std::option::Option::None;
+        }
+
+        pub fn has_download_complete(&self) -> bool {
+            self.download_complete.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_download_complete(&mut self, v: bool) {
+            self.download_complete = ::std::option::Option::Some(v);
         }
     }
 
-    impl ::steam_vent_proto_common::protobuf::Message for AppUpdateInfo {
-        const NAME: &'static str = "AppUpdateInfo";
+    impl ::steam_vent_proto_common::protobuf::Message for AppStatus {
+        const NAME: &'static str = "AppStatus";
 
         fn is_initialized(&self) -> bool {
             true
@@ -472,29 +2226,32 @@ pub mod cmsg_remote_client_app_status {
         fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
             while let Some(tag) = is.read_raw_tag_or_eof()? {
                 match tag {
-                    13 => {
-                        self.time_update_start = ::std::option::Option::Some(is.read_fixed32()?);
+                    8 => {
+                        self.app_id = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     16 => {
-                        self.bytes_to_download = ::std::option::Option::Some(is.read_uint64()?);
+                        self.app_install_state = ::std::option::Option::Some(is.read_uint32()?);
                     },
-                    24 => {
-                        self.bytes_downloaded = ::std::option::Option::Some(is.read_uint64()?);
+                    26 => {
+                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.update_info)?;
                     },
-                    32 => {
-                        self.bytes_to_process = ::std::option::Option::Some(is.read_uint64()?);
+                    34 => {
+                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.shortcut_info)?;
                     },
                     40 => {
-                        self.bytes_processed = ::std::option::Option::Some(is.read_uint64()?);
+                        self.vr_not_required = ::std::option::Option::Some(is.read_bool()?);
                     },
                     48 => {
-                        self.estimated_seconds_remaining = ::std::option::Option::Some(is.read_int32()?);
+                        self.shader_update_available = ::std::option::Option::Some(is.read_bool()?);
                     },
                     56 => {
-                        self.update_result = ::std::option::Option::Some(is.read_int32()?);
+                        self.workshop_update_avilable = ::std::option::Option::Some(is.read_bool()?);
                     },
                     64 => {
-                        self.update_state = ::std::option::Option::Some(is.read_uint32()?);
+                        self.download_complete = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    74 => {
+                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.cloud_status)?;
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -508,29 +2265,35 @@ pub mod cmsg_remote_client_app_status {
         #[allow(unused_variables)]
         fn compute_size(&self) -> u64 {
             let mut my_size = 0;
-            if let Some(v) = self.time_update_start {
-                my_size += 1 + 4;
+            if let Some(v) = self.app_id {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
             }
-            if let Some(v) = self.bytes_to_download {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+            if let Some(v) = self.app_install_state {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
             }
-            if let Some(v) = self.bytes_downloaded {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(3, v);
+            if let Some(v) = self.update_info.as_ref() {
+                let len = v.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
             }
-            if let Some(v) = self.bytes_to_process {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(4, v);
+            if let Some(v) = self.shortcut_info.as_ref() {
+                let len = v.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
             }
-            if let Some(v) = self.bytes_processed {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(5, v);
+            if let Some(v) = self.vr_not_required {
+                my_size += 1 + 1;
             }
-            if let Some(v) = self.estimated_seconds_remaining {
-                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(6, v);
+            if let Some(v) = self.shader_update_available {
+                my_size += 1 + 1;
             }
-            if let Some(v) = self.update_result {
-                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(7, v);
+            if let Some(v) = self.workshop_update_avilable {
+                my_size += 1 + 1;
             }
-            if let Some(v) = self.update_state {
-                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
+            if let Some(v) = self.download_complete {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.cloud_status.as_ref() {
+                let len = v.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
             }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
@@ -538,29 +2301,32 @@ pub mod cmsg_remote_client_app_status {
         }
 
         fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
-            if let Some(v) = self.time_update_start {
-                os.write_fixed32(1, v)?;
+            if let Some(v) = self.app_id {
+                os.write_uint32(1, v)?;
             }
-            if let Some(v) = self.bytes_to_download {
-                os.write_uint64(2, v)?;
+            if let Some(v) = self.app_install_state {
+                os.write_uint32(2, v)?;
             }
-            if let Some(v) = self.bytes_downloaded {
-                os.write_uint64(3, v)?;
+            if let Some(v) = self.update_info.as_ref() {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
             }
-            if let Some(v) = self.bytes_to_process {
-                os.write_uint64(4, v)?;
+            if let Some(v) = self.shortcut_info.as_ref() {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
             }
-            if let Some(v) = self.bytes_processed {
-                os.write_uint64(5, v)?;
+            if let Some(v) = self.vr_not_required {
+                os.write_bool(5, v)?;
             }
-            if let Some(v) = self.estimated_seconds_remaining {
-                os.write_int32(6, v)?;
+            if let Some(v) = self.shader_update_available {
+                os.write_bool(6, v)?;
             }
-            if let Some(v) = self.update_result {
-                os.write_int32(7, v)?;
+            if let Some(v) = self.workshop_update_avilable {
+                os.write_bool(7, v)?;
             }
-            if let Some(v) = self.update_state {
-                os.write_uint32(8, v)?;
+            if let Some(v) = self.download_complete {
+                os.write_bool(8, v)?;
+            }
+            if let Some(v) = self.cloud_status.as_ref() {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(9, v, os)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -574,32 +2340,34 @@ pub mod cmsg_remote_client_app_status {
             &mut self.special_fields
         }
 
-        fn new() -> AppUpdateInfo {
-            AppUpdateInfo::new()
+        fn new() -> AppStatus {
+            AppStatus::new()
         }
 
         fn clear(&mut self) {
-            self.time_update_start = ::std::option::Option::None;
-            self.bytes_to_download = ::std::option::Option::None;
-            self.bytes_downloaded = ::std::option::Option::None;
-            self.bytes_to_process = ::std::option::Option::None;
-            self.bytes_processed = ::std::option::Option::None;
-            self.estimated_seconds_remaining = ::std::option::Option::None;
-            self.update_result = ::std::option::Option::None;
-            self.update_state = ::std::option::Option::None;
+            self.app_id = ::std::option::Option::None;
+            self.app_install_state = ::std::option::Option::None;
+            self.update_info.clear();
+            self.shortcut_info.clear();
+            self.vr_not_required = ::std::option::Option::None;
+            self.shader_update_available = ::std::option::Option::None;
+            self.workshop_update_avilable = ::std::option::Option::None;
+            self.download_complete = ::std::option::Option::None;
+            self.cloud_status.clear();
             self.special_fields.clear();
         }
 
-        fn default_instance() -> &'static AppUpdateInfo {
-            static instance: AppUpdateInfo = AppUpdateInfo {
-                time_update_start: ::std::option::Option::None,
-                bytes_to_download: ::std::option::Option::None,
-                bytes_downloaded: ::std::option::Option::None,
-                bytes_to_process: ::std::option::Option::None,
-                bytes_processed: ::std::option::Option::None,
-                estimated_seconds_remaining: ::std::option::Option::None,
-                update_result: ::std::option::Option::None,
-                update_state: ::std::option::Option::None,
+        fn default_instance() -> &'static AppStatus {
+            static instance: AppStatus = AppStatus {
+                app_id: ::std::option::Option::None,
+                app_install_state: ::std::option::Option::None,
+                update_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+                shortcut_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+                vr_not_required: ::std::option::Option::None,
+                shader_update_available: ::std::option::Option::None,
+                workshop_update_avilable: ::std::option::Option::None,
+                download_complete: ::std::option::Option::None,
+                cloud_status: ::steam_vent_proto_common::protobuf::MessageField::none(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -842,34 +2610,232 @@ pub mod cmsg_remote_client_app_status {
             &instance
         }
     }
+}
 
-    // @@protoc_insertion_point(message:CMsgRemoteClientAppStatus.AppStatus)
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadsManagement)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadsManagement {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.change_queue_placement)
+    pub change_queue_placement: ::steam_vent_proto_common::protobuf::MessageField<cmsg_remote_client_downloads_management::ChangeAppQueuePlacement>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.change_download_index)
+    pub change_download_index: ::steam_vent_proto_common::protobuf::MessageField<cmsg_remote_client_downloads_management::ChangeDownloadIndex>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.enable_all_downloads)
+    pub enable_all_downloads: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.remove_from_download_list_app_id)
+    pub remove_from_download_list_app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.suspend_download_throttling)
+    pub suspend_download_throttling: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadsManagement.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadsManagement {
+    fn default() -> &'a CMsgRemoteClientDownloadsManagement {
+        <CMsgRemoteClientDownloadsManagement as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadsManagement {
+    pub fn new() -> CMsgRemoteClientDownloadsManagement {
+        ::std::default::Default::default()
+    }
+
+    // optional bool enable_all_downloads = 3;
+
+    pub fn enable_all_downloads(&self) -> bool {
+        self.enable_all_downloads.unwrap_or(false)
+    }
+
+    pub fn clear_enable_all_downloads(&mut self) {
+        self.enable_all_downloads = ::std::option::Option::None;
+    }
+
+    pub fn has_enable_all_downloads(&self) -> bool {
+        self.enable_all_downloads.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_enable_all_downloads(&mut self, v: bool) {
+        self.enable_all_downloads = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 remove_from_download_list_app_id = 4;
+
+    pub fn remove_from_download_list_app_id(&self) -> u32 {
+        self.remove_from_download_list_app_id.unwrap_or(0)
+    }
+
+    pub fn clear_remove_from_download_list_app_id(&mut self) {
+        self.remove_from_download_list_app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_remove_from_download_list_app_id(&self) -> bool {
+        self.remove_from_download_list_app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remove_from_download_list_app_id(&mut self, v: u32) {
+        self.remove_from_download_list_app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional bool suspend_download_throttling = 5;
+
+    pub fn suspend_download_throttling(&self) -> bool {
+        self.suspend_download_throttling.unwrap_or(false)
+    }
+
+    pub fn clear_suspend_download_throttling(&mut self) {
+        self.suspend_download_throttling = ::std::option::Option::None;
+    }
+
+    pub fn has_suspend_download_throttling(&self) -> bool {
+        self.suspend_download_throttling.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_suspend_download_throttling(&mut self, v: bool) {
+        self.suspend_download_throttling = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadsManagement {
+    const NAME: &'static str = "CMsgRemoteClientDownloadsManagement";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.change_queue_placement)?;
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.change_download_index)?;
+                },
+                24 => {
+                    self.enable_all_downloads = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32 => {
+                    self.remove_from_download_list_app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.suspend_download_throttling = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.change_queue_placement.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.change_download_index.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.enable_all_downloads {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.remove_from_download_list_app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.suspend_download_throttling {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.change_queue_placement.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        }
+        if let Some(v) = self.change_download_index.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        if let Some(v) = self.enable_all_downloads {
+            os.write_bool(3, v)?;
+        }
+        if let Some(v) = self.remove_from_download_list_app_id {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.suspend_download_throttling {
+            os.write_bool(5, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadsManagement {
+        CMsgRemoteClientDownloadsManagement::new()
+    }
+
+    fn clear(&mut self) {
+        self.change_queue_placement.clear();
+        self.change_download_index.clear();
+        self.enable_all_downloads = ::std::option::Option::None;
+        self.remove_from_download_list_app_id = ::std::option::Option::None;
+        self.suspend_download_throttling = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadsManagement {
+        static instance: CMsgRemoteClientDownloadsManagement = CMsgRemoteClientDownloadsManagement {
+            change_queue_placement: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            change_download_index: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            enable_all_downloads: ::std::option::Option::None,
+            remove_from_download_list_app_id: ::std::option::Option::None,
+            suspend_download_throttling: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CMsgRemoteClientDownloadsManagement`
+pub mod cmsg_remote_client_downloads_management {
+    // @@protoc_insertion_point(message:CMsgRemoteClientDownloadsManagement.ChangeAppQueuePlacement)
     #[derive(PartialEq,Clone,Default,Debug)]
-    pub struct AppStatus {
+    pub struct ChangeAppQueuePlacement {
         // message fields
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.app_id)
+        // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.ChangeAppQueuePlacement.app_id)
         pub app_id: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.app_state)
-        pub app_state: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.update_info)
-        pub update_info: ::steam_vent_proto_common::protobuf::MessageField<AppUpdateInfo>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.shortcut_info)
-        pub shortcut_info: ::steam_vent_proto_common::protobuf::MessageField<ShortcutInfo>,
-        // @@protoc_insertion_point(field:CMsgRemoteClientAppStatus.AppStatus.vr_not_required)
-        pub vr_not_required: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.ChangeAppQueuePlacement.queue_placement)
+        pub queue_placement: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:CMsgRemoteClientAppStatus.AppStatus.special_fields)
+        // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadsManagement.ChangeAppQueuePlacement.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
     }
 
-    impl<'a> ::std::default::Default for &'a AppStatus {
-        fn default() -> &'a AppStatus {
-            <AppStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    impl<'a> ::std::default::Default for &'a ChangeAppQueuePlacement {
+        fn default() -> &'a ChangeAppQueuePlacement {
+            <ChangeAppQueuePlacement as ::steam_vent_proto_common::protobuf::Message>::default_instance()
         }
     }
 
-    impl AppStatus {
-        pub fn new() -> AppStatus {
+    impl ChangeAppQueuePlacement {
+        pub fn new() -> ChangeAppQueuePlacement {
             ::std::default::Default::default()
         }
 
@@ -892,47 +2858,28 @@ pub mod cmsg_remote_client_app_status {
             self.app_id = ::std::option::Option::Some(v);
         }
 
-        // optional uint32 app_state = 2;
+        // optional uint32 queue_placement = 2;
 
-        pub fn app_state(&self) -> u32 {
-            self.app_state.unwrap_or(0)
+        pub fn queue_placement(&self) -> u32 {
+            self.queue_placement.unwrap_or(0)
         }
 
-        pub fn clear_app_state(&mut self) {
-            self.app_state = ::std::option::Option::None;
+        pub fn clear_queue_placement(&mut self) {
+            self.queue_placement = ::std::option::Option::None;
         }
 
-        pub fn has_app_state(&self) -> bool {
-            self.app_state.is_some()
-        }
-
-        // Param is passed by value, moved
-        pub fn set_app_state(&mut self, v: u32) {
-            self.app_state = ::std::option::Option::Some(v);
-        }
-
-        // optional bool vr_not_required = 5;
-
-        pub fn vr_not_required(&self) -> bool {
-            self.vr_not_required.unwrap_or(true)
-        }
-
-        pub fn clear_vr_not_required(&mut self) {
-            self.vr_not_required = ::std::option::Option::None;
-        }
-
-        pub fn has_vr_not_required(&self) -> bool {
-            self.vr_not_required.is_some()
+        pub fn has_queue_placement(&self) -> bool {
+            self.queue_placement.is_some()
         }
 
         // Param is passed by value, moved
-        pub fn set_vr_not_required(&mut self, v: bool) {
-            self.vr_not_required = ::std::option::Option::Some(v);
+        pub fn set_queue_placement(&mut self, v: u32) {
+            self.queue_placement = ::std::option::Option::Some(v);
         }
     }
 
-    impl ::steam_vent_proto_common::protobuf::Message for AppStatus {
-        const NAME: &'static str = "AppStatus";
+    impl ::steam_vent_proto_common::protobuf::Message for ChangeAppQueuePlacement {
+        const NAME: &'static str = "ChangeAppQueuePlacement";
 
         fn is_initialized(&self) -> bool {
             true
@@ -945,16 +2892,7 @@ pub mod cmsg_remote_client_app_status {
                         self.app_id = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     16 => {
-                        self.app_state = ::std::option::Option::Some(is.read_uint32()?);
-                    },
-                    26 => {
-                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.update_info)?;
-                    },
-                    34 => {
-                        ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.shortcut_info)?;
-                    },
-                    40 => {
-                        self.vr_not_required = ::std::option::Option::Some(is.read_bool()?);
+                        self.queue_placement = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -971,19 +2909,8 @@ pub mod cmsg_remote_client_app_status {
             if let Some(v) = self.app_id {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
             }
-            if let Some(v) = self.app_state {
+            if let Some(v) = self.queue_placement {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
-            }
-            if let Some(v) = self.update_info.as_ref() {
-                let len = v.compute_size();
-                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
-            }
-            if let Some(v) = self.shortcut_info.as_ref() {
-                let len = v.compute_size();
-                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
-            }
-            if let Some(v) = self.vr_not_required {
-                my_size += 1 + 1;
             }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
@@ -994,17 +2921,8 @@ pub mod cmsg_remote_client_app_status {
             if let Some(v) = self.app_id {
                 os.write_uint32(1, v)?;
             }
-            if let Some(v) = self.app_state {
+            if let Some(v) = self.queue_placement {
                 os.write_uint32(2, v)?;
-            }
-            if let Some(v) = self.update_info.as_ref() {
-                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
-            }
-            if let Some(v) = self.shortcut_info.as_ref() {
-                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
-            }
-            if let Some(v) = self.vr_not_required {
-                os.write_bool(5, v)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -1018,30 +2936,1495 @@ pub mod cmsg_remote_client_app_status {
             &mut self.special_fields
         }
 
-        fn new() -> AppStatus {
-            AppStatus::new()
+        fn new() -> ChangeAppQueuePlacement {
+            ChangeAppQueuePlacement::new()
         }
 
         fn clear(&mut self) {
             self.app_id = ::std::option::Option::None;
-            self.app_state = ::std::option::Option::None;
-            self.update_info.clear();
-            self.shortcut_info.clear();
-            self.vr_not_required = ::std::option::Option::None;
+            self.queue_placement = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
-        fn default_instance() -> &'static AppStatus {
-            static instance: AppStatus = AppStatus {
+        fn default_instance() -> &'static ChangeAppQueuePlacement {
+            static instance: ChangeAppQueuePlacement = ChangeAppQueuePlacement {
                 app_id: ::std::option::Option::None,
-                app_state: ::std::option::Option::None,
-                update_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
-                shortcut_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
-                vr_not_required: ::std::option::Option::None,
+                queue_placement: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
         }
+    }
+
+    // @@protoc_insertion_point(message:CMsgRemoteClientDownloadsManagement.ChangeDownloadIndex)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct ChangeDownloadIndex {
+        // message fields
+        // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.ChangeDownloadIndex.app_id)
+        pub app_id: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CMsgRemoteClientDownloadsManagement.ChangeDownloadIndex.download_index)
+        pub download_index: ::std::option::Option<u32>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadsManagement.ChangeDownloadIndex.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a ChangeDownloadIndex {
+        fn default() -> &'a ChangeDownloadIndex {
+            <ChangeDownloadIndex as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl ChangeDownloadIndex {
+        pub fn new() -> ChangeDownloadIndex {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 app_id = 1;
+
+        pub fn app_id(&self) -> u32 {
+            self.app_id.unwrap_or(0)
+        }
+
+        pub fn clear_app_id(&mut self) {
+            self.app_id = ::std::option::Option::None;
+        }
+
+        pub fn has_app_id(&self) -> bool {
+            self.app_id.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_app_id(&mut self, v: u32) {
+            self.app_id = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 download_index = 3;
+
+        pub fn download_index(&self) -> u32 {
+            self.download_index.unwrap_or(0)
+        }
+
+        pub fn clear_download_index(&mut self) {
+            self.download_index = ::std::option::Option::None;
+        }
+
+        pub fn has_download_index(&self) -> bool {
+            self.download_index.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_download_index(&mut self, v: u32) {
+            self.download_index = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for ChangeDownloadIndex {
+        const NAME: &'static str = "ChangeDownloadIndex";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    24 => {
+                        self.download_index = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.app_id {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.download_index {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.app_id {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.download_index {
+                os.write_uint32(3, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> ChangeDownloadIndex {
+            ChangeDownloadIndex::new()
+        }
+
+        fn clear(&mut self) {
+            self.app_id = ::std::option::Option::None;
+            self.download_index = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static ChangeDownloadIndex {
+            static instance: ChangeDownloadIndex = ChangeDownloadIndex {
+                app_id: ::std::option::Option::None,
+                download_index: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientUpdateDownloadsController)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientUpdateDownloadsController {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientUpdateDownloadsController.update_download_items)
+    pub update_download_items: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientUpdateDownloadsController.update_download_overview)
+    pub update_download_overview: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientUpdateDownloadsController.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientUpdateDownloadsController {
+    fn default() -> &'a CMsgRemoteClientUpdateDownloadsController {
+        <CMsgRemoteClientUpdateDownloadsController as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientUpdateDownloadsController {
+    pub fn new() -> CMsgRemoteClientUpdateDownloadsController {
+        ::std::default::Default::default()
+    }
+
+    // optional bool update_download_items = 1;
+
+    pub fn update_download_items(&self) -> bool {
+        self.update_download_items.unwrap_or(false)
+    }
+
+    pub fn clear_update_download_items(&mut self) {
+        self.update_download_items = ::std::option::Option::None;
+    }
+
+    pub fn has_update_download_items(&self) -> bool {
+        self.update_download_items.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_update_download_items(&mut self, v: bool) {
+        self.update_download_items = ::std::option::Option::Some(v);
+    }
+
+    // optional bool update_download_overview = 2;
+
+    pub fn update_download_overview(&self) -> bool {
+        self.update_download_overview.unwrap_or(false)
+    }
+
+    pub fn clear_update_download_overview(&mut self) {
+        self.update_download_overview = ::std::option::Option::None;
+    }
+
+    pub fn has_update_download_overview(&self) -> bool {
+        self.update_download_overview.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_update_download_overview(&mut self, v: bool) {
+        self.update_download_overview = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientUpdateDownloadsController {
+    const NAME: &'static str = "CMsgRemoteClientUpdateDownloadsController";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.update_download_items = ::std::option::Option::Some(is.read_bool()?);
+                },
+                16 => {
+                    self.update_download_overview = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.update_download_items {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.update_download_overview {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.update_download_items {
+            os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.update_download_overview {
+            os.write_bool(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientUpdateDownloadsController {
+        CMsgRemoteClientUpdateDownloadsController::new()
+    }
+
+    fn clear(&mut self) {
+        self.update_download_items = ::std::option::Option::None;
+        self.update_download_overview = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientUpdateDownloadsController {
+        static instance: CMsgRemoteClientUpdateDownloadsController = CMsgRemoteClientUpdateDownloadsController {
+            update_download_items: ::std::option::Option::None,
+            update_download_overview: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientPeerContentServerChanged)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientPeerContentServerChanged {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientPeerContentServerChanged.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientPeerContentServerChanged.num_connections)
+    pub num_connections: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientPeerContentServerChanged.remote_client_id)
+    pub remote_client_id: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientPeerContentServerChanged.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientPeerContentServerChanged {
+    fn default() -> &'a CMsgRemoteClientPeerContentServerChanged {
+        <CMsgRemoteClientPeerContentServerChanged as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientPeerContentServerChanged {
+    pub fn new() -> CMsgRemoteClientPeerContentServerChanged {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 1;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 num_connections = 2;
+
+    pub fn num_connections(&self) -> u32 {
+        self.num_connections.unwrap_or(0)
+    }
+
+    pub fn clear_num_connections(&mut self) {
+        self.num_connections = ::std::option::Option::None;
+    }
+
+    pub fn has_num_connections(&self) -> bool {
+        self.num_connections.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_num_connections(&mut self, v: u32) {
+        self.num_connections = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 remote_client_id = 3;
+
+    pub fn remote_client_id(&self) -> u64 {
+        self.remote_client_id.unwrap_or(0)
+    }
+
+    pub fn clear_remote_client_id(&mut self) {
+        self.remote_client_id = ::std::option::Option::None;
+    }
+
+    pub fn has_remote_client_id(&self) -> bool {
+        self.remote_client_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_remote_client_id(&mut self, v: u64) {
+        self.remote_client_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientPeerContentServerChanged {
+    const NAME: &'static str = "CMsgRemoteClientPeerContentServerChanged";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.num_connections = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.remote_client_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.num_connections {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.remote_client_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.num_connections {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.remote_client_id {
+            os.write_uint64(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientPeerContentServerChanged {
+        CMsgRemoteClientPeerContentServerChanged::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.num_connections = ::std::option::Option::None;
+        self.remote_client_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientPeerContentServerChanged {
+        static instance: CMsgRemoteClientPeerContentServerChanged = CMsgRemoteClientPeerContentServerChanged {
+            app_id: ::std::option::Option::None,
+            num_connections: ::std::option::Option::None,
+            remote_client_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadingAppChanged)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadingAppChanged {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadingAppChanged.downloading_app_id)
+    pub downloading_app_id: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadingAppChanged.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadingAppChanged {
+    fn default() -> &'a CMsgRemoteClientDownloadingAppChanged {
+        <CMsgRemoteClientDownloadingAppChanged as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadingAppChanged {
+    pub fn new() -> CMsgRemoteClientDownloadingAppChanged {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 downloading_app_id = 1;
+
+    pub fn downloading_app_id(&self) -> u32 {
+        self.downloading_app_id.unwrap_or(0)
+    }
+
+    pub fn clear_downloading_app_id(&mut self) {
+        self.downloading_app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_downloading_app_id(&self) -> bool {
+        self.downloading_app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_downloading_app_id(&mut self, v: u32) {
+        self.downloading_app_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadingAppChanged {
+    const NAME: &'static str = "CMsgRemoteClientDownloadingAppChanged";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.downloading_app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.downloading_app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.downloading_app_id {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadingAppChanged {
+        CMsgRemoteClientDownloadingAppChanged::new()
+    }
+
+    fn clear(&mut self) {
+        self.downloading_app_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadingAppChanged {
+        static instance: CMsgRemoteClientDownloadingAppChanged = CMsgRemoteClientDownloadingAppChanged {
+            downloading_app_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientSuspendLanPeerContent)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientSuspendLanPeerContent {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientSuspendLanPeerContent.suspend)
+    pub suspend: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientSuspendLanPeerContent.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientSuspendLanPeerContent {
+    fn default() -> &'a CMsgRemoteClientSuspendLanPeerContent {
+        <CMsgRemoteClientSuspendLanPeerContent as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientSuspendLanPeerContent {
+    pub fn new() -> CMsgRemoteClientSuspendLanPeerContent {
+        ::std::default::Default::default()
+    }
+
+    // optional bool suspend = 1;
+
+    pub fn suspend(&self) -> bool {
+        self.suspend.unwrap_or(false)
+    }
+
+    pub fn clear_suspend(&mut self) {
+        self.suspend = ::std::option::Option::None;
+    }
+
+    pub fn has_suspend(&self) -> bool {
+        self.suspend.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_suspend(&mut self, v: bool) {
+        self.suspend = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientSuspendLanPeerContent {
+    const NAME: &'static str = "CMsgRemoteClientSuspendLanPeerContent";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.suspend = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.suspend {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.suspend {
+            os.write_bool(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientSuspendLanPeerContent {
+        CMsgRemoteClientSuspendLanPeerContent::new()
+    }
+
+    fn clear(&mut self) {
+        self.suspend = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientSuspendLanPeerContent {
+        static instance: CMsgRemoteClientSuspendLanPeerContent = CMsgRemoteClientSuspendLanPeerContent {
+            suspend: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadScheduleChanged)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadScheduleChanged {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleChanged.download_enabled)
+    pub download_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleChanged.start_index)
+    pub start_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleChanged.final_message)
+    pub final_message: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleChanged.num_apps_scheduled)
+    pub num_apps_scheduled: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleChanged.apps_scheduled)
+    pub apps_scheduled: ::std::vec::Vec<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadScheduleChanged.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadScheduleChanged {
+    fn default() -> &'a CMsgRemoteClientDownloadScheduleChanged {
+        <CMsgRemoteClientDownloadScheduleChanged as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadScheduleChanged {
+    pub fn new() -> CMsgRemoteClientDownloadScheduleChanged {
+        ::std::default::Default::default()
+    }
+
+    // optional bool download_enabled = 1;
+
+    pub fn download_enabled(&self) -> bool {
+        self.download_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_download_enabled(&mut self) {
+        self.download_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_download_enabled(&self) -> bool {
+        self.download_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_download_enabled(&mut self, v: bool) {
+        self.download_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 start_index = 2;
+
+    pub fn start_index(&self) -> u32 {
+        self.start_index.unwrap_or(0)
+    }
+
+    pub fn clear_start_index(&mut self) {
+        self.start_index = ::std::option::Option::None;
+    }
+
+    pub fn has_start_index(&self) -> bool {
+        self.start_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_start_index(&mut self, v: u32) {
+        self.start_index = ::std::option::Option::Some(v);
+    }
+
+    // optional bool final_message = 3;
+
+    pub fn final_message(&self) -> bool {
+        self.final_message.unwrap_or(false)
+    }
+
+    pub fn clear_final_message(&mut self) {
+        self.final_message = ::std::option::Option::None;
+    }
+
+    pub fn has_final_message(&self) -> bool {
+        self.final_message.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_final_message(&mut self, v: bool) {
+        self.final_message = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 num_apps_scheduled = 4;
+
+    pub fn num_apps_scheduled(&self) -> u32 {
+        self.num_apps_scheduled.unwrap_or(0)
+    }
+
+    pub fn clear_num_apps_scheduled(&mut self) {
+        self.num_apps_scheduled = ::std::option::Option::None;
+    }
+
+    pub fn has_num_apps_scheduled(&self) -> bool {
+        self.num_apps_scheduled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_num_apps_scheduled(&mut self, v: u32) {
+        self.num_apps_scheduled = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadScheduleChanged {
+    const NAME: &'static str = "CMsgRemoteClientDownloadScheduleChanged";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.download_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                16 => {
+                    self.start_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.final_message = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32 => {
+                    self.num_apps_scheduled = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                42 => {
+                    is.read_repeated_packed_uint32_into(&mut self.apps_scheduled)?;
+                },
+                40 => {
+                    self.apps_scheduled.push(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.download_enabled {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.start_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.final_message {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.num_apps_scheduled {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        for value in &self.apps_scheduled {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(5, *value);
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.download_enabled {
+            os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.start_index {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.final_message {
+            os.write_bool(3, v)?;
+        }
+        if let Some(v) = self.num_apps_scheduled {
+            os.write_uint32(4, v)?;
+        }
+        for v in &self.apps_scheduled {
+            os.write_uint32(5, *v)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadScheduleChanged {
+        CMsgRemoteClientDownloadScheduleChanged::new()
+    }
+
+    fn clear(&mut self) {
+        self.download_enabled = ::std::option::Option::None;
+        self.start_index = ::std::option::Option::None;
+        self.final_message = ::std::option::Option::None;
+        self.num_apps_scheduled = ::std::option::Option::None;
+        self.apps_scheduled.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadScheduleChanged {
+        static instance: CMsgRemoteClientDownloadScheduleChanged = CMsgRemoteClientDownloadScheduleChanged {
+            download_enabled: ::std::option::Option::None,
+            start_index: ::std::option::Option::None,
+            final_message: ::std::option::Option::None,
+            num_apps_scheduled: ::std::option::Option::None,
+            apps_scheduled: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadScheduleItemChanged)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadScheduleItemChanged {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadScheduleItemChanged.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadScheduleItemChanged.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadScheduleItemChanged {
+    fn default() -> &'a CMsgRemoteClientDownloadScheduleItemChanged {
+        <CMsgRemoteClientDownloadScheduleItemChanged as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadScheduleItemChanged {
+    pub fn new() -> CMsgRemoteClientDownloadScheduleItemChanged {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 2;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadScheduleItemChanged {
+    const NAME: &'static str = "CMsgRemoteClientDownloadScheduleItemChanged";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                16 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadScheduleItemChanged {
+        CMsgRemoteClientDownloadScheduleItemChanged::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadScheduleItemChanged {
+        static instance: CMsgRemoteClientDownloadScheduleItemChanged = CMsgRemoteClientDownloadScheduleItemChanged {
+            app_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientAppUpdateStopped)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientAppUpdateStopped {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateStopped.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateStopped.update_info)
+    pub update_info: ::steam_vent_proto_common::protobuf::MessageField<AppUpdateInfo>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateStopped.error_detail)
+    pub error_detail: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateStopped.install_folder_index)
+    pub install_folder_index: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateStopped.app_install_state)
+    pub app_install_state: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientAppUpdateStopped.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientAppUpdateStopped {
+    fn default() -> &'a CMsgRemoteClientAppUpdateStopped {
+        <CMsgRemoteClientAppUpdateStopped as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientAppUpdateStopped {
+    pub fn new() -> CMsgRemoteClientAppUpdateStopped {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 1;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string error_detail = 3;
+
+    pub fn error_detail(&self) -> &str {
+        match self.error_detail.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_error_detail(&mut self) {
+        self.error_detail = ::std::option::Option::None;
+    }
+
+    pub fn has_error_detail(&self) -> bool {
+        self.error_detail.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_error_detail(&mut self, v: ::std::string::String) {
+        self.error_detail = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_error_detail(&mut self) -> &mut ::std::string::String {
+        if self.error_detail.is_none() {
+            self.error_detail = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.error_detail.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_error_detail(&mut self) -> ::std::string::String {
+        self.error_detail.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional int32 install_folder_index = 4;
+
+    pub fn install_folder_index(&self) -> i32 {
+        self.install_folder_index.unwrap_or(0)
+    }
+
+    pub fn clear_install_folder_index(&mut self) {
+        self.install_folder_index = ::std::option::Option::None;
+    }
+
+    pub fn has_install_folder_index(&self) -> bool {
+        self.install_folder_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_install_folder_index(&mut self, v: i32) {
+        self.install_folder_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 app_install_state = 5;
+
+    pub fn app_install_state(&self) -> u32 {
+        self.app_install_state.unwrap_or(0)
+    }
+
+    pub fn clear_app_install_state(&mut self) {
+        self.app_install_state = ::std::option::Option::None;
+    }
+
+    pub fn has_app_install_state(&self) -> bool {
+        self.app_install_state.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_install_state(&mut self, v: u32) {
+        self.app_install_state = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientAppUpdateStopped {
+    const NAME: &'static str = "CMsgRemoteClientAppUpdateStopped";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.update_info)?;
+                },
+                26 => {
+                    self.error_detail = ::std::option::Option::Some(is.read_string()?);
+                },
+                32 => {
+                    self.install_folder_index = ::std::option::Option::Some(is.read_int32()?);
+                },
+                40 => {
+                    self.app_install_state = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.update_info.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.error_detail.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        if let Some(v) = self.install_folder_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v);
+        }
+        if let Some(v) = self.app_install_state {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(5, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.update_info.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        if let Some(v) = self.error_detail.as_ref() {
+            os.write_string(3, v)?;
+        }
+        if let Some(v) = self.install_folder_index {
+            os.write_int32(4, v)?;
+        }
+        if let Some(v) = self.app_install_state {
+            os.write_uint32(5, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientAppUpdateStopped {
+        CMsgRemoteClientAppUpdateStopped::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.update_info.clear();
+        self.error_detail = ::std::option::Option::None;
+        self.install_folder_index = ::std::option::Option::None;
+        self.app_install_state = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientAppUpdateStopped {
+        static instance: CMsgRemoteClientAppUpdateStopped = CMsgRemoteClientAppUpdateStopped {
+            app_id: ::std::option::Option::None,
+            update_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            error_detail: ::std::option::Option::None,
+            install_folder_index: ::std::option::Option::None,
+            app_install_state: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientAppUpdateInfoComplete)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientAppUpdateInfoComplete {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientAppUpdateInfoComplete.result)
+    pub result: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientAppUpdateInfoComplete.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientAppUpdateInfoComplete {
+    fn default() -> &'a CMsgRemoteClientAppUpdateInfoComplete {
+        <CMsgRemoteClientAppUpdateInfoComplete as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientAppUpdateInfoComplete {
+    pub fn new() -> CMsgRemoteClientAppUpdateInfoComplete {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 result = 1;
+
+    pub fn result(&self) -> u32 {
+        self.result.unwrap_or(0)
+    }
+
+    pub fn clear_result(&mut self) {
+        self.result = ::std::option::Option::None;
+    }
+
+    pub fn has_result(&self) -> bool {
+        self.result.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_result(&mut self, v: u32) {
+        self.result = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientAppUpdateInfoComplete {
+    const NAME: &'static str = "CMsgRemoteClientAppUpdateInfoComplete";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.result = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.result {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.result {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientAppUpdateInfoComplete {
+        CMsgRemoteClientAppUpdateInfoComplete::new()
+    }
+
+    fn clear(&mut self) {
+        self.result = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientAppUpdateInfoComplete {
+        static instance: CMsgRemoteClientAppUpdateInfoComplete = CMsgRemoteClientAppUpdateInfoComplete {
+            result: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientDownloadingAppID)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientDownloadingAppID {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadingAppID.downloading_app_id)
+    pub downloading_app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientDownloadingAppID.update_info)
+    pub update_info: ::steam_vent_proto_common::protobuf::MessageField<AppUpdateInfo>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientDownloadingAppID.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientDownloadingAppID {
+    fn default() -> &'a CMsgRemoteClientDownloadingAppID {
+        <CMsgRemoteClientDownloadingAppID as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientDownloadingAppID {
+    pub fn new() -> CMsgRemoteClientDownloadingAppID {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 downloading_app_id = 1;
+
+    pub fn downloading_app_id(&self) -> u32 {
+        self.downloading_app_id.unwrap_or(0)
+    }
+
+    pub fn clear_downloading_app_id(&mut self) {
+        self.downloading_app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_downloading_app_id(&self) -> bool {
+        self.downloading_app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_downloading_app_id(&mut self, v: u32) {
+        self.downloading_app_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientDownloadingAppID {
+    const NAME: &'static str = "CMsgRemoteClientDownloadingAppID";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.downloading_app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.update_info)?;
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.downloading_app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.update_info.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.downloading_app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.update_info.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientDownloadingAppID {
+        CMsgRemoteClientDownloadingAppID::new()
+    }
+
+    fn clear(&mut self) {
+        self.downloading_app_id = ::std::option::Option::None;
+        self.update_info.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientDownloadingAppID {
+        static instance: CMsgRemoteClientDownloadingAppID = CMsgRemoteClientDownloadingAppID {
+            downloading_app_id: ::std::option::Option::None,
+            update_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
     }
 }
 
@@ -1071,6 +4454,12 @@ pub struct CMsgRemoteClientStartStream {
     pub audio_channel_count: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgRemoteClientStartStream.supported_transport)
     pub supported_transport: ::std::vec::Vec<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::steammessages_remoteclient_discovery::EStreamTransport>>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientStartStream.maximum_framerate_numerator)
+    pub maximum_framerate_numerator: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientStartStream.maximum_framerate_denominator)
+    pub maximum_framerate_denominator: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientStartStream.display_hdr)
+    pub display_hdr: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgRemoteClientStartStream.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -1274,6 +4663,63 @@ impl CMsgRemoteClientStartStream {
     pub fn set_audio_channel_count(&mut self, v: i32) {
         self.audio_channel_count = ::std::option::Option::Some(v);
     }
+
+    // optional int32 maximum_framerate_numerator = 12;
+
+    pub fn maximum_framerate_numerator(&self) -> i32 {
+        self.maximum_framerate_numerator.unwrap_or(0)
+    }
+
+    pub fn clear_maximum_framerate_numerator(&mut self) {
+        self.maximum_framerate_numerator = ::std::option::Option::None;
+    }
+
+    pub fn has_maximum_framerate_numerator(&self) -> bool {
+        self.maximum_framerate_numerator.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_maximum_framerate_numerator(&mut self, v: i32) {
+        self.maximum_framerate_numerator = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 maximum_framerate_denominator = 13;
+
+    pub fn maximum_framerate_denominator(&self) -> i32 {
+        self.maximum_framerate_denominator.unwrap_or(0)
+    }
+
+    pub fn clear_maximum_framerate_denominator(&mut self) {
+        self.maximum_framerate_denominator = ::std::option::Option::None;
+    }
+
+    pub fn has_maximum_framerate_denominator(&self) -> bool {
+        self.maximum_framerate_denominator.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_maximum_framerate_denominator(&mut self, v: i32) {
+        self.maximum_framerate_denominator = ::std::option::Option::Some(v);
+    }
+
+    // optional bool display_hdr = 14;
+
+    pub fn display_hdr(&self) -> bool {
+        self.display_hdr.unwrap_or(false)
+    }
+
+    pub fn clear_display_hdr(&mut self) {
+        self.display_hdr = ::std::option::Option::None;
+    }
+
+    pub fn has_display_hdr(&self) -> bool {
+        self.display_hdr.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_display_hdr(&mut self, v: bool) {
+        self.display_hdr = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStream {
@@ -1322,6 +4768,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStrea
                 90 => {
                     ::steam_vent_proto_common::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_transport)?
                 },
+                96 => {
+                    self.maximum_framerate_numerator = ::std::option::Option::Some(is.read_int32()?);
+                },
+                104 => {
+                    self.maximum_framerate_denominator = ::std::option::Option::Some(is.read_int32()?);
+                },
+                112 => {
+                    self.display_hdr = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -1368,6 +4823,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStrea
         for value in &self.supported_transport {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(11, value.value());
         };
+        if let Some(v) = self.maximum_framerate_numerator {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(12, v);
+        }
+        if let Some(v) = self.maximum_framerate_denominator {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(13, v);
+        }
+        if let Some(v) = self.display_hdr {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -1407,6 +4871,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStrea
         for v in &self.supported_transport {
             os.write_enum(11, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(v))?;
         };
+        if let Some(v) = self.maximum_framerate_numerator {
+            os.write_int32(12, v)?;
+        }
+        if let Some(v) = self.maximum_framerate_denominator {
+            os.write_int32(13, v)?;
+        }
+        if let Some(v) = self.display_hdr {
+            os.write_bool(14, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1435,6 +4908,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStrea
         self.gamepads.clear();
         self.audio_channel_count = ::std::option::Option::None;
         self.supported_transport.clear();
+        self.maximum_framerate_numerator = ::std::option::Option::None;
+        self.maximum_framerate_denominator = ::std::option::Option::None;
+        self.display_hdr = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -1451,6 +4927,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientStartStrea
             gamepads: ::std::vec::Vec::new(),
             audio_channel_count: ::std::option::Option::None,
             supported_transport: ::std::vec::Vec::new(),
+            maximum_framerate_numerator: ::std::option::Option::None,
+            maximum_framerate_denominator: ::std::option::Option::None,
+            display_hdr: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2376,6 +5855,115 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientAcceptEULA
     }
 }
 
+// @@protoc_insertion_point(message:CMsgRemoteClientAcceptAllEULAs)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientAcceptAllEULAs {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientAcceptAllEULAs.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientAcceptAllEULAs.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientAcceptAllEULAs {
+    fn default() -> &'a CMsgRemoteClientAcceptAllEULAs {
+        <CMsgRemoteClientAcceptAllEULAs as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientAcceptAllEULAs {
+    pub fn new() -> CMsgRemoteClientAcceptAllEULAs {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 1;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientAcceptAllEULAs {
+    const NAME: &'static str = "CMsgRemoteClientAcceptAllEULAs";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientAcceptAllEULAs {
+        CMsgRemoteClientAcceptAllEULAs::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientAcceptAllEULAs {
+        static instance: CMsgRemoteClientAcceptAllEULAs = CMsgRemoteClientAcceptAllEULAs {
+            app_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CMsgRemoteClientGetControllerConfig)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CMsgRemoteClientGetControllerConfig {
@@ -2795,8 +6383,12 @@ pub struct CMsgRemoteClientWifiAPStatus {
     pub ssid: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgRemoteClientWifiAPStatus.password)
     pub password: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:CMsgRemoteClientWifiAPStatus.wpa2)
-    pub wpa2: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientWifiAPStatus.wpa2_deprecated)
+    pub wpa2_deprecated: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientWifiAPStatus.is_pairing_capable)
+    pub is_pairing_capable: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientWifiAPStatus.paired_network_hash)
+    pub paired_network_hash: ::std::option::Option<u64>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgRemoteClientWifiAPStatus.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2885,23 +6477,61 @@ impl CMsgRemoteClientWifiAPStatus {
         self.password.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional bool wpa2 = 3;
+    // optional bool wpa2_deprecated = 3;
 
-    pub fn wpa2(&self) -> bool {
-        self.wpa2.unwrap_or(false)
+    pub fn wpa2_deprecated(&self) -> bool {
+        self.wpa2_deprecated.unwrap_or(false)
     }
 
-    pub fn clear_wpa2(&mut self) {
-        self.wpa2 = ::std::option::Option::None;
+    pub fn clear_wpa2_deprecated(&mut self) {
+        self.wpa2_deprecated = ::std::option::Option::None;
     }
 
-    pub fn has_wpa2(&self) -> bool {
-        self.wpa2.is_some()
+    pub fn has_wpa2_deprecated(&self) -> bool {
+        self.wpa2_deprecated.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_wpa2(&mut self, v: bool) {
-        self.wpa2 = ::std::option::Option::Some(v);
+    pub fn set_wpa2_deprecated(&mut self, v: bool) {
+        self.wpa2_deprecated = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_pairing_capable = 4;
+
+    pub fn is_pairing_capable(&self) -> bool {
+        self.is_pairing_capable.unwrap_or(false)
+    }
+
+    pub fn clear_is_pairing_capable(&mut self) {
+        self.is_pairing_capable = ::std::option::Option::None;
+    }
+
+    pub fn has_is_pairing_capable(&self) -> bool {
+        self.is_pairing_capable.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_pairing_capable(&mut self, v: bool) {
+        self.is_pairing_capable = ::std::option::Option::Some(v);
+    }
+
+    // optional fixed64 paired_network_hash = 5;
+
+    pub fn paired_network_hash(&self) -> u64 {
+        self.paired_network_hash.unwrap_or(0)
+    }
+
+    pub fn clear_paired_network_hash(&mut self) {
+        self.paired_network_hash = ::std::option::Option::None;
+    }
+
+    pub fn has_paired_network_hash(&self) -> bool {
+        self.paired_network_hash.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_paired_network_hash(&mut self, v: u64) {
+        self.paired_network_hash = ::std::option::Option::Some(v);
     }
 }
 
@@ -2922,7 +6552,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientWifiAPStat
                     self.password = ::std::option::Option::Some(is.read_string()?);
                 },
                 24 => {
-                    self.wpa2 = ::std::option::Option::Some(is.read_bool()?);
+                    self.wpa2_deprecated = ::std::option::Option::Some(is.read_bool()?);
+                },
+                32 => {
+                    self.is_pairing_capable = ::std::option::Option::Some(is.read_bool()?);
+                },
+                41 => {
+                    self.paired_network_hash = ::std::option::Option::Some(is.read_fixed64()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2942,8 +6578,14 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientWifiAPStat
         if let Some(v) = self.password.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
         }
-        if let Some(v) = self.wpa2 {
+        if let Some(v) = self.wpa2_deprecated {
             my_size += 1 + 1;
+        }
+        if let Some(v) = self.is_pairing_capable {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.paired_network_hash {
+            my_size += 1 + 8;
         }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
@@ -2957,8 +6599,14 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientWifiAPStat
         if let Some(v) = self.password.as_ref() {
             os.write_string(2, v)?;
         }
-        if let Some(v) = self.wpa2 {
+        if let Some(v) = self.wpa2_deprecated {
             os.write_bool(3, v)?;
+        }
+        if let Some(v) = self.is_pairing_capable {
+            os.write_bool(4, v)?;
+        }
+        if let Some(v) = self.paired_network_hash {
+            os.write_fixed64(5, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2979,7 +6627,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientWifiAPStat
     fn clear(&mut self) {
         self.ssid = ::std::option::Option::None;
         self.password = ::std::option::Option::None;
-        self.wpa2 = ::std::option::Option::None;
+        self.wpa2_deprecated = ::std::option::Option::None;
+        self.is_pairing_capable = ::std::option::Option::None;
+        self.paired_network_hash = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -2987,12 +6637,467 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientWifiAPStat
         static instance: CMsgRemoteClientWifiAPStatus = CMsgRemoteClientWifiAPStatus {
             ssid: ::std::option::Option::None,
             password: ::std::option::Option::None,
-            wpa2: ::std::option::Option::None,
+            wpa2_deprecated: ::std::option::Option::None,
+            is_pairing_capable: ::std::option::Option::None,
+            paired_network_hash: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
     }
 }
+
+// @@protoc_insertion_point(message:CMsgRemoteClientPairWifiAP)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientPairWifiAP {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientPairWifiAP.ssid)
+    pub ssid: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientPairWifiAP.password)
+    pub password: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientPairWifiAP.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientPairWifiAP {
+    fn default() -> &'a CMsgRemoteClientPairWifiAP {
+        <CMsgRemoteClientPairWifiAP as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientPairWifiAP {
+    pub fn new() -> CMsgRemoteClientPairWifiAP {
+        ::std::default::Default::default()
+    }
+
+    // optional string ssid = 1;
+
+    pub fn ssid(&self) -> &str {
+        match self.ssid.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_ssid(&mut self) {
+        self.ssid = ::std::option::Option::None;
+    }
+
+    pub fn has_ssid(&self) -> bool {
+        self.ssid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_ssid(&mut self, v: ::std::string::String) {
+        self.ssid = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_ssid(&mut self) -> &mut ::std::string::String {
+        if self.ssid.is_none() {
+            self.ssid = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.ssid.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_ssid(&mut self) -> ::std::string::String {
+        self.ssid.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string password = 2;
+
+    pub fn password(&self) -> &str {
+        match self.password.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_password(&mut self) {
+        self.password = ::std::option::Option::None;
+    }
+
+    pub fn has_password(&self) -> bool {
+        self.password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_password(&mut self, v: ::std::string::String) {
+        self.password = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_password(&mut self) -> &mut ::std::string::String {
+        if self.password.is_none() {
+            self.password = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.password.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_password(&mut self) -> ::std::string::String {
+        self.password.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientPairWifiAP {
+    const NAME: &'static str = "CMsgRemoteClientPairWifiAP";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.ssid = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.password = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.ssid.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.password.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.ssid.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.password.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientPairWifiAP {
+        CMsgRemoteClientPairWifiAP::new()
+    }
+
+    fn clear(&mut self) {
+        self.ssid = ::std::option::Option::None;
+        self.password = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientPairWifiAP {
+        static instance: CMsgRemoteClientPairWifiAP = CMsgRemoteClientPairWifiAP {
+            ssid: ::std::option::Option::None,
+            password: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientPairWifiAPResponse)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientPairWifiAPResponse {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientPairWifiAPResponse.e_pair_result)
+    pub e_pair_result: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientPairWifiAPResponse.ssid)
+    pub ssid: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientPairWifiAPResponse.password)
+    pub password: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientPairWifiAPResponse.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientPairWifiAPResponse {
+    fn default() -> &'a CMsgRemoteClientPairWifiAPResponse {
+        <CMsgRemoteClientPairWifiAPResponse as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientPairWifiAPResponse {
+    pub fn new() -> CMsgRemoteClientPairWifiAPResponse {
+        ::std::default::Default::default()
+    }
+
+    // optional int32 e_pair_result = 1;
+
+    pub fn e_pair_result(&self) -> i32 {
+        self.e_pair_result.unwrap_or(2i32)
+    }
+
+    pub fn clear_e_pair_result(&mut self) {
+        self.e_pair_result = ::std::option::Option::None;
+    }
+
+    pub fn has_e_pair_result(&self) -> bool {
+        self.e_pair_result.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_e_pair_result(&mut self, v: i32) {
+        self.e_pair_result = ::std::option::Option::Some(v);
+    }
+
+    // optional string ssid = 2;
+
+    pub fn ssid(&self) -> &str {
+        match self.ssid.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_ssid(&mut self) {
+        self.ssid = ::std::option::Option::None;
+    }
+
+    pub fn has_ssid(&self) -> bool {
+        self.ssid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_ssid(&mut self, v: ::std::string::String) {
+        self.ssid = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_ssid(&mut self) -> &mut ::std::string::String {
+        if self.ssid.is_none() {
+            self.ssid = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.ssid.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_ssid(&mut self) -> ::std::string::String {
+        self.ssid.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string password = 3;
+
+    pub fn password(&self) -> &str {
+        match self.password.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_password(&mut self) {
+        self.password = ::std::option::Option::None;
+    }
+
+    pub fn has_password(&self) -> bool {
+        self.password.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_password(&mut self, v: ::std::string::String) {
+        self.password = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_password(&mut self) -> &mut ::std::string::String {
+        if self.password.is_none() {
+            self.password = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.password.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_password(&mut self) -> ::std::string::String {
+        self.password.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientPairWifiAPResponse {
+    const NAME: &'static str = "CMsgRemoteClientPairWifiAPResponse";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.e_pair_result = ::std::option::Option::Some(is.read_int32()?);
+                },
+                18 => {
+                    self.ssid = ::std::option::Option::Some(is.read_string()?);
+                },
+                26 => {
+                    self.password = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.e_pair_result {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v);
+        }
+        if let Some(v) = self.ssid.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        if let Some(v) = self.password.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.e_pair_result {
+            os.write_int32(1, v)?;
+        }
+        if let Some(v) = self.ssid.as_ref() {
+            os.write_string(2, v)?;
+        }
+        if let Some(v) = self.password.as_ref() {
+            os.write_string(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientPairWifiAPResponse {
+        CMsgRemoteClientPairWifiAPResponse::new()
+    }
+
+    fn clear(&mut self) {
+        self.e_pair_result = ::std::option::Option::None;
+        self.ssid = ::std::option::Option::None;
+        self.password = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientPairWifiAPResponse {
+        static instance: CMsgRemoteClientPairWifiAPResponse = CMsgRemoteClientPairWifiAPResponse {
+            e_pair_result: ::std::option::Option::None,
+            ssid: ::std::option::Option::None,
+            password: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ERemoteClientPairWifiAPResult)
+pub enum ERemoteClientPairWifiAPResult {
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPOK)
+    k_ERemoteClientPairWifiAPOK = 1,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPFail)
+    k_ERemoteClientPairWifiAPFail = 2,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPNetworkError)
+    k_ERemoteClientPairWifiAPNetworkError = 3,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPUnauthorized)
+    k_ERemoteClientPairWifiAPUnauthorized = 4,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPNoDonglePresent)
+    k_ERemoteClientPairWifiAPNoDonglePresent = 5,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPTimeout)
+    k_ERemoteClientPairWifiAPTimeout = 6,
+    // @@protoc_insertion_point(enum_value:ERemoteClientPairWifiAPResult.k_ERemoteClientPairWifiAPCanceled)
+    k_ERemoteClientPairWifiAPCanceled = 7,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientPairWifiAPResult {
+    const NAME: &'static str = "ERemoteClientPairWifiAPResult";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ERemoteClientPairWifiAPResult> {
+        match value {
+            1 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPOK),
+            2 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPFail),
+            3 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNetworkError),
+            4 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPUnauthorized),
+            5 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNoDonglePresent),
+            6 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPTimeout),
+            7 => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPCanceled),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ERemoteClientPairWifiAPResult> {
+        match str {
+            "k_ERemoteClientPairWifiAPOK" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPOK),
+            "k_ERemoteClientPairWifiAPFail" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPFail),
+            "k_ERemoteClientPairWifiAPNetworkError" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNetworkError),
+            "k_ERemoteClientPairWifiAPUnauthorized" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPUnauthorized),
+            "k_ERemoteClientPairWifiAPNoDonglePresent" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNoDonglePresent),
+            "k_ERemoteClientPairWifiAPTimeout" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPTimeout),
+            "k_ERemoteClientPairWifiAPCanceled" => ::std::option::Option::Some(ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPCanceled),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ERemoteClientPairWifiAPResult] = &[
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPOK,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPFail,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNetworkError,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPUnauthorized,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPNoDonglePresent,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPTimeout,
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPCanceled,
+    ];
+}
+
+// Note, `Default` is implemented although default value is not 0
+impl ::std::default::Default for ERemoteClientPairWifiAPResult {
+    fn default() -> Self {
+        ERemoteClientPairWifiAPResult::k_ERemoteClientPairWifiAPOK
+    }
+}
+
 
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
@@ -3002,6 +7107,84 @@ use crate::steammessages_base::*;
 #[allow(unused_imports)]
 use crate::steammessages_remoteclient_discovery::*;
 impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientStatus {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientDownloadStatus {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientUploadStatus {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientRestrictAutoUpdates {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for AppStageProgress {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for AppUpdateInfo {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for AppCloudStatus {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }
@@ -3030,6 +7213,147 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientAppStatus {
 impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientAppStatus {
     type KindEnum = crate::enums_clientserver::EMsg;
     const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientAppStatus;
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientDownloadsManagement {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CMsgRemoteClientUpdateDownloadsController {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientPeerContentServerChanged {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientDownloadingAppChanged {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientSuspendLanPeerContent {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientDownloadScheduleChanged {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessageWithKind
+for CMsgRemoteClientDownloadScheduleChanged {
+    type KindEnum = crate::enums_clientserver::EMsg;
+    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientDownloadScheduleChanged;
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CMsgRemoteClientDownloadScheduleItemChanged {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientAppUpdateStopped {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientAppUpdateStopped {
+    type KindEnum = crate::enums_clientserver::EMsg;
+    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientAppUpdateStopped;
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientAppUpdateInfoComplete {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientDownloadingAppID {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
 }
 impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientStartStream {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
@@ -3117,6 +7441,23 @@ impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientAcceptEUL
     type KindEnum = crate::enums_clientserver::EMsg;
     const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientAcceptEULA;
 }
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientAcceptAllEULAs {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientAcceptAllEULAs {
+    type KindEnum = crate::enums_clientserver::EMsg;
+    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientAcceptAllEULAs;
+}
 impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientGetControllerConfig {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -3187,4 +7528,39 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientWifiAPStatus {
 impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientWifiAPStatus {
     type KindEnum = crate::enums_clientserver::EMsg;
     const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientWifiAPStatus;
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientPairWifiAP {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessageWithKind for CMsgRemoteClientPairWifiAP {
+    type KindEnum = crate::enums_clientserver::EMsg;
+    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientPairWifiAP;
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteClientPairWifiAPResponse {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessageWithKind
+for CMsgRemoteClientPairWifiAPResponse {
+    type KindEnum = crate::enums_clientserver::EMsg;
+    const KIND: Self::KindEnum = crate::enums_clientserver::EMsg::k_EMsgRemoteClientPairWifiAPResponse;
 }

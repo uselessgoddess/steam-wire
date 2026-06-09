@@ -399,7 +399,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_CheckForUp
 pub struct CMsgAvailableHardwareUpdate {
     // message fields
     // @@protoc_insertion_point(field:CMsgAvailableHardwareUpdate.etype)
-    pub etype: ::std::option::Option<u32>,
+    pub etype: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EHardwareUpdateDeviceType>>,
     // @@protoc_insertion_point(field:CMsgAvailableHardwareUpdate.hardware_id)
     pub hardware_id: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CMsgAvailableHardwareUpdate.serial_number)
@@ -408,6 +408,8 @@ pub struct CMsgAvailableHardwareUpdate {
     pub current_ts: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgAvailableHardwareUpdate.update_ts)
     pub update_ts: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgAvailableHardwareUpdate.mandatory_update)
+    pub mandatory_update: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgAvailableHardwareUpdate.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -424,10 +426,13 @@ impl CMsgAvailableHardwareUpdate {
         ::std::default::Default::default()
     }
 
-    // optional uint32 etype = 1;
+    // optional .EHardwareUpdateDeviceType etype = 1;
 
-    pub fn etype(&self) -> u32 {
-        self.etype.unwrap_or(0)
+    pub fn etype(&self) -> EHardwareUpdateDeviceType {
+        match self.etype {
+            Some(e) => e.enum_value_or(EHardwareUpdateDeviceType::Triton_BL),
+            None => EHardwareUpdateDeviceType::Triton_BL,
+        }
     }
 
     pub fn clear_etype(&mut self) {
@@ -439,8 +444,8 @@ impl CMsgAvailableHardwareUpdate {
     }
 
     // Param is passed by value, moved
-    pub fn set_etype(&mut self, v: u32) {
-        self.etype = ::std::option::Option::Some(v);
+    pub fn set_etype(&mut self, v: EHardwareUpdateDeviceType) {
+        self.etype = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
 
     // optional uint32 hardware_id = 2;
@@ -569,6 +574,25 @@ impl CMsgAvailableHardwareUpdate {
     pub fn take_update_ts(&mut self) -> ::std::string::String {
         self.update_ts.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional bool mandatory_update = 6;
+
+    pub fn mandatory_update(&self) -> bool {
+        self.mandatory_update.unwrap_or(false)
+    }
+
+    pub fn clear_mandatory_update(&mut self) {
+        self.mandatory_update = ::std::option::Option::None;
+    }
+
+    pub fn has_mandatory_update(&self) -> bool {
+        self.mandatory_update.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_mandatory_update(&mut self, v: bool) {
+        self.mandatory_update = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdate {
@@ -582,7 +606,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
                 8 => {
-                    self.etype = ::std::option::Option::Some(is.read_uint32()?);
+                    self.etype = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
                 16 => {
                     self.hardware_id = ::std::option::Option::Some(is.read_uint32()?);
@@ -595,6 +619,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
                 },
                 42 => {
                     self.update_ts = ::std::option::Option::Some(is.read_string()?);
+                },
+                48 => {
+                    self.mandatory_update = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -609,7 +636,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
         if let Some(v) = self.etype {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v.value());
         }
         if let Some(v) = self.hardware_id {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
@@ -623,6 +650,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
         if let Some(v) = self.update_ts.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
         }
+        if let Some(v) = self.mandatory_update {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -630,7 +660,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
 
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         if let Some(v) = self.etype {
-            os.write_uint32(1, v)?;
+            os.write_enum(1, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
         }
         if let Some(v) = self.hardware_id {
             os.write_uint32(2, v)?;
@@ -643,6 +673,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
         }
         if let Some(v) = self.update_ts.as_ref() {
             os.write_string(5, v)?;
+        }
+        if let Some(v) = self.mandatory_update {
+            os.write_bool(6, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -666,6 +699,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
         self.serial_number = ::std::option::Option::None;
         self.current_ts = ::std::option::Option::None;
         self.update_ts = ::std::option::Option::None;
+        self.mandatory_update = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -676,6 +710,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgAvailableHardwareUpdat
             serial_number: ::std::option::Option::None,
             current_ts: ::std::option::Option::None,
             update_ts: ::std::option::Option::None,
+            mandatory_update: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -779,6 +814,8 @@ pub struct CHardwareUpdate_Update_Request {
     // message fields
     // @@protoc_insertion_point(field:CHardwareUpdate_Update_Request.serial_number)
     pub serial_number: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CHardwareUpdate_Update_Request.update_all)
+    pub update_all: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CHardwareUpdate_Update_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -830,6 +867,25 @@ impl CHardwareUpdate_Update_Request {
     pub fn take_serial_number(&mut self) -> ::std::string::String {
         self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional bool update_all = 2;
+
+    pub fn update_all(&self) -> bool {
+        self.update_all.unwrap_or(false)
+    }
+
+    pub fn clear_update_all(&mut self) {
+        self.update_all = ::std::option::Option::None;
+    }
+
+    pub fn has_update_all(&self) -> bool {
+        self.update_all.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_update_all(&mut self, v: bool) {
+        self.update_all = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_Update_Request {
@@ -844,6 +900,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_Update_Req
             match tag {
                 10 => {
                     self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                },
+                16 => {
+                    self.update_all = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -860,6 +919,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_Update_Req
         if let Some(v) = self.serial_number.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
         }
+        if let Some(v) = self.update_all {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -868,6 +930,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_Update_Req
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         if let Some(v) = self.serial_number.as_ref() {
             os.write_string(1, v)?;
+        }
+        if let Some(v) = self.update_all {
+            os.write_bool(2, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -887,12 +952,14 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_Update_Req
 
     fn clear(&mut self) {
         self.serial_number = ::std::option::Option::None;
+        self.update_all = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CHardwareUpdate_Update_Request {
         static instance: CHardwareUpdate_Update_Request = CHardwareUpdate_Update_Request {
             serial_number: ::std::option::Option::None,
+            update_all: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -1160,6 +1227,278 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_UpdateStat
     }
 }
 
+// @@protoc_insertion_point(message:CHardwareUpdate_PrepForUpdate_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CHardwareUpdate_PrepForUpdate_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CHardwareUpdate_PrepForUpdate_Request.serial_number)
+    pub serial_number: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CHardwareUpdate_PrepForUpdate_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CHardwareUpdate_PrepForUpdate_Request {
+    fn default() -> &'a CHardwareUpdate_PrepForUpdate_Request {
+        <CHardwareUpdate_PrepForUpdate_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CHardwareUpdate_PrepForUpdate_Request {
+    pub fn new() -> CHardwareUpdate_PrepForUpdate_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string serial_number = 1;
+
+    pub fn serial_number(&self) -> &str {
+        match self.serial_number.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_serial_number(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+    }
+
+    pub fn has_serial_number(&self) -> bool {
+        self.serial_number.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_serial_number(&mut self, v: ::std::string::String) {
+        self.serial_number = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_serial_number(&mut self) -> &mut ::std::string::String {
+        if self.serial_number.is_none() {
+            self.serial_number = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.serial_number.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_serial_number(&mut self) -> ::std::string::String {
+        self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_PrepForUpdate_Request {
+    const NAME: &'static str = "CHardwareUpdate_PrepForUpdate_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.serial_number.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.serial_number.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CHardwareUpdate_PrepForUpdate_Request {
+        CHardwareUpdate_PrepForUpdate_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CHardwareUpdate_PrepForUpdate_Request {
+        static instance: CHardwareUpdate_PrepForUpdate_Request = CHardwareUpdate_PrepForUpdate_Request {
+            serial_number: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CHardwareUpdate_PrepForUpdate_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CHardwareUpdate_PrepForUpdate_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CHardwareUpdate_PrepForUpdate_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CHardwareUpdate_PrepForUpdate_Response {
+    fn default() -> &'a CHardwareUpdate_PrepForUpdate_Response {
+        <CHardwareUpdate_PrepForUpdate_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CHardwareUpdate_PrepForUpdate_Response {
+    pub fn new() -> CHardwareUpdate_PrepForUpdate_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CHardwareUpdate_PrepForUpdate_Response {
+    const NAME: &'static str = "CHardwareUpdate_PrepForUpdate_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CHardwareUpdate_PrepForUpdate_Response {
+        CHardwareUpdate_PrepForUpdate_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CHardwareUpdate_PrepForUpdate_Response {
+        static instance: CHardwareUpdate_PrepForUpdate_Response = CHardwareUpdate_PrepForUpdate_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EHardwareUpdateDeviceType)
+pub enum EHardwareUpdateDeviceType {
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Triton_BL)
+    Triton_BL = 0,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Proteus_BL)
+    Proteus_BL = 1,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Triton_USB)
+    Triton_USB = 2,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Triton_BLE)
+    Triton_BLE = 3,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Triton_ESB)
+    Triton_ESB = 4,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Proteus_USB)
+    Proteus_USB = 5,
+    // @@protoc_insertion_point(enum_value:EHardwareUpdateDeviceType.Nereid_USB)
+    Nereid_USB = 6,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EHardwareUpdateDeviceType {
+    const NAME: &'static str = "EHardwareUpdateDeviceType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EHardwareUpdateDeviceType> {
+        match value {
+            0 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_BL),
+            1 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Proteus_BL),
+            2 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_USB),
+            3 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_BLE),
+            4 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_ESB),
+            5 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Proteus_USB),
+            6 => ::std::option::Option::Some(EHardwareUpdateDeviceType::Nereid_USB),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EHardwareUpdateDeviceType> {
+        match str {
+            "Triton_BL" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_BL),
+            "Proteus_BL" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Proteus_BL),
+            "Triton_USB" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_USB),
+            "Triton_BLE" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_BLE),
+            "Triton_ESB" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Triton_ESB),
+            "Proteus_USB" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Proteus_USB),
+            "Nereid_USB" => ::std::option::Option::Some(EHardwareUpdateDeviceType::Nereid_USB),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EHardwareUpdateDeviceType] = &[
+        EHardwareUpdateDeviceType::Triton_BL,
+        EHardwareUpdateDeviceType::Proteus_BL,
+        EHardwareUpdateDeviceType::Triton_USB,
+        EHardwareUpdateDeviceType::Triton_BLE,
+        EHardwareUpdateDeviceType::Triton_ESB,
+        EHardwareUpdateDeviceType::Proteus_USB,
+        EHardwareUpdateDeviceType::Nereid_USB,
+    ];
+}
+
+impl ::std::default::Default for EHardwareUpdateDeviceType {
+    fn default() -> Self {
+        EHardwareUpdateDeviceType::Triton_BL
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -1302,6 +1641,32 @@ for CHardwareUpdate_UpdateStateChanged_Notification {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CHardwareUpdate_PrepForUpdate_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CHardwareUpdate_PrepForUpdate_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct HardwareUpdate {}
 impl ::steam_vent_proto_common::RpcService for HardwareUpdate {
@@ -1314,6 +1679,10 @@ impl ::steam_vent_proto_common::RpcMethod for CHardwareUpdate_CheckForUpdates_Re
 impl ::steam_vent_proto_common::RpcMethod for CHardwareUpdate_GetState_Request {
     const METHOD_NAME: &'static str = "HardwareUpdate.GetState#1";
     type Response = CHardwareUpdate_GetState_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CHardwareUpdate_PrepForUpdate_Request {
+    const METHOD_NAME: &'static str = "HardwareUpdate.PrepForUpdate#1";
+    type Response = CHardwareUpdate_PrepForUpdate_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CHardwareUpdate_StateChanged_Notification {
     const METHOD_NAME: &'static str = "HardwareUpdate.NotifyStateChanged#1";

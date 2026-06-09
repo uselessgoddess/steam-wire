@@ -11,6 +11,12 @@ enum ECloudPendingRemoteOperation {
 	k_ECloudPendingRemoteOperationAppSessionSuspended = 4;
 }
 
+enum EDisplayManagerRGBRange {
+	k_EDisplayManagerRGBRange_Automatic = 0;
+	k_EDisplayManagerRGBRange_Full = 1;
+	k_EDisplayManagerRGBRange_Limited = 2;
+}
+
 enum ESteamDeckKeyboardLayout {
 	k_ESteamDeckKeyboardLayout_QWERTY = 0;
 	k_ESteamDeckKeyboardLayout_Bulgarian = 1;
@@ -103,6 +109,9 @@ message CMsgNetworkDevicesData {
 				optional string user_name = 7;
 				optional string password = 8;
 				optional int32 strength_raw = 9;
+				optional string band_filter = 10;
+				optional bool has_non_6ghz_channel = 11;
+				optional bool is_saved = 12;
 			}
 
 			repeated .CMsgNetworkDevicesData.Device.Wireless.AP aps = 1;
@@ -141,15 +150,30 @@ message CMsgNetworkDeviceConnect {
 		optional string password = 2;
 	}
 
+	message Wireless {
+		optional string band_filter = 1;
+	}
+
 	optional uint32 device_id = 1 [default = 0];
 	optional .CMsgNetworkDeviceConnect.Credentials credentials = 4;
 	optional .CMsgNetworkDeviceIP4Config ip4 = 5;
 	optional .CMsgNetworkDeviceIP6Config ip6 = 6;
+	optional .CMsgNetworkDeviceConnect.Wireless wireless = 7;
 
 	oneof ap_info {
 		.CMsgNetworkDeviceConnect.KnownAP ap_known = 2;
 		.CMsgNetworkDeviceConnect.CustomAP ap_custom = 3;
 	}
+}
+
+message CMsgNetworkDeviceSetOptions {
+	message Wireless {
+		required uint32 ap_id = 1;
+		optional bool is_autoconnect = 2;
+		optional string band_filter = 3;
+	}
+
+	optional .CMsgNetworkDeviceSetOptions.Wireless wireless = 2;
 }
 
 message CMsgStorageDevicesData {
@@ -486,6 +510,7 @@ message CMsgSystemDisplay {
 	optional bool is_hdr_capable = 16;
 	optional bool is_hdr_output_active = 17;
 	repeated int32 supported_refresh_rates = 18;
+	optional .EDisplayManagerRGBRange rgb_range = 19 [default = k_EDisplayManagerRGBRange_Automatic];
 }
 
 message CMsgSystemDisplayManagerState {
@@ -497,14 +522,12 @@ message CMsgSystemDisplayManagerState {
 message CMsgSystemDisplayManagerSetMode {
 	optional int32 display_id = 1;
 	optional int32 mode_id = 2;
+	optional .EDisplayManagerRGBRange rgb_range = 3 [default = k_EDisplayManagerRGBRange_Automatic];
 }
 
 message CMsgSystemManagerSettings {
 	optional float idle_backlight_dim_battery_seconds = 1;
 	optional float idle_backlight_dim_ac_seconds = 2;
-	optional float idle_suspend_battery_seconds = 3;
-	optional float idle_suspend_ac_seconds = 4;
-	optional bool idle_suspend_supressed = 5;
 	optional bool is_adaptive_brightness_available = 6;
 	optional bool display_adaptive_brightness_enabled = 7;
 	optional bool display_nightmode_enabled = 10;
@@ -523,7 +546,6 @@ message CMsgSystemManagerSettings {
 	optional float display_backlight_raw = 23;
 	optional float display_brightness_adaptivemin = 24;
 	optional float display_brightness_adaptivemax = 25;
-	optional bool is_wifi_powersave_enabled = 26;
 	optional bool is_fan_control_available = 27;
 	optional .ESystemFanControlMode fan_control_mode = 28 [default = k_SystemFanControlMode_Invalid];
 	optional bool is_display_brightness_available = 29;
@@ -629,7 +651,7 @@ message CMsgMonitorInfo {
 		required string monitor_display_name = 2;
 	}
 
-	required string selected_display_name = 1;
+	required string selected_device_name = 1;
 	repeated .CMsgMonitorInfo.MonitorInfo monitors = 2;
 }
 

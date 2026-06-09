@@ -42,6 +42,9 @@ enum EChatRoomServerMessage {
 	k_EChatRoomServerMsg_ChatRoomTaglineChanged = 9;
 	k_EChatRoomServerMsg_ChatRoomAvatarChanged = 10;
 	k_EChatRoomServerMsg_AppCustom = 11;
+	k_EChatRoomServerMsg_JoinedMany = 12;
+	k_EChatRoomServerMsg_PartedMany = 13;
+	k_EChatRoomServerMsg_InvitedMany = 14;
 }
 
 enum EChatRoomMessageReactionType {
@@ -171,6 +174,7 @@ message CUserChatRoomGroupState {
 	optional .EChatRoomNotificationLevel mobile_notification_level = 5 [default = k_EChatroomNotificationLevel_Invalid];
 	optional uint32 time_last_group_ack = 6;
 	optional bool unread_indicator_muted = 7 [default = false];
+	optional bool direct_messages_allowed = 8;
 }
 
 message CChatRoom_CreateChatRoomGroup_Response {
@@ -669,6 +673,7 @@ message CChatRoom_SetUserChatGroupPreferences_Request {
 		optional .EChatRoomNotificationLevel desktop_notification_level = 1 [default = k_EChatroomNotificationLevel_Invalid];
 		optional .EChatRoomNotificationLevel mobile_notification_level = 2 [default = k_EChatroomNotificationLevel_Invalid];
 		optional bool unread_indicator_muted = 3;
+		optional bool direct_messages_allowed = 4;
 	}
 
 	message ChatRoomPreferences {
@@ -765,9 +770,24 @@ message CChatRoom_ReportMessage_Request {
 	optional .EContentReportReason report_reason = 6 [default = k_EContentReportReason_Invalid];
 	optional string report_text = 7;
 	optional string language = 8;
+	optional .EContentReportSubjectType subject_type = 9 [default = k_EContentReportSubjectType_Invalid];
 }
 
 message CChatRoom_ReportMessage_Response {
+}
+
+message CChatRoom_ResolveReport_Request {
+	optional uint64 subject_group_id = 1;
+	optional uint64 subject_id = 2;
+	optional .EContentReportResolution resolution = 3 [default = k_EContentReportResolution_Unresolved];
+	optional .EContentReportReason reason = 4 [default = k_EContentReportReason_Invalid];
+	optional .EContentReportSubjectType subject_type = 5 [default = k_EContentReportSubjectType_Invalid];
+	optional uint64 chat_group_id = 6;
+	optional uint32 kick_expiration_time = 7;
+	optional bool skip_lock = 8;
+}
+
+message CChatRoom_ResolveReport_Response {
 }
 
 message CClanChatRooms_GetClanChatRoomInfo_Request {
@@ -1048,6 +1068,7 @@ service ChatRoom {
 	rpc UpdateMessageReaction (.CChatRoom_UpdateMessageReaction_Request) returns (.CChatRoom_UpdateMessageReaction_Response);
 	rpc GetMessageReactionReactors (.CChatRoom_GetMessageReactionReactors_Request) returns (.CChatRoom_GetMessageReactionReactors_Response);
 	rpc ReportMessage (.CChatRoom_ReportMessage_Request) returns (.CChatRoom_ReportMessage_Response);
+	rpc ResolveReport (.CChatRoom_ResolveReport_Request) returns (.CChatRoom_ResolveReport_Response);
 }
 
 service ClanChatRooms {

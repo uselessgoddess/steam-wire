@@ -2661,6 +2661,8 @@ pub struct CCloud_UserFile {
     pub platforms_to_sync: ::std::vec::Vec<::std::string::String>,
     // @@protoc_insertion_point(field:CCloud_UserFile.file_sha)
     pub file_sha: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CCloud_UserFile.compressed_file_size)
+    pub compressed_file_size: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CCloud_UserFile.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2898,6 +2900,25 @@ impl CCloud_UserFile {
     pub fn take_file_sha(&mut self) -> ::std::string::String {
         self.file_sha.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional uint32 compressed_file_size = 11;
+
+    pub fn compressed_file_size(&self) -> u32 {
+        self.compressed_file_size.unwrap_or(0)
+    }
+
+    pub fn clear_compressed_file_size(&mut self) {
+        self.compressed_file_size = ::std::option::Option::None;
+    }
+
+    pub fn has_compressed_file_size(&self) -> bool {
+        self.compressed_file_size.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_compressed_file_size(&mut self, v: u32) {
+        self.compressed_file_size = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
@@ -2939,6 +2960,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
                 },
                 82 => {
                     self.file_sha = ::std::option::Option::Some(is.read_string()?);
+                },
+                88 => {
+                    self.compressed_file_size = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2982,6 +3006,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
         if let Some(v) = self.file_sha.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
         }
+        if let Some(v) = self.compressed_file_size {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(11, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3018,6 +3045,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
         if let Some(v) = self.file_sha.as_ref() {
             os.write_string(10, v)?;
         }
+        if let Some(v) = self.compressed_file_size {
+            os.write_uint32(11, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -3045,6 +3075,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
         self.flags = ::std::option::Option::None;
         self.platforms_to_sync.clear();
         self.file_sha = ::std::option::Option::None;
+        self.compressed_file_size = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -3060,6 +3091,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_UserFile {
             flags: ::std::option::Option::None,
             platforms_to_sync: ::std::vec::Vec::new(),
             file_sha: ::std::option::Option::None,
+            compressed_file_size: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3072,6 +3104,8 @@ pub struct CCloud_GetFileDetails_Response {
     // message fields
     // @@protoc_insertion_point(field:CCloud_GetFileDetails_Response.details)
     pub details: ::steam_vent_proto_common::protobuf::MessageField<CCloud_UserFile>,
+    // @@protoc_insertion_point(field:CCloud_GetFileDetails_Response.rangecheck_host)
+    pub rangecheck_host: ::std::option::Option<::std::string::String>,
     // special fields
     // @@protoc_insertion_point(special_field:CCloud_GetFileDetails_Response.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3087,6 +3121,42 @@ impl CCloud_GetFileDetails_Response {
     pub fn new() -> CCloud_GetFileDetails_Response {
         ::std::default::Default::default()
     }
+
+    // optional string rangecheck_host = 2;
+
+    pub fn rangecheck_host(&self) -> &str {
+        match self.rangecheck_host.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_rangecheck_host(&mut self) {
+        self.rangecheck_host = ::std::option::Option::None;
+    }
+
+    pub fn has_rangecheck_host(&self) -> bool {
+        self.rangecheck_host.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rangecheck_host(&mut self, v: ::std::string::String) {
+        self.rangecheck_host = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_rangecheck_host(&mut self) -> &mut ::std::string::String {
+        if self.rangecheck_host.is_none() {
+            self.rangecheck_host = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.rangecheck_host.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_rangecheck_host(&mut self) -> ::std::string::String {
+        self.rangecheck_host.take().unwrap_or_else(|| ::std::string::String::new())
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetFileDetails_Response {
@@ -3101,6 +3171,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetFileDetails_Resp
             match tag {
                 10 => {
                     ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.details)?;
+                },
+                18 => {
+                    self.rangecheck_host = ::std::option::Option::Some(is.read_string()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -3118,6 +3191,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetFileDetails_Resp
             let len = v.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         }
+        if let Some(v) = self.rangecheck_host.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3126,6 +3202,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetFileDetails_Resp
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         if let Some(v) = self.details.as_ref() {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        }
+        if let Some(v) = self.rangecheck_host.as_ref() {
+            os.write_string(2, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3145,12 +3224,742 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetFileDetails_Resp
 
     fn clear(&mut self) {
         self.details.clear();
+        self.rangecheck_host = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CCloud_GetFileDetails_Response {
         static instance: CCloud_GetFileDetails_Response = CCloud_GetFileDetails_Response {
             details: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            rangecheck_host: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CCloud_GetSingleFileInfo_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CCloud_GetSingleFileInfo_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Request.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Request.file_name)
+    pub file_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CCloud_GetSingleFileInfo_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CCloud_GetSingleFileInfo_Request {
+    fn default() -> &'a CCloud_GetSingleFileInfo_Request {
+        <CCloud_GetSingleFileInfo_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CCloud_GetSingleFileInfo_Request {
+    pub fn new() -> CCloud_GetSingleFileInfo_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 1;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string file_name = 2;
+
+    pub fn file_name(&self) -> &str {
+        match self.file_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_file_name(&mut self) {
+        self.file_name = ::std::option::Option::None;
+    }
+
+    pub fn has_file_name(&self) -> bool {
+        self.file_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_file_name(&mut self, v: ::std::string::String) {
+        self.file_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_file_name(&mut self) -> &mut ::std::string::String {
+        if self.file_name.is_none() {
+            self.file_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.file_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_file_name(&mut self) -> ::std::string::String {
+        self.file_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetSingleFileInfo_Request {
+    const NAME: &'static str = "CCloud_GetSingleFileInfo_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.file_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CCloud_GetSingleFileInfo_Request {
+        CCloud_GetSingleFileInfo_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.file_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CCloud_GetSingleFileInfo_Request {
+        static instance: CCloud_GetSingleFileInfo_Request = CCloud_GetSingleFileInfo_Request {
+            app_id: ::std::option::Option::None,
+            file_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CCloud_GetSingleFileInfo_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CCloud_GetSingleFileInfo_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.file_name)
+    pub file_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.sha_file)
+    pub sha_file: ::std::option::Option<::std::vec::Vec<u8>>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.time_stamp)
+    pub time_stamp: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.raw_file_size)
+    pub raw_file_size: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CCloud_GetSingleFileInfo_Response.is_explicit_delete)
+    pub is_explicit_delete: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CCloud_GetSingleFileInfo_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CCloud_GetSingleFileInfo_Response {
+    fn default() -> &'a CCloud_GetSingleFileInfo_Response {
+        <CCloud_GetSingleFileInfo_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CCloud_GetSingleFileInfo_Response {
+    pub fn new() -> CCloud_GetSingleFileInfo_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 2;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string file_name = 3;
+
+    pub fn file_name(&self) -> &str {
+        match self.file_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_file_name(&mut self) {
+        self.file_name = ::std::option::Option::None;
+    }
+
+    pub fn has_file_name(&self) -> bool {
+        self.file_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_file_name(&mut self, v: ::std::string::String) {
+        self.file_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_file_name(&mut self) -> &mut ::std::string::String {
+        if self.file_name.is_none() {
+            self.file_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.file_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_file_name(&mut self) -> ::std::string::String {
+        self.file_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bytes sha_file = 4;
+
+    pub fn sha_file(&self) -> &[u8] {
+        match self.sha_file.as_ref() {
+            Some(v) => v,
+            None => &[],
+        }
+    }
+
+    pub fn clear_sha_file(&mut self) {
+        self.sha_file = ::std::option::Option::None;
+    }
+
+    pub fn has_sha_file(&self) -> bool {
+        self.sha_file.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sha_file(&mut self, v: ::std::vec::Vec<u8>) {
+        self.sha_file = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_sha_file(&mut self) -> &mut ::std::vec::Vec<u8> {
+        if self.sha_file.is_none() {
+            self.sha_file = ::std::option::Option::Some(::std::vec::Vec::new());
+        }
+        self.sha_file.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_sha_file(&mut self) -> ::std::vec::Vec<u8> {
+        self.sha_file.take().unwrap_or_else(|| ::std::vec::Vec::new())
+    }
+
+    // optional uint64 time_stamp = 5;
+
+    pub fn time_stamp(&self) -> u64 {
+        self.time_stamp.unwrap_or(0)
+    }
+
+    pub fn clear_time_stamp(&mut self) {
+        self.time_stamp = ::std::option::Option::None;
+    }
+
+    pub fn has_time_stamp(&self) -> bool {
+        self.time_stamp.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_time_stamp(&mut self, v: u64) {
+        self.time_stamp = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 raw_file_size = 6;
+
+    pub fn raw_file_size(&self) -> u32 {
+        self.raw_file_size.unwrap_or(0)
+    }
+
+    pub fn clear_raw_file_size(&mut self) {
+        self.raw_file_size = ::std::option::Option::None;
+    }
+
+    pub fn has_raw_file_size(&self) -> bool {
+        self.raw_file_size.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_raw_file_size(&mut self, v: u32) {
+        self.raw_file_size = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_explicit_delete = 7;
+
+    pub fn is_explicit_delete(&self) -> bool {
+        self.is_explicit_delete.unwrap_or(false)
+    }
+
+    pub fn clear_is_explicit_delete(&mut self) {
+        self.is_explicit_delete = ::std::option::Option::None;
+    }
+
+    pub fn has_is_explicit_delete(&self) -> bool {
+        self.is_explicit_delete.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_explicit_delete(&mut self, v: bool) {
+        self.is_explicit_delete = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CCloud_GetSingleFileInfo_Response {
+    const NAME: &'static str = "CCloud_GetSingleFileInfo_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                16 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                26 => {
+                    self.file_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                34 => {
+                    self.sha_file = ::std::option::Option::Some(is.read_bytes()?);
+                },
+                40 => {
+                    self.time_stamp = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                48 => {
+                    self.raw_file_size = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                56 => {
+                    self.is_explicit_delete = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        if let Some(v) = self.sha_file.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::bytes_size(4, &v);
+        }
+        if let Some(v) = self.time_stamp {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(5, v);
+        }
+        if let Some(v) = self.raw_file_size {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, v);
+        }
+        if let Some(v) = self.is_explicit_delete {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            os.write_string(3, v)?;
+        }
+        if let Some(v) = self.sha_file.as_ref() {
+            os.write_bytes(4, v)?;
+        }
+        if let Some(v) = self.time_stamp {
+            os.write_uint64(5, v)?;
+        }
+        if let Some(v) = self.raw_file_size {
+            os.write_uint32(6, v)?;
+        }
+        if let Some(v) = self.is_explicit_delete {
+            os.write_bool(7, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CCloud_GetSingleFileInfo_Response {
+        CCloud_GetSingleFileInfo_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.file_name = ::std::option::Option::None;
+        self.sha_file = ::std::option::Option::None;
+        self.time_stamp = ::std::option::Option::None;
+        self.raw_file_size = ::std::option::Option::None;
+        self.is_explicit_delete = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CCloud_GetSingleFileInfo_Response {
+        static instance: CCloud_GetSingleFileInfo_Response = CCloud_GetSingleFileInfo_Response {
+            app_id: ::std::option::Option::None,
+            file_name: ::std::option::Option::None,
+            sha_file: ::std::option::Option::None,
+            time_stamp: ::std::option::Option::None,
+            raw_file_size: ::std::option::Option::None,
+            is_explicit_delete: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CCloud_ShareFile_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CCloud_ShareFile_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CCloud_ShareFile_Request.app_id)
+    pub app_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CCloud_ShareFile_Request.file_name)
+    pub file_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CCloud_ShareFile_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CCloud_ShareFile_Request {
+    fn default() -> &'a CCloud_ShareFile_Request {
+        <CCloud_ShareFile_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CCloud_ShareFile_Request {
+    pub fn new() -> CCloud_ShareFile_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 app_id = 1;
+
+    pub fn app_id(&self) -> u32 {
+        self.app_id.unwrap_or(0)
+    }
+
+    pub fn clear_app_id(&mut self) {
+        self.app_id = ::std::option::Option::None;
+    }
+
+    pub fn has_app_id(&self) -> bool {
+        self.app_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_app_id(&mut self, v: u32) {
+        self.app_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string file_name = 2;
+
+    pub fn file_name(&self) -> &str {
+        match self.file_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_file_name(&mut self) {
+        self.file_name = ::std::option::Option::None;
+    }
+
+    pub fn has_file_name(&self) -> bool {
+        self.file_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_file_name(&mut self, v: ::std::string::String) {
+        self.file_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_file_name(&mut self) -> &mut ::std::string::String {
+        if self.file_name.is_none() {
+            self.file_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.file_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_file_name(&mut self) -> ::std::string::String {
+        self.file_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CCloud_ShareFile_Request {
+    const NAME: &'static str = "CCloud_ShareFile_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.app_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.file_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.app_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.app_id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.file_name.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CCloud_ShareFile_Request {
+        CCloud_ShareFile_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.app_id = ::std::option::Option::None;
+        self.file_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CCloud_ShareFile_Request {
+        static instance: CCloud_ShareFile_Request = CCloud_ShareFile_Request {
+            app_id: ::std::option::Option::None,
+            file_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CCloud_ShareFile_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CCloud_ShareFile_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CCloud_ShareFile_Response.hcontent)
+    pub hcontent: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CCloud_ShareFile_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CCloud_ShareFile_Response {
+    fn default() -> &'a CCloud_ShareFile_Response {
+        <CCloud_ShareFile_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CCloud_ShareFile_Response {
+    pub fn new() -> CCloud_ShareFile_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 hcontent = 1;
+
+    pub fn hcontent(&self) -> u64 {
+        self.hcontent.unwrap_or(18446744073709551615u64)
+    }
+
+    pub fn clear_hcontent(&mut self) {
+        self.hcontent = ::std::option::Option::None;
+    }
+
+    pub fn has_hcontent(&self) -> bool {
+        self.hcontent.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hcontent(&mut self, v: u64) {
+        self.hcontent = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CCloud_ShareFile_Response {
+    const NAME: &'static str = "CCloud_ShareFile_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.hcontent = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.hcontent {
+            my_size += 1 + 8;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.hcontent {
+            os.write_fixed64(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CCloud_ShareFile_Response {
+        CCloud_ShareFile_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.hcontent = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CCloud_ShareFile_Response {
+        static instance: CCloud_ShareFile_Response = CCloud_ShareFile_Response {
+            hcontent: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8741,6 +9550,8 @@ pub struct CCloud_AppFileInfo {
     pub path_prefix_index: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CCloud_AppFileInfo.machine_name_index)
     pub machine_name_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CCloud_AppFileInfo.reupload_requested)
+    pub reupload_requested: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CCloud_AppFileInfo.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -8945,6 +9756,25 @@ impl CCloud_AppFileInfo {
     pub fn set_machine_name_index(&mut self, v: u32) {
         self.machine_name_index = ::std::option::Option::Some(v);
     }
+
+    // optional bool reupload_requested = 9;
+
+    pub fn reupload_requested(&self) -> bool {
+        self.reupload_requested.unwrap_or(false)
+    }
+
+    pub fn clear_reupload_requested(&mut self) {
+        self.reupload_requested = ::std::option::Option::None;
+    }
+
+    pub fn has_reupload_requested(&self) -> bool {
+        self.reupload_requested.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_reupload_requested(&mut self, v: bool) {
+        self.reupload_requested = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
@@ -8980,6 +9810,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
                 },
                 64 => {
                     self.machine_name_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                72 => {
+                    self.reupload_requested = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -9017,6 +9850,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
         if let Some(v) = self.machine_name_index {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
         }
+        if let Some(v) = self.reupload_requested {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -9047,6 +9883,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
         if let Some(v) = self.machine_name_index {
             os.write_uint32(8, v)?;
         }
+        if let Some(v) = self.reupload_requested {
+            os.write_bool(9, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -9072,6 +9911,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
         self.platforms_to_sync = ::std::option::Option::None;
         self.path_prefix_index = ::std::option::Option::None;
         self.machine_name_index = ::std::option::Option::None;
+        self.reupload_requested = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -9085,6 +9925,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CCloud_AppFileInfo {
             platforms_to_sync: ::std::option::Option::None,
             path_prefix_index: ::std::option::Option::None,
             machine_name_index: ::std::option::Option::None,
+            reupload_requested: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -11146,6 +11987,58 @@ impl ::steam_vent_proto_common::RpcMessage for CCloud_GetFileDetails_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CCloud_GetSingleFileInfo_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CCloud_GetSingleFileInfo_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CCloud_ShareFile_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CCloud_ShareFile_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage for CCloud_EnumerateUserFiles_Request {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -11757,4 +12650,12 @@ impl ::steam_vent_proto_common::RpcMethod for CCloud_GetClientEncryptionKey_Requ
 impl ::steam_vent_proto_common::RpcMethod for CCloud_GetFileDetails_Request {
     const METHOD_NAME: &'static str = "Cloud.GetFileDetails#1";
     type Response = CCloud_GetFileDetails_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CCloud_GetSingleFileInfo_Request {
+    const METHOD_NAME: &'static str = "Cloud.GetSingleFileInfo#1";
+    type Response = CCloud_GetSingleFileInfo_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CCloud_ShareFile_Request {
+    const METHOD_NAME: &'static str = "Cloud.ShareFile#1";
+    type Response = CCloud_ShareFile_Response;
 }

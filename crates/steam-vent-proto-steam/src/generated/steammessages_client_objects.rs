@@ -1865,6 +1865,12 @@ pub mod cmsg_network_devices_data {
                 pub password: ::std::option::Option<::std::string::String>,
                 // @@protoc_insertion_point(field:CMsgNetworkDevicesData.Device.Wireless.AP.strength_raw)
                 pub strength_raw: ::std::option::Option<i32>,
+                // @@protoc_insertion_point(field:CMsgNetworkDevicesData.Device.Wireless.AP.band_filter)
+                pub band_filter: ::std::option::Option<::std::string::String>,
+                // @@protoc_insertion_point(field:CMsgNetworkDevicesData.Device.Wireless.AP.has_non_6ghz_channel)
+                pub has_non_6ghz_channel: ::std::option::Option<bool>,
+                // @@protoc_insertion_point(field:CMsgNetworkDevicesData.Device.Wireless.AP.is_saved)
+                pub is_saved: ::std::option::Option<bool>,
                 // special fields
                 // @@protoc_insertion_point(special_field:CMsgNetworkDevicesData.Device.Wireless.AP.special_fields)
                 pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2102,6 +2108,80 @@ pub mod cmsg_network_devices_data {
                 pub fn set_strength_raw(&mut self, v: i32) {
                     self.strength_raw = ::std::option::Option::Some(v);
                 }
+
+                // optional string band_filter = 10;
+
+                pub fn band_filter(&self) -> &str {
+                    match self.band_filter.as_ref() {
+                        Some(v) => v,
+                        None => "",
+                    }
+                }
+
+                pub fn clear_band_filter(&mut self) {
+                    self.band_filter = ::std::option::Option::None;
+                }
+
+                pub fn has_band_filter(&self) -> bool {
+                    self.band_filter.is_some()
+                }
+
+                // Param is passed by value, moved
+                pub fn set_band_filter(&mut self, v: ::std::string::String) {
+                    self.band_filter = ::std::option::Option::Some(v);
+                }
+
+                // Mutable pointer to the field.
+                // If field is not initialized, it is initialized with default value first.
+                pub fn mut_band_filter(&mut self) -> &mut ::std::string::String {
+                    if self.band_filter.is_none() {
+                        self.band_filter = ::std::option::Option::Some(::std::string::String::new());
+                    }
+                    self.band_filter.as_mut().unwrap()
+                }
+
+                // Take field
+                pub fn take_band_filter(&mut self) -> ::std::string::String {
+                    self.band_filter.take().unwrap_or_else(|| ::std::string::String::new())
+                }
+
+                // optional bool has_non_6ghz_channel = 11;
+
+                pub fn has_non_6ghz_channel(&self) -> bool {
+                    self.has_non_6ghz_channel.unwrap_or(false)
+                }
+
+                pub fn clear_has_non_6ghz_channel(&mut self) {
+                    self.has_non_6ghz_channel = ::std::option::Option::None;
+                }
+
+                pub fn has_has_non_6ghz_channel(&self) -> bool {
+                    self.has_non_6ghz_channel.is_some()
+                }
+
+                // Param is passed by value, moved
+                pub fn set_has_non_6ghz_channel(&mut self, v: bool) {
+                    self.has_non_6ghz_channel = ::std::option::Option::Some(v);
+                }
+
+                // optional bool is_saved = 12;
+
+                pub fn is_saved(&self) -> bool {
+                    self.is_saved.unwrap_or(false)
+                }
+
+                pub fn clear_is_saved(&mut self) {
+                    self.is_saved = ::std::option::Option::None;
+                }
+
+                pub fn has_is_saved(&self) -> bool {
+                    self.is_saved.is_some()
+                }
+
+                // Param is passed by value, moved
+                pub fn set_is_saved(&mut self, v: bool) {
+                    self.is_saved = ::std::option::Option::Some(v);
+                }
             }
 
             impl ::steam_vent_proto_common::protobuf::Message for AP {
@@ -2140,6 +2220,15 @@ pub mod cmsg_network_devices_data {
                             },
                             72 => {
                                 self.strength_raw = ::std::option::Option::Some(is.read_int32()?);
+                            },
+                            82 => {
+                                self.band_filter = ::std::option::Option::Some(is.read_string()?);
+                            },
+                            88 => {
+                                self.has_non_6ghz_channel = ::std::option::Option::Some(is.read_bool()?);
+                            },
+                            96 => {
+                                self.is_saved = ::std::option::Option::Some(is.read_bool()?);
                             },
                             tag => {
                                 ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2180,6 +2269,15 @@ pub mod cmsg_network_devices_data {
                     if let Some(v) = self.strength_raw {
                         my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(9, v);
                     }
+                    if let Some(v) = self.band_filter.as_ref() {
+                        my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
+                    }
+                    if let Some(v) = self.has_non_6ghz_channel {
+                        my_size += 1 + 1;
+                    }
+                    if let Some(v) = self.is_saved {
+                        my_size += 1 + 1;
+                    }
                     my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
                     self.special_fields.cached_size().set(my_size as u32);
                     my_size
@@ -2213,6 +2311,15 @@ pub mod cmsg_network_devices_data {
                     if let Some(v) = self.strength_raw {
                         os.write_int32(9, v)?;
                     }
+                    if let Some(v) = self.band_filter.as_ref() {
+                        os.write_string(10, v)?;
+                    }
+                    if let Some(v) = self.has_non_6ghz_channel {
+                        os.write_bool(11, v)?;
+                    }
+                    if let Some(v) = self.is_saved {
+                        os.write_bool(12, v)?;
+                    }
                     os.write_unknown_fields(self.special_fields.unknown_fields())?;
                     ::std::result::Result::Ok(())
                 }
@@ -2239,6 +2346,9 @@ pub mod cmsg_network_devices_data {
                     self.user_name = ::std::option::Option::None;
                     self.password = ::std::option::Option::None;
                     self.strength_raw = ::std::option::Option::None;
+                    self.band_filter = ::std::option::Option::None;
+                    self.has_non_6ghz_channel = ::std::option::Option::None;
+                    self.is_saved = ::std::option::Option::None;
                     self.special_fields.clear();
                 }
 
@@ -2253,6 +2363,9 @@ pub mod cmsg_network_devices_data {
                         user_name: ::std::option::Option::None,
                         password: ::std::option::Option::None,
                         strength_raw: ::std::option::Option::None,
+                        band_filter: ::std::option::Option::None,
+                        has_non_6ghz_channel: ::std::option::Option::None,
+                        is_saved: ::std::option::Option::None,
                         special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
                     };
                     &instance
@@ -2274,6 +2387,8 @@ pub struct CMsgNetworkDeviceConnect {
     pub ip4: ::steam_vent_proto_common::protobuf::MessageField<CMsgNetworkDeviceIP4Config>,
     // @@protoc_insertion_point(field:CMsgNetworkDeviceConnect.ip6)
     pub ip6: ::steam_vent_proto_common::protobuf::MessageField<CMsgNetworkDeviceIP6Config>,
+    // @@protoc_insertion_point(field:CMsgNetworkDeviceConnect.wireless)
+    pub wireless: ::steam_vent_proto_common::protobuf::MessageField<cmsg_network_device_connect::Wireless>,
     // message oneof groups
     pub ap_info: ::std::option::Option<cmsg_network_device_connect::Ap_info>,
     // special fields
@@ -2432,6 +2547,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceConnect {
                 50 => {
                     ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.ip6)?;
                 },
+                58 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.wireless)?;
+                },
                 18 => {
                     self.ap_info = ::std::option::Option::Some(cmsg_network_device_connect::Ap_info::ApKnown(is.read_message()?));
                 },
@@ -2465,6 +2583,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceConnect {
             let len = v.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         }
+        if let Some(v) = self.wireless.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
         if let ::std::option::Option::Some(ref v) = self.ap_info {
             match v {
                 &cmsg_network_device_connect::Ap_info::ApKnown(ref v) => {
@@ -2494,6 +2616,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceConnect {
         }
         if let Some(v) = self.ip6.as_ref() {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(6, v, os)?;
+        }
+        if let Some(v) = self.wireless.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(7, v, os)?;
         }
         if let ::std::option::Option::Some(ref v) = self.ap_info {
             match v {
@@ -2526,6 +2651,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceConnect {
         self.credentials.clear();
         self.ip4.clear();
         self.ip6.clear();
+        self.wireless.clear();
         self.ap_info = ::std::option::Option::None;
         self.ap_info = ::std::option::Option::None;
         self.special_fields.clear();
@@ -2537,6 +2663,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceConnect {
             credentials: ::steam_vent_proto_common::protobuf::MessageField::none(),
             ip4: ::steam_vent_proto_common::protobuf::MessageField::none(),
             ip6: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            wireless: ::steam_vent_proto_common::protobuf::MessageField::none(),
             ap_info: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
@@ -2998,6 +3125,424 @@ pub mod cmsg_network_device_connect {
             static instance: Credentials = Credentials {
                 username: ::std::option::Option::None,
                 password: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    // @@protoc_insertion_point(message:CMsgNetworkDeviceConnect.Wireless)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Wireless {
+        // message fields
+        // @@protoc_insertion_point(field:CMsgNetworkDeviceConnect.Wireless.band_filter)
+        pub band_filter: ::std::option::Option<::std::string::String>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CMsgNetworkDeviceConnect.Wireless.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Wireless {
+        fn default() -> &'a Wireless {
+            <Wireless as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Wireless {
+        pub fn new() -> Wireless {
+            ::std::default::Default::default()
+        }
+
+        // optional string band_filter = 1;
+
+        pub fn band_filter(&self) -> &str {
+            match self.band_filter.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_band_filter(&mut self) {
+            self.band_filter = ::std::option::Option::None;
+        }
+
+        pub fn has_band_filter(&self) -> bool {
+            self.band_filter.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_band_filter(&mut self, v: ::std::string::String) {
+            self.band_filter = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_band_filter(&mut self) -> &mut ::std::string::String {
+            if self.band_filter.is_none() {
+                self.band_filter = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.band_filter.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_band_filter(&mut self) -> ::std::string::String {
+            self.band_filter.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Wireless {
+        const NAME: &'static str = "Wireless";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    10 => {
+                        self.band_filter = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.band_filter.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.band_filter.as_ref() {
+                os.write_string(1, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Wireless {
+            Wireless::new()
+        }
+
+        fn clear(&mut self) {
+            self.band_filter = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Wireless {
+            static instance: Wireless = Wireless {
+                band_filter: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgNetworkDeviceSetOptions)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgNetworkDeviceSetOptions {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgNetworkDeviceSetOptions.wireless)
+    pub wireless: ::steam_vent_proto_common::protobuf::MessageField<cmsg_network_device_set_options::Wireless>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgNetworkDeviceSetOptions.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgNetworkDeviceSetOptions {
+    fn default() -> &'a CMsgNetworkDeviceSetOptions {
+        <CMsgNetworkDeviceSetOptions as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgNetworkDeviceSetOptions {
+    pub fn new() -> CMsgNetworkDeviceSetOptions {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgNetworkDeviceSetOptions {
+    const NAME: &'static str = "CMsgNetworkDeviceSetOptions";
+
+    fn is_initialized(&self) -> bool {
+        for v in &self.wireless {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.wireless)?;
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.wireless.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.wireless.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgNetworkDeviceSetOptions {
+        CMsgNetworkDeviceSetOptions::new()
+    }
+
+    fn clear(&mut self) {
+        self.wireless.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgNetworkDeviceSetOptions {
+        static instance: CMsgNetworkDeviceSetOptions = CMsgNetworkDeviceSetOptions {
+            wireless: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CMsgNetworkDeviceSetOptions`
+pub mod cmsg_network_device_set_options {
+    // @@protoc_insertion_point(message:CMsgNetworkDeviceSetOptions.Wireless)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Wireless {
+        // message fields
+        // @@protoc_insertion_point(field:CMsgNetworkDeviceSetOptions.Wireless.ap_id)
+        pub ap_id: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CMsgNetworkDeviceSetOptions.Wireless.is_autoconnect)
+        pub is_autoconnect: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CMsgNetworkDeviceSetOptions.Wireless.band_filter)
+        pub band_filter: ::std::option::Option<::std::string::String>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CMsgNetworkDeviceSetOptions.Wireless.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Wireless {
+        fn default() -> &'a Wireless {
+            <Wireless as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Wireless {
+        pub fn new() -> Wireless {
+            ::std::default::Default::default()
+        }
+
+        // required uint32 ap_id = 1;
+
+        pub fn ap_id(&self) -> u32 {
+            self.ap_id.unwrap_or(0)
+        }
+
+        pub fn clear_ap_id(&mut self) {
+            self.ap_id = ::std::option::Option::None;
+        }
+
+        pub fn has_ap_id(&self) -> bool {
+            self.ap_id.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_ap_id(&mut self, v: u32) {
+            self.ap_id = ::std::option::Option::Some(v);
+        }
+
+        // optional bool is_autoconnect = 2;
+
+        pub fn is_autoconnect(&self) -> bool {
+            self.is_autoconnect.unwrap_or(false)
+        }
+
+        pub fn clear_is_autoconnect(&mut self) {
+            self.is_autoconnect = ::std::option::Option::None;
+        }
+
+        pub fn has_is_autoconnect(&self) -> bool {
+            self.is_autoconnect.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_is_autoconnect(&mut self, v: bool) {
+            self.is_autoconnect = ::std::option::Option::Some(v);
+        }
+
+        // optional string band_filter = 3;
+
+        pub fn band_filter(&self) -> &str {
+            match self.band_filter.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_band_filter(&mut self) {
+            self.band_filter = ::std::option::Option::None;
+        }
+
+        pub fn has_band_filter(&self) -> bool {
+            self.band_filter.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_band_filter(&mut self, v: ::std::string::String) {
+            self.band_filter = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_band_filter(&mut self) -> &mut ::std::string::String {
+            if self.band_filter.is_none() {
+                self.band_filter = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.band_filter.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_band_filter(&mut self) -> ::std::string::String {
+            self.band_filter.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Wireless {
+        const NAME: &'static str = "Wireless";
+
+        fn is_initialized(&self) -> bool {
+            if self.ap_id.is_none() {
+                return false;
+            }
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.ap_id = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.is_autoconnect = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    26 => {
+                        self.band_filter = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.ap_id {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.is_autoconnect {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.band_filter.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.ap_id {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.is_autoconnect {
+                os.write_bool(2, v)?;
+            }
+            if let Some(v) = self.band_filter.as_ref() {
+                os.write_string(3, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Wireless {
+            Wireless::new()
+        }
+
+        fn clear(&mut self) {
+            self.ap_id = ::std::option::Option::None;
+            self.is_autoconnect = ::std::option::Option::None;
+            self.band_filter = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Wireless {
+            static instance: Wireless = Wireless {
+                ap_id: ::std::option::Option::None,
+                is_autoconnect: ::std::option::Option::None,
+                band_filter: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -12383,6 +12928,8 @@ pub struct CMsgSystemDisplay {
     pub is_hdr_output_active: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgSystemDisplay.supported_refresh_rates)
     pub supported_refresh_rates: ::std::vec::Vec<i32>,
+    // @@protoc_insertion_point(field:CMsgSystemDisplay.rgb_range)
+    pub rgb_range: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EDisplayManagerRGBRange>>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgSystemDisplay.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -12736,6 +13283,28 @@ impl CMsgSystemDisplay {
     pub fn set_is_hdr_output_active(&mut self, v: bool) {
         self.is_hdr_output_active = ::std::option::Option::Some(v);
     }
+
+    // optional .EDisplayManagerRGBRange rgb_range = 19;
+
+    pub fn rgb_range(&self) -> EDisplayManagerRGBRange {
+        match self.rgb_range {
+            Some(e) => e.enum_value_or(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic),
+            None => EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic,
+        }
+    }
+
+    pub fn clear_rgb_range(&mut self) {
+        self.rgb_range = ::std::option::Option::None;
+    }
+
+    pub fn has_rgb_range(&self) -> bool {
+        self.rgb_range.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rgb_range(&mut self, v: EDisplayManagerRGBRange) {
+        self.rgb_range = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
@@ -12805,6 +13374,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
                 144 => {
                     self.supported_refresh_rates.push(is.read_int32()?);
                 },
+                152 => {
+                    self.rgb_range = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -12872,6 +13444,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
         for value in &self.supported_refresh_rates {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(18, *value);
         };
+        if let Some(v) = self.rgb_range {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(19, v.value());
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -12932,6 +13507,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
         for v in &self.supported_refresh_rates {
             os.write_int32(18, *v)?;
         };
+        if let Some(v) = self.rgb_range {
+            os.write_enum(19, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -12967,6 +13545,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
         self.is_hdr_capable = ::std::option::Option::None;
         self.is_hdr_output_active = ::std::option::Option::None;
         self.supported_refresh_rates.clear();
+        self.rgb_range = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -12990,6 +13569,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplay {
             is_hdr_capable: ::std::option::Option::None,
             is_hdr_output_active: ::std::option::Option::None,
             supported_refresh_rates: ::std::vec::Vec::new(),
+            rgb_range: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13162,6 +13742,8 @@ pub struct CMsgSystemDisplayManagerSetMode {
     pub display_id: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgSystemDisplayManagerSetMode.mode_id)
     pub mode_id: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgSystemDisplayManagerSetMode.rgb_range)
+    pub rgb_range: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EDisplayManagerRGBRange>>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgSystemDisplayManagerSetMode.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -13215,6 +13797,28 @@ impl CMsgSystemDisplayManagerSetMode {
     pub fn set_mode_id(&mut self, v: i32) {
         self.mode_id = ::std::option::Option::Some(v);
     }
+
+    // optional .EDisplayManagerRGBRange rgb_range = 3;
+
+    pub fn rgb_range(&self) -> EDisplayManagerRGBRange {
+        match self.rgb_range {
+            Some(e) => e.enum_value_or(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic),
+            None => EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic,
+        }
+    }
+
+    pub fn clear_rgb_range(&mut self) {
+        self.rgb_range = ::std::option::Option::None;
+    }
+
+    pub fn has_rgb_range(&self) -> bool {
+        self.rgb_range.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rgb_range(&mut self, v: EDisplayManagerRGBRange) {
+        self.rgb_range = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSetMode {
@@ -13232,6 +13836,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSe
                 },
                 16 => {
                     self.mode_id = ::std::option::Option::Some(is.read_int32()?);
+                },
+                24 => {
+                    self.rgb_range = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -13251,6 +13858,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSe
         if let Some(v) = self.mode_id {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v);
         }
+        if let Some(v) = self.rgb_range {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v.value());
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -13262,6 +13872,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSe
         }
         if let Some(v) = self.mode_id {
             os.write_int32(2, v)?;
+        }
+        if let Some(v) = self.rgb_range {
+            os.write_enum(3, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -13282,6 +13895,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSe
     fn clear(&mut self) {
         self.display_id = ::std::option::Option::None;
         self.mode_id = ::std::option::Option::None;
+        self.rgb_range = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -13289,6 +13903,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemDisplayManagerSe
         static instance: CMsgSystemDisplayManagerSetMode = CMsgSystemDisplayManagerSetMode {
             display_id: ::std::option::Option::None,
             mode_id: ::std::option::Option::None,
+            rgb_range: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13303,12 +13918,6 @@ pub struct CMsgSystemManagerSettings {
     pub idle_backlight_dim_battery_seconds: ::std::option::Option<f32>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.idle_backlight_dim_ac_seconds)
     pub idle_backlight_dim_ac_seconds: ::std::option::Option<f32>,
-    // @@protoc_insertion_point(field:CMsgSystemManagerSettings.idle_suspend_battery_seconds)
-    pub idle_suspend_battery_seconds: ::std::option::Option<f32>,
-    // @@protoc_insertion_point(field:CMsgSystemManagerSettings.idle_suspend_ac_seconds)
-    pub idle_suspend_ac_seconds: ::std::option::Option<f32>,
-    // @@protoc_insertion_point(field:CMsgSystemManagerSettings.idle_suspend_supressed)
-    pub idle_suspend_supressed: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.is_adaptive_brightness_available)
     pub is_adaptive_brightness_available: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.display_adaptive_brightness_enabled)
@@ -13345,8 +13954,6 @@ pub struct CMsgSystemManagerSettings {
     pub display_brightness_adaptivemin: ::std::option::Option<f32>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.display_brightness_adaptivemax)
     pub display_brightness_adaptivemax: ::std::option::Option<f32>,
-    // @@protoc_insertion_point(field:CMsgSystemManagerSettings.is_wifi_powersave_enabled)
-    pub is_wifi_powersave_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.is_fan_control_available)
     pub is_fan_control_available: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgSystemManagerSettings.fan_control_mode)
@@ -13423,63 +14030,6 @@ impl CMsgSystemManagerSettings {
     // Param is passed by value, moved
     pub fn set_idle_backlight_dim_ac_seconds(&mut self, v: f32) {
         self.idle_backlight_dim_ac_seconds = ::std::option::Option::Some(v);
-    }
-
-    // optional float idle_suspend_battery_seconds = 3;
-
-    pub fn idle_suspend_battery_seconds(&self) -> f32 {
-        self.idle_suspend_battery_seconds.unwrap_or(0.)
-    }
-
-    pub fn clear_idle_suspend_battery_seconds(&mut self) {
-        self.idle_suspend_battery_seconds = ::std::option::Option::None;
-    }
-
-    pub fn has_idle_suspend_battery_seconds(&self) -> bool {
-        self.idle_suspend_battery_seconds.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_idle_suspend_battery_seconds(&mut self, v: f32) {
-        self.idle_suspend_battery_seconds = ::std::option::Option::Some(v);
-    }
-
-    // optional float idle_suspend_ac_seconds = 4;
-
-    pub fn idle_suspend_ac_seconds(&self) -> f32 {
-        self.idle_suspend_ac_seconds.unwrap_or(0.)
-    }
-
-    pub fn clear_idle_suspend_ac_seconds(&mut self) {
-        self.idle_suspend_ac_seconds = ::std::option::Option::None;
-    }
-
-    pub fn has_idle_suspend_ac_seconds(&self) -> bool {
-        self.idle_suspend_ac_seconds.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_idle_suspend_ac_seconds(&mut self, v: f32) {
-        self.idle_suspend_ac_seconds = ::std::option::Option::Some(v);
-    }
-
-    // optional bool idle_suspend_supressed = 5;
-
-    pub fn idle_suspend_supressed(&self) -> bool {
-        self.idle_suspend_supressed.unwrap_or(false)
-    }
-
-    pub fn clear_idle_suspend_supressed(&mut self) {
-        self.idle_suspend_supressed = ::std::option::Option::None;
-    }
-
-    pub fn has_idle_suspend_supressed(&self) -> bool {
-        self.idle_suspend_supressed.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_idle_suspend_supressed(&mut self, v: bool) {
-        self.idle_suspend_supressed = ::std::option::Option::Some(v);
     }
 
     // optional bool is_adaptive_brightness_available = 6;
@@ -13824,25 +14374,6 @@ impl CMsgSystemManagerSettings {
         self.display_brightness_adaptivemax = ::std::option::Option::Some(v);
     }
 
-    // optional bool is_wifi_powersave_enabled = 26;
-
-    pub fn is_wifi_powersave_enabled(&self) -> bool {
-        self.is_wifi_powersave_enabled.unwrap_or(false)
-    }
-
-    pub fn clear_is_wifi_powersave_enabled(&mut self) {
-        self.is_wifi_powersave_enabled = ::std::option::Option::None;
-    }
-
-    pub fn has_is_wifi_powersave_enabled(&self) -> bool {
-        self.is_wifi_powersave_enabled.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_is_wifi_powersave_enabled(&mut self, v: bool) {
-        self.is_wifi_powersave_enabled = ::std::option::Option::Some(v);
-    }
-
     // optional bool is_fan_control_available = 27;
 
     pub fn is_fan_control_available(&self) -> bool {
@@ -14094,15 +14625,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
                 21 => {
                     self.idle_backlight_dim_ac_seconds = ::std::option::Option::Some(is.read_float()?);
                 },
-                29 => {
-                    self.idle_suspend_battery_seconds = ::std::option::Option::Some(is.read_float()?);
-                },
-                37 => {
-                    self.idle_suspend_ac_seconds = ::std::option::Option::Some(is.read_float()?);
-                },
-                40 => {
-                    self.idle_suspend_supressed = ::std::option::Option::Some(is.read_bool()?);
-                },
                 48 => {
                     self.is_adaptive_brightness_available = ::std::option::Option::Some(is.read_bool()?);
                 },
@@ -14156,9 +14678,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
                 },
                 205 => {
                     self.display_brightness_adaptivemax = ::std::option::Option::Some(is.read_float()?);
-                },
-                208 => {
-                    self.is_wifi_powersave_enabled = ::std::option::Option::Some(is.read_bool()?);
                 },
                 216 => {
                     self.is_fan_control_available = ::std::option::Option::Some(is.read_bool()?);
@@ -14214,15 +14733,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         if let Some(v) = self.idle_backlight_dim_ac_seconds {
             my_size += 1 + 4;
         }
-        if let Some(v) = self.idle_suspend_battery_seconds {
-            my_size += 1 + 4;
-        }
-        if let Some(v) = self.idle_suspend_ac_seconds {
-            my_size += 1 + 4;
-        }
-        if let Some(v) = self.idle_suspend_supressed {
-            my_size += 1 + 1;
-        }
         if let Some(v) = self.is_adaptive_brightness_available {
             my_size += 1 + 1;
         }
@@ -14277,9 +14787,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         if let Some(v) = self.display_brightness_adaptivemax {
             my_size += 2 + 4;
         }
-        if let Some(v) = self.is_wifi_powersave_enabled {
-            my_size += 2 + 1;
-        }
         if let Some(v) = self.is_fan_control_available {
             my_size += 2 + 1;
         }
@@ -14327,15 +14834,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         }
         if let Some(v) = self.idle_backlight_dim_ac_seconds {
             os.write_float(2, v)?;
-        }
-        if let Some(v) = self.idle_suspend_battery_seconds {
-            os.write_float(3, v)?;
-        }
-        if let Some(v) = self.idle_suspend_ac_seconds {
-            os.write_float(4, v)?;
-        }
-        if let Some(v) = self.idle_suspend_supressed {
-            os.write_bool(5, v)?;
         }
         if let Some(v) = self.is_adaptive_brightness_available {
             os.write_bool(6, v)?;
@@ -14390,9 +14888,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         }
         if let Some(v) = self.display_brightness_adaptivemax {
             os.write_float(25, v)?;
-        }
-        if let Some(v) = self.is_wifi_powersave_enabled {
-            os.write_bool(26, v)?;
         }
         if let Some(v) = self.is_fan_control_available {
             os.write_bool(27, v)?;
@@ -14449,9 +14944,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
     fn clear(&mut self) {
         self.idle_backlight_dim_battery_seconds = ::std::option::Option::None;
         self.idle_backlight_dim_ac_seconds = ::std::option::Option::None;
-        self.idle_suspend_battery_seconds = ::std::option::Option::None;
-        self.idle_suspend_ac_seconds = ::std::option::Option::None;
-        self.idle_suspend_supressed = ::std::option::Option::None;
         self.is_adaptive_brightness_available = ::std::option::Option::None;
         self.display_adaptive_brightness_enabled = ::std::option::Option::None;
         self.display_nightmode_enabled = ::std::option::Option::None;
@@ -14470,7 +14962,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         self.display_backlight_raw = ::std::option::Option::None;
         self.display_brightness_adaptivemin = ::std::option::Option::None;
         self.display_brightness_adaptivemax = ::std::option::Option::None;
-        self.is_wifi_powersave_enabled = ::std::option::Option::None;
         self.is_fan_control_available = ::std::option::Option::None;
         self.fan_control_mode = ::std::option::Option::None;
         self.is_display_brightness_available = ::std::option::Option::None;
@@ -14490,9 +14981,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
         static instance: CMsgSystemManagerSettings = CMsgSystemManagerSettings {
             idle_backlight_dim_battery_seconds: ::std::option::Option::None,
             idle_backlight_dim_ac_seconds: ::std::option::Option::None,
-            idle_suspend_battery_seconds: ::std::option::Option::None,
-            idle_suspend_ac_seconds: ::std::option::Option::None,
-            idle_suspend_supressed: ::std::option::Option::None,
             is_adaptive_brightness_available: ::std::option::Option::None,
             display_adaptive_brightness_enabled: ::std::option::Option::None,
             display_nightmode_enabled: ::std::option::Option::None,
@@ -14511,7 +14999,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSystemManagerSettings 
             display_backlight_raw: ::std::option::Option::None,
             display_brightness_adaptivemin: ::std::option::Option::None,
             display_brightness_adaptivemax: ::std::option::Option::None,
-            is_wifi_powersave_enabled: ::std::option::Option::None,
             is_fan_control_available: ::std::option::Option::None,
             fan_control_mode: ::std::option::Option::None,
             is_display_brightness_available: ::std::option::Option::None,
@@ -17121,8 +17608,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgShortcutAppIds {
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CMsgMonitorInfo {
     // message fields
-    // @@protoc_insertion_point(field:CMsgMonitorInfo.selected_display_name)
-    pub selected_display_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CMsgMonitorInfo.selected_device_name)
+    pub selected_device_name: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgMonitorInfo.monitors)
     pub monitors: ::std::vec::Vec<cmsg_monitor_info::MonitorInfo>,
     // special fields
@@ -17141,40 +17628,40 @@ impl CMsgMonitorInfo {
         ::std::default::Default::default()
     }
 
-    // required string selected_display_name = 1;
+    // required string selected_device_name = 1;
 
-    pub fn selected_display_name(&self) -> &str {
-        match self.selected_display_name.as_ref() {
+    pub fn selected_device_name(&self) -> &str {
+        match self.selected_device_name.as_ref() {
             Some(v) => v,
             None => "",
         }
     }
 
-    pub fn clear_selected_display_name(&mut self) {
-        self.selected_display_name = ::std::option::Option::None;
+    pub fn clear_selected_device_name(&mut self) {
+        self.selected_device_name = ::std::option::Option::None;
     }
 
-    pub fn has_selected_display_name(&self) -> bool {
-        self.selected_display_name.is_some()
+    pub fn has_selected_device_name(&self) -> bool {
+        self.selected_device_name.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_selected_display_name(&mut self, v: ::std::string::String) {
-        self.selected_display_name = ::std::option::Option::Some(v);
+    pub fn set_selected_device_name(&mut self, v: ::std::string::String) {
+        self.selected_device_name = ::std::option::Option::Some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_selected_display_name(&mut self) -> &mut ::std::string::String {
-        if self.selected_display_name.is_none() {
-            self.selected_display_name = ::std::option::Option::Some(::std::string::String::new());
+    pub fn mut_selected_device_name(&mut self) -> &mut ::std::string::String {
+        if self.selected_device_name.is_none() {
+            self.selected_device_name = ::std::option::Option::Some(::std::string::String::new());
         }
-        self.selected_display_name.as_mut().unwrap()
+        self.selected_device_name.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_selected_display_name(&mut self) -> ::std::string::String {
-        self.selected_display_name.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_selected_device_name(&mut self) -> ::std::string::String {
+        self.selected_device_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 }
 
@@ -17182,7 +17669,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgMonitorInfo {
     const NAME: &'static str = "CMsgMonitorInfo";
 
     fn is_initialized(&self) -> bool {
-        if self.selected_display_name.is_none() {
+        if self.selected_device_name.is_none() {
             return false;
         }
         for v in &self.monitors {
@@ -17197,7 +17684,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgMonitorInfo {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
                 10 => {
-                    self.selected_display_name = ::std::option::Option::Some(is.read_string()?);
+                    self.selected_device_name = ::std::option::Option::Some(is.read_string()?);
                 },
                 18 => {
                     self.monitors.push(is.read_message()?);
@@ -17214,7 +17701,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgMonitorInfo {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
-        if let Some(v) = self.selected_display_name.as_ref() {
+        if let Some(v) = self.selected_device_name.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
         }
         for value in &self.monitors {
@@ -17227,7 +17714,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgMonitorInfo {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
-        if let Some(v) = self.selected_display_name.as_ref() {
+        if let Some(v) = self.selected_device_name.as_ref() {
             os.write_string(1, v)?;
         }
         for v in &self.monitors {
@@ -17250,14 +17737,14 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgMonitorInfo {
     }
 
     fn clear(&mut self) {
-        self.selected_display_name = ::std::option::Option::None;
+        self.selected_device_name = ::std::option::Option::None;
         self.monitors.clear();
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CMsgMonitorInfo {
         static instance: CMsgMonitorInfo = CMsgMonitorInfo {
-            selected_display_name: ::std::option::Option::None,
+            selected_device_name: ::std::option::Option::None,
             monitors: ::std::vec::Vec::new(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
@@ -18201,6 +18688,56 @@ impl ::std::default::Default for ECloudPendingRemoteOperation {
 
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EDisplayManagerRGBRange)
+pub enum EDisplayManagerRGBRange {
+    // @@protoc_insertion_point(enum_value:EDisplayManagerRGBRange.k_EDisplayManagerRGBRange_Automatic)
+    k_EDisplayManagerRGBRange_Automatic = 0,
+    // @@protoc_insertion_point(enum_value:EDisplayManagerRGBRange.k_EDisplayManagerRGBRange_Full)
+    k_EDisplayManagerRGBRange_Full = 1,
+    // @@protoc_insertion_point(enum_value:EDisplayManagerRGBRange.k_EDisplayManagerRGBRange_Limited)
+    k_EDisplayManagerRGBRange_Limited = 2,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EDisplayManagerRGBRange {
+    const NAME: &'static str = "EDisplayManagerRGBRange";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EDisplayManagerRGBRange> {
+        match value {
+            0 => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic),
+            1 => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Full),
+            2 => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Limited),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EDisplayManagerRGBRange> {
+        match str {
+            "k_EDisplayManagerRGBRange_Automatic" => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic),
+            "k_EDisplayManagerRGBRange_Full" => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Full),
+            "k_EDisplayManagerRGBRange_Limited" => ::std::option::Option::Some(EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Limited),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EDisplayManagerRGBRange] = &[
+        EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic,
+        EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Full,
+        EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Limited,
+    ];
+}
+
+impl ::std::default::Default for EDisplayManagerRGBRange {
+    fn default() -> Self {
+        EDisplayManagerRGBRange::k_EDisplayManagerRGBRange_Automatic
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:ESteamDeckKeyboardLayout)
 pub enum ESteamDeckKeyboardLayout {
     // @@protoc_insertion_point(enum_value:ESteamDeckKeyboardLayout.k_ESteamDeckKeyboardLayout_QWERTY)
@@ -18500,6 +19037,19 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgNetworkDevicesData {
     }
 }
 impl ::steam_vent_proto_common::RpcMessage for CMsgNetworkDeviceConnect {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CMsgNetworkDeviceSetOptions {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }

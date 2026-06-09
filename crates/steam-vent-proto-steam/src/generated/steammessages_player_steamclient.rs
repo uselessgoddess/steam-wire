@@ -11161,6 +11161,8 @@ pub struct CPlayer_GetGameAchievements_Request {
     pub appid: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Request.language)
     pub language: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Request.hash_only)
+    pub hash_only: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CPlayer_GetGameAchievements_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -11231,6 +11233,25 @@ impl CPlayer_GetGameAchievements_Request {
     pub fn take_language(&mut self) -> ::std::string::String {
         self.language.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional bool hash_only = 3;
+
+    pub fn hash_only(&self) -> bool {
+        self.hash_only.unwrap_or(false)
+    }
+
+    pub fn clear_hash_only(&mut self) {
+        self.hash_only = ::std::option::Option::None;
+    }
+
+    pub fn has_hash_only(&self) -> bool {
+        self.hash_only.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hash_only(&mut self, v: bool) {
+        self.hash_only = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievements_Request {
@@ -11248,6 +11269,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
                 },
                 18 => {
                     self.language = ::std::option::Option::Some(is.read_string()?);
+                },
+                24 => {
+                    self.hash_only = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -11267,6 +11291,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
         if let Some(v) = self.language.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
         }
+        if let Some(v) = self.hash_only {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -11278,6 +11305,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
         }
         if let Some(v) = self.language.as_ref() {
             os.write_string(2, v)?;
+        }
+        if let Some(v) = self.hash_only {
+            os.write_bool(3, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -11298,6 +11328,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
     fn clear(&mut self) {
         self.appid = ::std::option::Option::None;
         self.language = ::std::option::Option::None;
+        self.hash_only = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -11305,6 +11336,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
         static instance: CPlayer_GetGameAchievements_Request = CPlayer_GetGameAchievements_Request {
             appid: ::std::option::Option::None,
             language: ::std::option::Option::None,
+            hash_only: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -11317,6 +11349,12 @@ pub struct CPlayer_GetGameAchievements_Response {
     // message fields
     // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.achievements)
     pub achievements: ::std::vec::Vec<cplayer_get_game_achievements_response::Achievement>,
+    // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.schema_version)
+    pub schema_version: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.groups)
+    pub groups: ::std::vec::Vec<cplayer_get_game_achievements_response::Group>,
+    // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.schema_hash)
+    pub schema_hash: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CPlayer_GetGameAchievements_Response.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -11332,6 +11370,44 @@ impl CPlayer_GetGameAchievements_Response {
     pub fn new() -> CPlayer_GetGameAchievements_Response {
         ::std::default::Default::default()
     }
+
+    // optional int32 schema_version = 2;
+
+    pub fn schema_version(&self) -> i32 {
+        self.schema_version.unwrap_or(0)
+    }
+
+    pub fn clear_schema_version(&mut self) {
+        self.schema_version = ::std::option::Option::None;
+    }
+
+    pub fn has_schema_version(&self) -> bool {
+        self.schema_version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_schema_version(&mut self, v: i32) {
+        self.schema_version = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 schema_hash = 4;
+
+    pub fn schema_hash(&self) -> u32 {
+        self.schema_hash.unwrap_or(0)
+    }
+
+    pub fn clear_schema_hash(&mut self) {
+        self.schema_hash = ::std::option::Option::None;
+    }
+
+    pub fn has_schema_hash(&self) -> bool {
+        self.schema_hash.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_schema_hash(&mut self, v: u32) {
+        self.schema_hash = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievements_Response {
@@ -11346,6 +11422,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
             match tag {
                 10 => {
                     self.achievements.push(is.read_message()?);
+                },
+                16 => {
+                    self.schema_version = ::std::option::Option::Some(is.read_int32()?);
+                },
+                26 => {
+                    self.groups.push(is.read_message()?);
+                },
+                32 => {
+                    self.schema_hash = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -11363,6 +11448,16 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
             let len = value.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
+        if let Some(v) = self.schema_version {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v);
+        }
+        for value in &self.groups {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.schema_hash {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -11372,6 +11467,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
         for v in &self.achievements {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
         };
+        if let Some(v) = self.schema_version {
+            os.write_int32(2, v)?;
+        }
+        for v in &self.groups {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+        };
+        if let Some(v) = self.schema_hash {
+            os.write_uint32(4, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -11390,12 +11494,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetGameAchievement
 
     fn clear(&mut self) {
         self.achievements.clear();
+        self.schema_version = ::std::option::Option::None;
+        self.groups.clear();
+        self.schema_hash = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CPlayer_GetGameAchievements_Response {
         static instance: CPlayer_GetGameAchievements_Response = CPlayer_GetGameAchievements_Response {
             achievements: ::std::vec::Vec::new(),
+            schema_version: ::std::option::Option::None,
+            groups: ::std::vec::Vec::new(),
+            schema_hash: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -11422,6 +11532,22 @@ pub mod cplayer_get_game_achievements_response {
         pub hidden: ::std::option::Option<bool>,
         // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.player_percent_unlocked)
         pub player_percent_unlocked: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.internal_key)
+        pub internal_key: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.min_progress_int)
+        pub min_progress_int: ::std::option::Option<i32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.max_progress_int)
+        pub max_progress_int: ::std::option::Option<i32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.groupid)
+        pub groupid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.archived)
+        pub archived: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.progress_type)
+        pub progress_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::EAchievementProgressType>>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.min_progress_float)
+        pub min_progress_float: ::std::option::Option<f32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Achievement.max_progress_float)
+        pub max_progress_float: ::std::option::Option<f32>,
         // special fields
         // @@protoc_insertion_point(special_field:CPlayer_GetGameAchievements_Response.Achievement.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -11672,6 +11798,161 @@ pub mod cplayer_get_game_achievements_response {
         pub fn take_player_percent_unlocked(&mut self) -> ::std::string::String {
             self.player_percent_unlocked.take().unwrap_or_else(|| ::std::string::String::new())
         }
+
+        // optional uint32 internal_key = 8;
+
+        pub fn internal_key(&self) -> u32 {
+            self.internal_key.unwrap_or(0)
+        }
+
+        pub fn clear_internal_key(&mut self) {
+            self.internal_key = ::std::option::Option::None;
+        }
+
+        pub fn has_internal_key(&self) -> bool {
+            self.internal_key.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_internal_key(&mut self, v: u32) {
+            self.internal_key = ::std::option::Option::Some(v);
+        }
+
+        // optional int32 min_progress_int = 9;
+
+        pub fn min_progress_int(&self) -> i32 {
+            self.min_progress_int.unwrap_or(0)
+        }
+
+        pub fn clear_min_progress_int(&mut self) {
+            self.min_progress_int = ::std::option::Option::None;
+        }
+
+        pub fn has_min_progress_int(&self) -> bool {
+            self.min_progress_int.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_min_progress_int(&mut self, v: i32) {
+            self.min_progress_int = ::std::option::Option::Some(v);
+        }
+
+        // optional int32 max_progress_int = 10;
+
+        pub fn max_progress_int(&self) -> i32 {
+            self.max_progress_int.unwrap_or(0)
+        }
+
+        pub fn clear_max_progress_int(&mut self) {
+            self.max_progress_int = ::std::option::Option::None;
+        }
+
+        pub fn has_max_progress_int(&self) -> bool {
+            self.max_progress_int.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_max_progress_int(&mut self, v: i32) {
+            self.max_progress_int = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 groupid = 11;
+
+        pub fn groupid(&self) -> u32 {
+            self.groupid.unwrap_or(0)
+        }
+
+        pub fn clear_groupid(&mut self) {
+            self.groupid = ::std::option::Option::None;
+        }
+
+        pub fn has_groupid(&self) -> bool {
+            self.groupid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_groupid(&mut self, v: u32) {
+            self.groupid = ::std::option::Option::Some(v);
+        }
+
+        // optional bool archived = 12;
+
+        pub fn archived(&self) -> bool {
+            self.archived.unwrap_or(false)
+        }
+
+        pub fn clear_archived(&mut self) {
+            self.archived = ::std::option::Option::None;
+        }
+
+        pub fn has_archived(&self) -> bool {
+            self.archived.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_archived(&mut self, v: bool) {
+            self.archived = ::std::option::Option::Some(v);
+        }
+
+        // optional .EAchievementProgressType progress_type = 13;
+
+        pub fn progress_type(&self) -> super::EAchievementProgressType {
+            match self.progress_type {
+                Some(e) => e.enum_value_or(super::EAchievementProgressType::k_EAchievementProgressType_Invalid),
+                None => super::EAchievementProgressType::k_EAchievementProgressType_Invalid,
+            }
+        }
+
+        pub fn clear_progress_type(&mut self) {
+            self.progress_type = ::std::option::Option::None;
+        }
+
+        pub fn has_progress_type(&self) -> bool {
+            self.progress_type.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_progress_type(&mut self, v: super::EAchievementProgressType) {
+            self.progress_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+        }
+
+        // optional float min_progress_float = 14;
+
+        pub fn min_progress_float(&self) -> f32 {
+            self.min_progress_float.unwrap_or(0.)
+        }
+
+        pub fn clear_min_progress_float(&mut self) {
+            self.min_progress_float = ::std::option::Option::None;
+        }
+
+        pub fn has_min_progress_float(&self) -> bool {
+            self.min_progress_float.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_min_progress_float(&mut self, v: f32) {
+            self.min_progress_float = ::std::option::Option::Some(v);
+        }
+
+        // optional float max_progress_float = 15;
+
+        pub fn max_progress_float(&self) -> f32 {
+            self.max_progress_float.unwrap_or(0.)
+        }
+
+        pub fn clear_max_progress_float(&mut self) {
+            self.max_progress_float = ::std::option::Option::None;
+        }
+
+        pub fn has_max_progress_float(&self) -> bool {
+            self.max_progress_float.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_max_progress_float(&mut self, v: f32) {
+            self.max_progress_float = ::std::option::Option::Some(v);
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for Achievement {
@@ -11704,6 +11985,30 @@ pub mod cplayer_get_game_achievements_response {
                     },
                     58 => {
                         self.player_percent_unlocked = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    64 => {
+                        self.internal_key = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    72 => {
+                        self.min_progress_int = ::std::option::Option::Some(is.read_int32()?);
+                    },
+                    80 => {
+                        self.max_progress_int = ::std::option::Option::Some(is.read_int32()?);
+                    },
+                    88 => {
+                        self.groupid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    96 => {
+                        self.archived = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    104 => {
+                        self.progress_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                    },
+                    117 => {
+                        self.min_progress_float = ::std::option::Option::Some(is.read_float()?);
+                    },
+                    125 => {
+                        self.max_progress_float = ::std::option::Option::Some(is.read_float()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -11738,6 +12043,30 @@ pub mod cplayer_get_game_achievements_response {
             if let Some(v) = self.player_percent_unlocked.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(7, &v);
             }
+            if let Some(v) = self.internal_key {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
+            }
+            if let Some(v) = self.min_progress_int {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(9, v);
+            }
+            if let Some(v) = self.max_progress_int {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(10, v);
+            }
+            if let Some(v) = self.groupid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(11, v);
+            }
+            if let Some(v) = self.archived {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.progress_type {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(13, v.value());
+            }
+            if let Some(v) = self.min_progress_float {
+                my_size += 1 + 4;
+            }
+            if let Some(v) = self.max_progress_float {
+                my_size += 1 + 4;
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -11765,6 +12094,30 @@ pub mod cplayer_get_game_achievements_response {
             if let Some(v) = self.player_percent_unlocked.as_ref() {
                 os.write_string(7, v)?;
             }
+            if let Some(v) = self.internal_key {
+                os.write_uint32(8, v)?;
+            }
+            if let Some(v) = self.min_progress_int {
+                os.write_int32(9, v)?;
+            }
+            if let Some(v) = self.max_progress_int {
+                os.write_int32(10, v)?;
+            }
+            if let Some(v) = self.groupid {
+                os.write_uint32(11, v)?;
+            }
+            if let Some(v) = self.archived {
+                os.write_bool(12, v)?;
+            }
+            if let Some(v) = self.progress_type {
+                os.write_enum(13, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+            }
+            if let Some(v) = self.min_progress_float {
+                os.write_float(14, v)?;
+            }
+            if let Some(v) = self.max_progress_float {
+                os.write_float(15, v)?;
+            }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
         }
@@ -11789,6 +12142,14 @@ pub mod cplayer_get_game_achievements_response {
             self.icon_gray = ::std::option::Option::None;
             self.hidden = ::std::option::Option::None;
             self.player_percent_unlocked = ::std::option::Option::None;
+            self.internal_key = ::std::option::Option::None;
+            self.min_progress_int = ::std::option::Option::None;
+            self.max_progress_int = ::std::option::Option::None;
+            self.groupid = ::std::option::Option::None;
+            self.archived = ::std::option::Option::None;
+            self.progress_type = ::std::option::Option::None;
+            self.min_progress_float = ::std::option::Option::None;
+            self.max_progress_float = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -11801,6 +12162,1642 @@ pub mod cplayer_get_game_achievements_response {
                 icon_gray: ::std::option::Option::None,
                 hidden: ::std::option::Option::None,
                 player_percent_unlocked: ::std::option::Option::None,
+                internal_key: ::std::option::Option::None,
+                min_progress_int: ::std::option::Option::None,
+                max_progress_int: ::std::option::Option::None,
+                groupid: ::std::option::Option::None,
+                archived: ::std::option::Option::None,
+                progress_type: ::std::option::Option::None,
+                min_progress_float: ::std::option::Option::None,
+                max_progress_float: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    // @@protoc_insertion_point(message:CPlayer_GetGameAchievements_Response.Group)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Group {
+        // message fields
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.groupid)
+        pub groupid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.localized_name)
+        pub localized_name: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.dlcappid)
+        pub dlcappid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.archived)
+        pub archived: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.developeronly)
+        pub developeronly: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CPlayer_GetGameAchievements_Response.Group.order)
+        pub order: ::std::option::Option<u32>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CPlayer_GetGameAchievements_Response.Group.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Group {
+        fn default() -> &'a Group {
+            <Group as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Group {
+        pub fn new() -> Group {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 groupid = 1;
+
+        pub fn groupid(&self) -> u32 {
+            self.groupid.unwrap_or(0)
+        }
+
+        pub fn clear_groupid(&mut self) {
+            self.groupid = ::std::option::Option::None;
+        }
+
+        pub fn has_groupid(&self) -> bool {
+            self.groupid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_groupid(&mut self, v: u32) {
+            self.groupid = ::std::option::Option::Some(v);
+        }
+
+        // optional string localized_name = 2;
+
+        pub fn localized_name(&self) -> &str {
+            match self.localized_name.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_localized_name(&mut self) {
+            self.localized_name = ::std::option::Option::None;
+        }
+
+        pub fn has_localized_name(&self) -> bool {
+            self.localized_name.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_localized_name(&mut self, v: ::std::string::String) {
+            self.localized_name = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_localized_name(&mut self) -> &mut ::std::string::String {
+            if self.localized_name.is_none() {
+                self.localized_name = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.localized_name.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_localized_name(&mut self) -> ::std::string::String {
+            self.localized_name.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional uint32 dlcappid = 3;
+
+        pub fn dlcappid(&self) -> u32 {
+            self.dlcappid.unwrap_or(0)
+        }
+
+        pub fn clear_dlcappid(&mut self) {
+            self.dlcappid = ::std::option::Option::None;
+        }
+
+        pub fn has_dlcappid(&self) -> bool {
+            self.dlcappid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_dlcappid(&mut self, v: u32) {
+            self.dlcappid = ::std::option::Option::Some(v);
+        }
+
+        // optional bool archived = 4;
+
+        pub fn archived(&self) -> bool {
+            self.archived.unwrap_or(false)
+        }
+
+        pub fn clear_archived(&mut self) {
+            self.archived = ::std::option::Option::None;
+        }
+
+        pub fn has_archived(&self) -> bool {
+            self.archived.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_archived(&mut self, v: bool) {
+            self.archived = ::std::option::Option::Some(v);
+        }
+
+        // optional bool developeronly = 5;
+
+        pub fn developeronly(&self) -> bool {
+            self.developeronly.unwrap_or(false)
+        }
+
+        pub fn clear_developeronly(&mut self) {
+            self.developeronly = ::std::option::Option::None;
+        }
+
+        pub fn has_developeronly(&self) -> bool {
+            self.developeronly.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_developeronly(&mut self, v: bool) {
+            self.developeronly = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 order = 6;
+
+        pub fn order(&self) -> u32 {
+            self.order.unwrap_or(0)
+        }
+
+        pub fn clear_order(&mut self) {
+            self.order = ::std::option::Option::None;
+        }
+
+        pub fn has_order(&self) -> bool {
+            self.order.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_order(&mut self, v: u32) {
+            self.order = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Group {
+        const NAME: &'static str = "Group";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.groupid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    18 => {
+                        self.localized_name = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    24 => {
+                        self.dlcappid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    32 => {
+                        self.archived = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    40 => {
+                        self.developeronly = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    48 => {
+                        self.order = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.groupid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.localized_name.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+            }
+            if let Some(v) = self.dlcappid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+            }
+            if let Some(v) = self.archived {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.developeronly {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.order {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.groupid {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.localized_name.as_ref() {
+                os.write_string(2, v)?;
+            }
+            if let Some(v) = self.dlcappid {
+                os.write_uint32(3, v)?;
+            }
+            if let Some(v) = self.archived {
+                os.write_bool(4, v)?;
+            }
+            if let Some(v) = self.developeronly {
+                os.write_bool(5, v)?;
+            }
+            if let Some(v) = self.order {
+                os.write_uint32(6, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Group {
+            Group::new()
+        }
+
+        fn clear(&mut self) {
+            self.groupid = ::std::option::Option::None;
+            self.localized_name = ::std::option::Option::None;
+            self.dlcappid = ::std::option::Option::None;
+            self.archived = ::std::option::Option::None;
+            self.developeronly = ::std::option::Option::None;
+            self.order = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Group {
+            static instance: Group = Group {
+                groupid: ::std::option::Option::None,
+                localized_name: ::std::option::Option::None,
+                dlcappid: ::std::option::Option::None,
+                archived: ::std::option::Option::None,
+                developeronly: ::std::option::Option::None,
+                order: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CPlayer_GetUserAchievements_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPlayer_GetUserAchievements_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Request.steamid)
+    pub steamid: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Request.appid)
+    pub appid: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPlayer_GetUserAchievements_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPlayer_GetUserAchievements_Request {
+    fn default() -> &'a CPlayer_GetUserAchievements_Request {
+        <CPlayer_GetUserAchievements_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPlayer_GetUserAchievements_Request {
+    pub fn new() -> CPlayer_GetUserAchievements_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 steamid = 1;
+
+    pub fn steamid(&self) -> u64 {
+        self.steamid.unwrap_or(0)
+    }
+
+    pub fn clear_steamid(&mut self) {
+        self.steamid = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid(&self) -> bool {
+        self.steamid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid(&mut self, v: u64) {
+        self.steamid = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 appid = 2;
+
+    pub fn appid(&self) -> u32 {
+        self.appid.unwrap_or(0)
+    }
+
+    pub fn clear_appid(&mut self) {
+        self.appid = ::std::option::Option::None;
+    }
+
+    pub fn has_appid(&self) -> bool {
+        self.appid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid(&mut self, v: u32) {
+        self.appid = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetUserAchievements_Request {
+    const NAME: &'static str = "CPlayer_GetUserAchievements_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.steamid = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.appid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.appid {
+            os.write_uint32(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPlayer_GetUserAchievements_Request {
+        CPlayer_GetUserAchievements_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid = ::std::option::Option::None;
+        self.appid = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPlayer_GetUserAchievements_Request {
+        static instance: CPlayer_GetUserAchievements_Request = CPlayer_GetUserAchievements_Request {
+            steamid: ::std::option::Option::None,
+            appid: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CPlayer_GetUserAchievements_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPlayer_GetUserAchievements_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.achievements)
+    pub achievements: ::std::vec::Vec<cplayer_get_user_achievements_response::Achievement>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.schema_version)
+    pub schema_version: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.schema_hash)
+    pub schema_hash: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPlayer_GetUserAchievements_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPlayer_GetUserAchievements_Response {
+    fn default() -> &'a CPlayer_GetUserAchievements_Response {
+        <CPlayer_GetUserAchievements_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPlayer_GetUserAchievements_Response {
+    pub fn new() -> CPlayer_GetUserAchievements_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional int32 schema_version = 2;
+
+    pub fn schema_version(&self) -> i32 {
+        self.schema_version.unwrap_or(0)
+    }
+
+    pub fn clear_schema_version(&mut self) {
+        self.schema_version = ::std::option::Option::None;
+    }
+
+    pub fn has_schema_version(&self) -> bool {
+        self.schema_version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_schema_version(&mut self, v: i32) {
+        self.schema_version = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 schema_hash = 3;
+
+    pub fn schema_hash(&self) -> u32 {
+        self.schema_hash.unwrap_or(0)
+    }
+
+    pub fn clear_schema_hash(&mut self) {
+        self.schema_hash = ::std::option::Option::None;
+    }
+
+    pub fn has_schema_hash(&self) -> bool {
+        self.schema_hash.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_schema_hash(&mut self, v: u32) {
+        self.schema_hash = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetUserAchievements_Response {
+    const NAME: &'static str = "CPlayer_GetUserAchievements_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.achievements.push(is.read_message()?);
+                },
+                16 => {
+                    self.schema_version = ::std::option::Option::Some(is.read_int32()?);
+                },
+                24 => {
+                    self.schema_hash = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.achievements {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.schema_version {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v);
+        }
+        if let Some(v) = self.schema_hash {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.achievements {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        if let Some(v) = self.schema_version {
+            os.write_int32(2, v)?;
+        }
+        if let Some(v) = self.schema_hash {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPlayer_GetUserAchievements_Response {
+        CPlayer_GetUserAchievements_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.achievements.clear();
+        self.schema_version = ::std::option::Option::None;
+        self.schema_hash = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPlayer_GetUserAchievements_Response {
+        static instance: CPlayer_GetUserAchievements_Response = CPlayer_GetUserAchievements_Response {
+            achievements: ::std::vec::Vec::new(),
+            schema_version: ::std::option::Option::None,
+            schema_hash: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CPlayer_GetUserAchievements_Response`
+pub mod cplayer_get_user_achievements_response {
+    // @@protoc_insertion_point(message:CPlayer_GetUserAchievements_Response.Achievement)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Achievement {
+        // message fields
+        // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.Achievement.internal_key)
+        pub internal_key: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.Achievement.unlocked)
+        pub unlocked: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.Achievement.unlock_time)
+        pub unlock_time: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.Achievement.progress_int)
+        pub progress_int: ::std::option::Option<i32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserAchievements_Response.Achievement.progress_float)
+        pub progress_float: ::std::option::Option<f32>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CPlayer_GetUserAchievements_Response.Achievement.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Achievement {
+        fn default() -> &'a Achievement {
+            <Achievement as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Achievement {
+        pub fn new() -> Achievement {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 internal_key = 1;
+
+        pub fn internal_key(&self) -> u32 {
+            self.internal_key.unwrap_or(0)
+        }
+
+        pub fn clear_internal_key(&mut self) {
+            self.internal_key = ::std::option::Option::None;
+        }
+
+        pub fn has_internal_key(&self) -> bool {
+            self.internal_key.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_internal_key(&mut self, v: u32) {
+            self.internal_key = ::std::option::Option::Some(v);
+        }
+
+        // optional bool unlocked = 2;
+
+        pub fn unlocked(&self) -> bool {
+            self.unlocked.unwrap_or(false)
+        }
+
+        pub fn clear_unlocked(&mut self) {
+            self.unlocked = ::std::option::Option::None;
+        }
+
+        pub fn has_unlocked(&self) -> bool {
+            self.unlocked.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_unlocked(&mut self, v: bool) {
+            self.unlocked = ::std::option::Option::Some(v);
+        }
+
+        // optional fixed32 unlock_time = 3;
+
+        pub fn unlock_time(&self) -> u32 {
+            self.unlock_time.unwrap_or(0)
+        }
+
+        pub fn clear_unlock_time(&mut self) {
+            self.unlock_time = ::std::option::Option::None;
+        }
+
+        pub fn has_unlock_time(&self) -> bool {
+            self.unlock_time.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_unlock_time(&mut self, v: u32) {
+            self.unlock_time = ::std::option::Option::Some(v);
+        }
+
+        // optional int32 progress_int = 4;
+
+        pub fn progress_int(&self) -> i32 {
+            self.progress_int.unwrap_or(0)
+        }
+
+        pub fn clear_progress_int(&mut self) {
+            self.progress_int = ::std::option::Option::None;
+        }
+
+        pub fn has_progress_int(&self) -> bool {
+            self.progress_int.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_progress_int(&mut self, v: i32) {
+            self.progress_int = ::std::option::Option::Some(v);
+        }
+
+        // optional float progress_float = 5;
+
+        pub fn progress_float(&self) -> f32 {
+            self.progress_float.unwrap_or(0.)
+        }
+
+        pub fn clear_progress_float(&mut self) {
+            self.progress_float = ::std::option::Option::None;
+        }
+
+        pub fn has_progress_float(&self) -> bool {
+            self.progress_float.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_progress_float(&mut self, v: f32) {
+            self.progress_float = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Achievement {
+        const NAME: &'static str = "Achievement";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.internal_key = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.unlocked = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    29 => {
+                        self.unlock_time = ::std::option::Option::Some(is.read_fixed32()?);
+                    },
+                    32 => {
+                        self.progress_int = ::std::option::Option::Some(is.read_int32()?);
+                    },
+                    45 => {
+                        self.progress_float = ::std::option::Option::Some(is.read_float()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.internal_key {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.unlocked {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.unlock_time {
+                my_size += 1 + 4;
+            }
+            if let Some(v) = self.progress_int {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v);
+            }
+            if let Some(v) = self.progress_float {
+                my_size += 1 + 4;
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.internal_key {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.unlocked {
+                os.write_bool(2, v)?;
+            }
+            if let Some(v) = self.unlock_time {
+                os.write_fixed32(3, v)?;
+            }
+            if let Some(v) = self.progress_int {
+                os.write_int32(4, v)?;
+            }
+            if let Some(v) = self.progress_float {
+                os.write_float(5, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Achievement {
+            Achievement::new()
+        }
+
+        fn clear(&mut self) {
+            self.internal_key = ::std::option::Option::None;
+            self.unlocked = ::std::option::Option::None;
+            self.unlock_time = ::std::option::Option::None;
+            self.progress_int = ::std::option::Option::None;
+            self.progress_float = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Achievement {
+            static instance: Achievement = Achievement {
+                internal_key: ::std::option::Option::None,
+                unlocked: ::std::option::Option::None,
+                unlock_time: ::std::option::Option::None,
+                progress_int: ::std::option::Option::None,
+                progress_float: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CPlayer_GetUserStats_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPlayer_GetUserStats_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Request.steamid)
+    pub steamid: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Request.appid)
+    pub appid: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Request.sha_schema)
+    pub sha_schema: ::std::option::Option<::std::vec::Vec<u8>>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Request.crc_stats)
+    pub crc_stats: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Request.crc_schema)
+    pub crc_schema: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPlayer_GetUserStats_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPlayer_GetUserStats_Request {
+    fn default() -> &'a CPlayer_GetUserStats_Request {
+        <CPlayer_GetUserStats_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPlayer_GetUserStats_Request {
+    pub fn new() -> CPlayer_GetUserStats_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 steamid = 1;
+
+    pub fn steamid(&self) -> u64 {
+        self.steamid.unwrap_or(0)
+    }
+
+    pub fn clear_steamid(&mut self) {
+        self.steamid = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid(&self) -> bool {
+        self.steamid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid(&mut self, v: u64) {
+        self.steamid = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 appid = 2;
+
+    pub fn appid(&self) -> u32 {
+        self.appid.unwrap_or(0)
+    }
+
+    pub fn clear_appid(&mut self) {
+        self.appid = ::std::option::Option::None;
+    }
+
+    pub fn has_appid(&self) -> bool {
+        self.appid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid(&mut self, v: u32) {
+        self.appid = ::std::option::Option::Some(v);
+    }
+
+    // optional bytes sha_schema = 3;
+
+    pub fn sha_schema(&self) -> &[u8] {
+        match self.sha_schema.as_ref() {
+            Some(v) => v,
+            None => &[],
+        }
+    }
+
+    pub fn clear_sha_schema(&mut self) {
+        self.sha_schema = ::std::option::Option::None;
+    }
+
+    pub fn has_sha_schema(&self) -> bool {
+        self.sha_schema.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sha_schema(&mut self, v: ::std::vec::Vec<u8>) {
+        self.sha_schema = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_sha_schema(&mut self) -> &mut ::std::vec::Vec<u8> {
+        if self.sha_schema.is_none() {
+            self.sha_schema = ::std::option::Option::Some(::std::vec::Vec::new());
+        }
+        self.sha_schema.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_sha_schema(&mut self) -> ::std::vec::Vec<u8> {
+        self.sha_schema.take().unwrap_or_else(|| ::std::vec::Vec::new())
+    }
+
+    // optional uint32 crc_stats = 4;
+
+    pub fn crc_stats(&self) -> u32 {
+        self.crc_stats.unwrap_or(0)
+    }
+
+    pub fn clear_crc_stats(&mut self) {
+        self.crc_stats = ::std::option::Option::None;
+    }
+
+    pub fn has_crc_stats(&self) -> bool {
+        self.crc_stats.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_crc_stats(&mut self, v: u32) {
+        self.crc_stats = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 crc_schema = 5;
+
+    pub fn crc_schema(&self) -> u32 {
+        self.crc_schema.unwrap_or(0)
+    }
+
+    pub fn clear_crc_schema(&mut self) {
+        self.crc_schema = ::std::option::Option::None;
+    }
+
+    pub fn has_crc_schema(&self) -> bool {
+        self.crc_schema.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_crc_schema(&mut self, v: u32) {
+        self.crc_schema = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetUserStats_Request {
+    const NAME: &'static str = "CPlayer_GetUserStats_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.steamid = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                26 => {
+                    self.sha_schema = ::std::option::Option::Some(is.read_bytes()?);
+                },
+                32 => {
+                    self.crc_stats = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.crc_schema = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.appid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.sha_schema.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::bytes_size(3, &v);
+        }
+        if let Some(v) = self.crc_stats {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.crc_schema {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(5, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.appid {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.sha_schema.as_ref() {
+            os.write_bytes(3, v)?;
+        }
+        if let Some(v) = self.crc_stats {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.crc_schema {
+            os.write_uint32(5, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPlayer_GetUserStats_Request {
+        CPlayer_GetUserStats_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid = ::std::option::Option::None;
+        self.appid = ::std::option::Option::None;
+        self.sha_schema = ::std::option::Option::None;
+        self.crc_stats = ::std::option::Option::None;
+        self.crc_schema = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPlayer_GetUserStats_Request {
+        static instance: CPlayer_GetUserStats_Request = CPlayer_GetUserStats_Request {
+            steamid: ::std::option::Option::None,
+            appid: ::std::option::Option::None,
+            sha_schema: ::std::option::Option::None,
+            crc_stats: ::std::option::Option::None,
+            crc_schema: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CPlayer_GetUserStats_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CPlayer_GetUserStats_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.sha_schema)
+    pub sha_schema: ::std::option::Option<::std::vec::Vec<u8>>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.crc_stats)
+    pub crc_stats: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.schema)
+    pub schema: ::std::option::Option<::std::vec::Vec<u8>>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.stats)
+    pub stats: ::std::vec::Vec<cplayer_get_user_stats_response::Stats>,
+    // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.crc_schema)
+    pub crc_schema: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CPlayer_GetUserStats_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CPlayer_GetUserStats_Response {
+    fn default() -> &'a CPlayer_GetUserStats_Response {
+        <CPlayer_GetUserStats_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CPlayer_GetUserStats_Response {
+    pub fn new() -> CPlayer_GetUserStats_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional bytes sha_schema = 1;
+
+    pub fn sha_schema(&self) -> &[u8] {
+        match self.sha_schema.as_ref() {
+            Some(v) => v,
+            None => &[],
+        }
+    }
+
+    pub fn clear_sha_schema(&mut self) {
+        self.sha_schema = ::std::option::Option::None;
+    }
+
+    pub fn has_sha_schema(&self) -> bool {
+        self.sha_schema.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sha_schema(&mut self, v: ::std::vec::Vec<u8>) {
+        self.sha_schema = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_sha_schema(&mut self) -> &mut ::std::vec::Vec<u8> {
+        if self.sha_schema.is_none() {
+            self.sha_schema = ::std::option::Option::Some(::std::vec::Vec::new());
+        }
+        self.sha_schema.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_sha_schema(&mut self) -> ::std::vec::Vec<u8> {
+        self.sha_schema.take().unwrap_or_else(|| ::std::vec::Vec::new())
+    }
+
+    // optional uint32 crc_stats = 2;
+
+    pub fn crc_stats(&self) -> u32 {
+        self.crc_stats.unwrap_or(0)
+    }
+
+    pub fn clear_crc_stats(&mut self) {
+        self.crc_stats = ::std::option::Option::None;
+    }
+
+    pub fn has_crc_stats(&self) -> bool {
+        self.crc_stats.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_crc_stats(&mut self, v: u32) {
+        self.crc_stats = ::std::option::Option::Some(v);
+    }
+
+    // optional bytes schema = 3;
+
+    pub fn schema(&self) -> &[u8] {
+        match self.schema.as_ref() {
+            Some(v) => v,
+            None => &[],
+        }
+    }
+
+    pub fn clear_schema(&mut self) {
+        self.schema = ::std::option::Option::None;
+    }
+
+    pub fn has_schema(&self) -> bool {
+        self.schema.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_schema(&mut self, v: ::std::vec::Vec<u8>) {
+        self.schema = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_schema(&mut self) -> &mut ::std::vec::Vec<u8> {
+        if self.schema.is_none() {
+            self.schema = ::std::option::Option::Some(::std::vec::Vec::new());
+        }
+        self.schema.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_schema(&mut self) -> ::std::vec::Vec<u8> {
+        self.schema.take().unwrap_or_else(|| ::std::vec::Vec::new())
+    }
+
+    // optional uint32 crc_schema = 5;
+
+    pub fn crc_schema(&self) -> u32 {
+        self.crc_schema.unwrap_or(0)
+    }
+
+    pub fn clear_crc_schema(&mut self) {
+        self.crc_schema = ::std::option::Option::None;
+    }
+
+    pub fn has_crc_schema(&self) -> bool {
+        self.crc_schema.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_crc_schema(&mut self, v: u32) {
+        self.crc_schema = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CPlayer_GetUserStats_Response {
+    const NAME: &'static str = "CPlayer_GetUserStats_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.sha_schema = ::std::option::Option::Some(is.read_bytes()?);
+                },
+                16 => {
+                    self.crc_stats = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                26 => {
+                    self.schema = ::std::option::Option::Some(is.read_bytes()?);
+                },
+                34 => {
+                    self.stats.push(is.read_message()?);
+                },
+                40 => {
+                    self.crc_schema = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.sha_schema.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::bytes_size(1, &v);
+        }
+        if let Some(v) = self.crc_stats {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.schema.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::bytes_size(3, &v);
+        }
+        for value in &self.stats {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.crc_schema {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(5, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.sha_schema.as_ref() {
+            os.write_bytes(1, v)?;
+        }
+        if let Some(v) = self.crc_stats {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.schema.as_ref() {
+            os.write_bytes(3, v)?;
+        }
+        for v in &self.stats {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
+        };
+        if let Some(v) = self.crc_schema {
+            os.write_uint32(5, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CPlayer_GetUserStats_Response {
+        CPlayer_GetUserStats_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.sha_schema = ::std::option::Option::None;
+        self.crc_stats = ::std::option::Option::None;
+        self.schema = ::std::option::Option::None;
+        self.stats.clear();
+        self.crc_schema = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CPlayer_GetUserStats_Response {
+        static instance: CPlayer_GetUserStats_Response = CPlayer_GetUserStats_Response {
+            sha_schema: ::std::option::Option::None,
+            crc_stats: ::std::option::Option::None,
+            schema: ::std::option::Option::None,
+            stats: ::std::vec::Vec::new(),
+            crc_schema: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CPlayer_GetUserStats_Response`
+pub mod cplayer_get_user_stats_response {
+    // @@protoc_insertion_point(message:CPlayer_GetUserStats_Response.Unlock_Time)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Unlock_Time {
+        // message fields
+        // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.Unlock_Time.achievement_bit)
+        pub achievement_bit: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.Unlock_Time.unlock_time)
+        pub unlock_time: ::std::option::Option<u32>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CPlayer_GetUserStats_Response.Unlock_Time.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Unlock_Time {
+        fn default() -> &'a Unlock_Time {
+            <Unlock_Time as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Unlock_Time {
+        pub fn new() -> Unlock_Time {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 achievement_bit = 1;
+
+        pub fn achievement_bit(&self) -> u32 {
+            self.achievement_bit.unwrap_or(0)
+        }
+
+        pub fn clear_achievement_bit(&mut self) {
+            self.achievement_bit = ::std::option::Option::None;
+        }
+
+        pub fn has_achievement_bit(&self) -> bool {
+            self.achievement_bit.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_achievement_bit(&mut self, v: u32) {
+            self.achievement_bit = ::std::option::Option::Some(v);
+        }
+
+        // optional fixed32 unlock_time = 2;
+
+        pub fn unlock_time(&self) -> u32 {
+            self.unlock_time.unwrap_or(0)
+        }
+
+        pub fn clear_unlock_time(&mut self) {
+            self.unlock_time = ::std::option::Option::None;
+        }
+
+        pub fn has_unlock_time(&self) -> bool {
+            self.unlock_time.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_unlock_time(&mut self, v: u32) {
+            self.unlock_time = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Unlock_Time {
+        const NAME: &'static str = "Unlock_Time";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.achievement_bit = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    21 => {
+                        self.unlock_time = ::std::option::Option::Some(is.read_fixed32()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.achievement_bit {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.unlock_time {
+                my_size += 1 + 4;
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.achievement_bit {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.unlock_time {
+                os.write_fixed32(2, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Unlock_Time {
+            Unlock_Time::new()
+        }
+
+        fn clear(&mut self) {
+            self.achievement_bit = ::std::option::Option::None;
+            self.unlock_time = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Unlock_Time {
+            static instance: Unlock_Time = Unlock_Time {
+                achievement_bit: ::std::option::Option::None,
+                unlock_time: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    // @@protoc_insertion_point(message:CPlayer_GetUserStats_Response.Stats)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Stats {
+        // message fields
+        // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.Stats.stat_id)
+        pub stat_id: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.Stats.stat_value)
+        pub stat_value: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPlayer_GetUserStats_Response.Stats.unlock_times)
+        pub unlock_times: ::std::vec::Vec<Unlock_Time>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CPlayer_GetUserStats_Response.Stats.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Stats {
+        fn default() -> &'a Stats {
+            <Stats as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Stats {
+        pub fn new() -> Stats {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 stat_id = 1;
+
+        pub fn stat_id(&self) -> u32 {
+            self.stat_id.unwrap_or(0)
+        }
+
+        pub fn clear_stat_id(&mut self) {
+            self.stat_id = ::std::option::Option::None;
+        }
+
+        pub fn has_stat_id(&self) -> bool {
+            self.stat_id.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_stat_id(&mut self, v: u32) {
+            self.stat_id = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 stat_value = 2;
+
+        pub fn stat_value(&self) -> u32 {
+            self.stat_value.unwrap_or(0)
+        }
+
+        pub fn clear_stat_value(&mut self) {
+            self.stat_value = ::std::option::Option::None;
+        }
+
+        pub fn has_stat_value(&self) -> bool {
+            self.stat_value.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_stat_value(&mut self, v: u32) {
+            self.stat_value = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Stats {
+        const NAME: &'static str = "Stats";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.stat_id = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.stat_value = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    26 => {
+                        self.unlock_times.push(is.read_message()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.stat_id {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.stat_value {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+            }
+            for value in &self.unlock_times {
+                let len = value.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+            };
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.stat_id {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.stat_value {
+                os.write_uint32(2, v)?;
+            }
+            for v in &self.unlock_times {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+            };
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Stats {
+            Stats::new()
+        }
+
+        fn clear(&mut self) {
+            self.stat_id = ::std::option::Option::None;
+            self.stat_value = ::std::option::Option::None;
+            self.unlock_times.clear();
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Stats {
+            static instance: Stats = Stats {
+                stat_id: ::std::option::Option::None,
+                stat_value: ::std::option::Option::None,
+                unlock_times: ::std::vec::Vec::new(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -23279,6 +25276,56 @@ impl ::steam_vent_proto_common::protobuf::Message for CPlayer_PrivacySettingsCha
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EAchievementProgressType)
+pub enum EAchievementProgressType {
+    // @@protoc_insertion_point(enum_value:EAchievementProgressType.k_EAchievementProgressType_Invalid)
+    k_EAchievementProgressType_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:EAchievementProgressType.k_EAchievementProgressType_Int)
+    k_EAchievementProgressType_Int = 1,
+    // @@protoc_insertion_point(enum_value:EAchievementProgressType.k_EAchievementProgressType_Float)
+    k_EAchievementProgressType_Float = 2,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EAchievementProgressType {
+    const NAME: &'static str = "EAchievementProgressType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EAchievementProgressType> {
+        match value {
+            0 => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Invalid),
+            1 => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Int),
+            2 => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Float),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EAchievementProgressType> {
+        match str {
+            "k_EAchievementProgressType_Invalid" => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Invalid),
+            "k_EAchievementProgressType_Int" => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Int),
+            "k_EAchievementProgressType_Float" => ::std::option::Option::Some(EAchievementProgressType::k_EAchievementProgressType_Float),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EAchievementProgressType] = &[
+        EAchievementProgressType::k_EAchievementProgressType_Invalid,
+        EAchievementProgressType::k_EAchievementProgressType_Int,
+        EAchievementProgressType::k_EAchievementProgressType_Float,
+    ];
+}
+
+impl ::std::default::Default for EAchievementProgressType {
+    fn default() -> Self {
+        EAchievementProgressType::k_EAchievementProgressType_Invalid
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EProfileCustomizationStyle)
 pub enum EProfileCustomizationStyle {
     // @@protoc_insertion_point(enum_value:EProfileCustomizationStyle.k_EProfileCustomizationStyleDefault)
@@ -24186,6 +26233,58 @@ impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetGameAchievements_Reque
     }
 }
 impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetGameAchievements_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetUserAchievements_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetUserAchievements_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetUserStats_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CPlayer_GetUserStats_Response {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }
@@ -25331,6 +27430,14 @@ impl ::steam_vent_proto_common::RpcMethod
 for CPlayer_GetTopAchievementsForGames_Request {
     const METHOD_NAME: &'static str = "Player.GetTopAchievementsForGames#1";
     type Response = CPlayer_GetTopAchievementsForGames_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CPlayer_GetUserAchievements_Request {
+    const METHOD_NAME: &'static str = "Player.GetUserAchievements#1";
+    type Response = CPlayer_GetUserAchievements_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CPlayer_GetUserStats_Request {
+    const METHOD_NAME: &'static str = "Player.GetUserStats#1";
+    type Response = CPlayer_GetUserStats_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CPlayer_IgnoreFriend_Request {
     const METHOD_NAME: &'static str = "Player.IgnoreFriend#1";

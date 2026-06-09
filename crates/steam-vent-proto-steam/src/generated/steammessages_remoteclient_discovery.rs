@@ -336,8 +336,14 @@ pub struct CMsgRemoteClientBroadcastStatus {
     pub vr_link_caps: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EVRLinkCaps>>,
     // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.vr_link_invite_client_id)
     pub vr_link_invite_client_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.connected_wifi_ap_client_id)
-    pub connected_wifi_ap_client_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.connected_paired_network_hash)
+    pub connected_paired_network_hash: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.wifi_dongle_present)
+    pub wifi_dongle_present: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.is_low_spec_hardware)
+    pub is_low_spec_hardware: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastStatus.gaming_device_type)
+    pub gaming_device_type: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgRemoteClientBroadcastStatus.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -809,23 +815,80 @@ impl CMsgRemoteClientBroadcastStatus {
         self.vr_link_invite_client_id = ::std::option::Option::Some(v);
     }
 
-    // optional fixed64 connected_wifi_ap_client_id = 28;
+    // optional fixed64 connected_paired_network_hash = 28;
 
-    pub fn connected_wifi_ap_client_id(&self) -> u64 {
-        self.connected_wifi_ap_client_id.unwrap_or(0)
+    pub fn connected_paired_network_hash(&self) -> u64 {
+        self.connected_paired_network_hash.unwrap_or(0)
     }
 
-    pub fn clear_connected_wifi_ap_client_id(&mut self) {
-        self.connected_wifi_ap_client_id = ::std::option::Option::None;
+    pub fn clear_connected_paired_network_hash(&mut self) {
+        self.connected_paired_network_hash = ::std::option::Option::None;
     }
 
-    pub fn has_connected_wifi_ap_client_id(&self) -> bool {
-        self.connected_wifi_ap_client_id.is_some()
+    pub fn has_connected_paired_network_hash(&self) -> bool {
+        self.connected_paired_network_hash.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_connected_wifi_ap_client_id(&mut self, v: u64) {
-        self.connected_wifi_ap_client_id = ::std::option::Option::Some(v);
+    pub fn set_connected_paired_network_hash(&mut self, v: u64) {
+        self.connected_paired_network_hash = ::std::option::Option::Some(v);
+    }
+
+    // optional bool wifi_dongle_present = 29;
+
+    pub fn wifi_dongle_present(&self) -> bool {
+        self.wifi_dongle_present.unwrap_or(false)
+    }
+
+    pub fn clear_wifi_dongle_present(&mut self) {
+        self.wifi_dongle_present = ::std::option::Option::None;
+    }
+
+    pub fn has_wifi_dongle_present(&self) -> bool {
+        self.wifi_dongle_present.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_wifi_dongle_present(&mut self, v: bool) {
+        self.wifi_dongle_present = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_low_spec_hardware = 30;
+
+    pub fn is_low_spec_hardware(&self) -> bool {
+        self.is_low_spec_hardware.unwrap_or(false)
+    }
+
+    pub fn clear_is_low_spec_hardware(&mut self) {
+        self.is_low_spec_hardware = ::std::option::Option::None;
+    }
+
+    pub fn has_is_low_spec_hardware(&self) -> bool {
+        self.is_low_spec_hardware.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_low_spec_hardware(&mut self, v: bool) {
+        self.is_low_spec_hardware = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 gaming_device_type = 31;
+
+    pub fn gaming_device_type(&self) -> u32 {
+        self.gaming_device_type.unwrap_or(0)
+    }
+
+    pub fn clear_gaming_device_type(&mut self) {
+        self.gaming_device_type = ::std::option::Option::None;
+    }
+
+    pub fn has_gaming_device_type(&self) -> bool {
+        self.gaming_device_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gaming_device_type(&mut self, v: u32) {
+        self.gaming_device_type = ::std::option::Option::Some(v);
     }
 }
 
@@ -915,7 +978,16 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastS
                     self.vr_link_invite_client_id = ::std::option::Option::Some(is.read_fixed64()?);
                 },
                 225 => {
-                    self.connected_wifi_ap_client_id = ::std::option::Option::Some(is.read_fixed64()?);
+                    self.connected_paired_network_hash = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                232 => {
+                    self.wifi_dongle_present = ::std::option::Option::Some(is.read_bool()?);
+                },
+                240 => {
+                    self.is_low_spec_hardware = ::std::option::Option::Some(is.read_bool()?);
+                },
+                248 => {
+                    self.gaming_device_type = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -1005,8 +1077,17 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastS
         if let Some(v) = self.vr_link_invite_client_id {
             my_size += 2 + 8;
         }
-        if let Some(v) = self.connected_wifi_ap_client_id {
+        if let Some(v) = self.connected_paired_network_hash {
             my_size += 2 + 8;
+        }
+        if let Some(v) = self.wifi_dongle_present {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.is_low_spec_hardware {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.gaming_device_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(31, v);
         }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
@@ -1089,8 +1170,17 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastS
         if let Some(v) = self.vr_link_invite_client_id {
             os.write_fixed64(27, v)?;
         }
-        if let Some(v) = self.connected_wifi_ap_client_id {
+        if let Some(v) = self.connected_paired_network_hash {
             os.write_fixed64(28, v)?;
+        }
+        if let Some(v) = self.wifi_dongle_present {
+            os.write_bool(29, v)?;
+        }
+        if let Some(v) = self.is_low_spec_hardware {
+            os.write_bool(30, v)?;
+        }
+        if let Some(v) = self.gaming_device_type {
+            os.write_uint32(31, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -1134,7 +1224,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastS
         self.steam_version = ::std::option::Option::None;
         self.vr_link_caps = ::std::option::Option::None;
         self.vr_link_invite_client_id = ::std::option::Option::None;
-        self.connected_wifi_ap_client_id = ::std::option::Option::None;
+        self.connected_paired_network_hash = ::std::option::Option::None;
+        self.wifi_dongle_present = ::std::option::Option::None;
+        self.is_low_spec_hardware = ::std::option::Option::None;
+        self.gaming_device_type = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -1165,7 +1258,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastS
             steam_version: ::std::option::Option::None,
             vr_link_caps: ::std::option::Option::None,
             vr_link_invite_client_id: ::std::option::Option::None,
-            connected_wifi_ap_client_id: ::std::option::Option::None,
+            connected_paired_network_hash: ::std::option::Option::None,
+            wifi_dongle_present: ::std::option::Option::None,
+            is_low_spec_hardware: ::std::option::Option::None,
+            gaming_device_type: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2777,6 +2873,320 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceAuthorizat
     }
 }
 
+// @@protoc_insertion_point(message:CMsgRemoteClientBroadcastClientPairingState)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientBroadcastClientPairingState {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastClientPairingState.my_paired_network_hash)
+    pub my_paired_network_hash: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastClientPairingState.my_pairing_time)
+    pub my_pairing_time: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientBroadcastClientPairingState.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientBroadcastClientPairingState {
+    fn default() -> &'a CMsgRemoteClientBroadcastClientPairingState {
+        <CMsgRemoteClientBroadcastClientPairingState as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientBroadcastClientPairingState {
+    pub fn new() -> CMsgRemoteClientBroadcastClientPairingState {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 my_paired_network_hash = 1;
+
+    pub fn my_paired_network_hash(&self) -> u64 {
+        self.my_paired_network_hash.unwrap_or(0)
+    }
+
+    pub fn clear_my_paired_network_hash(&mut self) {
+        self.my_paired_network_hash = ::std::option::Option::None;
+    }
+
+    pub fn has_my_paired_network_hash(&self) -> bool {
+        self.my_paired_network_hash.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_my_paired_network_hash(&mut self, v: u64) {
+        self.my_paired_network_hash = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 my_pairing_time = 2;
+
+    pub fn my_pairing_time(&self) -> u32 {
+        self.my_pairing_time.unwrap_or(0)
+    }
+
+    pub fn clear_my_pairing_time(&mut self) {
+        self.my_pairing_time = ::std::option::Option::None;
+    }
+
+    pub fn has_my_pairing_time(&self) -> bool {
+        self.my_pairing_time.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_my_pairing_time(&mut self, v: u32) {
+        self.my_pairing_time = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastClientPairingState {
+    const NAME: &'static str = "CMsgRemoteClientBroadcastClientPairingState";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.my_paired_network_hash = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                16 => {
+                    self.my_pairing_time = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.my_paired_network_hash {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.my_pairing_time {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.my_paired_network_hash {
+            os.write_fixed64(1, v)?;
+        }
+        if let Some(v) = self.my_pairing_time {
+            os.write_uint32(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientBroadcastClientPairingState {
+        CMsgRemoteClientBroadcastClientPairingState::new()
+    }
+
+    fn clear(&mut self) {
+        self.my_paired_network_hash = ::std::option::Option::None;
+        self.my_pairing_time = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientBroadcastClientPairingState {
+        static instance: CMsgRemoteClientBroadcastClientPairingState = CMsgRemoteClientBroadcastClientPairingState {
+            my_paired_network_hash: ::std::option::Option::None,
+            my_pairing_time: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CMsgRemoteClientBroadcastClientPairingExclusivity)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CMsgRemoteClientBroadcastClientPairingExclusivity {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastClientPairingExclusivity.if_paired_network_hash_is)
+    pub if_paired_network_hash_is: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastClientPairingExclusivity.unpair_unless_you_are_client_id)
+    pub unpair_unless_you_are_client_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CMsgRemoteClientBroadcastClientPairingExclusivity.last_known_pairing_time)
+    pub last_known_pairing_time: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CMsgRemoteClientBroadcastClientPairingExclusivity.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CMsgRemoteClientBroadcastClientPairingExclusivity {
+    fn default() -> &'a CMsgRemoteClientBroadcastClientPairingExclusivity {
+        <CMsgRemoteClientBroadcastClientPairingExclusivity as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CMsgRemoteClientBroadcastClientPairingExclusivity {
+    pub fn new() -> CMsgRemoteClientBroadcastClientPairingExclusivity {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 if_paired_network_hash_is = 1;
+
+    pub fn if_paired_network_hash_is(&self) -> u64 {
+        self.if_paired_network_hash_is.unwrap_or(0)
+    }
+
+    pub fn clear_if_paired_network_hash_is(&mut self) {
+        self.if_paired_network_hash_is = ::std::option::Option::None;
+    }
+
+    pub fn has_if_paired_network_hash_is(&self) -> bool {
+        self.if_paired_network_hash_is.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_if_paired_network_hash_is(&mut self, v: u64) {
+        self.if_paired_network_hash_is = ::std::option::Option::Some(v);
+    }
+
+    // optional fixed64 unpair_unless_you_are_client_id = 2;
+
+    pub fn unpair_unless_you_are_client_id(&self) -> u64 {
+        self.unpair_unless_you_are_client_id.unwrap_or(0)
+    }
+
+    pub fn clear_unpair_unless_you_are_client_id(&mut self) {
+        self.unpair_unless_you_are_client_id = ::std::option::Option::None;
+    }
+
+    pub fn has_unpair_unless_you_are_client_id(&self) -> bool {
+        self.unpair_unless_you_are_client_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_unpair_unless_you_are_client_id(&mut self, v: u64) {
+        self.unpair_unless_you_are_client_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 last_known_pairing_time = 3;
+
+    pub fn last_known_pairing_time(&self) -> u32 {
+        self.last_known_pairing_time.unwrap_or(0)
+    }
+
+    pub fn clear_last_known_pairing_time(&mut self) {
+        self.last_known_pairing_time = ::std::option::Option::None;
+    }
+
+    pub fn has_last_known_pairing_time(&self) -> bool {
+        self.last_known_pairing_time.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_last_known_pairing_time(&mut self, v: u32) {
+        self.last_known_pairing_time = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteClientBroadcastClientPairingExclusivity {
+    const NAME: &'static str = "CMsgRemoteClientBroadcastClientPairingExclusivity";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.if_paired_network_hash_is = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                17 => {
+                    self.unpair_unless_you_are_client_id = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                24 => {
+                    self.last_known_pairing_time = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.if_paired_network_hash_is {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.unpair_unless_you_are_client_id {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.last_known_pairing_time {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.if_paired_network_hash_is {
+            os.write_fixed64(1, v)?;
+        }
+        if let Some(v) = self.unpair_unless_you_are_client_id {
+            os.write_fixed64(2, v)?;
+        }
+        if let Some(v) = self.last_known_pairing_time {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CMsgRemoteClientBroadcastClientPairingExclusivity {
+        CMsgRemoteClientBroadcastClientPairingExclusivity::new()
+    }
+
+    fn clear(&mut self) {
+        self.if_paired_network_hash_is = ::std::option::Option::None;
+        self.unpair_unless_you_are_client_id = ::std::option::Option::None;
+        self.last_known_pairing_time = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CMsgRemoteClientBroadcastClientPairingExclusivity {
+        static instance: CMsgRemoteClientBroadcastClientPairingExclusivity = CMsgRemoteClientBroadcastClientPairingExclusivity {
+            if_paired_network_hash_is: ::std::option::Option::None,
+            unpair_unless_you_are_client_id: ::std::option::Option::None,
+            last_known_pairing_time: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CMsgRemoteDeviceStreamingRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CMsgRemoteDeviceStreamingRequest {
@@ -2821,6 +3231,12 @@ pub struct CMsgRemoteDeviceStreamingRequest {
     pub gameid: ::std::option::Option<u64>,
     // @@protoc_insertion_point(field:CMsgRemoteDeviceStreamingRequest.stream_interface)
     pub stream_interface: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EStreamInterface>>,
+    // @@protoc_insertion_point(field:CMsgRemoteDeviceStreamingRequest.maximum_framerate_numerator)
+    pub maximum_framerate_numerator: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteDeviceStreamingRequest.maximum_framerate_denominator)
+    pub maximum_framerate_denominator: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CMsgRemoteDeviceStreamingRequest.display_hdr)
+    pub display_hdr: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgRemoteDeviceStreamingRequest.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3235,6 +3651,63 @@ impl CMsgRemoteDeviceStreamingRequest {
     pub fn set_stream_interface(&mut self, v: EStreamInterface) {
         self.stream_interface = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
+
+    // optional int32 maximum_framerate_numerator = 21;
+
+    pub fn maximum_framerate_numerator(&self) -> i32 {
+        self.maximum_framerate_numerator.unwrap_or(0)
+    }
+
+    pub fn clear_maximum_framerate_numerator(&mut self) {
+        self.maximum_framerate_numerator = ::std::option::Option::None;
+    }
+
+    pub fn has_maximum_framerate_numerator(&self) -> bool {
+        self.maximum_framerate_numerator.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_maximum_framerate_numerator(&mut self, v: i32) {
+        self.maximum_framerate_numerator = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 maximum_framerate_denominator = 22;
+
+    pub fn maximum_framerate_denominator(&self) -> i32 {
+        self.maximum_framerate_denominator.unwrap_or(0)
+    }
+
+    pub fn clear_maximum_framerate_denominator(&mut self) {
+        self.maximum_framerate_denominator = ::std::option::Option::None;
+    }
+
+    pub fn has_maximum_framerate_denominator(&self) -> bool {
+        self.maximum_framerate_denominator.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_maximum_framerate_denominator(&mut self, v: i32) {
+        self.maximum_framerate_denominator = ::std::option::Option::Some(v);
+    }
+
+    // optional bool display_hdr = 23;
+
+    pub fn display_hdr(&self) -> bool {
+        self.display_hdr.unwrap_or(false)
+    }
+
+    pub fn clear_display_hdr(&mut self) {
+        self.display_hdr = ::std::option::Option::None;
+    }
+
+    pub fn has_display_hdr(&self) -> bool {
+        self.display_hdr.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_display_hdr(&mut self, v: bool) {
+        self.display_hdr = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingRequest {
@@ -3318,6 +3791,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingR
                 160 => {
                     self.stream_interface = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
+                168 => {
+                    self.maximum_framerate_numerator = ::std::option::Option::Some(is.read_int32()?);
+                },
+                176 => {
+                    self.maximum_framerate_denominator = ::std::option::Option::Some(is.read_int32()?);
+                },
+                184 => {
+                    self.display_hdr = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -3391,6 +3873,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingR
         if let Some(v) = self.stream_interface {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(20, v.value());
         }
+        if let Some(v) = self.maximum_framerate_numerator {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(21, v);
+        }
+        if let Some(v) = self.maximum_framerate_denominator {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(22, v);
+        }
+        if let Some(v) = self.display_hdr {
+            my_size += 2 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3457,6 +3948,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingR
         if let Some(v) = self.stream_interface {
             os.write_enum(20, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
         }
+        if let Some(v) = self.maximum_framerate_numerator {
+            os.write_int32(21, v)?;
+        }
+        if let Some(v) = self.maximum_framerate_denominator {
+            os.write_int32(22, v)?;
+        }
+        if let Some(v) = self.display_hdr {
+            os.write_bool(23, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -3494,6 +3994,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingR
         self.gamepads.clear();
         self.gameid = ::std::option::Option::None;
         self.stream_interface = ::std::option::Option::None;
+        self.maximum_framerate_numerator = ::std::option::Option::None;
+        self.maximum_framerate_denominator = ::std::option::Option::None;
+        self.display_hdr = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -3519,6 +4022,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgRemoteDeviceStreamingR
             gamepads: ::std::vec::Vec::new(),
             gameid: ::std::option::Option::None,
             stream_interface: ::std::option::Option::None,
+            maximum_framerate_numerator: ::std::option::Option::None,
+            maximum_framerate_denominator: ::std::option::Option::None,
+            display_hdr: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -4883,6 +5389,10 @@ pub enum ERemoteClientBroadcastMsg {
     k_ERemoteDeviceStreamingProgress = 13,
     // @@protoc_insertion_point(enum_value:ERemoteClientBroadcastMsg.k_ERemoteDeviceAuthorizationConfirmed)
     k_ERemoteDeviceAuthorizationConfirmed = 14,
+    // @@protoc_insertion_point(enum_value:ERemoteClientBroadcastMsg.k_ERemoteClientBroadcastMsgPairingState)
+    k_ERemoteClientBroadcastMsgPairingState = 15,
+    // @@protoc_insertion_point(enum_value:ERemoteClientBroadcastMsg.k_ERemoteClientBroadcastMsgPairingExclusivity)
+    k_ERemoteClientBroadcastMsgPairingExclusivity = 16,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientBroadcastMsg {
@@ -4909,6 +5419,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientBroadcastMsg {
             12 => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamTransportSignal),
             13 => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamingProgress),
             14 => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceAuthorizationConfirmed),
+            15 => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingState),
+            16 => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingExclusivity),
             _ => ::std::option::Option::None
         }
     }
@@ -4930,6 +5442,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientBroadcastMsg {
             "k_ERemoteDeviceStreamTransportSignal" => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamTransportSignal),
             "k_ERemoteDeviceStreamingProgress" => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamingProgress),
             "k_ERemoteDeviceAuthorizationConfirmed" => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteDeviceAuthorizationConfirmed),
+            "k_ERemoteClientBroadcastMsgPairingState" => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingState),
+            "k_ERemoteClientBroadcastMsgPairingExclusivity" => ::std::option::Option::Some(ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingExclusivity),
             _ => ::std::option::Option::None
         }
     }
@@ -4950,6 +5464,8 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientBroadcastMsg {
         ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamTransportSignal,
         ERemoteClientBroadcastMsg::k_ERemoteDeviceStreamingProgress,
         ERemoteClientBroadcastMsg::k_ERemoteDeviceAuthorizationConfirmed,
+        ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingState,
+        ERemoteClientBroadcastMsg::k_ERemoteClientBroadcastMsgPairingExclusivity,
     ];
 }
 
@@ -4975,6 +5491,8 @@ pub enum ERemoteClientService {
     k_ERemoteClientServiceContentCache = 8,
     // @@protoc_insertion_point(enum_value:ERemoteClientService.k_ERemoteClientServiceContentServer)
     k_ERemoteClientServiceContentServer = 16,
+    // @@protoc_insertion_point(enum_value:ERemoteClientService.k_ERemoteClientServiceManageDownloads)
+    k_ERemoteClientServiceManageDownloads = 32,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientService {
@@ -4992,6 +5510,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientService {
             4 => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceSiteLicense),
             8 => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceContentCache),
             16 => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceContentServer),
+            32 => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceManageDownloads),
             _ => ::std::option::Option::None
         }
     }
@@ -5004,6 +5523,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientService {
             "k_ERemoteClientServiceSiteLicense" => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceSiteLicense),
             "k_ERemoteClientServiceContentCache" => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceContentCache),
             "k_ERemoteClientServiceContentServer" => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceContentServer),
+            "k_ERemoteClientServiceManageDownloads" => ::std::option::Option::Some(ERemoteClientService::k_ERemoteClientServiceManageDownloads),
             _ => ::std::option::Option::None
         }
     }
@@ -5015,6 +5535,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ERemoteClientService {
         ERemoteClientService::k_ERemoteClientServiceSiteLicense,
         ERemoteClientService::k_ERemoteClientServiceContentCache,
         ERemoteClientService::k_ERemoteClientServiceContentServer,
+        ERemoteClientService::k_ERemoteClientServiceManageDownloads,
     ];
 }
 
@@ -5232,16 +5753,16 @@ pub enum EStreamTransport {
     k_EStreamTransportNone = 0,
     // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDP)
     k_EStreamTransportUDP = 1,
-    // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDPRelay)
-    k_EStreamTransportUDPRelay = 2,
+    // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDPRelay_OBSOLETE)
+    k_EStreamTransportUDPRelay_OBSOLETE = 2,
     // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportWebRTC_OBSOLETE)
     k_EStreamTransportWebRTC_OBSOLETE = 3,
     // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportSDR)
     k_EStreamTransportSDR = 4,
     // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDP_SNS)
     k_EStreamTransportUDP_SNS = 5,
-    // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDPRelay_SNS)
-    k_EStreamTransportUDPRelay_SNS = 6,
+    // @@protoc_insertion_point(enum_value:EStreamTransport.k_EStreamTransportUDPRelay_SNS_OBSOLETE)
+    k_EStreamTransportUDPRelay_SNS_OBSOLETE = 6,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EStreamTransport {
@@ -5255,11 +5776,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EStreamTransport {
         match value {
             0 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportNone),
             1 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDP),
-            2 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay),
+            2 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_OBSOLETE),
             3 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportWebRTC_OBSOLETE),
             4 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportSDR),
             5 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDP_SNS),
-            6 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_SNS),
+            6 => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_SNS_OBSOLETE),
             _ => ::std::option::Option::None
         }
     }
@@ -5268,11 +5789,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EStreamTransport {
         match str {
             "k_EStreamTransportNone" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportNone),
             "k_EStreamTransportUDP" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDP),
-            "k_EStreamTransportUDPRelay" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay),
+            "k_EStreamTransportUDPRelay_OBSOLETE" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_OBSOLETE),
             "k_EStreamTransportWebRTC_OBSOLETE" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportWebRTC_OBSOLETE),
             "k_EStreamTransportSDR" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportSDR),
             "k_EStreamTransportUDP_SNS" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDP_SNS),
-            "k_EStreamTransportUDPRelay_SNS" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_SNS),
+            "k_EStreamTransportUDPRelay_SNS_OBSOLETE" => ::std::option::Option::Some(EStreamTransport::k_EStreamTransportUDPRelay_SNS_OBSOLETE),
             _ => ::std::option::Option::None
         }
     }
@@ -5280,11 +5801,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EStreamTransport {
     const VALUES: &'static [EStreamTransport] = &[
         EStreamTransport::k_EStreamTransportNone,
         EStreamTransport::k_EStreamTransportUDP,
-        EStreamTransport::k_EStreamTransportUDPRelay,
+        EStreamTransport::k_EStreamTransportUDPRelay_OBSOLETE,
         EStreamTransport::k_EStreamTransportWebRTC_OBSOLETE,
         EStreamTransport::k_EStreamTransportSDR,
         EStreamTransport::k_EStreamTransportUDP_SNS,
-        EStreamTransport::k_EStreamTransportUDPRelay_SNS,
+        EStreamTransport::k_EStreamTransportUDPRelay_SNS_OBSOLETE,
     ];
 }
 
@@ -5567,6 +6088,34 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteDeviceAuthorizationResp
     }
 }
 impl ::steam_vent_proto_common::RpcMessage for CMsgRemoteDeviceAuthorizationConfirmed {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CMsgRemoteClientBroadcastClientPairingState {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CMsgRemoteClientBroadcastClientPairingExclusivity {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }

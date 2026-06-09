@@ -224,6 +224,10 @@ pub struct CMsgLEDManagerDevice {
     pub supports_brightness: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgLEDManagerDevice.brightness)
     pub brightness: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CMsgLEDManagerDevice.supports_startup_brightness)
+    pub supports_startup_brightness: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgLEDManagerDevice.startup_brightness)
+    pub startup_brightness: ::std::option::Option<f32>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgLEDManagerDevice.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -444,6 +448,44 @@ impl CMsgLEDManagerDevice {
     pub fn set_brightness(&mut self, v: f32) {
         self.brightness = ::std::option::Option::Some(v);
     }
+
+    // optional bool supports_startup_brightness = 15;
+
+    pub fn supports_startup_brightness(&self) -> bool {
+        self.supports_startup_brightness.unwrap_or(false)
+    }
+
+    pub fn clear_supports_startup_brightness(&mut self) {
+        self.supports_startup_brightness = ::std::option::Option::None;
+    }
+
+    pub fn has_supports_startup_brightness(&self) -> bool {
+        self.supports_startup_brightness.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_supports_startup_brightness(&mut self, v: bool) {
+        self.supports_startup_brightness = ::std::option::Option::Some(v);
+    }
+
+    // optional float startup_brightness = 16;
+
+    pub fn startup_brightness(&self) -> f32 {
+        self.startup_brightness.unwrap_or(0.)
+    }
+
+    pub fn clear_startup_brightness(&mut self) {
+        self.startup_brightness = ::std::option::Option::None;
+    }
+
+    pub fn has_startup_brightness(&self) -> bool {
+        self.startup_brightness.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_startup_brightness(&mut self, v: f32) {
+        self.startup_brightness = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
@@ -488,6 +530,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
                 },
                 117 => {
                     self.brightness = ::std::option::Option::Some(is.read_float()?);
+                },
+                120 => {
+                    self.supports_startup_brightness = ::std::option::Option::Some(is.read_bool()?);
+                },
+                133 => {
+                    self.startup_brightness = ::std::option::Option::Some(is.read_float()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -535,6 +583,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
         if let Some(v) = self.brightness {
             my_size += 1 + 4;
         }
+        if let Some(v) = self.supports_startup_brightness {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.startup_brightness {
+            my_size += 2 + 4;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -574,6 +628,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
         if let Some(v) = self.brightness {
             os.write_float(14, v)?;
         }
+        if let Some(v) = self.supports_startup_brightness {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.startup_brightness {
+            os.write_float(16, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -602,6 +662,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
         self.speed = ::std::option::Option::None;
         self.supports_brightness = ::std::option::Option::None;
         self.brightness = ::std::option::Option::None;
+        self.supports_startup_brightness = ::std::option::Option::None;
+        self.startup_brightness = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -618,6 +680,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgLEDManagerDevice {
             speed: ::std::option::Option::None,
             supports_brightness: ::std::option::Option::None,
             brightness: ::std::option::Option::None,
+            supports_startup_brightness: ::std::option::Option::None,
+            startup_brightness: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2106,6 +2170,476 @@ impl ::steam_vent_proto_common::protobuf::Message for CLEDManager_SetBrightness_
     }
 }
 
+// @@protoc_insertion_point(message:CLEDManager_SetStartupBrightness_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CLEDManager_SetStartupBrightness_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CLEDManager_SetStartupBrightness_Request.device_id)
+    pub device_id: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CLEDManager_SetStartupBrightness_Request.brightness)
+    pub brightness: ::std::option::Option<f32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CLEDManager_SetStartupBrightness_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CLEDManager_SetStartupBrightness_Request {
+    fn default() -> &'a CLEDManager_SetStartupBrightness_Request {
+        <CLEDManager_SetStartupBrightness_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CLEDManager_SetStartupBrightness_Request {
+    pub fn new() -> CLEDManager_SetStartupBrightness_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional int32 device_id = 1;
+
+    pub fn device_id(&self) -> i32 {
+        self.device_id.unwrap_or(0)
+    }
+
+    pub fn clear_device_id(&mut self) {
+        self.device_id = ::std::option::Option::None;
+    }
+
+    pub fn has_device_id(&self) -> bool {
+        self.device_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_device_id(&mut self, v: i32) {
+        self.device_id = ::std::option::Option::Some(v);
+    }
+
+    // optional float brightness = 2;
+
+    pub fn brightness(&self) -> f32 {
+        self.brightness.unwrap_or(0.)
+    }
+
+    pub fn clear_brightness(&mut self) {
+        self.brightness = ::std::option::Option::None;
+    }
+
+    pub fn has_brightness(&self) -> bool {
+        self.brightness.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_brightness(&mut self, v: f32) {
+        self.brightness = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CLEDManager_SetStartupBrightness_Request {
+    const NAME: &'static str = "CLEDManager_SetStartupBrightness_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.device_id = ::std::option::Option::Some(is.read_int32()?);
+                },
+                21 => {
+                    self.brightness = ::std::option::Option::Some(is.read_float()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.device_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v);
+        }
+        if let Some(v) = self.brightness {
+            my_size += 1 + 4;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.device_id {
+            os.write_int32(1, v)?;
+        }
+        if let Some(v) = self.brightness {
+            os.write_float(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CLEDManager_SetStartupBrightness_Request {
+        CLEDManager_SetStartupBrightness_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.device_id = ::std::option::Option::None;
+        self.brightness = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CLEDManager_SetStartupBrightness_Request {
+        static instance: CLEDManager_SetStartupBrightness_Request = CLEDManager_SetStartupBrightness_Request {
+            device_id: ::std::option::Option::None,
+            brightness: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CLEDManager_SetStartupBrightness_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CLEDManager_SetStartupBrightness_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CLEDManager_SetStartupBrightness_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CLEDManager_SetStartupBrightness_Response {
+    fn default() -> &'a CLEDManager_SetStartupBrightness_Response {
+        <CLEDManager_SetStartupBrightness_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CLEDManager_SetStartupBrightness_Response {
+    pub fn new() -> CLEDManager_SetStartupBrightness_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CLEDManager_SetStartupBrightness_Response {
+    const NAME: &'static str = "CLEDManager_SetStartupBrightness_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CLEDManager_SetStartupBrightness_Response {
+        CLEDManager_SetStartupBrightness_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CLEDManager_SetStartupBrightness_Response {
+        static instance: CLEDManager_SetStartupBrightness_Response = CLEDManager_SetStartupBrightness_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CLEDManager_SetManagerMode_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CLEDManager_SetManagerMode_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CLEDManager_SetManagerMode_Request.mode)
+    pub mode: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<ELEDManagerMode>>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CLEDManager_SetManagerMode_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CLEDManager_SetManagerMode_Request {
+    fn default() -> &'a CLEDManager_SetManagerMode_Request {
+        <CLEDManager_SetManagerMode_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CLEDManager_SetManagerMode_Request {
+    pub fn new() -> CLEDManager_SetManagerMode_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional .ELEDManagerMode mode = 1;
+
+    pub fn mode(&self) -> ELEDManagerMode {
+        match self.mode {
+            Some(e) => e.enum_value_or(ELEDManagerMode::k_ELEDManagerModeInvalid),
+            None => ELEDManagerMode::k_ELEDManagerModeInvalid,
+        }
+    }
+
+    pub fn clear_mode(&mut self) {
+        self.mode = ::std::option::Option::None;
+    }
+
+    pub fn has_mode(&self) -> bool {
+        self.mode.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_mode(&mut self, v: ELEDManagerMode) {
+        self.mode = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CLEDManager_SetManagerMode_Request {
+    const NAME: &'static str = "CLEDManager_SetManagerMode_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.mode = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.mode {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v.value());
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.mode {
+            os.write_enum(1, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CLEDManager_SetManagerMode_Request {
+        CLEDManager_SetManagerMode_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.mode = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CLEDManager_SetManagerMode_Request {
+        static instance: CLEDManager_SetManagerMode_Request = CLEDManager_SetManagerMode_Request {
+            mode: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CLEDManager_SetManagerMode_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CLEDManager_SetManagerMode_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CLEDManager_SetManagerMode_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CLEDManager_SetManagerMode_Response {
+    fn default() -> &'a CLEDManager_SetManagerMode_Response {
+        <CLEDManager_SetManagerMode_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CLEDManager_SetManagerMode_Response {
+    pub fn new() -> CLEDManager_SetManagerMode_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CLEDManager_SetManagerMode_Response {
+    const NAME: &'static str = "CLEDManager_SetManagerMode_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CLEDManager_SetManagerMode_Response {
+        CLEDManager_SetManagerMode_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CLEDManager_SetManagerMode_Response {
+        static instance: CLEDManager_SetManagerMode_Response = CLEDManager_SetManagerMode_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ELEDManagerMode)
+pub enum ELEDManagerMode {
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeInvalid)
+    k_ELEDManagerModeInvalid = 0,
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeLogon)
+    k_ELEDManagerModeLogon = 1,
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeIdle)
+    k_ELEDManagerModeIdle = 2,
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeDownload)
+    k_ELEDManagerModeDownload = 3,
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeCustomize)
+    k_ELEDManagerModeCustomize = 4,
+    // @@protoc_insertion_point(enum_value:ELEDManagerMode.k_ELEDManagerModeCustomizeStartup)
+    k_ELEDManagerModeCustomizeStartup = 5,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ELEDManagerMode {
+    const NAME: &'static str = "ELEDManagerMode";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ELEDManagerMode> {
+        match value {
+            0 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeInvalid),
+            1 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeLogon),
+            2 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeIdle),
+            3 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeDownload),
+            4 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeCustomize),
+            5 => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeCustomizeStartup),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ELEDManagerMode> {
+        match str {
+            "k_ELEDManagerModeInvalid" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeInvalid),
+            "k_ELEDManagerModeLogon" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeLogon),
+            "k_ELEDManagerModeIdle" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeIdle),
+            "k_ELEDManagerModeDownload" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeDownload),
+            "k_ELEDManagerModeCustomize" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeCustomize),
+            "k_ELEDManagerModeCustomizeStartup" => ::std::option::Option::Some(ELEDManagerMode::k_ELEDManagerModeCustomizeStartup),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ELEDManagerMode] = &[
+        ELEDManagerMode::k_ELEDManagerModeInvalid,
+        ELEDManagerMode::k_ELEDManagerModeLogon,
+        ELEDManagerMode::k_ELEDManagerModeIdle,
+        ELEDManagerMode::k_ELEDManagerModeDownload,
+        ELEDManagerMode::k_ELEDManagerModeCustomize,
+        ELEDManagerMode::k_ELEDManagerModeCustomizeStartup,
+    ];
+}
+
+impl ::std::default::Default for ELEDManagerMode {
+    fn default() -> Self {
+        ELEDManagerMode::k_ELEDManagerModeInvalid
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -2323,6 +2857,59 @@ impl ::steam_vent_proto_common::RpcMessage for CLEDManager_SetBrightness_Respons
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CLEDManager_SetStartupBrightness_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CLEDManager_SetStartupBrightness_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CLEDManager_SetManagerMode_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CLEDManager_SetManagerMode_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct LEDManager {}
 impl ::steam_vent_proto_common::RpcService for LEDManager {
@@ -2348,9 +2935,17 @@ impl ::steam_vent_proto_common::RpcMethod for CLEDManager_SetEnabled_Request {
     const METHOD_NAME: &'static str = "LEDManager.SetEnabled#1";
     type Response = CLEDManager_SetEnabled_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod for CLEDManager_SetManagerMode_Request {
+    const METHOD_NAME: &'static str = "LEDManager.SetManagerMode#1";
+    type Response = CLEDManager_SetManagerMode_Response;
+}
 impl ::steam_vent_proto_common::RpcMethod for CLEDManager_SetSpeed_Request {
     const METHOD_NAME: &'static str = "LEDManager.SetSpeed#1";
     type Response = CLEDManager_SetSpeed_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CLEDManager_SetStartupBrightness_Request {
+    const METHOD_NAME: &'static str = "LEDManager.SetStartupBrightness#1";
+    type Response = CLEDManager_SetStartupBrightness_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CLEDManager_StateChanged_Notification {
     const METHOD_NAME: &'static str = "LEDManager.NotifyStateChanged#1";

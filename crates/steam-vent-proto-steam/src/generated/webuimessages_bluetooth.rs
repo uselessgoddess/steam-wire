@@ -2145,6 +2145,255 @@ impl ::steam_vent_proto_common::protobuf::Message for CBluetoothManager_SetDisco
     }
 }
 
+// @@protoc_insertion_point(message:CBluetoothManager_SetLoginAdvertising_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CBluetoothManager_SetLoginAdvertising_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CBluetoothManager_SetLoginAdvertising_Request.enabled)
+    pub enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CBluetoothManager_SetLoginAdvertising_Request.client_id)
+    pub client_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CBluetoothManager_SetLoginAdvertising_Request.device_id)
+    pub device_id: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CBluetoothManager_SetLoginAdvertising_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CBluetoothManager_SetLoginAdvertising_Request {
+    fn default() -> &'a CBluetoothManager_SetLoginAdvertising_Request {
+        <CBluetoothManager_SetLoginAdvertising_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CBluetoothManager_SetLoginAdvertising_Request {
+    pub fn new() -> CBluetoothManager_SetLoginAdvertising_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional bool enabled = 1;
+
+    pub fn enabled(&self) -> bool {
+        self.enabled.unwrap_or(false)
+    }
+
+    pub fn clear_enabled(&mut self) {
+        self.enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_enabled(&self) -> bool {
+        self.enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_enabled(&mut self, v: bool) {
+        self.enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 client_id = 2;
+
+    pub fn client_id(&self) -> u64 {
+        self.client_id.unwrap_or(0)
+    }
+
+    pub fn clear_client_id(&mut self) {
+        self.client_id = ::std::option::Option::None;
+    }
+
+    pub fn has_client_id(&self) -> bool {
+        self.client_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_client_id(&mut self, v: u64) {
+        self.client_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 device_id = 3;
+
+    pub fn device_id(&self) -> u32 {
+        self.device_id.unwrap_or(0)
+    }
+
+    pub fn clear_device_id(&mut self) {
+        self.device_id = ::std::option::Option::None;
+    }
+
+    pub fn has_device_id(&self) -> bool {
+        self.device_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_device_id(&mut self, v: u32) {
+        self.device_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CBluetoothManager_SetLoginAdvertising_Request {
+    const NAME: &'static str = "CBluetoothManager_SetLoginAdvertising_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                16 => {
+                    self.client_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                24 => {
+                    self.device_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.enabled {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.client_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+        }
+        if let Some(v) = self.device_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.enabled {
+            os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.client_id {
+            os.write_uint64(2, v)?;
+        }
+        if let Some(v) = self.device_id {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CBluetoothManager_SetLoginAdvertising_Request {
+        CBluetoothManager_SetLoginAdvertising_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.enabled = ::std::option::Option::None;
+        self.client_id = ::std::option::Option::None;
+        self.device_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CBluetoothManager_SetLoginAdvertising_Request {
+        static instance: CBluetoothManager_SetLoginAdvertising_Request = CBluetoothManager_SetLoginAdvertising_Request {
+            enabled: ::std::option::Option::None,
+            client_id: ::std::option::Option::None,
+            device_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CBluetoothManager_SetLoginAdvertising_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CBluetoothManager_SetLoginAdvertising_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CBluetoothManager_SetLoginAdvertising_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CBluetoothManager_SetLoginAdvertising_Response {
+    fn default() -> &'a CBluetoothManager_SetLoginAdvertising_Response {
+        <CBluetoothManager_SetLoginAdvertising_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CBluetoothManager_SetLoginAdvertising_Response {
+    pub fn new() -> CBluetoothManager_SetLoginAdvertising_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CBluetoothManager_SetLoginAdvertising_Response {
+    const NAME: &'static str = "CBluetoothManager_SetLoginAdvertising_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CBluetoothManager_SetLoginAdvertising_Response {
+        CBluetoothManager_SetLoginAdvertising_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CBluetoothManager_SetLoginAdvertising_Response {
+        static instance: CBluetoothManager_SetLoginAdvertising_Response = CBluetoothManager_SetLoginAdvertising_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CBluetoothManager_Pair_Request)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CBluetoothManager_Pair_Request {
@@ -3688,6 +3937,34 @@ for CBluetoothManager_SetDiscovering_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CBluetoothManager_SetLoginAdvertising_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CBluetoothManager_SetLoginAdvertising_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage for CBluetoothManager_Pair_Request {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -3913,6 +4190,11 @@ impl ::steam_vent_proto_common::RpcMethod for CBluetoothManager_Pair_Request {
 impl ::steam_vent_proto_common::RpcMethod for CBluetoothManager_SetDiscovering_Request {
     const METHOD_NAME: &'static str = "BluetoothManager.SetDiscovering#1";
     type Response = CBluetoothManager_SetDiscovering_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CBluetoothManager_SetLoginAdvertising_Request {
+    const METHOD_NAME: &'static str = "BluetoothManager.SetLoginAdvertising#1";
+    type Response = CBluetoothManager_SetLoginAdvertising_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CBluetoothManager_SetTrusted_Request {
     const METHOD_NAME: &'static str = "BluetoothManager.SetTrusted#1";

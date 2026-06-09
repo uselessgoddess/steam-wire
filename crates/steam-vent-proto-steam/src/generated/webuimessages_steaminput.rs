@@ -101,6 +101,8 @@ pub struct CSteamInputService_ControllerButtonStateChanged_Notification {
     pub r5: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CSteamInputService_ControllerButtonStateChanged_Notification.right_aux)
     pub right_aux: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerButtonStateChanged_Notification.button_state_bits)
+    pub button_state_bits: ::std::option::Option<u64>,
     // special fields
     // @@protoc_insertion_point(special_field:CSteamInputService_ControllerButtonStateChanged_Notification.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -800,6 +802,25 @@ impl CSteamInputService_ControllerButtonStateChanged_Notification {
     pub fn set_right_aux(&mut self, v: bool) {
         self.right_aux = ::std::option::Option::Some(v);
     }
+
+    // optional uint64 button_state_bits = 37;
+
+    pub fn button_state_bits(&self) -> u64 {
+        self.button_state_bits.unwrap_or(0)
+    }
+
+    pub fn clear_button_state_bits(&mut self) {
+        self.button_state_bits = ::std::option::Option::None;
+    }
+
+    pub fn has_button_state_bits(&self) -> bool {
+        self.button_state_bits.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_button_state_bits(&mut self, v: u64) {
+        self.button_state_bits = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerButtonStateChanged_Notification {
@@ -919,6 +940,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
                 },
                 288 => {
                     self.right_aux = ::std::option::Option::Some(is.read_bool()?);
+                },
+                296 => {
+                    self.button_state_bits = ::std::option::Option::Some(is.read_uint64()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -1040,6 +1064,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
         if let Some(v) = self.right_aux {
             my_size += 2 + 1;
         }
+        if let Some(v) = self.button_state_bits {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(37, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -1154,6 +1181,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
         if let Some(v) = self.right_aux {
             os.write_bool(36, v)?;
         }
+        if let Some(v) = self.button_state_bits {
+            os.write_uint64(37, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1207,6 +1237,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
         self.r4 = ::std::option::Option::None;
         self.r5 = ::std::option::Option::None;
         self.right_aux = ::std::option::Option::None;
+        self.button_state_bits = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -1248,6 +1279,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
             r4: ::std::option::Option::None,
             r5: ::std::option::Option::None,
             right_aux: ::std::option::Option::None,
+            button_state_bits: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3591,6 +3623,1691 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GyroSof
     }
 }
 
+// @@protoc_insertion_point(message:CSteamInputService_PairDongleTritonConnected_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_PairDongleTritonConnected_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_PairDongleTritonConnected_Request.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_PairDongleTritonConnected_Request.dongle_index)
+    pub dongle_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_PairDongleTritonConnected_Request.slot)
+    pub slot: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_PairDongleTritonConnected_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_PairDongleTritonConnected_Request {
+    fn default() -> &'a CSteamInputService_PairDongleTritonConnected_Request {
+        <CSteamInputService_PairDongleTritonConnected_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_PairDongleTritonConnected_Request {
+    pub fn new() -> CSteamInputService_PairDongleTritonConnected_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 dongle_index = 2;
+
+    pub fn dongle_index(&self) -> u32 {
+        self.dongle_index.unwrap_or(0)
+    }
+
+    pub fn clear_dongle_index(&mut self) {
+        self.dongle_index = ::std::option::Option::None;
+    }
+
+    pub fn has_dongle_index(&self) -> bool {
+        self.dongle_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dongle_index(&mut self, v: u32) {
+        self.dongle_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 slot = 3;
+
+    pub fn slot(&self) -> u32 {
+        self.slot.unwrap_or(0)
+    }
+
+    pub fn clear_slot(&mut self) {
+        self.slot = ::std::option::Option::None;
+    }
+
+    pub fn has_slot(&self) -> bool {
+        self.slot.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_slot(&mut self, v: u32) {
+        self.slot = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_PairDongleTritonConnected_Request {
+    const NAME: &'static str = "CSteamInputService_PairDongleTritonConnected_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.dongle_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.slot = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.dongle_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.slot {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.dongle_index {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.slot {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_PairDongleTritonConnected_Request {
+        CSteamInputService_PairDongleTritonConnected_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.dongle_index = ::std::option::Option::None;
+        self.slot = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_PairDongleTritonConnected_Request {
+        static instance: CSteamInputService_PairDongleTritonConnected_Request = CSteamInputService_PairDongleTritonConnected_Request {
+            controller_index: ::std::option::Option::None,
+            dongle_index: ::std::option::Option::None,
+            slot: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_PairDongleTritonConnected_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_PairDongleTritonConnected_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_PairDongleTritonConnected_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_PairDongleTritonConnected_Response {
+    fn default() -> &'a CSteamInputService_PairDongleTritonConnected_Response {
+        <CSteamInputService_PairDongleTritonConnected_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_PairDongleTritonConnected_Response {
+    pub fn new() -> CSteamInputService_PairDongleTritonConnected_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_PairDongleTritonConnected_Response {
+    const NAME: &'static str = "CSteamInputService_PairDongleTritonConnected_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_PairDongleTritonConnected_Response {
+        CSteamInputService_PairDongleTritonConnected_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_PairDongleTritonConnected_Response {
+        static instance: CSteamInputService_PairDongleTritonConnected_Response = CSteamInputService_PairDongleTritonConnected_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_SteamDonglesChanged_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_SteamDonglesChanged_Notification {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_SteamDonglesChanged_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_SteamDonglesChanged_Notification {
+    fn default() -> &'a CSteamInputService_SteamDonglesChanged_Notification {
+        <CSteamInputService_SteamDonglesChanged_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_SteamDonglesChanged_Notification {
+    pub fn new() -> CSteamInputService_SteamDonglesChanged_Notification {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_SteamDonglesChanged_Notification {
+    const NAME: &'static str = "CSteamInputService_SteamDonglesChanged_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_SteamDonglesChanged_Notification {
+        CSteamInputService_SteamDonglesChanged_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_SteamDonglesChanged_Notification {
+        static instance: CSteamInputService_SteamDonglesChanged_Notification = CSteamInputService_SteamDonglesChanged_Notification {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_UnpairedTritonPluggedIn_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_UnpairedTritonPluggedIn_Notification.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_UnpairedTritonPluggedIn_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    fn default() -> &'a CSteamInputService_UnpairedTritonPluggedIn_Notification {
+        <CSteamInputService_UnpairedTritonPluggedIn_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    pub fn new() -> CSteamInputService_UnpairedTritonPluggedIn_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    const NAME: &'static str = "CSteamInputService_UnpairedTritonPluggedIn_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_UnpairedTritonPluggedIn_Notification {
+        CSteamInputService_UnpairedTritonPluggedIn_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_UnpairedTritonPluggedIn_Notification {
+        static instance: CSteamInputService_UnpairedTritonPluggedIn_Notification = CSteamInputService_UnpairedTritonPluggedIn_Notification {
+            controller_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_UnpairedTritonDocked_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_UnpairedTritonDocked_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_UnpairedTritonDocked_Notification.docked_puck_index)
+    pub docked_puck_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_UnpairedTritonDocked_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_UnpairedTritonDocked_Notification {
+    fn default() -> &'a CSteamInputService_UnpairedTritonDocked_Notification {
+        <CSteamInputService_UnpairedTritonDocked_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_UnpairedTritonDocked_Notification {
+    pub fn new() -> CSteamInputService_UnpairedTritonDocked_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 docked_puck_index = 1;
+
+    pub fn docked_puck_index(&self) -> u32 {
+        self.docked_puck_index.unwrap_or(0)
+    }
+
+    pub fn clear_docked_puck_index(&mut self) {
+        self.docked_puck_index = ::std::option::Option::None;
+    }
+
+    pub fn has_docked_puck_index(&self) -> bool {
+        self.docked_puck_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_docked_puck_index(&mut self, v: u32) {
+        self.docked_puck_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_UnpairedTritonDocked_Notification {
+    const NAME: &'static str = "CSteamInputService_UnpairedTritonDocked_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.docked_puck_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.docked_puck_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.docked_puck_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_UnpairedTritonDocked_Notification {
+        CSteamInputService_UnpairedTritonDocked_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.docked_puck_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_UnpairedTritonDocked_Notification {
+        static instance: CSteamInputService_UnpairedTritonDocked_Notification = CSteamInputService_UnpairedTritonDocked_Notification {
+            docked_puck_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_TritonUndocked_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_TritonUndocked_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_TritonUndocked_Notification.docked_puck_index)
+    pub docked_puck_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_TritonUndocked_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_TritonUndocked_Notification {
+    fn default() -> &'a CSteamInputService_TritonUndocked_Notification {
+        <CSteamInputService_TritonUndocked_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_TritonUndocked_Notification {
+    pub fn new() -> CSteamInputService_TritonUndocked_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 docked_puck_index = 1;
+
+    pub fn docked_puck_index(&self) -> u32 {
+        self.docked_puck_index.unwrap_or(0)
+    }
+
+    pub fn clear_docked_puck_index(&mut self) {
+        self.docked_puck_index = ::std::option::Option::None;
+    }
+
+    pub fn has_docked_puck_index(&self) -> bool {
+        self.docked_puck_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_docked_puck_index(&mut self, v: u32) {
+        self.docked_puck_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_TritonUndocked_Notification {
+    const NAME: &'static str = "CSteamInputService_TritonUndocked_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.docked_puck_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.docked_puck_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.docked_puck_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_TritonUndocked_Notification {
+        CSteamInputService_TritonUndocked_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.docked_puck_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_TritonUndocked_Notification {
+        static instance: CSteamInputService_TritonUndocked_Notification = CSteamInputService_TritonUndocked_Notification {
+            docked_puck_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ControllerPairingChanged_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ControllerPairingChanged_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerPairingChanged_Notification.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ControllerPairingChanged_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ControllerPairingChanged_Notification {
+    fn default() -> &'a CSteamInputService_ControllerPairingChanged_Notification {
+        <CSteamInputService_ControllerPairingChanged_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ControllerPairingChanged_Notification {
+    pub fn new() -> CSteamInputService_ControllerPairingChanged_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerPairingChanged_Notification {
+    const NAME: &'static str = "CSteamInputService_ControllerPairingChanged_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ControllerPairingChanged_Notification {
+        CSteamInputService_ControllerPairingChanged_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ControllerPairingChanged_Notification {
+        static instance: CSteamInputService_ControllerPairingChanged_Notification = CSteamInputService_ControllerPairingChanged_Notification {
+            controller_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetDongles_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetDongles_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Request.include_bonds)
+    pub include_bonds: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetDongles_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetDongles_Request {
+    fn default() -> &'a CSteamInputService_GetDongles_Request {
+        <CSteamInputService_GetDongles_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetDongles_Request {
+    pub fn new() -> CSteamInputService_GetDongles_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional bool include_bonds = 1;
+
+    pub fn include_bonds(&self) -> bool {
+        self.include_bonds.unwrap_or(false)
+    }
+
+    pub fn clear_include_bonds(&mut self) {
+        self.include_bonds = ::std::option::Option::None;
+    }
+
+    pub fn has_include_bonds(&self) -> bool {
+        self.include_bonds.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_include_bonds(&mut self, v: bool) {
+        self.include_bonds = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetDongles_Request {
+    const NAME: &'static str = "CSteamInputService_GetDongles_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.include_bonds = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.include_bonds {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.include_bonds {
+            os.write_bool(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetDongles_Request {
+        CSteamInputService_GetDongles_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.include_bonds = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetDongles_Request {
+        static instance: CSteamInputService_GetDongles_Request = CSteamInputService_GetDongles_Request {
+            include_bonds: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetDongles_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetDongles_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.steam_controller_v1)
+    pub steam_controller_v1: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.ibex_internal)
+    pub ibex_internal: ::std::vec::Vec<csteam_input_service_get_dongles_response::Dongle>,
+    // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.ibex_external)
+    pub ibex_external: ::std::vec::Vec<csteam_input_service_get_dongles_response::Dongle>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetDongles_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetDongles_Response {
+    fn default() -> &'a CSteamInputService_GetDongles_Response {
+        <CSteamInputService_GetDongles_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetDongles_Response {
+    pub fn new() -> CSteamInputService_GetDongles_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional bool steam_controller_v1 = 1;
+
+    pub fn steam_controller_v1(&self) -> bool {
+        self.steam_controller_v1.unwrap_or(false)
+    }
+
+    pub fn clear_steam_controller_v1(&mut self) {
+        self.steam_controller_v1 = ::std::option::Option::None;
+    }
+
+    pub fn has_steam_controller_v1(&self) -> bool {
+        self.steam_controller_v1.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steam_controller_v1(&mut self, v: bool) {
+        self.steam_controller_v1 = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetDongles_Response {
+    const NAME: &'static str = "CSteamInputService_GetDongles_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.steam_controller_v1 = ::std::option::Option::Some(is.read_bool()?);
+                },
+                18 => {
+                    self.ibex_internal.push(is.read_message()?);
+                },
+                26 => {
+                    self.ibex_external.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steam_controller_v1 {
+            my_size += 1 + 1;
+        }
+        for value in &self.ibex_internal {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        for value in &self.ibex_external {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steam_controller_v1 {
+            os.write_bool(1, v)?;
+        }
+        for v in &self.ibex_internal {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        };
+        for v in &self.ibex_external {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetDongles_Response {
+        CSteamInputService_GetDongles_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.steam_controller_v1 = ::std::option::Option::None;
+        self.ibex_internal.clear();
+        self.ibex_external.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetDongles_Response {
+        static instance: CSteamInputService_GetDongles_Response = CSteamInputService_GetDongles_Response {
+            steam_controller_v1: ::std::option::Option::None,
+            ibex_internal: ::std::vec::Vec::new(),
+            ibex_external: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CSteamInputService_GetDongles_Response`
+pub mod csteam_input_service_get_dongles_response {
+    // @@protoc_insertion_point(message:CSteamInputService_GetDongles_Response.Dongle)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Dongle {
+        // message fields
+        // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.Dongle.index)
+        pub index: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.Dongle.dongle_serial_number)
+        pub dongle_serial_number: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.Dongle.paired_serial_number)
+        pub paired_serial_number: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.Dongle.paired)
+        pub paired: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetDongles_Response.Dongle.docked)
+        pub docked: ::std::option::Option<bool>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CSteamInputService_GetDongles_Response.Dongle.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Dongle {
+        fn default() -> &'a Dongle {
+            <Dongle as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Dongle {
+        pub fn new() -> Dongle {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 index = 1;
+
+        pub fn index(&self) -> u32 {
+            self.index.unwrap_or(0)
+        }
+
+        pub fn clear_index(&mut self) {
+            self.index = ::std::option::Option::None;
+        }
+
+        pub fn has_index(&self) -> bool {
+            self.index.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_index(&mut self, v: u32) {
+            self.index = ::std::option::Option::Some(v);
+        }
+
+        // optional string dongle_serial_number = 2;
+
+        pub fn dongle_serial_number(&self) -> &str {
+            match self.dongle_serial_number.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_dongle_serial_number(&mut self) {
+            self.dongle_serial_number = ::std::option::Option::None;
+        }
+
+        pub fn has_dongle_serial_number(&self) -> bool {
+            self.dongle_serial_number.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_dongle_serial_number(&mut self, v: ::std::string::String) {
+            self.dongle_serial_number = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_dongle_serial_number(&mut self) -> &mut ::std::string::String {
+            if self.dongle_serial_number.is_none() {
+                self.dongle_serial_number = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.dongle_serial_number.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_dongle_serial_number(&mut self) -> ::std::string::String {
+            self.dongle_serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional string paired_serial_number = 3;
+
+        pub fn paired_serial_number(&self) -> &str {
+            match self.paired_serial_number.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_paired_serial_number(&mut self) {
+            self.paired_serial_number = ::std::option::Option::None;
+        }
+
+        pub fn has_paired_serial_number(&self) -> bool {
+            self.paired_serial_number.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_paired_serial_number(&mut self, v: ::std::string::String) {
+            self.paired_serial_number = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_paired_serial_number(&mut self) -> &mut ::std::string::String {
+            if self.paired_serial_number.is_none() {
+                self.paired_serial_number = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.paired_serial_number.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_paired_serial_number(&mut self) -> ::std::string::String {
+            self.paired_serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional bool paired = 4;
+
+        pub fn paired(&self) -> bool {
+            self.paired.unwrap_or(false)
+        }
+
+        pub fn clear_paired(&mut self) {
+            self.paired = ::std::option::Option::None;
+        }
+
+        pub fn has_paired(&self) -> bool {
+            self.paired.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_paired(&mut self, v: bool) {
+            self.paired = ::std::option::Option::Some(v);
+        }
+
+        // optional bool docked = 5;
+
+        pub fn docked(&self) -> bool {
+            self.docked.unwrap_or(false)
+        }
+
+        pub fn clear_docked(&mut self) {
+            self.docked = ::std::option::Option::None;
+        }
+
+        pub fn has_docked(&self) -> bool {
+            self.docked.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_docked(&mut self, v: bool) {
+            self.docked = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Dongle {
+        const NAME: &'static str = "Dongle";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.index = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    18 => {
+                        self.dongle_serial_number = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    26 => {
+                        self.paired_serial_number = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    32 => {
+                        self.paired = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    40 => {
+                        self.docked = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.index {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.dongle_serial_number.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+            }
+            if let Some(v) = self.paired_serial_number.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+            }
+            if let Some(v) = self.paired {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.docked {
+                my_size += 1 + 1;
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.index {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.dongle_serial_number.as_ref() {
+                os.write_string(2, v)?;
+            }
+            if let Some(v) = self.paired_serial_number.as_ref() {
+                os.write_string(3, v)?;
+            }
+            if let Some(v) = self.paired {
+                os.write_bool(4, v)?;
+            }
+            if let Some(v) = self.docked {
+                os.write_bool(5, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Dongle {
+            Dongle::new()
+        }
+
+        fn clear(&mut self) {
+            self.index = ::std::option::Option::None;
+            self.dongle_serial_number = ::std::option::Option::None;
+            self.paired_serial_number = ::std::option::Option::None;
+            self.paired = ::std::option::Option::None;
+            self.docked = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Dongle {
+            static instance: Dongle = Dongle {
+                index: ::std::option::Option::None,
+                dongle_serial_number: ::std::option::Option::None,
+                paired_serial_number: ::std::option::Option::None,
+                paired: ::std::option::Option::None,
+                docked: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ShouldTritonPairInOobe_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ShouldTritonPairInOobe_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ShouldTritonPairInOobe_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ShouldTritonPairInOobe_Request {
+    fn default() -> &'a CSteamInputService_ShouldTritonPairInOobe_Request {
+        <CSteamInputService_ShouldTritonPairInOobe_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ShouldTritonPairInOobe_Request {
+    pub fn new() -> CSteamInputService_ShouldTritonPairInOobe_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ShouldTritonPairInOobe_Request {
+    const NAME: &'static str = "CSteamInputService_ShouldTritonPairInOobe_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ShouldTritonPairInOobe_Request {
+        CSteamInputService_ShouldTritonPairInOobe_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ShouldTritonPairInOobe_Request {
+        static instance: CSteamInputService_ShouldTritonPairInOobe_Request = CSteamInputService_ShouldTritonPairInOobe_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_WaitInitialControllerStateEnumerated_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_WaitInitialControllerStateEnumerated_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    fn default() -> &'a CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+        <CSteamInputService_WaitInitialControllerStateEnumerated_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    pub fn new() -> CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    const NAME: &'static str = "CSteamInputService_WaitInitialControllerStateEnumerated_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+        CSteamInputService_WaitInitialControllerStateEnumerated_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+        static instance: CSteamInputService_WaitInitialControllerStateEnumerated_Request = CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_WaitInitialControllerStateEnumerated_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_WaitInitialControllerStateEnumerated_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+    fn default() -> &'a CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+        <CSteamInputService_WaitInitialControllerStateEnumerated_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+    pub fn new() -> CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+    const NAME: &'static str = "CSteamInputService_WaitInitialControllerStateEnumerated_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+        CSteamInputService_WaitInitialControllerStateEnumerated_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+        static instance: CSteamInputService_WaitInitialControllerStateEnumerated_Response = CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ShouldTritonPairInOobe_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ShouldTritonPairInOobe_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ShouldTritonPairInOobe_Response.pair_type)
+    pub pair_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<ETritonPairType>>,
+    // @@protoc_insertion_point(field:CSteamInputService_ShouldTritonPairInOobe_Response.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_ShouldTritonPairInOobe_Response.dongle_index)
+    pub dongle_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ShouldTritonPairInOobe_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ShouldTritonPairInOobe_Response {
+    fn default() -> &'a CSteamInputService_ShouldTritonPairInOobe_Response {
+        <CSteamInputService_ShouldTritonPairInOobe_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ShouldTritonPairInOobe_Response {
+    pub fn new() -> CSteamInputService_ShouldTritonPairInOobe_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional .ETritonPairType pair_type = 1;
+
+    pub fn pair_type(&self) -> ETritonPairType {
+        match self.pair_type {
+            Some(e) => e.enum_value_or(ETritonPairType::k_ETritonPairType_None),
+            None => ETritonPairType::k_ETritonPairType_None,
+        }
+    }
+
+    pub fn clear_pair_type(&mut self) {
+        self.pair_type = ::std::option::Option::None;
+    }
+
+    pub fn has_pair_type(&self) -> bool {
+        self.pair_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_pair_type(&mut self, v: ETritonPairType) {
+        self.pair_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional uint32 controller_index = 2;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 dongle_index = 3;
+
+    pub fn dongle_index(&self) -> u32 {
+        self.dongle_index.unwrap_or(0)
+    }
+
+    pub fn clear_dongle_index(&mut self) {
+        self.dongle_index = ::std::option::Option::None;
+    }
+
+    pub fn has_dongle_index(&self) -> bool {
+        self.dongle_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dongle_index(&mut self, v: u32) {
+        self.dongle_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ShouldTritonPairInOobe_Response {
+    const NAME: &'static str = "CSteamInputService_ShouldTritonPairInOobe_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.pair_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                16 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.dongle_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.pair_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v.value());
+        }
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.dongle_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.pair_type {
+            os.write_enum(1, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.controller_index {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.dongle_index {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ShouldTritonPairInOobe_Response {
+        CSteamInputService_ShouldTritonPairInOobe_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.pair_type = ::std::option::Option::None;
+        self.controller_index = ::std::option::Option::None;
+        self.dongle_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ShouldTritonPairInOobe_Response {
+        static instance: CSteamInputService_ShouldTritonPairInOobe_Response = CSteamInputService_ShouldTritonPairInOobe_Response {
+            pair_type: ::std::option::Option::None,
+            controller_index: ::std::option::Option::None,
+            dongle_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 // @@protoc_insertion_point(message:CControllerOriginKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CControllerOriginKey {
@@ -4103,6 +5820,4583 @@ impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_Control
     }
 }
 
+// @@protoc_insertion_point(message:CSteamInputService_ControllerPowerMenu_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ControllerPowerMenu_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerPowerMenu_Notification.idx)
+    pub idx: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ControllerPowerMenu_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ControllerPowerMenu_Notification {
+    fn default() -> &'a CSteamInputService_ControllerPowerMenu_Notification {
+        <CSteamInputService_ControllerPowerMenu_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ControllerPowerMenu_Notification {
+    pub fn new() -> CSteamInputService_ControllerPowerMenu_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 idx = 1;
+
+    pub fn idx(&self) -> u32 {
+        self.idx.unwrap_or(0)
+    }
+
+    pub fn clear_idx(&mut self) {
+        self.idx = ::std::option::Option::None;
+    }
+
+    pub fn has_idx(&self) -> bool {
+        self.idx.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_idx(&mut self, v: u32) {
+        self.idx = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerPowerMenu_Notification {
+    const NAME: &'static str = "CSteamInputService_ControllerPowerMenu_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.idx = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.idx {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.idx {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ControllerPowerMenu_Notification {
+        CSteamInputService_ControllerPowerMenu_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.idx = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ControllerPowerMenu_Notification {
+        static instance: CSteamInputService_ControllerPowerMenu_Notification = CSteamInputService_ControllerPowerMenu_Notification {
+            idx: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ControllerDisconnected_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ControllerDisconnected_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerDisconnected_Notification.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ControllerDisconnected_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ControllerDisconnected_Notification {
+    fn default() -> &'a CSteamInputService_ControllerDisconnected_Notification {
+        <CSteamInputService_ControllerDisconnected_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ControllerDisconnected_Notification {
+    pub fn new() -> CSteamInputService_ControllerDisconnected_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerDisconnected_Notification {
+    const NAME: &'static str = "CSteamInputService_ControllerDisconnected_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ControllerDisconnected_Notification {
+        CSteamInputService_ControllerDisconnected_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ControllerDisconnected_Notification {
+        static instance: CSteamInputService_ControllerDisconnected_Notification = CSteamInputService_ControllerDisconnected_Notification {
+            controller_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetTritonPairingInfo_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetTritonPairingInfo_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Request.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetTritonPairingInfo_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetTritonPairingInfo_Request {
+    fn default() -> &'a CSteamInputService_GetTritonPairingInfo_Request {
+        <CSteamInputService_GetTritonPairingInfo_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetTritonPairingInfo_Request {
+    pub fn new() -> CSteamInputService_GetTritonPairingInfo_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetTritonPairingInfo_Request {
+    const NAME: &'static str = "CSteamInputService_GetTritonPairingInfo_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetTritonPairingInfo_Request {
+        CSteamInputService_GetTritonPairingInfo_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetTritonPairingInfo_Request {
+        static instance: CSteamInputService_GetTritonPairingInfo_Request = CSteamInputService_GetTritonPairingInfo_Request {
+            controller_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetTritonPairingInfo_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetTritonPairingInfo_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Response.slot)
+    pub slot: ::std::vec::Vec<csteam_input_service_get_triton_pairing_info_response::Slot>,
+    // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Response.connection_type)
+    pub connection_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<ETritonConnectionType>>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetTritonPairingInfo_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetTritonPairingInfo_Response {
+    fn default() -> &'a CSteamInputService_GetTritonPairingInfo_Response {
+        <CSteamInputService_GetTritonPairingInfo_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetTritonPairingInfo_Response {
+    pub fn new() -> CSteamInputService_GetTritonPairingInfo_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional .ETritonConnectionType connection_type = 2;
+
+    pub fn connection_type(&self) -> ETritonConnectionType {
+        match self.connection_type {
+            Some(e) => e.enum_value_or(ETritonConnectionType::k_ETritonConnectionType_Unknown),
+            None => ETritonConnectionType::k_ETritonConnectionType_Unknown,
+        }
+    }
+
+    pub fn clear_connection_type(&mut self) {
+        self.connection_type = ::std::option::Option::None;
+    }
+
+    pub fn has_connection_type(&self) -> bool {
+        self.connection_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_connection_type(&mut self, v: ETritonConnectionType) {
+        self.connection_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetTritonPairingInfo_Response {
+    const NAME: &'static str = "CSteamInputService_GetTritonPairingInfo_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.slot.push(is.read_message()?);
+                },
+                16 => {
+                    self.connection_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.slot {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.connection_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v.value());
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.slot {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        if let Some(v) = self.connection_type {
+            os.write_enum(2, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetTritonPairingInfo_Response {
+        CSteamInputService_GetTritonPairingInfo_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.slot.clear();
+        self.connection_type = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetTritonPairingInfo_Response {
+        static instance: CSteamInputService_GetTritonPairingInfo_Response = CSteamInputService_GetTritonPairingInfo_Response {
+            slot: ::std::vec::Vec::new(),
+            connection_type: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `CSteamInputService_GetTritonPairingInfo_Response`
+pub mod csteam_input_service_get_triton_pairing_info_response {
+    // @@protoc_insertion_point(message:CSteamInputService_GetTritonPairingInfo_Response.Slot)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Slot {
+        // message fields
+        // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Response.Slot.serial_number)
+        pub serial_number: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Response.Slot.active)
+        pub active: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CSteamInputService_GetTritonPairingInfo_Response.Slot.type)
+        pub type_: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::ETritonConnectionType>>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CSteamInputService_GetTritonPairingInfo_Response.Slot.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Slot {
+        fn default() -> &'a Slot {
+            <Slot as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Slot {
+        pub fn new() -> Slot {
+            ::std::default::Default::default()
+        }
+
+        // optional string serial_number = 1;
+
+        pub fn serial_number(&self) -> &str {
+            match self.serial_number.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_serial_number(&mut self) {
+            self.serial_number = ::std::option::Option::None;
+        }
+
+        pub fn has_serial_number(&self) -> bool {
+            self.serial_number.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_serial_number(&mut self, v: ::std::string::String) {
+            self.serial_number = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_serial_number(&mut self) -> &mut ::std::string::String {
+            if self.serial_number.is_none() {
+                self.serial_number = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.serial_number.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_serial_number(&mut self) -> ::std::string::String {
+            self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional bool active = 2;
+
+        pub fn active(&self) -> bool {
+            self.active.unwrap_or(false)
+        }
+
+        pub fn clear_active(&mut self) {
+            self.active = ::std::option::Option::None;
+        }
+
+        pub fn has_active(&self) -> bool {
+            self.active.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_active(&mut self, v: bool) {
+            self.active = ::std::option::Option::Some(v);
+        }
+
+        // optional .ETritonConnectionType type = 3;
+
+        pub fn type_(&self) -> super::ETritonConnectionType {
+            match self.type_ {
+                Some(e) => e.enum_value_or(super::ETritonConnectionType::k_ETritonConnectionType_Unknown),
+                None => super::ETritonConnectionType::k_ETritonConnectionType_Unknown,
+            }
+        }
+
+        pub fn clear_type_(&mut self) {
+            self.type_ = ::std::option::Option::None;
+        }
+
+        pub fn has_type(&self) -> bool {
+            self.type_.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_type(&mut self, v: super::ETritonConnectionType) {
+            self.type_ = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Slot {
+        const NAME: &'static str = "Slot";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    10 => {
+                        self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    16 => {
+                        self.active = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    24 => {
+                        self.type_ = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.serial_number.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+            }
+            if let Some(v) = self.active {
+                my_size += 1 + 1;
+            }
+            if let Some(v) = self.type_ {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v.value());
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.serial_number.as_ref() {
+                os.write_string(1, v)?;
+            }
+            if let Some(v) = self.active {
+                os.write_bool(2, v)?;
+            }
+            if let Some(v) = self.type_ {
+                os.write_enum(3, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Slot {
+            Slot::new()
+        }
+
+        fn clear(&mut self) {
+            self.serial_number = ::std::option::Option::None;
+            self.active = ::std::option::Option::None;
+            self.type_ = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Slot {
+            static instance: Slot = Slot {
+                serial_number: ::std::option::Option::None,
+                active: ::std::option::Option::None,
+                type_: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ForgetTritonPairingBond_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ForgetTritonPairingBond_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ForgetTritonPairingBond_Request.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_ForgetTritonPairingBond_Request.slot_index)
+    pub slot_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ForgetTritonPairingBond_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ForgetTritonPairingBond_Request {
+    fn default() -> &'a CSteamInputService_ForgetTritonPairingBond_Request {
+        <CSteamInputService_ForgetTritonPairingBond_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ForgetTritonPairingBond_Request {
+    pub fn new() -> CSteamInputService_ForgetTritonPairingBond_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 slot_index = 2;
+
+    pub fn slot_index(&self) -> u32 {
+        self.slot_index.unwrap_or(0)
+    }
+
+    pub fn clear_slot_index(&mut self) {
+        self.slot_index = ::std::option::Option::None;
+    }
+
+    pub fn has_slot_index(&self) -> bool {
+        self.slot_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_slot_index(&mut self, v: u32) {
+        self.slot_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ForgetTritonPairingBond_Request {
+    const NAME: &'static str = "CSteamInputService_ForgetTritonPairingBond_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.slot_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.slot_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.slot_index {
+            os.write_uint32(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ForgetTritonPairingBond_Request {
+        CSteamInputService_ForgetTritonPairingBond_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.slot_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ForgetTritonPairingBond_Request {
+        static instance: CSteamInputService_ForgetTritonPairingBond_Request = CSteamInputService_ForgetTritonPairingBond_Request {
+            controller_index: ::std::option::Option::None,
+            slot_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ForgetTritonPairingBond_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ForgetTritonPairingBond_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ForgetTritonPairingBond_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ForgetTritonPairingBond_Response {
+    fn default() -> &'a CSteamInputService_ForgetTritonPairingBond_Response {
+        <CSteamInputService_ForgetTritonPairingBond_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ForgetTritonPairingBond_Response {
+    pub fn new() -> CSteamInputService_ForgetTritonPairingBond_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ForgetTritonPairingBond_Response {
+    const NAME: &'static str = "CSteamInputService_ForgetTritonPairingBond_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ForgetTritonPairingBond_Response {
+        CSteamInputService_ForgetTritonPairingBond_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ForgetTritonPairingBond_Response {
+        static instance: CSteamInputService_ForgetTritonPairingBond_Response = CSteamInputService_ForgetTritonPairingBond_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ForgetDonglePairingBond_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ForgetDonglePairingBond_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ForgetDonglePairingBond_Request.dongle_index)
+    pub dongle_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ForgetDonglePairingBond_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ForgetDonglePairingBond_Request {
+    fn default() -> &'a CSteamInputService_ForgetDonglePairingBond_Request {
+        <CSteamInputService_ForgetDonglePairingBond_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ForgetDonglePairingBond_Request {
+    pub fn new() -> CSteamInputService_ForgetDonglePairingBond_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 dongle_index = 1;
+
+    pub fn dongle_index(&self) -> u32 {
+        self.dongle_index.unwrap_or(0)
+    }
+
+    pub fn clear_dongle_index(&mut self) {
+        self.dongle_index = ::std::option::Option::None;
+    }
+
+    pub fn has_dongle_index(&self) -> bool {
+        self.dongle_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dongle_index(&mut self, v: u32) {
+        self.dongle_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ForgetDonglePairingBond_Request {
+    const NAME: &'static str = "CSteamInputService_ForgetDonglePairingBond_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.dongle_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.dongle_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.dongle_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ForgetDonglePairingBond_Request {
+        CSteamInputService_ForgetDonglePairingBond_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.dongle_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ForgetDonglePairingBond_Request {
+        static instance: CSteamInputService_ForgetDonglePairingBond_Request = CSteamInputService_ForgetDonglePairingBond_Request {
+            dongle_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ForgetDonglePairingBond_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ForgetDonglePairingBond_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ForgetDonglePairingBond_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ForgetDonglePairingBond_Response {
+    fn default() -> &'a CSteamInputService_ForgetDonglePairingBond_Response {
+        <CSteamInputService_ForgetDonglePairingBond_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ForgetDonglePairingBond_Response {
+    pub fn new() -> CSteamInputService_ForgetDonglePairingBond_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ForgetDonglePairingBond_Response {
+    const NAME: &'static str = "CSteamInputService_ForgetDonglePairingBond_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ForgetDonglePairingBond_Response {
+        CSteamInputService_ForgetDonglePairingBond_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ForgetDonglePairingBond_Response {
+        static instance: CSteamInputService_ForgetDonglePairingBond_Response = CSteamInputService_ForgetDonglePairingBond_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetControllerName_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetControllerName_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetControllerName_Request.serial_number)
+    pub serial_number: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetControllerName_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetControllerName_Request {
+    fn default() -> &'a CSteamInputService_GetControllerName_Request {
+        <CSteamInputService_GetControllerName_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetControllerName_Request {
+    pub fn new() -> CSteamInputService_GetControllerName_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string serial_number = 1;
+
+    pub fn serial_number(&self) -> &str {
+        match self.serial_number.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_serial_number(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+    }
+
+    pub fn has_serial_number(&self) -> bool {
+        self.serial_number.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_serial_number(&mut self, v: ::std::string::String) {
+        self.serial_number = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_serial_number(&mut self) -> &mut ::std::string::String {
+        if self.serial_number.is_none() {
+            self.serial_number = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.serial_number.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_serial_number(&mut self) -> ::std::string::String {
+        self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetControllerName_Request {
+    const NAME: &'static str = "CSteamInputService_GetControllerName_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.serial_number.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.serial_number.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetControllerName_Request {
+        CSteamInputService_GetControllerName_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetControllerName_Request {
+        static instance: CSteamInputService_GetControllerName_Request = CSteamInputService_GetControllerName_Request {
+            serial_number: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetControllerName_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetControllerName_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetControllerName_Response.controller_name)
+    pub controller_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetControllerName_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetControllerName_Response {
+    fn default() -> &'a CSteamInputService_GetControllerName_Response {
+        <CSteamInputService_GetControllerName_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetControllerName_Response {
+    pub fn new() -> CSteamInputService_GetControllerName_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional string controller_name = 1;
+
+    pub fn controller_name(&self) -> &str {
+        match self.controller_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_name(&mut self) {
+        self.controller_name = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_name(&self) -> bool {
+        self.controller_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_name(&mut self, v: ::std::string::String) {
+        self.controller_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_name(&mut self) -> &mut ::std::string::String {
+        if self.controller_name.is_none() {
+            self.controller_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_name(&mut self) -> ::std::string::String {
+        self.controller_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetControllerName_Response {
+    const NAME: &'static str = "CSteamInputService_GetControllerName_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.controller_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_name.as_ref() {
+            os.write_string(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetControllerName_Response {
+        CSteamInputService_GetControllerName_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetControllerName_Response {
+        static instance: CSteamInputService_GetControllerName_Response = CSteamInputService_GetControllerName_Response {
+            controller_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_EnableDockedInput_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_EnableDockedInput_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_EnableDockedInput_Request.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_EnableDockedInput_Request.enable)
+    pub enable: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_EnableDockedInput_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_EnableDockedInput_Request {
+    fn default() -> &'a CSteamInputService_EnableDockedInput_Request {
+        <CSteamInputService_EnableDockedInput_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_EnableDockedInput_Request {
+    pub fn new() -> CSteamInputService_EnableDockedInput_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional bool enable = 2;
+
+    pub fn enable(&self) -> bool {
+        self.enable.unwrap_or(false)
+    }
+
+    pub fn clear_enable(&mut self) {
+        self.enable = ::std::option::Option::None;
+    }
+
+    pub fn has_enable(&self) -> bool {
+        self.enable.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_enable(&mut self, v: bool) {
+        self.enable = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_EnableDockedInput_Request {
+    const NAME: &'static str = "CSteamInputService_EnableDockedInput_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.enable = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.enable {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.enable {
+            os.write_bool(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_EnableDockedInput_Request {
+        CSteamInputService_EnableDockedInput_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.enable = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_EnableDockedInput_Request {
+        static instance: CSteamInputService_EnableDockedInput_Request = CSteamInputService_EnableDockedInput_Request {
+            controller_index: ::std::option::Option::None,
+            enable: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_EnableDockedInput_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_EnableDockedInput_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_EnableDockedInput_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_EnableDockedInput_Response {
+    fn default() -> &'a CSteamInputService_EnableDockedInput_Response {
+        <CSteamInputService_EnableDockedInput_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_EnableDockedInput_Response {
+    pub fn new() -> CSteamInputService_EnableDockedInput_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_EnableDockedInput_Response {
+    const NAME: &'static str = "CSteamInputService_EnableDockedInput_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_EnableDockedInput_Response {
+        CSteamInputService_EnableDockedInput_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_EnableDockedInput_Response {
+        static instance: CSteamInputService_EnableDockedInput_Response = CSteamInputService_EnableDockedInput_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_RawControllerDetailItem)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_RawControllerDetailItem {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.initialized)
+    pub initialized: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.controller_type)
+    pub controller_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.controller_style)
+    pub controller_style: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.xinput_index)
+    pub xinput_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.is_wireless_steam_dongle)
+    pub is_wireless_steam_dongle: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.vendor_id)
+    pub vendor_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.product_id)
+    pub product_id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.capabilities)
+    pub capabilities: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.firmware_version)
+    pub firmware_version: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.firmware_build_time)
+    pub firmware_build_time: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.serial_number)
+    pub serial_number: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.cpu_id)
+    pub cpu_id: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.name)
+    pub name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.is_remote_device)
+    pub is_remote_device: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.is_bluetooth)
+    pub is_bluetooth: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.has_touchscreen)
+    pub has_touchscreen: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.mac_addr)
+    pub mac_addr: ::std::vec::Vec<::std::string::String>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.battery_level)
+    pub battery_level: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.is_charging)
+    pub is_charging: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.led_brightness)
+    pub led_brightness: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.led_saturation)
+    pub led_saturation: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.turn_on_sound)
+    pub turn_on_sound: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.turn_off_sound)
+    pub turn_off_sound: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.led_red)
+    pub led_red: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.led_green)
+    pub led_green: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.led_blue)
+    pub led_blue: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.deadzone_left_stick)
+    pub deadzone_left_stick: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.deadzone_right_stick)
+    pub deadzone_right_stick: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.haptics_enabled)
+    pub haptics_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.gyro_sw_antidrift_enabled)
+    pub gyro_sw_antidrift_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.gyro_one_euro_filter_enabled)
+    pub gyro_one_euro_filter_enabled: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.haptic_strength_left)
+    pub haptic_strength_left: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.haptic_strength_right)
+    pub haptic_strength_right: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.pad_pressure_curve_left)
+    pub pad_pressure_curve_left: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.pad_pressure_curve_right)
+    pub pad_pressure_curve_right: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.left_stick_touch_disable_lpad)
+    pub left_stick_touch_disable_lpad: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.right_stick_touch_disable_rpad)
+    pub right_stick_touch_disable_rpad: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.player_slot_led_setting)
+    pub player_slot_led_setting: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.has_nintendo_layout)
+    pub has_nintendo_layout: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.has_reversed_layout)
+    pub has_reversed_layout: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.has_universal_face_button_glyphs)
+    pub has_universal_face_button_glyphs: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.gyro_stationary_tolerance)
+    pub gyro_stationary_tolerance: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.accel_stationary_tolerance)
+    pub accel_stationary_tolerance: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.aux_capsense_threshold)
+    pub aux_capsense_threshold: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.aux_capsense_hysterisis)
+    pub aux_capsense_hysterisis: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CSteamInputService_RawControllerDetailItem.rumble_setting)
+    pub rumble_setting: ::std::option::Option<i32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_RawControllerDetailItem.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_RawControllerDetailItem {
+    fn default() -> &'a CSteamInputService_RawControllerDetailItem {
+        <CSteamInputService_RawControllerDetailItem as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_RawControllerDetailItem {
+    pub fn new() -> CSteamInputService_RawControllerDetailItem {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional bool initialized = 2;
+
+    pub fn initialized(&self) -> bool {
+        self.initialized.unwrap_or(false)
+    }
+
+    pub fn clear_initialized(&mut self) {
+        self.initialized = ::std::option::Option::None;
+    }
+
+    pub fn has_initialized(&self) -> bool {
+        self.initialized.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_initialized(&mut self, v: bool) {
+        self.initialized = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 controller_type = 3;
+
+    pub fn controller_type(&self) -> u32 {
+        self.controller_type.unwrap_or(0)
+    }
+
+    pub fn clear_controller_type(&mut self) {
+        self.controller_type = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_type(&self) -> bool {
+        self.controller_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_type(&mut self, v: u32) {
+        self.controller_type = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 controller_style = 4;
+
+    pub fn controller_style(&self) -> u32 {
+        self.controller_style.unwrap_or(0)
+    }
+
+    pub fn clear_controller_style(&mut self) {
+        self.controller_style = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_style(&self) -> bool {
+        self.controller_style.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_style(&mut self, v: u32) {
+        self.controller_style = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 xinput_index = 5;
+
+    pub fn xinput_index(&self) -> u32 {
+        self.xinput_index.unwrap_or(0)
+    }
+
+    pub fn clear_xinput_index(&mut self) {
+        self.xinput_index = ::std::option::Option::None;
+    }
+
+    pub fn has_xinput_index(&self) -> bool {
+        self.xinput_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_xinput_index(&mut self, v: u32) {
+        self.xinput_index = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_wireless_steam_dongle = 6;
+
+    pub fn is_wireless_steam_dongle(&self) -> bool {
+        self.is_wireless_steam_dongle.unwrap_or(false)
+    }
+
+    pub fn clear_is_wireless_steam_dongle(&mut self) {
+        self.is_wireless_steam_dongle = ::std::option::Option::None;
+    }
+
+    pub fn has_is_wireless_steam_dongle(&self) -> bool {
+        self.is_wireless_steam_dongle.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_wireless_steam_dongle(&mut self, v: bool) {
+        self.is_wireless_steam_dongle = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 vendor_id = 7;
+
+    pub fn vendor_id(&self) -> u32 {
+        self.vendor_id.unwrap_or(0)
+    }
+
+    pub fn clear_vendor_id(&mut self) {
+        self.vendor_id = ::std::option::Option::None;
+    }
+
+    pub fn has_vendor_id(&self) -> bool {
+        self.vendor_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_vendor_id(&mut self, v: u32) {
+        self.vendor_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 product_id = 8;
+
+    pub fn product_id(&self) -> u32 {
+        self.product_id.unwrap_or(0)
+    }
+
+    pub fn clear_product_id(&mut self) {
+        self.product_id = ::std::option::Option::None;
+    }
+
+    pub fn has_product_id(&self) -> bool {
+        self.product_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_product_id(&mut self, v: u32) {
+        self.product_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 capabilities = 9;
+
+    pub fn capabilities(&self) -> u64 {
+        self.capabilities.unwrap_or(0)
+    }
+
+    pub fn clear_capabilities(&mut self) {
+        self.capabilities = ::std::option::Option::None;
+    }
+
+    pub fn has_capabilities(&self) -> bool {
+        self.capabilities.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_capabilities(&mut self, v: u64) {
+        self.capabilities = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 firmware_version = 10;
+
+    pub fn firmware_version(&self) -> u32 {
+        self.firmware_version.unwrap_or(0)
+    }
+
+    pub fn clear_firmware_version(&mut self) {
+        self.firmware_version = ::std::option::Option::None;
+    }
+
+    pub fn has_firmware_version(&self) -> bool {
+        self.firmware_version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_firmware_version(&mut self, v: u32) {
+        self.firmware_version = ::std::option::Option::Some(v);
+    }
+
+    // optional string firmware_build_time = 11;
+
+    pub fn firmware_build_time(&self) -> &str {
+        match self.firmware_build_time.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_firmware_build_time(&mut self) {
+        self.firmware_build_time = ::std::option::Option::None;
+    }
+
+    pub fn has_firmware_build_time(&self) -> bool {
+        self.firmware_build_time.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_firmware_build_time(&mut self, v: ::std::string::String) {
+        self.firmware_build_time = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_firmware_build_time(&mut self) -> &mut ::std::string::String {
+        if self.firmware_build_time.is_none() {
+            self.firmware_build_time = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.firmware_build_time.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_firmware_build_time(&mut self) -> ::std::string::String {
+        self.firmware_build_time.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string serial_number = 12;
+
+    pub fn serial_number(&self) -> &str {
+        match self.serial_number.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_serial_number(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+    }
+
+    pub fn has_serial_number(&self) -> bool {
+        self.serial_number.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_serial_number(&mut self, v: ::std::string::String) {
+        self.serial_number = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_serial_number(&mut self) -> &mut ::std::string::String {
+        if self.serial_number.is_none() {
+            self.serial_number = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.serial_number.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_serial_number(&mut self) -> ::std::string::String {
+        self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string cpu_id = 13;
+
+    pub fn cpu_id(&self) -> &str {
+        match self.cpu_id.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_cpu_id(&mut self) {
+        self.cpu_id = ::std::option::Option::None;
+    }
+
+    pub fn has_cpu_id(&self) -> bool {
+        self.cpu_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cpu_id(&mut self, v: ::std::string::String) {
+        self.cpu_id = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_cpu_id(&mut self) -> &mut ::std::string::String {
+        if self.cpu_id.is_none() {
+            self.cpu_id = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.cpu_id.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_cpu_id(&mut self) -> ::std::string::String {
+        self.cpu_id.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string name = 14;
+
+    pub fn name(&self) -> &str {
+        match self.name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_name(&mut self) {
+        self.name = ::std::option::Option::None;
+    }
+
+    pub fn has_name(&self) -> bool {
+        self.name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_name(&mut self, v: ::std::string::String) {
+        self.name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+        if self.name.is_none() {
+            self.name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_name(&mut self) -> ::std::string::String {
+        self.name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool is_remote_device = 15;
+
+    pub fn is_remote_device(&self) -> bool {
+        self.is_remote_device.unwrap_or(false)
+    }
+
+    pub fn clear_is_remote_device(&mut self) {
+        self.is_remote_device = ::std::option::Option::None;
+    }
+
+    pub fn has_is_remote_device(&self) -> bool {
+        self.is_remote_device.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_remote_device(&mut self, v: bool) {
+        self.is_remote_device = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_bluetooth = 16;
+
+    pub fn is_bluetooth(&self) -> bool {
+        self.is_bluetooth.unwrap_or(false)
+    }
+
+    pub fn clear_is_bluetooth(&mut self) {
+        self.is_bluetooth = ::std::option::Option::None;
+    }
+
+    pub fn has_is_bluetooth(&self) -> bool {
+        self.is_bluetooth.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_bluetooth(&mut self, v: bool) {
+        self.is_bluetooth = ::std::option::Option::Some(v);
+    }
+
+    // optional bool has_touchscreen = 17;
+
+    pub fn has_touchscreen(&self) -> bool {
+        self.has_touchscreen.unwrap_or(false)
+    }
+
+    pub fn clear_has_touchscreen(&mut self) {
+        self.has_touchscreen = ::std::option::Option::None;
+    }
+
+    pub fn has_has_touchscreen(&self) -> bool {
+        self.has_touchscreen.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_has_touchscreen(&mut self, v: bool) {
+        self.has_touchscreen = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 battery_level = 19;
+
+    pub fn battery_level(&self) -> u32 {
+        self.battery_level.unwrap_or(0)
+    }
+
+    pub fn clear_battery_level(&mut self) {
+        self.battery_level = ::std::option::Option::None;
+    }
+
+    pub fn has_battery_level(&self) -> bool {
+        self.battery_level.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_battery_level(&mut self, v: u32) {
+        self.battery_level = ::std::option::Option::Some(v);
+    }
+
+    // optional bool is_charging = 20;
+
+    pub fn is_charging(&self) -> bool {
+        self.is_charging.unwrap_or(false)
+    }
+
+    pub fn clear_is_charging(&mut self) {
+        self.is_charging = ::std::option::Option::None;
+    }
+
+    pub fn has_is_charging(&self) -> bool {
+        self.is_charging.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_charging(&mut self, v: bool) {
+        self.is_charging = ::std::option::Option::Some(v);
+    }
+
+    // optional float led_brightness = 21;
+
+    pub fn led_brightness(&self) -> f32 {
+        self.led_brightness.unwrap_or(0.)
+    }
+
+    pub fn clear_led_brightness(&mut self) {
+        self.led_brightness = ::std::option::Option::None;
+    }
+
+    pub fn has_led_brightness(&self) -> bool {
+        self.led_brightness.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_led_brightness(&mut self, v: f32) {
+        self.led_brightness = ::std::option::Option::Some(v);
+    }
+
+    // optional float led_saturation = 22;
+
+    pub fn led_saturation(&self) -> f32 {
+        self.led_saturation.unwrap_or(0.)
+    }
+
+    pub fn clear_led_saturation(&mut self) {
+        self.led_saturation = ::std::option::Option::None;
+    }
+
+    pub fn has_led_saturation(&self) -> bool {
+        self.led_saturation.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_led_saturation(&mut self, v: f32) {
+        self.led_saturation = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 turn_on_sound = 23;
+
+    pub fn turn_on_sound(&self) -> i32 {
+        self.turn_on_sound.unwrap_or(0)
+    }
+
+    pub fn clear_turn_on_sound(&mut self) {
+        self.turn_on_sound = ::std::option::Option::None;
+    }
+
+    pub fn has_turn_on_sound(&self) -> bool {
+        self.turn_on_sound.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_turn_on_sound(&mut self, v: i32) {
+        self.turn_on_sound = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 turn_off_sound = 24;
+
+    pub fn turn_off_sound(&self) -> i32 {
+        self.turn_off_sound.unwrap_or(0)
+    }
+
+    pub fn clear_turn_off_sound(&mut self) {
+        self.turn_off_sound = ::std::option::Option::None;
+    }
+
+    pub fn has_turn_off_sound(&self) -> bool {
+        self.turn_off_sound.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_turn_off_sound(&mut self, v: i32) {
+        self.turn_off_sound = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 led_red = 25;
+
+    pub fn led_red(&self) -> i32 {
+        self.led_red.unwrap_or(0)
+    }
+
+    pub fn clear_led_red(&mut self) {
+        self.led_red = ::std::option::Option::None;
+    }
+
+    pub fn has_led_red(&self) -> bool {
+        self.led_red.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_led_red(&mut self, v: i32) {
+        self.led_red = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 led_green = 26;
+
+    pub fn led_green(&self) -> i32 {
+        self.led_green.unwrap_or(0)
+    }
+
+    pub fn clear_led_green(&mut self) {
+        self.led_green = ::std::option::Option::None;
+    }
+
+    pub fn has_led_green(&self) -> bool {
+        self.led_green.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_led_green(&mut self, v: i32) {
+        self.led_green = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 led_blue = 27;
+
+    pub fn led_blue(&self) -> i32 {
+        self.led_blue.unwrap_or(0)
+    }
+
+    pub fn clear_led_blue(&mut self) {
+        self.led_blue = ::std::option::Option::None;
+    }
+
+    pub fn has_led_blue(&self) -> bool {
+        self.led_blue.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_led_blue(&mut self, v: i32) {
+        self.led_blue = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 deadzone_left_stick = 28;
+
+    pub fn deadzone_left_stick(&self) -> i32 {
+        self.deadzone_left_stick.unwrap_or(0)
+    }
+
+    pub fn clear_deadzone_left_stick(&mut self) {
+        self.deadzone_left_stick = ::std::option::Option::None;
+    }
+
+    pub fn has_deadzone_left_stick(&self) -> bool {
+        self.deadzone_left_stick.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_deadzone_left_stick(&mut self, v: i32) {
+        self.deadzone_left_stick = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 deadzone_right_stick = 29;
+
+    pub fn deadzone_right_stick(&self) -> i32 {
+        self.deadzone_right_stick.unwrap_or(0)
+    }
+
+    pub fn clear_deadzone_right_stick(&mut self) {
+        self.deadzone_right_stick = ::std::option::Option::None;
+    }
+
+    pub fn has_deadzone_right_stick(&self) -> bool {
+        self.deadzone_right_stick.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_deadzone_right_stick(&mut self, v: i32) {
+        self.deadzone_right_stick = ::std::option::Option::Some(v);
+    }
+
+    // optional bool haptics_enabled = 30;
+
+    pub fn haptics_enabled(&self) -> bool {
+        self.haptics_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_haptics_enabled(&mut self) {
+        self.haptics_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_haptics_enabled(&self) -> bool {
+        self.haptics_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_haptics_enabled(&mut self, v: bool) {
+        self.haptics_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional bool gyro_sw_antidrift_enabled = 31;
+
+    pub fn gyro_sw_antidrift_enabled(&self) -> bool {
+        self.gyro_sw_antidrift_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_gyro_sw_antidrift_enabled(&mut self) {
+        self.gyro_sw_antidrift_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_gyro_sw_antidrift_enabled(&self) -> bool {
+        self.gyro_sw_antidrift_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gyro_sw_antidrift_enabled(&mut self, v: bool) {
+        self.gyro_sw_antidrift_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional bool gyro_one_euro_filter_enabled = 32;
+
+    pub fn gyro_one_euro_filter_enabled(&self) -> bool {
+        self.gyro_one_euro_filter_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_gyro_one_euro_filter_enabled(&mut self) {
+        self.gyro_one_euro_filter_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_gyro_one_euro_filter_enabled(&self) -> bool {
+        self.gyro_one_euro_filter_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gyro_one_euro_filter_enabled(&mut self, v: bool) {
+        self.gyro_one_euro_filter_enabled = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 haptic_strength_left = 33;
+
+    pub fn haptic_strength_left(&self) -> i32 {
+        self.haptic_strength_left.unwrap_or(0)
+    }
+
+    pub fn clear_haptic_strength_left(&mut self) {
+        self.haptic_strength_left = ::std::option::Option::None;
+    }
+
+    pub fn has_haptic_strength_left(&self) -> bool {
+        self.haptic_strength_left.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_haptic_strength_left(&mut self, v: i32) {
+        self.haptic_strength_left = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 haptic_strength_right = 34;
+
+    pub fn haptic_strength_right(&self) -> i32 {
+        self.haptic_strength_right.unwrap_or(0)
+    }
+
+    pub fn clear_haptic_strength_right(&mut self) {
+        self.haptic_strength_right = ::std::option::Option::None;
+    }
+
+    pub fn has_haptic_strength_right(&self) -> bool {
+        self.haptic_strength_right.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_haptic_strength_right(&mut self, v: i32) {
+        self.haptic_strength_right = ::std::option::Option::Some(v);
+    }
+
+    // optional float pad_pressure_curve_left = 35;
+
+    pub fn pad_pressure_curve_left(&self) -> f32 {
+        self.pad_pressure_curve_left.unwrap_or(0.)
+    }
+
+    pub fn clear_pad_pressure_curve_left(&mut self) {
+        self.pad_pressure_curve_left = ::std::option::Option::None;
+    }
+
+    pub fn has_pad_pressure_curve_left(&self) -> bool {
+        self.pad_pressure_curve_left.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_pad_pressure_curve_left(&mut self, v: f32) {
+        self.pad_pressure_curve_left = ::std::option::Option::Some(v);
+    }
+
+    // optional float pad_pressure_curve_right = 36;
+
+    pub fn pad_pressure_curve_right(&self) -> f32 {
+        self.pad_pressure_curve_right.unwrap_or(0.)
+    }
+
+    pub fn clear_pad_pressure_curve_right(&mut self) {
+        self.pad_pressure_curve_right = ::std::option::Option::None;
+    }
+
+    pub fn has_pad_pressure_curve_right(&self) -> bool {
+        self.pad_pressure_curve_right.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_pad_pressure_curve_right(&mut self, v: f32) {
+        self.pad_pressure_curve_right = ::std::option::Option::Some(v);
+    }
+
+    // optional bool left_stick_touch_disable_lpad = 37;
+
+    pub fn left_stick_touch_disable_lpad(&self) -> bool {
+        self.left_stick_touch_disable_lpad.unwrap_or(false)
+    }
+
+    pub fn clear_left_stick_touch_disable_lpad(&mut self) {
+        self.left_stick_touch_disable_lpad = ::std::option::Option::None;
+    }
+
+    pub fn has_left_stick_touch_disable_lpad(&self) -> bool {
+        self.left_stick_touch_disable_lpad.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_left_stick_touch_disable_lpad(&mut self, v: bool) {
+        self.left_stick_touch_disable_lpad = ::std::option::Option::Some(v);
+    }
+
+    // optional bool right_stick_touch_disable_rpad = 38;
+
+    pub fn right_stick_touch_disable_rpad(&self) -> bool {
+        self.right_stick_touch_disable_rpad.unwrap_or(false)
+    }
+
+    pub fn clear_right_stick_touch_disable_rpad(&mut self) {
+        self.right_stick_touch_disable_rpad = ::std::option::Option::None;
+    }
+
+    pub fn has_right_stick_touch_disable_rpad(&self) -> bool {
+        self.right_stick_touch_disable_rpad.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_right_stick_touch_disable_rpad(&mut self, v: bool) {
+        self.right_stick_touch_disable_rpad = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 player_slot_led_setting = 39;
+
+    pub fn player_slot_led_setting(&self) -> i32 {
+        self.player_slot_led_setting.unwrap_or(0)
+    }
+
+    pub fn clear_player_slot_led_setting(&mut self) {
+        self.player_slot_led_setting = ::std::option::Option::None;
+    }
+
+    pub fn has_player_slot_led_setting(&self) -> bool {
+        self.player_slot_led_setting.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_player_slot_led_setting(&mut self, v: i32) {
+        self.player_slot_led_setting = ::std::option::Option::Some(v);
+    }
+
+    // optional bool has_nintendo_layout = 40;
+
+    pub fn has_nintendo_layout(&self) -> bool {
+        self.has_nintendo_layout.unwrap_or(false)
+    }
+
+    pub fn clear_has_nintendo_layout(&mut self) {
+        self.has_nintendo_layout = ::std::option::Option::None;
+    }
+
+    pub fn has_has_nintendo_layout(&self) -> bool {
+        self.has_nintendo_layout.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_has_nintendo_layout(&mut self, v: bool) {
+        self.has_nintendo_layout = ::std::option::Option::Some(v);
+    }
+
+    // optional bool has_reversed_layout = 41;
+
+    pub fn has_reversed_layout(&self) -> bool {
+        self.has_reversed_layout.unwrap_or(false)
+    }
+
+    pub fn clear_has_reversed_layout(&mut self) {
+        self.has_reversed_layout = ::std::option::Option::None;
+    }
+
+    pub fn has_has_reversed_layout(&self) -> bool {
+        self.has_reversed_layout.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_has_reversed_layout(&mut self, v: bool) {
+        self.has_reversed_layout = ::std::option::Option::Some(v);
+    }
+
+    // optional bool has_universal_face_button_glyphs = 42;
+
+    pub fn has_universal_face_button_glyphs(&self) -> bool {
+        self.has_universal_face_button_glyphs.unwrap_or(false)
+    }
+
+    pub fn clear_has_universal_face_button_glyphs(&mut self) {
+        self.has_universal_face_button_glyphs = ::std::option::Option::None;
+    }
+
+    pub fn has_has_universal_face_button_glyphs(&self) -> bool {
+        self.has_universal_face_button_glyphs.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_has_universal_face_button_glyphs(&mut self, v: bool) {
+        self.has_universal_face_button_glyphs = ::std::option::Option::Some(v);
+    }
+
+    // optional float gyro_stationary_tolerance = 43;
+
+    pub fn gyro_stationary_tolerance(&self) -> f32 {
+        self.gyro_stationary_tolerance.unwrap_or(0.)
+    }
+
+    pub fn clear_gyro_stationary_tolerance(&mut self) {
+        self.gyro_stationary_tolerance = ::std::option::Option::None;
+    }
+
+    pub fn has_gyro_stationary_tolerance(&self) -> bool {
+        self.gyro_stationary_tolerance.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gyro_stationary_tolerance(&mut self, v: f32) {
+        self.gyro_stationary_tolerance = ::std::option::Option::Some(v);
+    }
+
+    // optional float accel_stationary_tolerance = 44;
+
+    pub fn accel_stationary_tolerance(&self) -> f32 {
+        self.accel_stationary_tolerance.unwrap_or(0.)
+    }
+
+    pub fn clear_accel_stationary_tolerance(&mut self) {
+        self.accel_stationary_tolerance = ::std::option::Option::None;
+    }
+
+    pub fn has_accel_stationary_tolerance(&self) -> bool {
+        self.accel_stationary_tolerance.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_accel_stationary_tolerance(&mut self, v: f32) {
+        self.accel_stationary_tolerance = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 aux_capsense_threshold = 45;
+
+    pub fn aux_capsense_threshold(&self) -> i32 {
+        self.aux_capsense_threshold.unwrap_or(0)
+    }
+
+    pub fn clear_aux_capsense_threshold(&mut self) {
+        self.aux_capsense_threshold = ::std::option::Option::None;
+    }
+
+    pub fn has_aux_capsense_threshold(&self) -> bool {
+        self.aux_capsense_threshold.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_aux_capsense_threshold(&mut self, v: i32) {
+        self.aux_capsense_threshold = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 aux_capsense_hysterisis = 46;
+
+    pub fn aux_capsense_hysterisis(&self) -> i32 {
+        self.aux_capsense_hysterisis.unwrap_or(0)
+    }
+
+    pub fn clear_aux_capsense_hysterisis(&mut self) {
+        self.aux_capsense_hysterisis = ::std::option::Option::None;
+    }
+
+    pub fn has_aux_capsense_hysterisis(&self) -> bool {
+        self.aux_capsense_hysterisis.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_aux_capsense_hysterisis(&mut self, v: i32) {
+        self.aux_capsense_hysterisis = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 rumble_setting = 47;
+
+    pub fn rumble_setting(&self) -> i32 {
+        self.rumble_setting.unwrap_or(0)
+    }
+
+    pub fn clear_rumble_setting(&mut self) {
+        self.rumble_setting = ::std::option::Option::None;
+    }
+
+    pub fn has_rumble_setting(&self) -> bool {
+        self.rumble_setting.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rumble_setting(&mut self, v: i32) {
+        self.rumble_setting = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_RawControllerDetailItem {
+    const NAME: &'static str = "CSteamInputService_RawControllerDetailItem";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.initialized = ::std::option::Option::Some(is.read_bool()?);
+                },
+                24 => {
+                    self.controller_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                32 => {
+                    self.controller_style = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.xinput_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                48 => {
+                    self.is_wireless_steam_dongle = ::std::option::Option::Some(is.read_bool()?);
+                },
+                56 => {
+                    self.vendor_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                64 => {
+                    self.product_id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                72 => {
+                    self.capabilities = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                80 => {
+                    self.firmware_version = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                90 => {
+                    self.firmware_build_time = ::std::option::Option::Some(is.read_string()?);
+                },
+                98 => {
+                    self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                },
+                106 => {
+                    self.cpu_id = ::std::option::Option::Some(is.read_string()?);
+                },
+                114 => {
+                    self.name = ::std::option::Option::Some(is.read_string()?);
+                },
+                120 => {
+                    self.is_remote_device = ::std::option::Option::Some(is.read_bool()?);
+                },
+                128 => {
+                    self.is_bluetooth = ::std::option::Option::Some(is.read_bool()?);
+                },
+                136 => {
+                    self.has_touchscreen = ::std::option::Option::Some(is.read_bool()?);
+                },
+                146 => {
+                    self.mac_addr.push(is.read_string()?);
+                },
+                152 => {
+                    self.battery_level = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                160 => {
+                    self.is_charging = ::std::option::Option::Some(is.read_bool()?);
+                },
+                173 => {
+                    self.led_brightness = ::std::option::Option::Some(is.read_float()?);
+                },
+                181 => {
+                    self.led_saturation = ::std::option::Option::Some(is.read_float()?);
+                },
+                184 => {
+                    self.turn_on_sound = ::std::option::Option::Some(is.read_int32()?);
+                },
+                192 => {
+                    self.turn_off_sound = ::std::option::Option::Some(is.read_int32()?);
+                },
+                200 => {
+                    self.led_red = ::std::option::Option::Some(is.read_int32()?);
+                },
+                208 => {
+                    self.led_green = ::std::option::Option::Some(is.read_int32()?);
+                },
+                216 => {
+                    self.led_blue = ::std::option::Option::Some(is.read_int32()?);
+                },
+                224 => {
+                    self.deadzone_left_stick = ::std::option::Option::Some(is.read_int32()?);
+                },
+                232 => {
+                    self.deadzone_right_stick = ::std::option::Option::Some(is.read_int32()?);
+                },
+                240 => {
+                    self.haptics_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                248 => {
+                    self.gyro_sw_antidrift_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                256 => {
+                    self.gyro_one_euro_filter_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                264 => {
+                    self.haptic_strength_left = ::std::option::Option::Some(is.read_int32()?);
+                },
+                272 => {
+                    self.haptic_strength_right = ::std::option::Option::Some(is.read_int32()?);
+                },
+                285 => {
+                    self.pad_pressure_curve_left = ::std::option::Option::Some(is.read_float()?);
+                },
+                293 => {
+                    self.pad_pressure_curve_right = ::std::option::Option::Some(is.read_float()?);
+                },
+                296 => {
+                    self.left_stick_touch_disable_lpad = ::std::option::Option::Some(is.read_bool()?);
+                },
+                304 => {
+                    self.right_stick_touch_disable_rpad = ::std::option::Option::Some(is.read_bool()?);
+                },
+                312 => {
+                    self.player_slot_led_setting = ::std::option::Option::Some(is.read_int32()?);
+                },
+                320 => {
+                    self.has_nintendo_layout = ::std::option::Option::Some(is.read_bool()?);
+                },
+                328 => {
+                    self.has_reversed_layout = ::std::option::Option::Some(is.read_bool()?);
+                },
+                336 => {
+                    self.has_universal_face_button_glyphs = ::std::option::Option::Some(is.read_bool()?);
+                },
+                349 => {
+                    self.gyro_stationary_tolerance = ::std::option::Option::Some(is.read_float()?);
+                },
+                357 => {
+                    self.accel_stationary_tolerance = ::std::option::Option::Some(is.read_float()?);
+                },
+                360 => {
+                    self.aux_capsense_threshold = ::std::option::Option::Some(is.read_int32()?);
+                },
+                368 => {
+                    self.aux_capsense_hysterisis = ::std::option::Option::Some(is.read_int32()?);
+                },
+                376 => {
+                    self.rumble_setting = ::std::option::Option::Some(is.read_int32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.initialized {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.controller_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        if let Some(v) = self.controller_style {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.xinput_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(5, v);
+        }
+        if let Some(v) = self.is_wireless_steam_dongle {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.vendor_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, v);
+        }
+        if let Some(v) = self.product_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
+        }
+        if let Some(v) = self.capabilities {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(9, v);
+        }
+        if let Some(v) = self.firmware_version {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(10, v);
+        }
+        if let Some(v) = self.firmware_build_time.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(11, &v);
+        }
+        if let Some(v) = self.serial_number.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(12, &v);
+        }
+        if let Some(v) = self.cpu_id.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(13, &v);
+        }
+        if let Some(v) = self.name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(14, &v);
+        }
+        if let Some(v) = self.is_remote_device {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.is_bluetooth {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.has_touchscreen {
+            my_size += 2 + 1;
+        }
+        for value in &self.mac_addr {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(18, &value);
+        };
+        if let Some(v) = self.battery_level {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(19, v);
+        }
+        if let Some(v) = self.is_charging {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.led_brightness {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.led_saturation {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.turn_on_sound {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(23, v);
+        }
+        if let Some(v) = self.turn_off_sound {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(24, v);
+        }
+        if let Some(v) = self.led_red {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(25, v);
+        }
+        if let Some(v) = self.led_green {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(26, v);
+        }
+        if let Some(v) = self.led_blue {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(27, v);
+        }
+        if let Some(v) = self.deadzone_left_stick {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(28, v);
+        }
+        if let Some(v) = self.deadzone_right_stick {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(29, v);
+        }
+        if let Some(v) = self.haptics_enabled {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.gyro_sw_antidrift_enabled {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.gyro_one_euro_filter_enabled {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.haptic_strength_left {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(33, v);
+        }
+        if let Some(v) = self.haptic_strength_right {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(34, v);
+        }
+        if let Some(v) = self.pad_pressure_curve_left {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.pad_pressure_curve_right {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.left_stick_touch_disable_lpad {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.right_stick_touch_disable_rpad {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.player_slot_led_setting {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(39, v);
+        }
+        if let Some(v) = self.has_nintendo_layout {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.has_reversed_layout {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.has_universal_face_button_glyphs {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.gyro_stationary_tolerance {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.accel_stationary_tolerance {
+            my_size += 2 + 4;
+        }
+        if let Some(v) = self.aux_capsense_threshold {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(45, v);
+        }
+        if let Some(v) = self.aux_capsense_hysterisis {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(46, v);
+        }
+        if let Some(v) = self.rumble_setting {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(47, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.initialized {
+            os.write_bool(2, v)?;
+        }
+        if let Some(v) = self.controller_type {
+            os.write_uint32(3, v)?;
+        }
+        if let Some(v) = self.controller_style {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.xinput_index {
+            os.write_uint32(5, v)?;
+        }
+        if let Some(v) = self.is_wireless_steam_dongle {
+            os.write_bool(6, v)?;
+        }
+        if let Some(v) = self.vendor_id {
+            os.write_uint32(7, v)?;
+        }
+        if let Some(v) = self.product_id {
+            os.write_uint32(8, v)?;
+        }
+        if let Some(v) = self.capabilities {
+            os.write_uint64(9, v)?;
+        }
+        if let Some(v) = self.firmware_version {
+            os.write_uint32(10, v)?;
+        }
+        if let Some(v) = self.firmware_build_time.as_ref() {
+            os.write_string(11, v)?;
+        }
+        if let Some(v) = self.serial_number.as_ref() {
+            os.write_string(12, v)?;
+        }
+        if let Some(v) = self.cpu_id.as_ref() {
+            os.write_string(13, v)?;
+        }
+        if let Some(v) = self.name.as_ref() {
+            os.write_string(14, v)?;
+        }
+        if let Some(v) = self.is_remote_device {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.is_bluetooth {
+            os.write_bool(16, v)?;
+        }
+        if let Some(v) = self.has_touchscreen {
+            os.write_bool(17, v)?;
+        }
+        for v in &self.mac_addr {
+            os.write_string(18, &v)?;
+        };
+        if let Some(v) = self.battery_level {
+            os.write_uint32(19, v)?;
+        }
+        if let Some(v) = self.is_charging {
+            os.write_bool(20, v)?;
+        }
+        if let Some(v) = self.led_brightness {
+            os.write_float(21, v)?;
+        }
+        if let Some(v) = self.led_saturation {
+            os.write_float(22, v)?;
+        }
+        if let Some(v) = self.turn_on_sound {
+            os.write_int32(23, v)?;
+        }
+        if let Some(v) = self.turn_off_sound {
+            os.write_int32(24, v)?;
+        }
+        if let Some(v) = self.led_red {
+            os.write_int32(25, v)?;
+        }
+        if let Some(v) = self.led_green {
+            os.write_int32(26, v)?;
+        }
+        if let Some(v) = self.led_blue {
+            os.write_int32(27, v)?;
+        }
+        if let Some(v) = self.deadzone_left_stick {
+            os.write_int32(28, v)?;
+        }
+        if let Some(v) = self.deadzone_right_stick {
+            os.write_int32(29, v)?;
+        }
+        if let Some(v) = self.haptics_enabled {
+            os.write_bool(30, v)?;
+        }
+        if let Some(v) = self.gyro_sw_antidrift_enabled {
+            os.write_bool(31, v)?;
+        }
+        if let Some(v) = self.gyro_one_euro_filter_enabled {
+            os.write_bool(32, v)?;
+        }
+        if let Some(v) = self.haptic_strength_left {
+            os.write_int32(33, v)?;
+        }
+        if let Some(v) = self.haptic_strength_right {
+            os.write_int32(34, v)?;
+        }
+        if let Some(v) = self.pad_pressure_curve_left {
+            os.write_float(35, v)?;
+        }
+        if let Some(v) = self.pad_pressure_curve_right {
+            os.write_float(36, v)?;
+        }
+        if let Some(v) = self.left_stick_touch_disable_lpad {
+            os.write_bool(37, v)?;
+        }
+        if let Some(v) = self.right_stick_touch_disable_rpad {
+            os.write_bool(38, v)?;
+        }
+        if let Some(v) = self.player_slot_led_setting {
+            os.write_int32(39, v)?;
+        }
+        if let Some(v) = self.has_nintendo_layout {
+            os.write_bool(40, v)?;
+        }
+        if let Some(v) = self.has_reversed_layout {
+            os.write_bool(41, v)?;
+        }
+        if let Some(v) = self.has_universal_face_button_glyphs {
+            os.write_bool(42, v)?;
+        }
+        if let Some(v) = self.gyro_stationary_tolerance {
+            os.write_float(43, v)?;
+        }
+        if let Some(v) = self.accel_stationary_tolerance {
+            os.write_float(44, v)?;
+        }
+        if let Some(v) = self.aux_capsense_threshold {
+            os.write_int32(45, v)?;
+        }
+        if let Some(v) = self.aux_capsense_hysterisis {
+            os.write_int32(46, v)?;
+        }
+        if let Some(v) = self.rumble_setting {
+            os.write_int32(47, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_RawControllerDetailItem {
+        CSteamInputService_RawControllerDetailItem::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.initialized = ::std::option::Option::None;
+        self.controller_type = ::std::option::Option::None;
+        self.controller_style = ::std::option::Option::None;
+        self.xinput_index = ::std::option::Option::None;
+        self.is_wireless_steam_dongle = ::std::option::Option::None;
+        self.vendor_id = ::std::option::Option::None;
+        self.product_id = ::std::option::Option::None;
+        self.capabilities = ::std::option::Option::None;
+        self.firmware_version = ::std::option::Option::None;
+        self.firmware_build_time = ::std::option::Option::None;
+        self.serial_number = ::std::option::Option::None;
+        self.cpu_id = ::std::option::Option::None;
+        self.name = ::std::option::Option::None;
+        self.is_remote_device = ::std::option::Option::None;
+        self.is_bluetooth = ::std::option::Option::None;
+        self.has_touchscreen = ::std::option::Option::None;
+        self.mac_addr.clear();
+        self.battery_level = ::std::option::Option::None;
+        self.is_charging = ::std::option::Option::None;
+        self.led_brightness = ::std::option::Option::None;
+        self.led_saturation = ::std::option::Option::None;
+        self.turn_on_sound = ::std::option::Option::None;
+        self.turn_off_sound = ::std::option::Option::None;
+        self.led_red = ::std::option::Option::None;
+        self.led_green = ::std::option::Option::None;
+        self.led_blue = ::std::option::Option::None;
+        self.deadzone_left_stick = ::std::option::Option::None;
+        self.deadzone_right_stick = ::std::option::Option::None;
+        self.haptics_enabled = ::std::option::Option::None;
+        self.gyro_sw_antidrift_enabled = ::std::option::Option::None;
+        self.gyro_one_euro_filter_enabled = ::std::option::Option::None;
+        self.haptic_strength_left = ::std::option::Option::None;
+        self.haptic_strength_right = ::std::option::Option::None;
+        self.pad_pressure_curve_left = ::std::option::Option::None;
+        self.pad_pressure_curve_right = ::std::option::Option::None;
+        self.left_stick_touch_disable_lpad = ::std::option::Option::None;
+        self.right_stick_touch_disable_rpad = ::std::option::Option::None;
+        self.player_slot_led_setting = ::std::option::Option::None;
+        self.has_nintendo_layout = ::std::option::Option::None;
+        self.has_reversed_layout = ::std::option::Option::None;
+        self.has_universal_face_button_glyphs = ::std::option::Option::None;
+        self.gyro_stationary_tolerance = ::std::option::Option::None;
+        self.accel_stationary_tolerance = ::std::option::Option::None;
+        self.aux_capsense_threshold = ::std::option::Option::None;
+        self.aux_capsense_hysterisis = ::std::option::Option::None;
+        self.rumble_setting = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_RawControllerDetailItem {
+        static instance: CSteamInputService_RawControllerDetailItem = CSteamInputService_RawControllerDetailItem {
+            controller_index: ::std::option::Option::None,
+            initialized: ::std::option::Option::None,
+            controller_type: ::std::option::Option::None,
+            controller_style: ::std::option::Option::None,
+            xinput_index: ::std::option::Option::None,
+            is_wireless_steam_dongle: ::std::option::Option::None,
+            vendor_id: ::std::option::Option::None,
+            product_id: ::std::option::Option::None,
+            capabilities: ::std::option::Option::None,
+            firmware_version: ::std::option::Option::None,
+            firmware_build_time: ::std::option::Option::None,
+            serial_number: ::std::option::Option::None,
+            cpu_id: ::std::option::Option::None,
+            name: ::std::option::Option::None,
+            is_remote_device: ::std::option::Option::None,
+            is_bluetooth: ::std::option::Option::None,
+            has_touchscreen: ::std::option::Option::None,
+            mac_addr: ::std::vec::Vec::new(),
+            battery_level: ::std::option::Option::None,
+            is_charging: ::std::option::Option::None,
+            led_brightness: ::std::option::Option::None,
+            led_saturation: ::std::option::Option::None,
+            turn_on_sound: ::std::option::Option::None,
+            turn_off_sound: ::std::option::Option::None,
+            led_red: ::std::option::Option::None,
+            led_green: ::std::option::Option::None,
+            led_blue: ::std::option::Option::None,
+            deadzone_left_stick: ::std::option::Option::None,
+            deadzone_right_stick: ::std::option::Option::None,
+            haptics_enabled: ::std::option::Option::None,
+            gyro_sw_antidrift_enabled: ::std::option::Option::None,
+            gyro_one_euro_filter_enabled: ::std::option::Option::None,
+            haptic_strength_left: ::std::option::Option::None,
+            haptic_strength_right: ::std::option::Option::None,
+            pad_pressure_curve_left: ::std::option::Option::None,
+            pad_pressure_curve_right: ::std::option::Option::None,
+            left_stick_touch_disable_lpad: ::std::option::Option::None,
+            right_stick_touch_disable_rpad: ::std::option::Option::None,
+            player_slot_led_setting: ::std::option::Option::None,
+            has_nintendo_layout: ::std::option::Option::None,
+            has_reversed_layout: ::std::option::Option::None,
+            has_universal_face_button_glyphs: ::std::option::Option::None,
+            gyro_stationary_tolerance: ::std::option::Option::None,
+            accel_stationary_tolerance: ::std::option::Option::None,
+            aux_capsense_threshold: ::std::option::Option::None,
+            aux_capsense_hysterisis: ::std::option::Option::None,
+            rumble_setting: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ControllerListChanged_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ControllerListChanged_Notification {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ControllerListChanged_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ControllerListChanged_Notification {
+    fn default() -> &'a CSteamInputService_ControllerListChanged_Notification {
+        <CSteamInputService_ControllerListChanged_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ControllerListChanged_Notification {
+    pub fn new() -> CSteamInputService_ControllerListChanged_Notification {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerListChanged_Notification {
+    const NAME: &'static str = "CSteamInputService_ControllerListChanged_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ControllerListChanged_Notification {
+        CSteamInputService_ControllerListChanged_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ControllerListChanged_Notification {
+        static instance: CSteamInputService_ControllerListChanged_Notification = CSteamInputService_ControllerListChanged_Notification {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_InitControllerList_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_InitControllerList_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_InitControllerList_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_InitControllerList_Request {
+    fn default() -> &'a CSteamInputService_InitControllerList_Request {
+        <CSteamInputService_InitControllerList_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_InitControllerList_Request {
+    pub fn new() -> CSteamInputService_InitControllerList_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_InitControllerList_Request {
+    const NAME: &'static str = "CSteamInputService_InitControllerList_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_InitControllerList_Request {
+        CSteamInputService_InitControllerList_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_InitControllerList_Request {
+        static instance: CSteamInputService_InitControllerList_Request = CSteamInputService_InitControllerList_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_InitControllerList_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_InitControllerList_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_InitControllerList_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_InitControllerList_Response {
+    fn default() -> &'a CSteamInputService_InitControllerList_Response {
+        <CSteamInputService_InitControllerList_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_InitControllerList_Response {
+    pub fn new() -> CSteamInputService_InitControllerList_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_InitControllerList_Response {
+    const NAME: &'static str = "CSteamInputService_InitControllerList_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_InitControllerList_Response {
+        CSteamInputService_InitControllerList_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_InitControllerList_Response {
+        static instance: CSteamInputService_InitControllerList_Response = CSteamInputService_InitControllerList_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetControllerList_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetControllerList_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetControllerList_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetControllerList_Request {
+    fn default() -> &'a CSteamInputService_GetControllerList_Request {
+        <CSteamInputService_GetControllerList_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetControllerList_Request {
+    pub fn new() -> CSteamInputService_GetControllerList_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetControllerList_Request {
+    const NAME: &'static str = "CSteamInputService_GetControllerList_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetControllerList_Request {
+        CSteamInputService_GetControllerList_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetControllerList_Request {
+        static instance: CSteamInputService_GetControllerList_Request = CSteamInputService_GetControllerList_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_GetControllerList_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_GetControllerList_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_GetControllerList_Response.controllers)
+    pub controllers: ::std::vec::Vec<CSteamInputService_RawControllerDetailItem>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_GetControllerList_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_GetControllerList_Response {
+    fn default() -> &'a CSteamInputService_GetControllerList_Response {
+        <CSteamInputService_GetControllerList_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_GetControllerList_Response {
+    pub fn new() -> CSteamInputService_GetControllerList_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_GetControllerList_Response {
+    const NAME: &'static str = "CSteamInputService_GetControllerList_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.controllers.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.controllers {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.controllers {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_GetControllerList_Response {
+        CSteamInputService_GetControllerList_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.controllers.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_GetControllerList_Response {
+        static instance: CSteamInputService_GetControllerList_Response = CSteamInputService_GetControllerList_Response {
+            controllers: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_FirstSteamControllerConnection_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_FirstSteamControllerConnection_Notification {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_FirstSteamControllerConnection_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_FirstSteamControllerConnection_Notification {
+    fn default() -> &'a CSteamInputService_FirstSteamControllerConnection_Notification {
+        <CSteamInputService_FirstSteamControllerConnection_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_FirstSteamControllerConnection_Notification {
+    pub fn new() -> CSteamInputService_FirstSteamControllerConnection_Notification {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_FirstSteamControllerConnection_Notification {
+    const NAME: &'static str = "CSteamInputService_FirstSteamControllerConnection_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_FirstSteamControllerConnection_Notification {
+        CSteamInputService_FirstSteamControllerConnection_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_FirstSteamControllerConnection_Notification {
+        static instance: CSteamInputService_FirstSteamControllerConnection_Notification = CSteamInputService_FirstSteamControllerConnection_Notification {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CTritonQosStatus)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CTritonQosStatus {
+    // message fields
+    // @@protoc_insertion_point(field:CTritonQosStatus.period_ms)
+    pub period_ms: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.packets_sent)
+    pub packets_sent: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.packet_retransmissions)
+    pub packet_retransmissions: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.interval_max_ms)
+    pub interval_max_ms: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.rssi_measure)
+    pub rssi_measure: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.reason)
+    pub reason: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.rf_channel)
+    pub rf_channel: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CTritonQosStatus.backup_channel)
+    pub backup_channel: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CTritonQosStatus.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CTritonQosStatus {
+    fn default() -> &'a CTritonQosStatus {
+        <CTritonQosStatus as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CTritonQosStatus {
+    pub fn new() -> CTritonQosStatus {
+        ::std::default::Default::default()
+    }
+
+    // optional int32 period_ms = 1;
+
+    pub fn period_ms(&self) -> i32 {
+        self.period_ms.unwrap_or(0)
+    }
+
+    pub fn clear_period_ms(&mut self) {
+        self.period_ms = ::std::option::Option::None;
+    }
+
+    pub fn has_period_ms(&self) -> bool {
+        self.period_ms.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_period_ms(&mut self, v: i32) {
+        self.period_ms = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 packets_sent = 2;
+
+    pub fn packets_sent(&self) -> u32 {
+        self.packets_sent.unwrap_or(0)
+    }
+
+    pub fn clear_packets_sent(&mut self) {
+        self.packets_sent = ::std::option::Option::None;
+    }
+
+    pub fn has_packets_sent(&self) -> bool {
+        self.packets_sent.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_packets_sent(&mut self, v: u32) {
+        self.packets_sent = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 packet_retransmissions = 3;
+
+    pub fn packet_retransmissions(&self) -> u32 {
+        self.packet_retransmissions.unwrap_or(0)
+    }
+
+    pub fn clear_packet_retransmissions(&mut self) {
+        self.packet_retransmissions = ::std::option::Option::None;
+    }
+
+    pub fn has_packet_retransmissions(&self) -> bool {
+        self.packet_retransmissions.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_packet_retransmissions(&mut self, v: u32) {
+        self.packet_retransmissions = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 interval_max_ms = 4;
+
+    pub fn interval_max_ms(&self) -> u32 {
+        self.interval_max_ms.unwrap_or(0)
+    }
+
+    pub fn clear_interval_max_ms(&mut self) {
+        self.interval_max_ms = ::std::option::Option::None;
+    }
+
+    pub fn has_interval_max_ms(&self) -> bool {
+        self.interval_max_ms.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_interval_max_ms(&mut self, v: u32) {
+        self.interval_max_ms = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 rssi_measure = 5;
+
+    pub fn rssi_measure(&self) -> i32 {
+        self.rssi_measure.unwrap_or(0)
+    }
+
+    pub fn clear_rssi_measure(&mut self) {
+        self.rssi_measure = ::std::option::Option::None;
+    }
+
+    pub fn has_rssi_measure(&self) -> bool {
+        self.rssi_measure.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rssi_measure(&mut self, v: i32) {
+        self.rssi_measure = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 reason = 6;
+
+    pub fn reason(&self) -> u32 {
+        self.reason.unwrap_or(0)
+    }
+
+    pub fn clear_reason(&mut self) {
+        self.reason = ::std::option::Option::None;
+    }
+
+    pub fn has_reason(&self) -> bool {
+        self.reason.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_reason(&mut self, v: u32) {
+        self.reason = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 rf_channel = 7;
+
+    pub fn rf_channel(&self) -> u32 {
+        self.rf_channel.unwrap_or(0)
+    }
+
+    pub fn clear_rf_channel(&mut self) {
+        self.rf_channel = ::std::option::Option::None;
+    }
+
+    pub fn has_rf_channel(&self) -> bool {
+        self.rf_channel.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rf_channel(&mut self, v: u32) {
+        self.rf_channel = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 backup_channel = 8;
+
+    pub fn backup_channel(&self) -> u32 {
+        self.backup_channel.unwrap_or(0)
+    }
+
+    pub fn clear_backup_channel(&mut self) {
+        self.backup_channel = ::std::option::Option::None;
+    }
+
+    pub fn has_backup_channel(&self) -> bool {
+        self.backup_channel.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_backup_channel(&mut self, v: u32) {
+        self.backup_channel = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CTritonQosStatus {
+    const NAME: &'static str = "CTritonQosStatus";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.period_ms = ::std::option::Option::Some(is.read_int32()?);
+                },
+                16 => {
+                    self.packets_sent = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.packet_retransmissions = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                32 => {
+                    self.interval_max_ms = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                40 => {
+                    self.rssi_measure = ::std::option::Option::Some(is.read_int32()?);
+                },
+                48 => {
+                    self.reason = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                56 => {
+                    self.rf_channel = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                64 => {
+                    self.backup_channel = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.period_ms {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v);
+        }
+        if let Some(v) = self.packets_sent {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.packet_retransmissions {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        if let Some(v) = self.interval_max_ms {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
+        }
+        if let Some(v) = self.rssi_measure {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(5, v);
+        }
+        if let Some(v) = self.reason {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, v);
+        }
+        if let Some(v) = self.rf_channel {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, v);
+        }
+        if let Some(v) = self.backup_channel {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.period_ms {
+            os.write_int32(1, v)?;
+        }
+        if let Some(v) = self.packets_sent {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.packet_retransmissions {
+            os.write_uint32(3, v)?;
+        }
+        if let Some(v) = self.interval_max_ms {
+            os.write_uint32(4, v)?;
+        }
+        if let Some(v) = self.rssi_measure {
+            os.write_int32(5, v)?;
+        }
+        if let Some(v) = self.reason {
+            os.write_uint32(6, v)?;
+        }
+        if let Some(v) = self.rf_channel {
+            os.write_uint32(7, v)?;
+        }
+        if let Some(v) = self.backup_channel {
+            os.write_uint32(8, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CTritonQosStatus {
+        CTritonQosStatus::new()
+    }
+
+    fn clear(&mut self) {
+        self.period_ms = ::std::option::Option::None;
+        self.packets_sent = ::std::option::Option::None;
+        self.packet_retransmissions = ::std::option::Option::None;
+        self.interval_max_ms = ::std::option::Option::None;
+        self.rssi_measure = ::std::option::Option::None;
+        self.reason = ::std::option::Option::None;
+        self.rf_channel = ::std::option::Option::None;
+        self.backup_channel = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CTritonQosStatus {
+        static instance: CTritonQosStatus = CTritonQosStatus {
+            period_ms: ::std::option::Option::None,
+            packets_sent: ::std::option::Option::None,
+            packet_retransmissions: ::std::option::Option::None,
+            interval_max_ms: ::std::option::Option::None,
+            rssi_measure: ::std::option::Option::None,
+            reason: ::std::option::Option::None,
+            rf_channel: ::std::option::Option::None,
+            backup_channel: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_TritonQos_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_TritonQos_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_TritonQos_Notification.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_TritonQos_Notification.status)
+    pub status: ::steam_vent_proto_common::protobuf::MessageField<CTritonQosStatus>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_TritonQos_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_TritonQos_Notification {
+    fn default() -> &'a CSteamInputService_TritonQos_Notification {
+        <CSteamInputService_TritonQos_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_TritonQos_Notification {
+    pub fn new() -> CSteamInputService_TritonQos_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_TritonQos_Notification {
+    const NAME: &'static str = "CSteamInputService_TritonQos_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.status)?;
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.status.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.status.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_TritonQos_Notification {
+        CSteamInputService_TritonQos_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.status.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_TritonQos_Notification {
+        static instance: CSteamInputService_TritonQos_Notification = CSteamInputService_TritonQos_Notification {
+            controller_index: ::std::option::Option::None,
+            status: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_EnableQosStatus_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_EnableQosStatus_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_EnableQosStatus_Request.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_EnableQosStatus_Request.enable)
+    pub enable: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_EnableQosStatus_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_EnableQosStatus_Request {
+    fn default() -> &'a CSteamInputService_EnableQosStatus_Request {
+        <CSteamInputService_EnableQosStatus_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_EnableQosStatus_Request {
+    pub fn new() -> CSteamInputService_EnableQosStatus_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional bool enable = 2;
+
+    pub fn enable(&self) -> bool {
+        self.enable.unwrap_or(false)
+    }
+
+    pub fn clear_enable(&mut self) {
+        self.enable = ::std::option::Option::None;
+    }
+
+    pub fn has_enable(&self) -> bool {
+        self.enable.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_enable(&mut self, v: bool) {
+        self.enable = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_EnableQosStatus_Request {
+    const NAME: &'static str = "CSteamInputService_EnableQosStatus_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.enable = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.enable {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.enable {
+            os.write_bool(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_EnableQosStatus_Request {
+        CSteamInputService_EnableQosStatus_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.enable = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_EnableQosStatus_Request {
+        static instance: CSteamInputService_EnableQosStatus_Request = CSteamInputService_EnableQosStatus_Request {
+            controller_index: ::std::option::Option::None,
+            enable: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_EnableQosStatus_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_EnableQosStatus_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_EnableQosStatus_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_EnableQosStatus_Response {
+    fn default() -> &'a CSteamInputService_EnableQosStatus_Response {
+        <CSteamInputService_EnableQosStatus_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_EnableQosStatus_Response {
+    pub fn new() -> CSteamInputService_EnableQosStatus_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_EnableQosStatus_Response {
+    const NAME: &'static str = "CSteamInputService_EnableQosStatus_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_EnableQosStatus_Response {
+        CSteamInputService_EnableQosStatus_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_EnableQosStatus_Response {
+        static instance: CSteamInputService_EnableQosStatus_Response = CSteamInputService_EnableQosStatus_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSteamInputService_ControllerBatteryState_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSteamInputService_ControllerBatteryState_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerBatteryState_Notification.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerBatteryState_Notification.battery_level)
+    pub battery_level: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CSteamInputService_ControllerBatteryState_Notification.charging)
+    pub charging: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSteamInputService_ControllerBatteryState_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSteamInputService_ControllerBatteryState_Notification {
+    fn default() -> &'a CSteamInputService_ControllerBatteryState_Notification {
+        <CSteamInputService_ControllerBatteryState_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSteamInputService_ControllerBatteryState_Notification {
+    pub fn new() -> CSteamInputService_ControllerBatteryState_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 battery_level = 2;
+
+    pub fn battery_level(&self) -> u32 {
+        self.battery_level.unwrap_or(0)
+    }
+
+    pub fn clear_battery_level(&mut self) {
+        self.battery_level = ::std::option::Option::None;
+    }
+
+    pub fn has_battery_level(&self) -> bool {
+        self.battery_level.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_battery_level(&mut self, v: u32) {
+        self.battery_level = ::std::option::Option::Some(v);
+    }
+
+    // optional bool charging = 3;
+
+    pub fn charging(&self) -> bool {
+        self.charging.unwrap_or(false)
+    }
+
+    pub fn clear_charging(&mut self) {
+        self.charging = ::std::option::Option::None;
+    }
+
+    pub fn has_charging(&self) -> bool {
+        self.charging.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_charging(&mut self, v: bool) {
+        self.charging = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSteamInputService_ControllerBatteryState_Notification {
+    const NAME: &'static str = "CSteamInputService_ControllerBatteryState_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                16 => {
+                    self.battery_level = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.charging = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.battery_level {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.charging {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.battery_level {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.charging {
+            os.write_bool(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSteamInputService_ControllerBatteryState_Notification {
+        CSteamInputService_ControllerBatteryState_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.battery_level = ::std::option::Option::None;
+        self.charging = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSteamInputService_ControllerBatteryState_Notification {
+        static instance: CSteamInputService_ControllerBatteryState_Notification = CSteamInputService_ControllerBatteryState_Notification {
+            controller_index: ::std::option::Option::None,
+            battery_level: ::std::option::Option::None,
+            charging: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ETritonPairType)
+pub enum ETritonPairType {
+    // @@protoc_insertion_point(enum_value:ETritonPairType.k_ETritonPairType_None)
+    k_ETritonPairType_None = 0,
+    // @@protoc_insertion_point(enum_value:ETritonPairType.k_ETritonPairType_Wired)
+    k_ETritonPairType_Wired = 1,
+    // @@protoc_insertion_point(enum_value:ETritonPairType.k_ETritonPairType_Wireless)
+    k_ETritonPairType_Wireless = 2,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ETritonPairType {
+    const NAME: &'static str = "ETritonPairType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ETritonPairType> {
+        match value {
+            0 => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_None),
+            1 => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_Wired),
+            2 => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_Wireless),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ETritonPairType> {
+        match str {
+            "k_ETritonPairType_None" => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_None),
+            "k_ETritonPairType_Wired" => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_Wired),
+            "k_ETritonPairType_Wireless" => ::std::option::Option::Some(ETritonPairType::k_ETritonPairType_Wireless),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ETritonPairType] = &[
+        ETritonPairType::k_ETritonPairType_None,
+        ETritonPairType::k_ETritonPairType_Wired,
+        ETritonPairType::k_ETritonPairType_Wireless,
+    ];
+}
+
+impl ::std::default::Default for ETritonPairType {
+    fn default() -> Self {
+        ETritonPairType::k_ETritonPairType_None
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ETritonConnectionType)
+pub enum ETritonConnectionType {
+    // @@protoc_insertion_point(enum_value:ETritonConnectionType.k_ETritonConnectionType_Unknown)
+    k_ETritonConnectionType_Unknown = 0,
+    // @@protoc_insertion_point(enum_value:ETritonConnectionType.k_ETritonConnectionType_Puck)
+    k_ETritonConnectionType_Puck = 1,
+    // @@protoc_insertion_point(enum_value:ETritonConnectionType.k_ETritonConnectionType_Machine)
+    k_ETritonConnectionType_Machine = 2,
+    // @@protoc_insertion_point(enum_value:ETritonConnectionType.k_ETritonConnectionType_USB)
+    k_ETritonConnectionType_USB = 3,
+    // @@protoc_insertion_point(enum_value:ETritonConnectionType.k_ETritonConnectionType_BT)
+    k_ETritonConnectionType_BT = 4,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ETritonConnectionType {
+    const NAME: &'static str = "ETritonConnectionType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ETritonConnectionType> {
+        match value {
+            0 => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Unknown),
+            1 => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Puck),
+            2 => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Machine),
+            3 => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_USB),
+            4 => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_BT),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ETritonConnectionType> {
+        match str {
+            "k_ETritonConnectionType_Unknown" => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Unknown),
+            "k_ETritonConnectionType_Puck" => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Puck),
+            "k_ETritonConnectionType_Machine" => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_Machine),
+            "k_ETritonConnectionType_USB" => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_USB),
+            "k_ETritonConnectionType_BT" => ::std::option::Option::Some(ETritonConnectionType::k_ETritonConnectionType_BT),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ETritonConnectionType] = &[
+        ETritonConnectionType::k_ETritonConnectionType_Unknown,
+        ETritonConnectionType::k_ETritonConnectionType_Puck,
+        ETritonConnectionType::k_ETritonConnectionType_Machine,
+        ETritonConnectionType::k_ETritonConnectionType_USB,
+        ETritonConnectionType::k_ETritonConnectionType_BT,
+    ];
+}
+
+impl ::std::default::Default for ETritonConnectionType {
+    fn default() -> Self {
+        ETritonConnectionType::k_ETritonConnectionType_Unknown
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -4302,6 +10596,186 @@ for CSteamInputService_GyroSoftwareCalibration_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_PairDongleTritonConnected_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_PairDongleTritonConnected_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_SteamDonglesChanged_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_UnpairedTritonDocked_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_TritonUndocked_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ControllerPairingChanged_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamInputService_GetDongles_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSteamInputService_GetDongles_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ShouldTritonPairInOobe_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_WaitInitialControllerStateEnumerated_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ShouldTritonPairInOobe_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage for CControllerOriginKey {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -4356,6 +10830,341 @@ for CSteamInputService_ControllerAccessibilityStrings_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ControllerPowerMenu_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ControllerDisconnected_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetTritonPairingInfo_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetTritonPairingInfo_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ForgetTritonPairingBond_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ForgetTritonPairingBond_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ForgetDonglePairingBond_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ForgetDonglePairingBond_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetControllerName_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetControllerName_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_EnableDockedInput_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_EnableDockedInput_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_RawControllerDetailItem {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ControllerListChanged_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_InitControllerList_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_InitControllerList_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetControllerList_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_GetControllerList_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_FirstSteamControllerConnection_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CTritonQosStatus {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_TritonQos_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_EnableQosStatus_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_EnableQosStatus_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSteamInputService_ControllerBatteryState_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct SteamInputManager {}
 impl ::steam_vent_proto_common::RpcService for SteamInputManager {
@@ -4372,14 +11181,83 @@ for CSteamInputService_ControllerAxesStateChange_Notification {
     type Response = WebUINoResponse;
 }
 impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ControllerBatteryState_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyControllerBatteryState#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
 for CSteamInputService_ControllerButtonStateChanged_Notification {
     const METHOD_NAME: &'static str = "SteamInputManager.NotifyButtonStateChanged#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ControllerDisconnected_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyControllerDisconnected#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ControllerListChanged_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyControllerListChanged#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ControllerPairingChanged_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyControllerPairingChanged#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ControllerPowerMenu_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyControllerPowerMenu#1";
     type Response = WebUINoResponse;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CSteamInputService_ControllerStateFlow_Request {
     const METHOD_NAME: &'static str = "SteamInputManager.StartControllerStateFlow#1";
     type Response = CSteamInputService_ControllerStateFlow_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_EnableDockedInput_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.EnableDockedInput#1";
+    type Response = CSteamInputService_EnableDockedInput_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_EnableQosStatus_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.EnableQosStatus#1";
+    type Response = CSteamInputService_EnableQosStatus_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_FirstSteamControllerConnection_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyFirstSteamControllerConnection#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ForgetDonglePairingBond_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.ForgetDonglePairingBond#1";
+    type Response = CSteamInputService_ForgetDonglePairingBond_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ForgetTritonPairingBond_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.ForgetTritonPairingBond#1";
+    type Response = CSteamInputService_ForgetTritonPairingBond_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_GetControllerList_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.GetControllerList#1";
+    type Response = CSteamInputService_GetControllerList_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_GetControllerName_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.GetControllerName#1";
+    type Response = CSteamInputService_GetControllerName_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamInputService_GetDongles_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.GetDongles#1";
+    type Response = CSteamInputService_GetDongles_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_GetTritonPairingInfo_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.GetTritonPairingInfo#1";
+    type Response = CSteamInputService_GetTritonPairingInfo_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CSteamInputService_GyroAccelerometerChanged_Notification {
@@ -4405,4 +11283,43 @@ impl ::steam_vent_proto_common::RpcMethod
 for CSteamInputService_GyroSpeedChanged_Notification {
     const METHOD_NAME: &'static str = "SteamInputManager.NotifyGyroSpeedStateChanged#1";
     type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_PairDongleTritonConnected_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.PairDongleTritonConnected#1";
+    type Response = CSteamInputService_PairDongleTritonConnected_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_ShouldTritonPairInOobe_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.ShouldTritonPairInOobe#1";
+    type Response = CSteamInputService_ShouldTritonPairInOobe_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_SteamDonglesChanged_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifySteamDonglesChanged#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSteamInputService_TritonQos_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyTritonQos#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_TritonUndocked_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyTritonUndocked#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_UnpairedTritonDocked_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyUnpairedTritonDocked#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_UnpairedTritonPluggedIn_Notification {
+    const METHOD_NAME: &'static str = "SteamInputManager.NotifyUnpairedTritonPluggedIn#1";
+    type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CSteamInputService_WaitInitialControllerStateEnumerated_Request {
+    const METHOD_NAME: &'static str = "SteamInputManager.WaitInitialControllerStateEnumerated#1";
+    type Response = CSteamInputService_WaitInitialControllerStateEnumerated_Response;
 }

@@ -7231,6 +7231,8 @@ pub struct CGameRecording_TakeScreenshot_Request {
     pub timeline_id: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CGameRecording_TakeScreenshot_Request.timeline_offset_ms)
     pub timeline_offset_ms: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CGameRecording_TakeScreenshot_Request.source_clip_id)
+    pub source_clip_id: ::std::option::Option<::std::string::String>,
     // special fields
     // @@protoc_insertion_point(special_field:CGameRecording_TakeScreenshot_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -7320,6 +7322,42 @@ impl CGameRecording_TakeScreenshot_Request {
     pub fn set_timeline_offset_ms(&mut self, v: u64) {
         self.timeline_offset_ms = ::std::option::Option::Some(v);
     }
+
+    // optional string source_clip_id = 4;
+
+    pub fn source_clip_id(&self) -> &str {
+        match self.source_clip_id.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_source_clip_id(&mut self) {
+        self.source_clip_id = ::std::option::Option::None;
+    }
+
+    pub fn has_source_clip_id(&self) -> bool {
+        self.source_clip_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_source_clip_id(&mut self, v: ::std::string::String) {
+        self.source_clip_id = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_source_clip_id(&mut self) -> &mut ::std::string::String {
+        if self.source_clip_id.is_none() {
+            self.source_clip_id = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.source_clip_id.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_source_clip_id(&mut self) -> ::std::string::String {
+        self.source_clip_id.take().unwrap_or_else(|| ::std::string::String::new())
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreenshot_Request {
@@ -7340,6 +7378,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreens
                 },
                 24 => {
                     self.timeline_offset_ms = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                34 => {
+                    self.source_clip_id = ::std::option::Option::Some(is.read_string()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -7362,6 +7403,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreens
         if let Some(v) = self.timeline_offset_ms {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(3, v);
         }
+        if let Some(v) = self.source_clip_id.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -7376,6 +7420,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreens
         }
         if let Some(v) = self.timeline_offset_ms {
             os.write_uint64(3, v)?;
+        }
+        if let Some(v) = self.source_clip_id.as_ref() {
+            os.write_string(4, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -7397,6 +7444,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreens
         self.game_id = ::std::option::Option::None;
         self.timeline_id = ::std::option::Option::None;
         self.timeline_offset_ms = ::std::option::Option::None;
+        self.source_clip_id = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -7405,6 +7453,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_TakeScreens
             game_id: ::std::option::Option::None,
             timeline_id: ::std::option::Option::None,
             timeline_offset_ms: ::std::option::Option::None,
+            source_clip_id: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13051,6 +13100,267 @@ impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_SwitchBackg
     }
 }
 
+// @@protoc_insertion_point(message:CGameRecording_GetState_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CGameRecording_GetState_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CGameRecording_GetState_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CGameRecording_GetState_Request {
+    fn default() -> &'a CGameRecording_GetState_Request {
+        <CGameRecording_GetState_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CGameRecording_GetState_Request {
+    pub fn new() -> CGameRecording_GetState_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_GetState_Request {
+    const NAME: &'static str = "CGameRecording_GetState_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CGameRecording_GetState_Request {
+        CGameRecording_GetState_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CGameRecording_GetState_Request {
+        static instance: CGameRecording_GetState_Request = CGameRecording_GetState_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CGameRecording_GetState_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CGameRecording_GetState_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CGameRecording_GetState_Response.is_h265_enabled)
+    pub is_h265_enabled: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CGameRecording_GetState_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CGameRecording_GetState_Response {
+    fn default() -> &'a CGameRecording_GetState_Response {
+        <CGameRecording_GetState_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CGameRecording_GetState_Response {
+    pub fn new() -> CGameRecording_GetState_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional bool is_h265_enabled = 1;
+
+    pub fn is_h265_enabled(&self) -> bool {
+        self.is_h265_enabled.unwrap_or(false)
+    }
+
+    pub fn clear_is_h265_enabled(&mut self) {
+        self.is_h265_enabled = ::std::option::Option::None;
+    }
+
+    pub fn has_is_h265_enabled(&self) -> bool {
+        self.is_h265_enabled.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_h265_enabled(&mut self, v: bool) {
+        self.is_h265_enabled = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_GetState_Response {
+    const NAME: &'static str = "CGameRecording_GetState_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.is_h265_enabled = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.is_h265_enabled {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.is_h265_enabled {
+            os.write_bool(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CGameRecording_GetState_Response {
+        CGameRecording_GetState_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.is_h265_enabled = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CGameRecording_GetState_Response {
+        static instance: CGameRecording_GetState_Response = CGameRecording_GetState_Response {
+            is_h265_enabled: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CGameRecording_StateChanged_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CGameRecording_StateChanged_Notification {
+    // special fields
+    // @@protoc_insertion_point(special_field:CGameRecording_StateChanged_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CGameRecording_StateChanged_Notification {
+    fn default() -> &'a CGameRecording_StateChanged_Notification {
+        <CGameRecording_StateChanged_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CGameRecording_StateChanged_Notification {
+    pub fn new() -> CGameRecording_StateChanged_Notification {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CGameRecording_StateChanged_Notification {
+    const NAME: &'static str = "CGameRecording_StateChanged_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CGameRecording_StateChanged_Notification {
+        CGameRecording_StateChanged_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CGameRecording_StateChanged_Notification {
+        static instance: CGameRecording_StateChanged_Notification = CGameRecording_StateChanged_Notification {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:ETimelineEntryType)
 pub enum ETimelineEntryType {
@@ -14529,6 +14839,45 @@ for CGameRecording_SwitchBackgroundRecordingGame_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CGameRecording_GetState_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CGameRecording_GetState_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CGameRecording_StateChanged_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct GameRecording {}
 impl ::steam_vent_proto_common::RpcService for GameRecording {
@@ -14605,6 +14954,10 @@ impl ::steam_vent_proto_common::RpcMethod for CGameRecording_GetRecordingSize_Re
     const METHOD_NAME: &'static str = "GameRecording.GetBackgroundRecordingFileSize#1";
     type Response = CGameRecording_GetRecordingSize_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod for CGameRecording_GetState_Request {
+    const METHOD_NAME: &'static str = "GameRecording.GetState#1";
+    type Response = CGameRecording_GetState_Response;
+}
 impl ::steam_vent_proto_common::RpcMethod for CGameRecording_GetTags_Request {
     const METHOD_NAME: &'static str = "GameRecording.GetTags#1";
     type Response = CGameRecording_GetTags_Response;
@@ -14676,6 +15029,10 @@ impl ::steam_vent_proto_common::RpcMethod for CGameRecording_SetPerGameSettings_
 impl ::steam_vent_proto_common::RpcMethod for CGameRecording_StartRecording_Request {
     const METHOD_NAME: &'static str = "GameRecording.StartRecording#1";
     type Response = CGameRecording_StartRecording_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CGameRecording_StateChanged_Notification {
+    const METHOD_NAME: &'static str = "GameRecording.NotifyStateChanged#1";
+    type Response = WebUINoResponse;
 }
 impl ::steam_vent_proto_common::RpcMethod for CGameRecording_StopRecording_Request {
     const METHOD_NAME: &'static str = "GameRecording.StopRecording#1";

@@ -219,6 +219,8 @@ pub enum EMsg {
     k_EMsgGMGetModifiedConVars, // 339
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGMGetModifiedConVarsResponse)
     k_EMsgGMGetModifiedConVarsResponse, // 340
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGMNeedShellAndServerAddresses)
+    k_EMsgGMNeedShellAndServerAddresses, // 341
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgBaseAIS)
     k_EMsgBaseAIS, // 400
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISRequestContentDescription)
@@ -235,18 +237,16 @@ pub enum EMsg {
     k_EMsgAIGetAppList, // 425
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAIGetAppListResponse)
     k_EMsgAIGetAppListResponse, // 426
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISGetCouponDefinition)
-    k_EMsgAISGetCouponDefinition, // 429
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISGetCouponDefinitionResponse)
-    k_EMsgAISGetCouponDefinitionResponse, // 430
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISUpdateSubordinateContentDescription)
     k_EMsgAISUpdateSubordinateContentDescription, // 431
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISUpdateSubordinateContentDescriptionResponse)
     k_EMsgAISUpdateSubordinateContentDescriptionResponse, // 432
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISTestEnableGC)
-    k_EMsgAISTestEnableGC, // 433
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAISBroadcastSubordinateContentDescription)
     k_EMsgAISBroadcastSubordinateContentDescription, // 434
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgProductInfoChangedNotification)
+    k_EMsgProductInfoChangedNotification, // 435
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgProductInfoCacheStatus)
+    k_EMsgProductInfoCacheStatus, // 436
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgBaseAM)
     k_EMsgBaseAM, // 500
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMUpdateUserBanRequest)
@@ -477,8 +477,6 @@ pub enum EMsg {
     k_EMsgClientGamesPlayedNoDataBlob, // 715
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientChangeStatus)
     k_EMsgClientChangeStatus, // 716
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientVacStatusResponse)
-    k_EMsgClientVacStatusResponse, // 717
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientFriendMsg)
     k_EMsgClientFriendMsg, // 718
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGameConnect_obsolete)
@@ -491,16 +489,10 @@ pub enum EMsg {
     k_EMsgClientSystemIM, // 726
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientSystemIMAck)
     k_EMsgClientSystemIMAck, // 727
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGetLicenses)
-    k_EMsgClientGetLicenses, // 728
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGetLegacyGameKey)
     k_EMsgClientGetLegacyGameKey, // 730
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientContentServerLogOn_Deprecated)
     k_EMsgClientContentServerLogOn_Deprecated, // 731
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientAckVACBan2)
-    k_EMsgClientAckVACBan2, // 732
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGetPurchaseReceipts)
-    k_EMsgClientGetPurchaseReceipts, // 736
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGamesPlayed3_obsolete)
     k_EMsgClientGamesPlayed3_obsolete, // 738
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientAckGuestPass)
@@ -515,8 +507,6 @@ pub enum EMsg {
     k_EMsgClientInviteUserToClan, // 744
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientAcknowledgeClanInvite)
     k_EMsgClientAcknowledgeClanInvite, // 745
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientPurchaseWithMachineID)
-    k_EMsgClientPurchaseWithMachineID, // 746
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientAppUsageEvent)
     k_EMsgClientAppUsageEvent, // 747
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientLogOnResponse)
@@ -557,8 +547,6 @@ pub enum EMsg {
     k_EMsgClientLicenseList, // 780
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientVACBanStatus)
     k_EMsgClientVACBanStatus, // 782
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientEncryptPct)
-    k_EMsgClientEncryptPct, // 784
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientGetLegacyGameKeyResponse)
     k_EMsgClientGetLegacyGameKeyResponse, // 785
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientAddFriend)
@@ -661,10 +649,6 @@ pub enum EMsg {
     k_EMsgGSServerType, // 908
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGSPlayerList)
     k_EMsgGSPlayerList, // 909
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGSGetUserAchievementStatus)
-    k_EMsgGSGetUserAchievementStatus, // 910
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGSGetUserAchievementStatusResponse)
-    k_EMsgGSGetUserAchievementStatusResponse, // 911
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGSGetPlayStats)
     k_EMsgGSGetPlayStats, // 918
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGSGetPlayStatsResponse)
@@ -1037,6 +1021,8 @@ pub enum EMsg {
     k_EMsgCMGetSecrets, // 1705
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgCMRemotePlayReplyPacket)
     k_EMsgCMRemotePlayReplyPacket, // 1706
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgCMRemotePlayOffline)
+    k_EMsgCMRemotePlayOffline, // 1707
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgBaseGC)
     k_EMsgBaseGC, // 2200
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgGCCmdRevive)
@@ -1363,8 +1349,6 @@ pub enum EMsg {
     k_EMsgAMGetCommunityPrivacyStateResponse, // 4117
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMCheckClanInviteRateLimiting)
     k_EMsgAMCheckClanInviteRateLimiting, // 4118
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgUGSGetUserAchievementStatus)
-    k_EMsgUGSGetUserAchievementStatus, // 4119
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMGetIgnored)
     k_EMsgAMGetIgnored, // 4120
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMGetIgnoredResponse)
@@ -1413,8 +1397,6 @@ pub enum EMsg {
     k_EMsgAMProbeClanMembershipList, // 4162
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMProbeClanMembershipListResponse)
     k_EMsgAMProbeClanMembershipListResponse, // 4163
-    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgUGSGetUserAchievementStatusResponse)
-    k_EMsgUGSGetUserAchievementStatusResponse, // 4164
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMGetFriendsLobbies)
     k_EMsgAMGetFriendsLobbies, // 4165
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgAMGetFriendsLobbiesResponse)
@@ -2797,6 +2779,36 @@ pub enum EMsg {
     k_EMsgRemoteClientProofResponse, // 9522
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientWifiAPStatus)
     k_EMsgRemoteClientWifiAPStatus, // 9523
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientPairWifiAP)
+    k_EMsgRemoteClientPairWifiAP, // 9524
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientPairWifiAPResponse)
+    k_EMsgRemoteClientPairWifiAPResponse, // 9525
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientDownloadScheduleChanged)
+    k_EMsgRemoteClientDownloadScheduleChanged, // 9526
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientDownloadItemScheduleChanged)
+    k_EMsgRemoteClientDownloadItemScheduleChanged, // 9527
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientAppUpdateStopped)
+    k_EMsgRemoteClientAppUpdateStopped, // 9528
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientAppDownloadStats)
+    k_EMsgRemoteClientAppDownloadStats, // 9529
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientAppUploadStats)
+    k_EMsgRemoteClientAppUploadStats, // 9530
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientAppInfoUpdateComplete)
+    k_EMsgRemoteClientAppInfoUpdateComplete, // 9531
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientDownloadsManagement)
+    k_eMsgRemoteClientDownloadsManagement, // 9532
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientDownloadingAppID)
+    k_eMsgRemoteClientDownloadingAppID, // 9533
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientPeerContentServerChanged)
+    k_eMsgRemoteClientPeerContentServerChanged, // 9534
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientRestrictAutoUpdatesChanged)
+    k_eMsgRemoteClientRestrictAutoUpdatesChanged, // 9535
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientSuspendLanPeerContent)
+    k_eMsgRemoteClientSuspendLanPeerContent, // 9536
+    // @@protoc_insertion_point(enum_value:EMsg.k_eMsgRemoteClientUpdateDownloadsController)
+    k_eMsgRemoteClientUpdateDownloadsController, // 9537
+    // @@protoc_insertion_point(enum_value:EMsg.k_EMsgRemoteClientAcceptAllEULAs)
+    k_EMsgRemoteClientAcceptAllEULAs, // 9538
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientConcurrentSessionsBase)
     k_EMsgClientConcurrentSessionsBase, // 9600
     // @@protoc_insertion_point(enum_value:EMsg.k_EMsgClientPlayingSessionState)
@@ -3005,6 +3017,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgGMStatsForwardToAdminConnections => 338,
             EMsg::k_EMsgGMGetModifiedConVars => 339,
             EMsg::k_EMsgGMGetModifiedConVarsResponse => 340,
+            EMsg::k_EMsgGMNeedShellAndServerAddresses => 341,
             EMsg::k_EMsgBaseAIS => 400,
             EMsg::k_EMsgAISRequestContentDescription => 402,
             EMsg::k_EMsgAISGetPackageChangeNumber => 405,
@@ -3013,12 +3026,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgAIGetAppGCFlagsResponse => 424,
             EMsg::k_EMsgAIGetAppList => 425,
             EMsg::k_EMsgAIGetAppListResponse => 426,
-            EMsg::k_EMsgAISGetCouponDefinition => 429,
-            EMsg::k_EMsgAISGetCouponDefinitionResponse => 430,
             EMsg::k_EMsgAISUpdateSubordinateContentDescription => 431,
             EMsg::k_EMsgAISUpdateSubordinateContentDescriptionResponse => 432,
-            EMsg::k_EMsgAISTestEnableGC => 433,
             EMsg::k_EMsgAISBroadcastSubordinateContentDescription => 434,
+            EMsg::k_EMsgProductInfoChangedNotification => 435,
+            EMsg::k_EMsgProductInfoCacheStatus => 436,
             EMsg::k_EMsgBaseAM => 500,
             EMsg::k_EMsgAMUpdateUserBanRequest => 504,
             EMsg::k_EMsgAMAddLicense => 505,
@@ -3134,18 +3146,14 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgClientRemoveFriend => 714,
             EMsg::k_EMsgClientGamesPlayedNoDataBlob => 715,
             EMsg::k_EMsgClientChangeStatus => 716,
-            EMsg::k_EMsgClientVacStatusResponse => 717,
             EMsg::k_EMsgClientFriendMsg => 718,
             EMsg::k_EMsgClientGameConnect_obsolete => 719,
             EMsg::k_EMsgClientGamesPlayed2_obsolete => 720,
             EMsg::k_EMsgClientGameEnded_obsolete => 721,
             EMsg::k_EMsgClientSystemIM => 726,
             EMsg::k_EMsgClientSystemIMAck => 727,
-            EMsg::k_EMsgClientGetLicenses => 728,
             EMsg::k_EMsgClientGetLegacyGameKey => 730,
             EMsg::k_EMsgClientContentServerLogOn_Deprecated => 731,
-            EMsg::k_EMsgClientAckVACBan2 => 732,
-            EMsg::k_EMsgClientGetPurchaseReceipts => 736,
             EMsg::k_EMsgClientGamesPlayed3_obsolete => 738,
             EMsg::k_EMsgClientAckGuestPass => 740,
             EMsg::k_EMsgClientRedeemGuestPass => 741,
@@ -3153,7 +3161,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgClientRegisterKey => 743,
             EMsg::k_EMsgClientInviteUserToClan => 744,
             EMsg::k_EMsgClientAcknowledgeClanInvite => 745,
-            EMsg::k_EMsgClientPurchaseWithMachineID => 746,
             EMsg::k_EMsgClientAppUsageEvent => 747,
             EMsg::k_EMsgClientLogOnResponse => 751,
             EMsg::k_EMsgClientSetHeartbeatRate => 755,
@@ -3174,7 +3181,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgClientGameConnectTokens => 779,
             EMsg::k_EMsgClientLicenseList => 780,
             EMsg::k_EMsgClientVACBanStatus => 782,
-            EMsg::k_EMsgClientEncryptPct => 784,
             EMsg::k_EMsgClientGetLegacyGameKeyResponse => 785,
             EMsg::k_EMsgClientAddFriend => 791,
             EMsg::k_EMsgClientAddFriendResponse => 792,
@@ -3226,8 +3232,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgGSStatusUpdate_Unused => 907,
             EMsg::k_EMsgGSServerType => 908,
             EMsg::k_EMsgGSPlayerList => 909,
-            EMsg::k_EMsgGSGetUserAchievementStatus => 910,
-            EMsg::k_EMsgGSGetUserAchievementStatusResponse => 911,
             EMsg::k_EMsgGSGetPlayStats => 918,
             EMsg::k_EMsgGSGetPlayStatsResponse => 919,
             EMsg::k_EMsgGSGetUserGroupStatus => 920,
@@ -3414,6 +3418,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgCMSetSecrets => 1704,
             EMsg::k_EMsgCMGetSecrets => 1705,
             EMsg::k_EMsgCMRemotePlayReplyPacket => 1706,
+            EMsg::k_EMsgCMRemotePlayOffline => 1707,
             EMsg::k_EMsgBaseGC => 2200,
             EMsg::k_EMsgGCCmdRevive => 2203,
             EMsg::k_EMsgGCCmdDown => 2206,
@@ -3577,7 +3582,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgAMGetCommunityPrivacyState => 4116,
             EMsg::k_EMsgAMGetCommunityPrivacyStateResponse => 4117,
             EMsg::k_EMsgAMCheckClanInviteRateLimiting => 4118,
-            EMsg::k_EMsgUGSGetUserAchievementStatus => 4119,
             EMsg::k_EMsgAMGetIgnored => 4120,
             EMsg::k_EMsgAMGetIgnoredResponse => 4121,
             EMsg::k_EMsgAMSetIgnoredResponse => 4122,
@@ -3602,7 +3606,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgAMCheckClanMembershipResponse => 4161,
             EMsg::k_EMsgAMProbeClanMembershipList => 4162,
             EMsg::k_EMsgAMProbeClanMembershipListResponse => 4163,
-            EMsg::k_EMsgUGSGetUserAchievementStatusResponse => 4164,
             EMsg::k_EMsgAMGetFriendsLobbies => 4165,
             EMsg::k_EMsgAMGetFriendsLobbiesResponse => 4166,
             EMsg::k_EMsgAMGetUserFriendNewsResponse => 4172,
@@ -4294,6 +4297,21 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             EMsg::k_EMsgRemoteClientProofRequest => 9521,
             EMsg::k_EMsgRemoteClientProofResponse => 9522,
             EMsg::k_EMsgRemoteClientWifiAPStatus => 9523,
+            EMsg::k_EMsgRemoteClientPairWifiAP => 9524,
+            EMsg::k_EMsgRemoteClientPairWifiAPResponse => 9525,
+            EMsg::k_EMsgRemoteClientDownloadScheduleChanged => 9526,
+            EMsg::k_EMsgRemoteClientDownloadItemScheduleChanged => 9527,
+            EMsg::k_EMsgRemoteClientAppUpdateStopped => 9528,
+            EMsg::k_EMsgRemoteClientAppDownloadStats => 9529,
+            EMsg::k_EMsgRemoteClientAppUploadStats => 9530,
+            EMsg::k_EMsgRemoteClientAppInfoUpdateComplete => 9531,
+            EMsg::k_eMsgRemoteClientDownloadsManagement => 9532,
+            EMsg::k_eMsgRemoteClientDownloadingAppID => 9533,
+            EMsg::k_eMsgRemoteClientPeerContentServerChanged => 9534,
+            EMsg::k_eMsgRemoteClientRestrictAutoUpdatesChanged => 9535,
+            EMsg::k_eMsgRemoteClientSuspendLanPeerContent => 9536,
+            EMsg::k_eMsgRemoteClientUpdateDownloadsController => 9537,
+            EMsg::k_EMsgRemoteClientAcceptAllEULAs => 9538,
             EMsg::k_EMsgClientConcurrentSessionsBase => 9600,
             EMsg::k_EMsgClientPlayingSessionState => 9600,
             EMsg::k_EMsgClientKickPlayingSession => 9601,
@@ -4438,6 +4456,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             338 => ::std::option::Option::Some(EMsg::k_EMsgGMStatsForwardToAdminConnections),
             339 => ::std::option::Option::Some(EMsg::k_EMsgGMGetModifiedConVars),
             340 => ::std::option::Option::Some(EMsg::k_EMsgGMGetModifiedConVarsResponse),
+            341 => ::std::option::Option::Some(EMsg::k_EMsgGMNeedShellAndServerAddresses),
             400 => ::std::option::Option::Some(EMsg::k_EMsgBaseAIS),
             402 => ::std::option::Option::Some(EMsg::k_EMsgAISRequestContentDescription),
             405 => ::std::option::Option::Some(EMsg::k_EMsgAISGetPackageChangeNumber),
@@ -4446,12 +4465,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             424 => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppGCFlagsResponse),
             425 => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppList),
             426 => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppListResponse),
-            429 => ::std::option::Option::Some(EMsg::k_EMsgAISGetCouponDefinition),
-            430 => ::std::option::Option::Some(EMsg::k_EMsgAISGetCouponDefinitionResponse),
             431 => ::std::option::Option::Some(EMsg::k_EMsgAISUpdateSubordinateContentDescription),
             432 => ::std::option::Option::Some(EMsg::k_EMsgAISUpdateSubordinateContentDescriptionResponse),
-            433 => ::std::option::Option::Some(EMsg::k_EMsgAISTestEnableGC),
             434 => ::std::option::Option::Some(EMsg::k_EMsgAISBroadcastSubordinateContentDescription),
+            435 => ::std::option::Option::Some(EMsg::k_EMsgProductInfoChangedNotification),
+            436 => ::std::option::Option::Some(EMsg::k_EMsgProductInfoCacheStatus),
             500 => ::std::option::Option::Some(EMsg::k_EMsgBaseAM),
             504 => ::std::option::Option::Some(EMsg::k_EMsgAMUpdateUserBanRequest),
             505 => ::std::option::Option::Some(EMsg::k_EMsgAMAddLicense),
@@ -4566,18 +4584,14 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             714 => ::std::option::Option::Some(EMsg::k_EMsgClientRemoveFriend),
             715 => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayedNoDataBlob),
             716 => ::std::option::Option::Some(EMsg::k_EMsgClientChangeStatus),
-            717 => ::std::option::Option::Some(EMsg::k_EMsgClientVacStatusResponse),
             718 => ::std::option::Option::Some(EMsg::k_EMsgClientFriendMsg),
             719 => ::std::option::Option::Some(EMsg::k_EMsgClientGameConnect_obsolete),
             720 => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayed2_obsolete),
             721 => ::std::option::Option::Some(EMsg::k_EMsgClientGameEnded_obsolete),
             726 => ::std::option::Option::Some(EMsg::k_EMsgClientSystemIM),
             727 => ::std::option::Option::Some(EMsg::k_EMsgClientSystemIMAck),
-            728 => ::std::option::Option::Some(EMsg::k_EMsgClientGetLicenses),
             730 => ::std::option::Option::Some(EMsg::k_EMsgClientGetLegacyGameKey),
             731 => ::std::option::Option::Some(EMsg::k_EMsgClientContentServerLogOn_Deprecated),
-            732 => ::std::option::Option::Some(EMsg::k_EMsgClientAckVACBan2),
-            736 => ::std::option::Option::Some(EMsg::k_EMsgClientGetPurchaseReceipts),
             738 => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayed3_obsolete),
             740 => ::std::option::Option::Some(EMsg::k_EMsgClientAckGuestPass),
             741 => ::std::option::Option::Some(EMsg::k_EMsgClientRedeemGuestPass),
@@ -4585,7 +4599,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             743 => ::std::option::Option::Some(EMsg::k_EMsgClientRegisterKey),
             744 => ::std::option::Option::Some(EMsg::k_EMsgClientInviteUserToClan),
             745 => ::std::option::Option::Some(EMsg::k_EMsgClientAcknowledgeClanInvite),
-            746 => ::std::option::Option::Some(EMsg::k_EMsgClientPurchaseWithMachineID),
             747 => ::std::option::Option::Some(EMsg::k_EMsgClientAppUsageEvent),
             751 => ::std::option::Option::Some(EMsg::k_EMsgClientLogOnResponse),
             755 => ::std::option::Option::Some(EMsg::k_EMsgClientSetHeartbeatRate),
@@ -4606,7 +4619,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             779 => ::std::option::Option::Some(EMsg::k_EMsgClientGameConnectTokens),
             780 => ::std::option::Option::Some(EMsg::k_EMsgClientLicenseList),
             782 => ::std::option::Option::Some(EMsg::k_EMsgClientVACBanStatus),
-            784 => ::std::option::Option::Some(EMsg::k_EMsgClientEncryptPct),
             785 => ::std::option::Option::Some(EMsg::k_EMsgClientGetLegacyGameKeyResponse),
             791 => ::std::option::Option::Some(EMsg::k_EMsgClientAddFriend),
             792 => ::std::option::Option::Some(EMsg::k_EMsgClientAddFriendResponse),
@@ -4658,8 +4670,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             907 => ::std::option::Option::Some(EMsg::k_EMsgGSStatusUpdate_Unused),
             908 => ::std::option::Option::Some(EMsg::k_EMsgGSServerType),
             909 => ::std::option::Option::Some(EMsg::k_EMsgGSPlayerList),
-            910 => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserAchievementStatus),
-            911 => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserAchievementStatusResponse),
             918 => ::std::option::Option::Some(EMsg::k_EMsgGSGetPlayStats),
             919 => ::std::option::Option::Some(EMsg::k_EMsgGSGetPlayStatsResponse),
             920 => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserGroupStatus),
@@ -4842,6 +4852,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             1704 => ::std::option::Option::Some(EMsg::k_EMsgCMSetSecrets),
             1705 => ::std::option::Option::Some(EMsg::k_EMsgCMGetSecrets),
             1706 => ::std::option::Option::Some(EMsg::k_EMsgCMRemotePlayReplyPacket),
+            1707 => ::std::option::Option::Some(EMsg::k_EMsgCMRemotePlayOffline),
             2200 => ::std::option::Option::Some(EMsg::k_EMsgBaseGC),
             2203 => ::std::option::Option::Some(EMsg::k_EMsgGCCmdRevive),
             2206 => ::std::option::Option::Some(EMsg::k_EMsgGCCmdDown),
@@ -5004,7 +5015,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             4116 => ::std::option::Option::Some(EMsg::k_EMsgAMGetCommunityPrivacyState),
             4117 => ::std::option::Option::Some(EMsg::k_EMsgAMGetCommunityPrivacyStateResponse),
             4118 => ::std::option::Option::Some(EMsg::k_EMsgAMCheckClanInviteRateLimiting),
-            4119 => ::std::option::Option::Some(EMsg::k_EMsgUGSGetUserAchievementStatus),
             4120 => ::std::option::Option::Some(EMsg::k_EMsgAMGetIgnored),
             4121 => ::std::option::Option::Some(EMsg::k_EMsgAMGetIgnoredResponse),
             4122 => ::std::option::Option::Some(EMsg::k_EMsgAMSetIgnoredResponse),
@@ -5029,7 +5039,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             4161 => ::std::option::Option::Some(EMsg::k_EMsgAMCheckClanMembershipResponse),
             4162 => ::std::option::Option::Some(EMsg::k_EMsgAMProbeClanMembershipList),
             4163 => ::std::option::Option::Some(EMsg::k_EMsgAMProbeClanMembershipListResponse),
-            4164 => ::std::option::Option::Some(EMsg::k_EMsgUGSGetUserAchievementStatusResponse),
             4165 => ::std::option::Option::Some(EMsg::k_EMsgAMGetFriendsLobbies),
             4166 => ::std::option::Option::Some(EMsg::k_EMsgAMGetFriendsLobbiesResponse),
             4172 => ::std::option::Option::Some(EMsg::k_EMsgAMGetUserFriendNewsResponse),
@@ -5711,6 +5720,21 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             9521 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientProofRequest),
             9522 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientProofResponse),
             9523 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientWifiAPStatus),
+            9524 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientPairWifiAP),
+            9525 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientPairWifiAPResponse),
+            9526 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientDownloadScheduleChanged),
+            9527 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientDownloadItemScheduleChanged),
+            9528 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppUpdateStopped),
+            9529 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppDownloadStats),
+            9530 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppUploadStats),
+            9531 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppInfoUpdateComplete),
+            9532 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientDownloadsManagement),
+            9533 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientDownloadingAppID),
+            9534 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientPeerContentServerChanged),
+            9535 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientRestrictAutoUpdatesChanged),
+            9536 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientSuspendLanPeerContent),
+            9537 => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientUpdateDownloadsController),
+            9538 => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAcceptAllEULAs),
             9600 => ::std::option::Option::Some(EMsg::k_EMsgClientConcurrentSessionsBase),
             9601 => ::std::option::Option::Some(EMsg::k_EMsgClientKickPlayingSession),
             9700 => ::std::option::Option::Some(EMsg::k_EMsgClientBroadcastBase),
@@ -5847,6 +5871,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgGMStatsForwardToAdminConnections" => ::std::option::Option::Some(EMsg::k_EMsgGMStatsForwardToAdminConnections),
             "k_EMsgGMGetModifiedConVars" => ::std::option::Option::Some(EMsg::k_EMsgGMGetModifiedConVars),
             "k_EMsgGMGetModifiedConVarsResponse" => ::std::option::Option::Some(EMsg::k_EMsgGMGetModifiedConVarsResponse),
+            "k_EMsgGMNeedShellAndServerAddresses" => ::std::option::Option::Some(EMsg::k_EMsgGMNeedShellAndServerAddresses),
             "k_EMsgBaseAIS" => ::std::option::Option::Some(EMsg::k_EMsgBaseAIS),
             "k_EMsgAISRequestContentDescription" => ::std::option::Option::Some(EMsg::k_EMsgAISRequestContentDescription),
             "k_EMsgAISGetPackageChangeNumber" => ::std::option::Option::Some(EMsg::k_EMsgAISGetPackageChangeNumber),
@@ -5855,12 +5880,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgAIGetAppGCFlagsResponse" => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppGCFlagsResponse),
             "k_EMsgAIGetAppList" => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppList),
             "k_EMsgAIGetAppListResponse" => ::std::option::Option::Some(EMsg::k_EMsgAIGetAppListResponse),
-            "k_EMsgAISGetCouponDefinition" => ::std::option::Option::Some(EMsg::k_EMsgAISGetCouponDefinition),
-            "k_EMsgAISGetCouponDefinitionResponse" => ::std::option::Option::Some(EMsg::k_EMsgAISGetCouponDefinitionResponse),
             "k_EMsgAISUpdateSubordinateContentDescription" => ::std::option::Option::Some(EMsg::k_EMsgAISUpdateSubordinateContentDescription),
             "k_EMsgAISUpdateSubordinateContentDescriptionResponse" => ::std::option::Option::Some(EMsg::k_EMsgAISUpdateSubordinateContentDescriptionResponse),
-            "k_EMsgAISTestEnableGC" => ::std::option::Option::Some(EMsg::k_EMsgAISTestEnableGC),
             "k_EMsgAISBroadcastSubordinateContentDescription" => ::std::option::Option::Some(EMsg::k_EMsgAISBroadcastSubordinateContentDescription),
+            "k_EMsgProductInfoChangedNotification" => ::std::option::Option::Some(EMsg::k_EMsgProductInfoChangedNotification),
+            "k_EMsgProductInfoCacheStatus" => ::std::option::Option::Some(EMsg::k_EMsgProductInfoCacheStatus),
             "k_EMsgBaseAM" => ::std::option::Option::Some(EMsg::k_EMsgBaseAM),
             "k_EMsgAMUpdateUserBanRequest" => ::std::option::Option::Some(EMsg::k_EMsgAMUpdateUserBanRequest),
             "k_EMsgAMAddLicense" => ::std::option::Option::Some(EMsg::k_EMsgAMAddLicense),
@@ -5975,18 +5999,14 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgClientRemoveFriend" => ::std::option::Option::Some(EMsg::k_EMsgClientRemoveFriend),
             "k_EMsgClientGamesPlayedNoDataBlob" => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayedNoDataBlob),
             "k_EMsgClientChangeStatus" => ::std::option::Option::Some(EMsg::k_EMsgClientChangeStatus),
-            "k_EMsgClientVacStatusResponse" => ::std::option::Option::Some(EMsg::k_EMsgClientVacStatusResponse),
             "k_EMsgClientFriendMsg" => ::std::option::Option::Some(EMsg::k_EMsgClientFriendMsg),
             "k_EMsgClientGameConnect_obsolete" => ::std::option::Option::Some(EMsg::k_EMsgClientGameConnect_obsolete),
             "k_EMsgClientGamesPlayed2_obsolete" => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayed2_obsolete),
             "k_EMsgClientGameEnded_obsolete" => ::std::option::Option::Some(EMsg::k_EMsgClientGameEnded_obsolete),
             "k_EMsgClientSystemIM" => ::std::option::Option::Some(EMsg::k_EMsgClientSystemIM),
             "k_EMsgClientSystemIMAck" => ::std::option::Option::Some(EMsg::k_EMsgClientSystemIMAck),
-            "k_EMsgClientGetLicenses" => ::std::option::Option::Some(EMsg::k_EMsgClientGetLicenses),
             "k_EMsgClientGetLegacyGameKey" => ::std::option::Option::Some(EMsg::k_EMsgClientGetLegacyGameKey),
             "k_EMsgClientContentServerLogOn_Deprecated" => ::std::option::Option::Some(EMsg::k_EMsgClientContentServerLogOn_Deprecated),
-            "k_EMsgClientAckVACBan2" => ::std::option::Option::Some(EMsg::k_EMsgClientAckVACBan2),
-            "k_EMsgClientGetPurchaseReceipts" => ::std::option::Option::Some(EMsg::k_EMsgClientGetPurchaseReceipts),
             "k_EMsgClientGamesPlayed3_obsolete" => ::std::option::Option::Some(EMsg::k_EMsgClientGamesPlayed3_obsolete),
             "k_EMsgClientAckGuestPass" => ::std::option::Option::Some(EMsg::k_EMsgClientAckGuestPass),
             "k_EMsgClientRedeemGuestPass" => ::std::option::Option::Some(EMsg::k_EMsgClientRedeemGuestPass),
@@ -5994,7 +6014,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgClientRegisterKey" => ::std::option::Option::Some(EMsg::k_EMsgClientRegisterKey),
             "k_EMsgClientInviteUserToClan" => ::std::option::Option::Some(EMsg::k_EMsgClientInviteUserToClan),
             "k_EMsgClientAcknowledgeClanInvite" => ::std::option::Option::Some(EMsg::k_EMsgClientAcknowledgeClanInvite),
-            "k_EMsgClientPurchaseWithMachineID" => ::std::option::Option::Some(EMsg::k_EMsgClientPurchaseWithMachineID),
             "k_EMsgClientAppUsageEvent" => ::std::option::Option::Some(EMsg::k_EMsgClientAppUsageEvent),
             "k_EMsgClientLogOnResponse" => ::std::option::Option::Some(EMsg::k_EMsgClientLogOnResponse),
             "k_EMsgClientSetHeartbeatRate" => ::std::option::Option::Some(EMsg::k_EMsgClientSetHeartbeatRate),
@@ -6015,7 +6034,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgClientGameConnectTokens" => ::std::option::Option::Some(EMsg::k_EMsgClientGameConnectTokens),
             "k_EMsgClientLicenseList" => ::std::option::Option::Some(EMsg::k_EMsgClientLicenseList),
             "k_EMsgClientVACBanStatus" => ::std::option::Option::Some(EMsg::k_EMsgClientVACBanStatus),
-            "k_EMsgClientEncryptPct" => ::std::option::Option::Some(EMsg::k_EMsgClientEncryptPct),
             "k_EMsgClientGetLegacyGameKeyResponse" => ::std::option::Option::Some(EMsg::k_EMsgClientGetLegacyGameKeyResponse),
             "k_EMsgClientAddFriend" => ::std::option::Option::Some(EMsg::k_EMsgClientAddFriend),
             "k_EMsgClientAddFriendResponse" => ::std::option::Option::Some(EMsg::k_EMsgClientAddFriendResponse),
@@ -6067,8 +6085,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgGSStatusUpdate_Unused" => ::std::option::Option::Some(EMsg::k_EMsgGSStatusUpdate_Unused),
             "k_EMsgGSServerType" => ::std::option::Option::Some(EMsg::k_EMsgGSServerType),
             "k_EMsgGSPlayerList" => ::std::option::Option::Some(EMsg::k_EMsgGSPlayerList),
-            "k_EMsgGSGetUserAchievementStatus" => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserAchievementStatus),
-            "k_EMsgGSGetUserAchievementStatusResponse" => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserAchievementStatusResponse),
             "k_EMsgGSGetPlayStats" => ::std::option::Option::Some(EMsg::k_EMsgGSGetPlayStats),
             "k_EMsgGSGetPlayStatsResponse" => ::std::option::Option::Some(EMsg::k_EMsgGSGetPlayStatsResponse),
             "k_EMsgGSGetUserGroupStatus" => ::std::option::Option::Some(EMsg::k_EMsgGSGetUserGroupStatus),
@@ -6251,6 +6267,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgCMSetSecrets" => ::std::option::Option::Some(EMsg::k_EMsgCMSetSecrets),
             "k_EMsgCMGetSecrets" => ::std::option::Option::Some(EMsg::k_EMsgCMGetSecrets),
             "k_EMsgCMRemotePlayReplyPacket" => ::std::option::Option::Some(EMsg::k_EMsgCMRemotePlayReplyPacket),
+            "k_EMsgCMRemotePlayOffline" => ::std::option::Option::Some(EMsg::k_EMsgCMRemotePlayOffline),
             "k_EMsgBaseGC" => ::std::option::Option::Some(EMsg::k_EMsgBaseGC),
             "k_EMsgGCCmdRevive" => ::std::option::Option::Some(EMsg::k_EMsgGCCmdRevive),
             "k_EMsgGCCmdDown" => ::std::option::Option::Some(EMsg::k_EMsgGCCmdDown),
@@ -6413,7 +6430,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgAMGetCommunityPrivacyState" => ::std::option::Option::Some(EMsg::k_EMsgAMGetCommunityPrivacyState),
             "k_EMsgAMGetCommunityPrivacyStateResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMGetCommunityPrivacyStateResponse),
             "k_EMsgAMCheckClanInviteRateLimiting" => ::std::option::Option::Some(EMsg::k_EMsgAMCheckClanInviteRateLimiting),
-            "k_EMsgUGSGetUserAchievementStatus" => ::std::option::Option::Some(EMsg::k_EMsgUGSGetUserAchievementStatus),
             "k_EMsgAMGetIgnored" => ::std::option::Option::Some(EMsg::k_EMsgAMGetIgnored),
             "k_EMsgAMGetIgnoredResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMGetIgnoredResponse),
             "k_EMsgAMSetIgnoredResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMSetIgnoredResponse),
@@ -6438,7 +6454,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgAMCheckClanMembershipResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMCheckClanMembershipResponse),
             "k_EMsgAMProbeClanMembershipList" => ::std::option::Option::Some(EMsg::k_EMsgAMProbeClanMembershipList),
             "k_EMsgAMProbeClanMembershipListResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMProbeClanMembershipListResponse),
-            "k_EMsgUGSGetUserAchievementStatusResponse" => ::std::option::Option::Some(EMsg::k_EMsgUGSGetUserAchievementStatusResponse),
             "k_EMsgAMGetFriendsLobbies" => ::std::option::Option::Some(EMsg::k_EMsgAMGetFriendsLobbies),
             "k_EMsgAMGetFriendsLobbiesResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMGetFriendsLobbiesResponse),
             "k_EMsgAMGetUserFriendNewsResponse" => ::std::option::Option::Some(EMsg::k_EMsgAMGetUserFriendNewsResponse),
@@ -7120,6 +7135,21 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
             "k_EMsgRemoteClientProofRequest" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientProofRequest),
             "k_EMsgRemoteClientProofResponse" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientProofResponse),
             "k_EMsgRemoteClientWifiAPStatus" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientWifiAPStatus),
+            "k_EMsgRemoteClientPairWifiAP" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientPairWifiAP),
+            "k_EMsgRemoteClientPairWifiAPResponse" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientPairWifiAPResponse),
+            "k_EMsgRemoteClientDownloadScheduleChanged" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientDownloadScheduleChanged),
+            "k_EMsgRemoteClientDownloadItemScheduleChanged" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientDownloadItemScheduleChanged),
+            "k_EMsgRemoteClientAppUpdateStopped" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppUpdateStopped),
+            "k_EMsgRemoteClientAppDownloadStats" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppDownloadStats),
+            "k_EMsgRemoteClientAppUploadStats" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppUploadStats),
+            "k_EMsgRemoteClientAppInfoUpdateComplete" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAppInfoUpdateComplete),
+            "k_eMsgRemoteClientDownloadsManagement" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientDownloadsManagement),
+            "k_eMsgRemoteClientDownloadingAppID" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientDownloadingAppID),
+            "k_eMsgRemoteClientPeerContentServerChanged" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientPeerContentServerChanged),
+            "k_eMsgRemoteClientRestrictAutoUpdatesChanged" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientRestrictAutoUpdatesChanged),
+            "k_eMsgRemoteClientSuspendLanPeerContent" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientSuspendLanPeerContent),
+            "k_eMsgRemoteClientUpdateDownloadsController" => ::std::option::Option::Some(EMsg::k_eMsgRemoteClientUpdateDownloadsController),
+            "k_EMsgRemoteClientAcceptAllEULAs" => ::std::option::Option::Some(EMsg::k_EMsgRemoteClientAcceptAllEULAs),
             "k_EMsgClientConcurrentSessionsBase" => ::std::option::Option::Some(EMsg::k_EMsgClientConcurrentSessionsBase),
             "k_EMsgClientKickPlayingSession" => ::std::option::Option::Some(EMsg::k_EMsgClientKickPlayingSession),
             "k_EMsgClientBroadcastBase" => ::std::option::Option::Some(EMsg::k_EMsgClientBroadcastBase),
@@ -7258,6 +7288,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgGMStatsForwardToAdminConnections,
         EMsg::k_EMsgGMGetModifiedConVars,
         EMsg::k_EMsgGMGetModifiedConVarsResponse,
+        EMsg::k_EMsgGMNeedShellAndServerAddresses,
         EMsg::k_EMsgBaseAIS,
         EMsg::k_EMsgAISRequestContentDescription,
         EMsg::k_EMsgAISGetPackageChangeNumber,
@@ -7266,12 +7297,11 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgAIGetAppGCFlagsResponse,
         EMsg::k_EMsgAIGetAppList,
         EMsg::k_EMsgAIGetAppListResponse,
-        EMsg::k_EMsgAISGetCouponDefinition,
-        EMsg::k_EMsgAISGetCouponDefinitionResponse,
         EMsg::k_EMsgAISUpdateSubordinateContentDescription,
         EMsg::k_EMsgAISUpdateSubordinateContentDescriptionResponse,
-        EMsg::k_EMsgAISTestEnableGC,
         EMsg::k_EMsgAISBroadcastSubordinateContentDescription,
+        EMsg::k_EMsgProductInfoChangedNotification,
+        EMsg::k_EMsgProductInfoCacheStatus,
         EMsg::k_EMsgBaseAM,
         EMsg::k_EMsgAMUpdateUserBanRequest,
         EMsg::k_EMsgAMAddLicense,
@@ -7387,18 +7417,14 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgClientRemoveFriend,
         EMsg::k_EMsgClientGamesPlayedNoDataBlob,
         EMsg::k_EMsgClientChangeStatus,
-        EMsg::k_EMsgClientVacStatusResponse,
         EMsg::k_EMsgClientFriendMsg,
         EMsg::k_EMsgClientGameConnect_obsolete,
         EMsg::k_EMsgClientGamesPlayed2_obsolete,
         EMsg::k_EMsgClientGameEnded_obsolete,
         EMsg::k_EMsgClientSystemIM,
         EMsg::k_EMsgClientSystemIMAck,
-        EMsg::k_EMsgClientGetLicenses,
         EMsg::k_EMsgClientGetLegacyGameKey,
         EMsg::k_EMsgClientContentServerLogOn_Deprecated,
-        EMsg::k_EMsgClientAckVACBan2,
-        EMsg::k_EMsgClientGetPurchaseReceipts,
         EMsg::k_EMsgClientGamesPlayed3_obsolete,
         EMsg::k_EMsgClientAckGuestPass,
         EMsg::k_EMsgClientRedeemGuestPass,
@@ -7406,7 +7432,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgClientRegisterKey,
         EMsg::k_EMsgClientInviteUserToClan,
         EMsg::k_EMsgClientAcknowledgeClanInvite,
-        EMsg::k_EMsgClientPurchaseWithMachineID,
         EMsg::k_EMsgClientAppUsageEvent,
         EMsg::k_EMsgClientLogOnResponse,
         EMsg::k_EMsgClientSetHeartbeatRate,
@@ -7427,7 +7452,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgClientGameConnectTokens,
         EMsg::k_EMsgClientLicenseList,
         EMsg::k_EMsgClientVACBanStatus,
-        EMsg::k_EMsgClientEncryptPct,
         EMsg::k_EMsgClientGetLegacyGameKeyResponse,
         EMsg::k_EMsgClientAddFriend,
         EMsg::k_EMsgClientAddFriendResponse,
@@ -7479,8 +7503,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgGSStatusUpdate_Unused,
         EMsg::k_EMsgGSServerType,
         EMsg::k_EMsgGSPlayerList,
-        EMsg::k_EMsgGSGetUserAchievementStatus,
-        EMsg::k_EMsgGSGetUserAchievementStatusResponse,
         EMsg::k_EMsgGSGetPlayStats,
         EMsg::k_EMsgGSGetPlayStatsResponse,
         EMsg::k_EMsgGSGetUserGroupStatus,
@@ -7667,6 +7689,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgCMSetSecrets,
         EMsg::k_EMsgCMGetSecrets,
         EMsg::k_EMsgCMRemotePlayReplyPacket,
+        EMsg::k_EMsgCMRemotePlayOffline,
         EMsg::k_EMsgBaseGC,
         EMsg::k_EMsgGCCmdRevive,
         EMsg::k_EMsgGCCmdDown,
@@ -7830,7 +7853,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgAMGetCommunityPrivacyState,
         EMsg::k_EMsgAMGetCommunityPrivacyStateResponse,
         EMsg::k_EMsgAMCheckClanInviteRateLimiting,
-        EMsg::k_EMsgUGSGetUserAchievementStatus,
         EMsg::k_EMsgAMGetIgnored,
         EMsg::k_EMsgAMGetIgnoredResponse,
         EMsg::k_EMsgAMSetIgnoredResponse,
@@ -7855,7 +7877,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgAMCheckClanMembershipResponse,
         EMsg::k_EMsgAMProbeClanMembershipList,
         EMsg::k_EMsgAMProbeClanMembershipListResponse,
-        EMsg::k_EMsgUGSGetUserAchievementStatusResponse,
         EMsg::k_EMsgAMGetFriendsLobbies,
         EMsg::k_EMsgAMGetFriendsLobbiesResponse,
         EMsg::k_EMsgAMGetUserFriendNewsResponse,
@@ -8547,6 +8568,21 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMsg {
         EMsg::k_EMsgRemoteClientProofRequest,
         EMsg::k_EMsgRemoteClientProofResponse,
         EMsg::k_EMsgRemoteClientWifiAPStatus,
+        EMsg::k_EMsgRemoteClientPairWifiAP,
+        EMsg::k_EMsgRemoteClientPairWifiAPResponse,
+        EMsg::k_EMsgRemoteClientDownloadScheduleChanged,
+        EMsg::k_EMsgRemoteClientDownloadItemScheduleChanged,
+        EMsg::k_EMsgRemoteClientAppUpdateStopped,
+        EMsg::k_EMsgRemoteClientAppDownloadStats,
+        EMsg::k_EMsgRemoteClientAppUploadStats,
+        EMsg::k_EMsgRemoteClientAppInfoUpdateComplete,
+        EMsg::k_eMsgRemoteClientDownloadsManagement,
+        EMsg::k_eMsgRemoteClientDownloadingAppID,
+        EMsg::k_eMsgRemoteClientPeerContentServerChanged,
+        EMsg::k_eMsgRemoteClientRestrictAutoUpdatesChanged,
+        EMsg::k_eMsgRemoteClientSuspendLanPeerContent,
+        EMsg::k_eMsgRemoteClientUpdateDownloadsController,
+        EMsg::k_EMsgRemoteClientAcceptAllEULAs,
         EMsg::k_EMsgClientConcurrentSessionsBase,
         EMsg::k_EMsgClientPlayingSessionState,
         EMsg::k_EMsgClientKickPlayingSession,
@@ -8627,8 +8663,6 @@ pub enum EClientPersonaStateFlag {
     k_EClientPersonaStateGameDataBlob = 512,
     // @@protoc_insertion_point(enum_value:EClientPersonaStateFlag.k_EClientPersonaStateFlagClanData)
     k_EClientPersonaStateFlagClanData = 1024,
-    // @@protoc_insertion_point(enum_value:EClientPersonaStateFlag.k_EClientPersonaStateFlagFacebook)
-    k_EClientPersonaStateFlagFacebook = 2048,
     // @@protoc_insertion_point(enum_value:EClientPersonaStateFlag.k_EClientPersonaStateFlagRichPresence)
     k_EClientPersonaStateFlagRichPresence = 4096,
     // @@protoc_insertion_point(enum_value:EClientPersonaStateFlag.k_EClientPersonaStateFlagBroadcast)
@@ -8656,7 +8690,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientPersonaStateFlag {
             256 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateGameExtraInfo),
             512 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateGameDataBlob),
             1024 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagClanData),
-            2048 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagFacebook),
             4096 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagRichPresence),
             8192 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagBroadcast),
             16384 => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagWatching),
@@ -8676,7 +8709,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientPersonaStateFlag {
             "k_EClientPersonaStateGameExtraInfo" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateGameExtraInfo),
             "k_EClientPersonaStateGameDataBlob" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateGameDataBlob),
             "k_EClientPersonaStateFlagClanData" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagClanData),
-            "k_EClientPersonaStateFlagFacebook" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagFacebook),
             "k_EClientPersonaStateFlagRichPresence" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagRichPresence),
             "k_EClientPersonaStateFlagBroadcast" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagBroadcast),
             "k_EClientPersonaStateFlagWatching" => ::std::option::Option::Some(EClientPersonaStateFlag::k_EClientPersonaStateFlagWatching),
@@ -8695,7 +8727,6 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientPersonaStateFlag {
         EClientPersonaStateFlag::k_EClientPersonaStateGameExtraInfo,
         EClientPersonaStateFlag::k_EClientPersonaStateGameDataBlob,
         EClientPersonaStateFlag::k_EClientPersonaStateFlagClanData,
-        EClientPersonaStateFlag::k_EClientPersonaStateFlagFacebook,
         EClientPersonaStateFlag::k_EClientPersonaStateFlagRichPresence,
         EClientPersonaStateFlag::k_EClientPersonaStateFlagBroadcast,
         EClientPersonaStateFlag::k_EClientPersonaStateFlagWatching,
@@ -8868,8 +8899,8 @@ pub enum ECodecUsagePlatform {
     k_ECodecUsagePlatformMacOS = 2,
     // @@protoc_insertion_point(enum_value:ECodecUsagePlatform.k_ECodecUsagePlatformLinux)
     k_ECodecUsagePlatformLinux = 3,
-    // @@protoc_insertion_point(enum_value:ECodecUsagePlatform.k_ECodecUsagePlatformSteamDeck)
-    k_ECodecUsagePlatformSteamDeck = 4,
+    // @@protoc_insertion_point(enum_value:ECodecUsagePlatform.k_ECodecUsagePlatformSteamHardware)
+    k_ECodecUsagePlatformSteamHardware = 4,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for ECodecUsagePlatform {
@@ -8885,7 +8916,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ECodecUsagePlatform {
             1 => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformWindows),
             2 => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformMacOS),
             3 => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformLinux),
-            4 => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformSteamDeck),
+            4 => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformSteamHardware),
             _ => ::std::option::Option::None
         }
     }
@@ -8896,7 +8927,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ECodecUsagePlatform {
             "k_ECodecUsagePlatformWindows" => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformWindows),
             "k_ECodecUsagePlatformMacOS" => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformMacOS),
             "k_ECodecUsagePlatformLinux" => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformLinux),
-            "k_ECodecUsagePlatformSteamDeck" => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformSteamDeck),
+            "k_ECodecUsagePlatformSteamHardware" => ::std::option::Option::Some(ECodecUsagePlatform::k_ECodecUsagePlatformSteamHardware),
             _ => ::std::option::Option::None
         }
     }
@@ -8906,7 +8937,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ECodecUsagePlatform {
         ECodecUsagePlatform::k_ECodecUsagePlatformWindows,
         ECodecUsagePlatform::k_ECodecUsagePlatformMacOS,
         ECodecUsagePlatform::k_ECodecUsagePlatformLinux,
-        ECodecUsagePlatform::k_ECodecUsagePlatformSteamDeck,
+        ECodecUsagePlatform::k_ECodecUsagePlatformSteamHardware,
     ];
 }
 

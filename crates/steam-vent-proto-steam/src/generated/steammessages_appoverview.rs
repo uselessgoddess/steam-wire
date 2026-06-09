@@ -597,6 +597,10 @@ pub struct CAppOverview {
     pub display_name_elanguage: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CAppOverview.has_custom_sort_as)
     pub has_custom_sort_as: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CAppOverview.bitfield_supported_languages)
+    pub bitfield_supported_languages: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CAppOverview.remote_per_client_data)
+    pub remote_per_client_data: ::std::vec::Vec<CAppOverview_PerClientData>,
     // special fields
     // @@protoc_insertion_point(special_field:CAppOverview.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -1734,6 +1738,25 @@ impl CAppOverview {
     pub fn set_has_custom_sort_as(&mut self, v: bool) {
         self.has_custom_sort_as = ::std::option::Option::Some(v);
     }
+
+    // optional uint64 bitfield_supported_languages = 77;
+
+    pub fn bitfield_supported_languages(&self) -> u64 {
+        self.bitfield_supported_languages.unwrap_or(0u64)
+    }
+
+    pub fn clear_bitfield_supported_languages(&mut self) {
+        self.bitfield_supported_languages = ::std::option::Option::None;
+    }
+
+    pub fn has_bitfield_supported_languages(&self) -> bool {
+        self.bitfield_supported_languages.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_bitfield_supported_languages(&mut self, v: u64) {
+        self.bitfield_supported_languages = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
@@ -1905,6 +1928,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
                 608 => {
                     self.has_custom_sort_as = ::std::option::Option::Some(is.read_bool()?);
                 },
+                616 => {
+                    self.bitfield_supported_languages = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                626 => {
+                    self.remote_per_client_data.push(is.read_message()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -2071,6 +2100,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
         if let Some(v) = self.has_custom_sort_as {
             my_size += 2 + 1;
         }
+        if let Some(v) = self.bitfield_supported_languages {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(77, v);
+        }
+        for value in &self.remote_per_client_data {
+            let len = value.compute_size();
+            my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -2230,6 +2266,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
         if let Some(v) = self.has_custom_sort_as {
             os.write_bool(76, v)?;
         }
+        if let Some(v) = self.bitfield_supported_languages {
+            os.write_uint64(77, v)?;
+        }
+        for v in &self.remote_per_client_data {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(78, v, os)?;
+        };
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -2298,6 +2340,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
         self.album_cover_hash = ::std::option::Option::None;
         self.display_name_elanguage = ::std::option::Option::None;
         self.has_custom_sort_as = ::std::option::Option::None;
+        self.bitfield_supported_languages = ::std::option::Option::None;
+        self.remote_per_client_data.clear();
         self.special_fields.clear();
     }
 
@@ -2354,6 +2398,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CAppOverview {
             album_cover_hash: ::std::option::Option::None,
             display_name_elanguage: ::std::option::Option::None,
             has_custom_sort_as: ::std::option::Option::None,
+            bitfield_supported_languages: ::std::option::Option::None,
+            remote_per_client_data: ::std::vec::Vec::new(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance

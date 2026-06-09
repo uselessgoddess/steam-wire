@@ -28,6 +28,11 @@ const _PROTOBUF_VERSION_CHECK: () = ::steam_vent_proto_common::protobuf::VERSION
 // @@protoc_insertion_point(message:CMsgSleepManagerState)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CMsgSleepManagerState {
+    // message fields
+    // @@protoc_insertion_point(field:CMsgSleepManagerState.is_low_power_download_supported)
+    pub is_low_power_download_supported: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CMsgSleepManagerState.current_state)
+    pub current_state: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<ESystemPowerState>>,
     // special fields
     // @@protoc_insertion_point(special_field:CMsgSleepManagerState.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -43,6 +48,47 @@ impl CMsgSleepManagerState {
     pub fn new() -> CMsgSleepManagerState {
         ::std::default::Default::default()
     }
+
+    // optional bool is_low_power_download_supported = 1;
+
+    pub fn is_low_power_download_supported(&self) -> bool {
+        self.is_low_power_download_supported.unwrap_or(false)
+    }
+
+    pub fn clear_is_low_power_download_supported(&mut self) {
+        self.is_low_power_download_supported = ::std::option::Option::None;
+    }
+
+    pub fn has_is_low_power_download_supported(&self) -> bool {
+        self.is_low_power_download_supported.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_is_low_power_download_supported(&mut self, v: bool) {
+        self.is_low_power_download_supported = ::std::option::Option::Some(v);
+    }
+
+    // optional .ESystemPowerState current_state = 2;
+
+    pub fn current_state(&self) -> ESystemPowerState {
+        match self.current_state {
+            Some(e) => e.enum_value_or(ESystemPowerState::k_ESystemPowerState_Invalid),
+            None => ESystemPowerState::k_ESystemPowerState_Invalid,
+        }
+    }
+
+    pub fn clear_current_state(&mut self) {
+        self.current_state = ::std::option::Option::None;
+    }
+
+    pub fn has_current_state(&self) -> bool {
+        self.current_state.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_current_state(&mut self, v: ESystemPowerState) {
+        self.current_state = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CMsgSleepManagerState {
@@ -55,6 +101,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSleepManagerState {
     fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
+                8 => {
+                    self.is_low_power_download_supported = ::std::option::Option::Some(is.read_bool()?);
+                },
+                16 => {
+                    self.current_state = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -67,12 +119,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSleepManagerState {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
+        if let Some(v) = self.is_low_power_download_supported {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.current_state {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v.value());
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.is_low_power_download_supported {
+            os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.current_state {
+            os.write_enum(2, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -90,11 +154,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgSleepManagerState {
     }
 
     fn clear(&mut self) {
+        self.is_low_power_download_supported = ::std::option::Option::None;
+        self.current_state = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CMsgSleepManagerState {
         static instance: CMsgSleepManagerState = CMsgSleepManagerState {
+            is_low_power_download_supported: ::std::option::Option::None,
+            current_state: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -347,6 +415,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_StateChanged
 // @@protoc_insertion_point(message:CSleepManager_RequestSuspend_Notification)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CSleepManager_RequestSuspend_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CSleepManager_RequestSuspend_Notification.optionally_transition_to_low_power_downloads)
+    pub optionally_transition_to_low_power_downloads: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CSleepManager_RequestSuspend_Notification.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -362,6 +433,25 @@ impl CSleepManager_RequestSuspend_Notification {
     pub fn new() -> CSleepManager_RequestSuspend_Notification {
         ::std::default::Default::default()
     }
+
+    // optional bool optionally_transition_to_low_power_downloads = 1;
+
+    pub fn optionally_transition_to_low_power_downloads(&self) -> bool {
+        self.optionally_transition_to_low_power_downloads.unwrap_or(false)
+    }
+
+    pub fn clear_optionally_transition_to_low_power_downloads(&mut self) {
+        self.optionally_transition_to_low_power_downloads = ::std::option::Option::None;
+    }
+
+    pub fn has_optionally_transition_to_low_power_downloads(&self) -> bool {
+        self.optionally_transition_to_low_power_downloads.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_optionally_transition_to_low_power_downloads(&mut self, v: bool) {
+        self.optionally_transition_to_low_power_downloads = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSuspend_Notification {
@@ -374,6 +464,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSuspe
     fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
+                8 => {
+                    self.optionally_transition_to_low_power_downloads = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -386,12 +479,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSuspe
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
+        if let Some(v) = self.optionally_transition_to_low_power_downloads {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.optionally_transition_to_low_power_downloads {
+            os.write_bool(1, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -409,11 +508,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSuspe
     }
 
     fn clear(&mut self) {
+        self.optionally_transition_to_low_power_downloads = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static CSleepManager_RequestSuspend_Notification {
         static instance: CSleepManager_RequestSuspend_Notification = CSleepManager_RequestSuspend_Notification {
+            optionally_transition_to_low_power_downloads: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -572,6 +673,450 @@ impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_ShowPowerMen
     }
 }
 
+// @@protoc_insertion_point(message:CSleepManager_SwitchToPowerState_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSleepManager_SwitchToPowerState_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CSleepManager_SwitchToPowerState_Request.state)
+    pub state: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<ESystemPowerState>>,
+    // @@protoc_insertion_point(field:CSleepManager_SwitchToPowerState_Request.reason)
+    pub reason: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CSleepManager_SwitchToPowerState_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSleepManager_SwitchToPowerState_Request {
+    fn default() -> &'a CSleepManager_SwitchToPowerState_Request {
+        <CSleepManager_SwitchToPowerState_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSleepManager_SwitchToPowerState_Request {
+    pub fn new() -> CSleepManager_SwitchToPowerState_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional .ESystemPowerState state = 1;
+
+    pub fn state(&self) -> ESystemPowerState {
+        match self.state {
+            Some(e) => e.enum_value_or(ESystemPowerState::k_ESystemPowerState_Invalid),
+            None => ESystemPowerState::k_ESystemPowerState_Invalid,
+        }
+    }
+
+    pub fn clear_state(&mut self) {
+        self.state = ::std::option::Option::None;
+    }
+
+    pub fn has_state(&self) -> bool {
+        self.state.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_state(&mut self, v: ESystemPowerState) {
+        self.state = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional string reason = 2;
+
+    pub fn reason(&self) -> &str {
+        match self.reason.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_reason(&mut self) {
+        self.reason = ::std::option::Option::None;
+    }
+
+    pub fn has_reason(&self) -> bool {
+        self.reason.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_reason(&mut self, v: ::std::string::String) {
+        self.reason = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_reason(&mut self) -> &mut ::std::string::String {
+        if self.reason.is_none() {
+            self.reason = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.reason.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_reason(&mut self) -> ::std::string::String {
+        self.reason.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_SwitchToPowerState_Request {
+    const NAME: &'static str = "CSleepManager_SwitchToPowerState_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.state = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                18 => {
+                    self.reason = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.state {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v.value());
+        }
+        if let Some(v) = self.reason.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.state {
+            os.write_enum(1, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.reason.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSleepManager_SwitchToPowerState_Request {
+        CSleepManager_SwitchToPowerState_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.state = ::std::option::Option::None;
+        self.reason = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSleepManager_SwitchToPowerState_Request {
+        static instance: CSleepManager_SwitchToPowerState_Request = CSleepManager_SwitchToPowerState_Request {
+            state: ::std::option::Option::None,
+            reason: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSleepManager_SwitchToPowerState_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSleepManager_SwitchToPowerState_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSleepManager_SwitchToPowerState_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSleepManager_SwitchToPowerState_Response {
+    fn default() -> &'a CSleepManager_SwitchToPowerState_Response {
+        <CSleepManager_SwitchToPowerState_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSleepManager_SwitchToPowerState_Response {
+    pub fn new() -> CSleepManager_SwitchToPowerState_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_SwitchToPowerState_Response {
+    const NAME: &'static str = "CSleepManager_SwitchToPowerState_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSleepManager_SwitchToPowerState_Response {
+        CSleepManager_SwitchToPowerState_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSleepManager_SwitchToPowerState_Response {
+        static instance: CSleepManager_SwitchToPowerState_Response = CSleepManager_SwitchToPowerState_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSleepManager_RequestSleep_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSleepManager_RequestSleep_Request {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSleepManager_RequestSleep_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSleepManager_RequestSleep_Request {
+    fn default() -> &'a CSleepManager_RequestSleep_Request {
+        <CSleepManager_RequestSleep_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSleepManager_RequestSleep_Request {
+    pub fn new() -> CSleepManager_RequestSleep_Request {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSleep_Request {
+    const NAME: &'static str = "CSleepManager_RequestSleep_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSleepManager_RequestSleep_Request {
+        CSleepManager_RequestSleep_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSleepManager_RequestSleep_Request {
+        static instance: CSleepManager_RequestSleep_Request = CSleepManager_RequestSleep_Request {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CSleepManager_RequestSleep_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CSleepManager_RequestSleep_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CSleepManager_RequestSleep_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CSleepManager_RequestSleep_Response {
+    fn default() -> &'a CSleepManager_RequestSleep_Response {
+        <CSleepManager_RequestSleep_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CSleepManager_RequestSleep_Response {
+    pub fn new() -> CSleepManager_RequestSleep_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CSleepManager_RequestSleep_Response {
+    const NAME: &'static str = "CSleepManager_RequestSleep_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CSleepManager_RequestSleep_Response {
+        CSleepManager_RequestSleep_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CSleepManager_RequestSleep_Response {
+        static instance: CSleepManager_RequestSleep_Response = CSleepManager_RequestSleep_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:ESystemPowerState)
+pub enum ESystemPowerState {
+    // @@protoc_insertion_point(enum_value:ESystemPowerState.k_ESystemPowerState_Invalid)
+    k_ESystemPowerState_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:ESystemPowerState.k_ESystemPowerState_Normal)
+    k_ESystemPowerState_Normal = 1,
+    // @@protoc_insertion_point(enum_value:ESystemPowerState.k_ESystemPowerState_LowPowerDownloads)
+    k_ESystemPowerState_LowPowerDownloads = 2,
+    // @@protoc_insertion_point(enum_value:ESystemPowerState.k_ESystemPowerState_Sleep)
+    k_ESystemPowerState_Sleep = 3,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for ESystemPowerState {
+    const NAME: &'static str = "ESystemPowerState";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<ESystemPowerState> {
+        match value {
+            0 => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Invalid),
+            1 => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Normal),
+            2 => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_LowPowerDownloads),
+            3 => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Sleep),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<ESystemPowerState> {
+        match str {
+            "k_ESystemPowerState_Invalid" => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Invalid),
+            "k_ESystemPowerState_Normal" => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Normal),
+            "k_ESystemPowerState_LowPowerDownloads" => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_LowPowerDownloads),
+            "k_ESystemPowerState_Sleep" => ::std::option::Option::Some(ESystemPowerState::k_ESystemPowerState_Sleep),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [ESystemPowerState] = &[
+        ESystemPowerState::k_ESystemPowerState_Invalid,
+        ESystemPowerState::k_ESystemPowerState_Normal,
+        ESystemPowerState::k_ESystemPowerState_LowPowerDownloads,
+        ESystemPowerState::k_ESystemPowerState_Sleep,
+    ];
+}
+
+impl ::std::default::Default for ESystemPowerState {
+    fn default() -> Self {
+        ESystemPowerState::k_ESystemPowerState_Invalid
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -674,6 +1219,59 @@ impl ::steam_vent_proto_common::RpcMessage for CSleepManager_ShowPowerMenu_Notif
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CSleepManager_SwitchToPowerState_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CSleepManager_SwitchToPowerState_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSleepManager_RequestSleep_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CSleepManager_RequestSleep_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct SleepManager {}
 impl ::steam_vent_proto_common::RpcService for SleepManager {
@@ -682,6 +1280,10 @@ impl ::steam_vent_proto_common::RpcService for SleepManager {
 impl ::steam_vent_proto_common::RpcMethod for CSleepManager_GetState_Request {
     const METHOD_NAME: &'static str = "SleepManager.GetState#1";
     type Response = CSleepManager_GetState_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSleepManager_RequestSleep_Request {
+    const METHOD_NAME: &'static str = "SleepManager.RequestSleep#1";
+    type Response = CSleepManager_RequestSleep_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CSleepManager_RequestSuspend_Notification {
     const METHOD_NAME: &'static str = "SleepManager.NotifyRequestSuspend#1";
@@ -699,4 +1301,8 @@ impl ::steam_vent_proto_common::RpcMethod for CSleepManager_ShowPowerMenu_Notifi
 impl ::steam_vent_proto_common::RpcMethod for CSleepManager_StateChanged_Notification {
     const METHOD_NAME: &'static str = "SleepManager.NotifyStateChanged#1";
     type Response = WebUINoResponse;
+}
+impl ::steam_vent_proto_common::RpcMethod for CSleepManager_SwitchToPowerState_Request {
+    const METHOD_NAME: &'static str = "SleepManager.SwitchToPowerState#1";
+    type Response = CSleepManager_SwitchToPowerState_Response;
 }

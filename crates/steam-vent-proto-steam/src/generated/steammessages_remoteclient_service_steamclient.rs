@@ -62,6 +62,16 @@ for CRemoteClient_DeleteRemotePlayTogetherInvitation_Request {
     const METHOD_NAME: &'static str = "RemoteClient.DeleteRemotePlayTogetherInvitation#1";
     type Response = CRemoteClient_DeleteRemotePlayTogetherInvitation_Response;
 }
+impl ::steam_vent_proto_common::RpcMethod
+for CRemoteClient_DisableSteamBroadcast_Notification {
+    const METHOD_NAME: &'static str = "RemoteClientSteamClient.NotifyDisableSteamBroadcast#1";
+    type Response = ();
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CRemoteClient_EnableSteamBroadcast_Notification {
+    const METHOD_NAME: &'static str = "RemoteClientSteamClient.NotifyEnableSteamBroadcast#1";
+    type Response = ();
+}
 impl ::steam_vent_proto_common::RpcMethod for CRemoteClient_GetPairingInfo_Request {
     const METHOD_NAME: &'static str = "RemoteClient.GetPairingInfo#1";
     type Response = CRemoteClient_GetPairingInfo_Response;

@@ -859,12 +859,6 @@ pub struct CMsgClientLogon {
     pub access_token: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgClientLogon.is_chrome_os)
     pub is_chrome_os: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientLogon.is_steam_box_deprecated)
-    pub is_steam_box_deprecated: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientLogon.is_steam_deck_deprecated)
-    pub is_steam_deck_deprecated: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:CMsgClientLogon.is_tesla_deprecated)
-    pub is_tesla_deprecated: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CMsgClientLogon.gaming_device_type)
     pub gaming_device_type: ::std::option::Option<u32>,
     // special fields
@@ -2226,63 +2220,6 @@ impl CMsgClientLogon {
         self.is_chrome_os = ::std::option::Option::Some(v);
     }
 
-    // optional bool is_steam_box_deprecated = 99;
-
-    pub fn is_steam_box_deprecated(&self) -> bool {
-        self.is_steam_box_deprecated.unwrap_or(false)
-    }
-
-    pub fn clear_is_steam_box_deprecated(&mut self) {
-        self.is_steam_box_deprecated = ::std::option::Option::None;
-    }
-
-    pub fn has_is_steam_box_deprecated(&self) -> bool {
-        self.is_steam_box_deprecated.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_is_steam_box_deprecated(&mut self, v: bool) {
-        self.is_steam_box_deprecated = ::std::option::Option::Some(v);
-    }
-
-    // optional bool is_steam_deck_deprecated = 107;
-
-    pub fn is_steam_deck_deprecated(&self) -> bool {
-        self.is_steam_deck_deprecated.unwrap_or(false)
-    }
-
-    pub fn clear_is_steam_deck_deprecated(&mut self) {
-        self.is_steam_deck_deprecated = ::std::option::Option::None;
-    }
-
-    pub fn has_is_steam_deck_deprecated(&self) -> bool {
-        self.is_steam_deck_deprecated.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_is_steam_deck_deprecated(&mut self, v: bool) {
-        self.is_steam_deck_deprecated = ::std::option::Option::Some(v);
-    }
-
-    // optional bool is_tesla_deprecated = 110;
-
-    pub fn is_tesla_deprecated(&self) -> bool {
-        self.is_tesla_deprecated.unwrap_or(false)
-    }
-
-    pub fn clear_is_tesla_deprecated(&mut self) {
-        self.is_tesla_deprecated = ::std::option::Option::None;
-    }
-
-    pub fn has_is_tesla_deprecated(&self) -> bool {
-        self.is_tesla_deprecated.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_is_tesla_deprecated(&mut self, v: bool) {
-        self.is_tesla_deprecated = ::std::option::Option::Some(v);
-    }
-
     // optional uint32 gaming_device_type = 111;
 
     pub fn gaming_device_type(&self) -> u32 {
@@ -2475,15 +2412,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientLogon {
                 872 => {
                     self.is_chrome_os = ::std::option::Option::Some(is.read_bool()?);
                 },
-                792 => {
-                    self.is_steam_box_deprecated = ::std::option::Option::Some(is.read_bool()?);
-                },
-                856 => {
-                    self.is_steam_deck_deprecated = ::std::option::Option::Some(is.read_bool()?);
-                },
-                880 => {
-                    self.is_tesla_deprecated = ::std::option::Option::Some(is.read_bool()?);
-                },
                 888 => {
                     self.gaming_device_type = ::std::option::Option::Some(is.read_uint32()?);
                 },
@@ -2664,15 +2592,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientLogon {
         if let Some(v) = self.is_chrome_os {
             my_size += 2 + 1;
         }
-        if let Some(v) = self.is_steam_box_deprecated {
-            my_size += 2 + 1;
-        }
-        if let Some(v) = self.is_steam_deck_deprecated {
-            my_size += 2 + 1;
-        }
-        if let Some(v) = self.is_tesla_deprecated {
-            my_size += 2 + 1;
-        }
         if let Some(v) = self.gaming_device_type {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(111, v);
         }
@@ -2844,15 +2763,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientLogon {
         if let Some(v) = self.is_chrome_os {
             os.write_bool(109, v)?;
         }
-        if let Some(v) = self.is_steam_box_deprecated {
-            os.write_bool(99, v)?;
-        }
-        if let Some(v) = self.is_steam_deck_deprecated {
-            os.write_bool(107, v)?;
-        }
-        if let Some(v) = self.is_tesla_deprecated {
-            os.write_bool(110, v)?;
-        }
         if let Some(v) = self.gaming_device_type {
             os.write_uint32(111, v)?;
         }
@@ -2927,9 +2837,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientLogon {
         self.disable_partner_autogrants = ::std::option::Option::None;
         self.access_token = ::std::option::Option::None;
         self.is_chrome_os = ::std::option::Option::None;
-        self.is_steam_box_deprecated = ::std::option::Option::None;
-        self.is_steam_deck_deprecated = ::std::option::Option::None;
-        self.is_tesla_deprecated = ::std::option::Option::None;
         self.gaming_device_type = ::std::option::Option::None;
         self.special_fields.clear();
     }
@@ -2990,9 +2897,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientLogon {
             disable_partner_autogrants: ::std::option::Option::None,
             access_token: ::std::option::Option::None,
             is_chrome_os: ::std::option::Option::None,
-            is_steam_box_deprecated: ::std::option::Option::None,
-            is_steam_deck_deprecated: ::std::option::Option::None,
-            is_tesla_deprecated: ::std::option::Option::None,
             gaming_device_type: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
@@ -4822,10 +4726,6 @@ pub struct CMsgClientAccountInfo {
     pub count_authed_computers: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CMsgClientAccountInfo.account_flags)
     pub account_flags: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:CMsgClientAccountInfo.facebook_id)
-    pub facebook_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:CMsgClientAccountInfo.facebook_name)
-    pub facebook_name: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgClientAccountInfo.steamguard_machine_name_user_chosen)
     pub steamguard_machine_name_user_chosen: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CMsgClientAccountInfo.is_phone_verified)
@@ -4960,61 +4860,6 @@ impl CMsgClientAccountInfo {
     // Param is passed by value, moved
     pub fn set_account_flags(&mut self, v: u32) {
         self.account_flags = ::std::option::Option::Some(v);
-    }
-
-    // optional uint64 facebook_id = 8;
-
-    pub fn facebook_id(&self) -> u64 {
-        self.facebook_id.unwrap_or(0)
-    }
-
-    pub fn clear_facebook_id(&mut self) {
-        self.facebook_id = ::std::option::Option::None;
-    }
-
-    pub fn has_facebook_id(&self) -> bool {
-        self.facebook_id.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_facebook_id(&mut self, v: u64) {
-        self.facebook_id = ::std::option::Option::Some(v);
-    }
-
-    // optional string facebook_name = 9;
-
-    pub fn facebook_name(&self) -> &str {
-        match self.facebook_name.as_ref() {
-            Some(v) => v,
-            None => "",
-        }
-    }
-
-    pub fn clear_facebook_name(&mut self) {
-        self.facebook_name = ::std::option::Option::None;
-    }
-
-    pub fn has_facebook_name(&self) -> bool {
-        self.facebook_name.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_facebook_name(&mut self, v: ::std::string::String) {
-        self.facebook_name = ::std::option::Option::Some(v);
-    }
-
-    // Mutable pointer to the field.
-    // If field is not initialized, it is initialized with default value first.
-    pub fn mut_facebook_name(&mut self) -> &mut ::std::string::String {
-        if self.facebook_name.is_none() {
-            self.facebook_name = ::std::option::Option::Some(::std::string::String::new());
-        }
-        self.facebook_name.as_mut().unwrap()
-    }
-
-    // Take field
-    pub fn take_facebook_name(&mut self) -> ::std::string::String {
-        self.facebook_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
     // optional string steamguard_machine_name_user_chosen = 15;
@@ -5152,12 +4997,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientAccountInfo {
                 56 => {
                     self.account_flags = ::std::option::Option::Some(is.read_uint32()?);
                 },
-                64 => {
-                    self.facebook_id = ::std::option::Option::Some(is.read_uint64()?);
-                },
-                74 => {
-                    self.facebook_name = ::std::option::Option::Some(is.read_string()?);
-                },
                 122 => {
                     self.steamguard_machine_name_user_chosen = ::std::option::Option::Some(is.read_string()?);
                 },
@@ -5197,12 +5036,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientAccountInfo {
         if let Some(v) = self.account_flags {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, v);
         }
-        if let Some(v) = self.facebook_id {
-            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(8, v);
-        }
-        if let Some(v) = self.facebook_name.as_ref() {
-            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(9, &v);
-        }
         if let Some(v) = self.steamguard_machine_name_user_chosen.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(15, &v);
         }
@@ -5235,12 +5068,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientAccountInfo {
         }
         if let Some(v) = self.account_flags {
             os.write_uint32(7, v)?;
-        }
-        if let Some(v) = self.facebook_id {
-            os.write_uint64(8, v)?;
-        }
-        if let Some(v) = self.facebook_name.as_ref() {
-            os.write_string(9, v)?;
         }
         if let Some(v) = self.steamguard_machine_name_user_chosen.as_ref() {
             os.write_string(15, v)?;
@@ -5278,8 +5105,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientAccountInfo {
         self.ip_country = ::std::option::Option::None;
         self.count_authed_computers = ::std::option::Option::None;
         self.account_flags = ::std::option::Option::None;
-        self.facebook_id = ::std::option::Option::None;
-        self.facebook_name = ::std::option::Option::None;
         self.steamguard_machine_name_user_chosen = ::std::option::Option::None;
         self.is_phone_verified = ::std::option::Option::None;
         self.two_factor_state = ::std::option::Option::None;
@@ -5294,8 +5119,6 @@ impl ::steam_vent_proto_common::protobuf::Message for CMsgClientAccountInfo {
             ip_country: ::std::option::Option::None,
             count_authed_computers: ::std::option::Option::None,
             account_flags: ::std::option::Option::None,
-            facebook_id: ::std::option::Option::None,
-            facebook_name: ::std::option::Option::None,
             steamguard_machine_name_user_chosen: ::std::option::Option::None,
             is_phone_verified: ::std::option::Option::None,
             two_factor_state: ::std::option::Option::None,

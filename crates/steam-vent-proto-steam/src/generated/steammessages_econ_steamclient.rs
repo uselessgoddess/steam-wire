@@ -1527,6 +1527,14 @@ pub struct CEconItem_Description {
     pub sealed: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CEconItem_Description.container_properties)
     pub container_properties: ::steam_vent_proto_common::protobuf::MessageField<CEconItem_ContainerProperties>,
+    // @@protoc_insertion_point(field:CEconItem_Description.market_bucket_group_name)
+    pub market_bucket_group_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CEconItem_Description.market_bucket_group_id)
+    pub market_bucket_group_id: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CEconItem_Description.sealed_type)
+    pub sealed_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CEconItem_Description.market_name_inside_group)
+    pub market_name_inside_group: ::std::option::Option<::std::string::String>,
     // special fields
     // @@protoc_insertion_point(special_field:CEconItem_Description.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2183,6 +2191,133 @@ impl CEconItem_Description {
     pub fn set_sealed(&mut self, v: bool) {
         self.sealed = ::std::option::Option::Some(v);
     }
+
+    // optional string market_bucket_group_name = 34;
+
+    pub fn market_bucket_group_name(&self) -> &str {
+        match self.market_bucket_group_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_market_bucket_group_name(&mut self) {
+        self.market_bucket_group_name = ::std::option::Option::None;
+    }
+
+    pub fn has_market_bucket_group_name(&self) -> bool {
+        self.market_bucket_group_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_market_bucket_group_name(&mut self, v: ::std::string::String) {
+        self.market_bucket_group_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_market_bucket_group_name(&mut self) -> &mut ::std::string::String {
+        if self.market_bucket_group_name.is_none() {
+            self.market_bucket_group_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.market_bucket_group_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_market_bucket_group_name(&mut self) -> ::std::string::String {
+        self.market_bucket_group_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string market_bucket_group_id = 35;
+
+    pub fn market_bucket_group_id(&self) -> &str {
+        match self.market_bucket_group_id.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_market_bucket_group_id(&mut self) {
+        self.market_bucket_group_id = ::std::option::Option::None;
+    }
+
+    pub fn has_market_bucket_group_id(&self) -> bool {
+        self.market_bucket_group_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_market_bucket_group_id(&mut self, v: ::std::string::String) {
+        self.market_bucket_group_id = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_market_bucket_group_id(&mut self) -> &mut ::std::string::String {
+        if self.market_bucket_group_id.is_none() {
+            self.market_bucket_group_id = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.market_bucket_group_id.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_market_bucket_group_id(&mut self) -> ::std::string::String {
+        self.market_bucket_group_id.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional uint32 sealed_type = 37;
+
+    pub fn sealed_type(&self) -> u32 {
+        self.sealed_type.unwrap_or(0)
+    }
+
+    pub fn clear_sealed_type(&mut self) {
+        self.sealed_type = ::std::option::Option::None;
+    }
+
+    pub fn has_sealed_type(&self) -> bool {
+        self.sealed_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sealed_type(&mut self, v: u32) {
+        self.sealed_type = ::std::option::Option::Some(v);
+    }
+
+    // optional string market_name_inside_group = 38;
+
+    pub fn market_name_inside_group(&self) -> &str {
+        match self.market_name_inside_group.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_market_name_inside_group(&mut self) {
+        self.market_name_inside_group = ::std::option::Option::None;
+    }
+
+    pub fn has_market_name_inside_group(&self) -> bool {
+        self.market_name_inside_group.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_market_name_inside_group(&mut self, v: ::std::string::String) {
+        self.market_name_inside_group = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_market_name_inside_group(&mut self) -> &mut ::std::string::String {
+        if self.market_name_inside_group.is_none() {
+            self.market_name_inside_group = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.market_name_inside_group.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_market_name_inside_group(&mut self) -> ::std::string::String {
+        self.market_name_inside_group.take().unwrap_or_else(|| ::std::string::String::new())
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
@@ -2290,6 +2425,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
                 },
                 266 => {
                     ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.container_properties)?;
+                },
+                274 => {
+                    self.market_bucket_group_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                282 => {
+                    self.market_bucket_group_id = ::std::option::Option::Some(is.read_string()?);
+                },
+                296 => {
+                    self.sealed_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                306 => {
+                    self.market_name_inside_group = ::std::option::Option::Some(is.read_string()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2407,6 +2554,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
             let len = v.compute_size();
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         }
+        if let Some(v) = self.market_bucket_group_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(34, &v);
+        }
+        if let Some(v) = self.market_bucket_group_id.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(35, &v);
+        }
+        if let Some(v) = self.sealed_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(37, v);
+        }
+        if let Some(v) = self.market_name_inside_group.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(38, &v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -2509,6 +2668,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
         if let Some(v) = self.container_properties.as_ref() {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(33, v, os)?;
         }
+        if let Some(v) = self.market_bucket_group_name.as_ref() {
+            os.write_string(34, v)?;
+        }
+        if let Some(v) = self.market_bucket_group_id.as_ref() {
+            os.write_string(35, v)?;
+        }
+        if let Some(v) = self.sealed_type {
+            os.write_uint32(37, v)?;
+        }
+        if let Some(v) = self.market_name_inside_group.as_ref() {
+            os.write_string(38, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -2558,6 +2729,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
         self.market_sell_country_restriction = ::std::option::Option::None;
         self.sealed = ::std::option::Option::None;
         self.container_properties.clear();
+        self.market_bucket_group_name = ::std::option::Option::None;
+        self.market_bucket_group_id = ::std::option::Option::None;
+        self.sealed_type = ::std::option::Option::None;
+        self.market_name_inside_group = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -2595,6 +2770,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_Description {
             market_sell_country_restriction: ::std::option::Option::None,
             sealed: ::std::option::Option::None,
             container_properties: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            market_bucket_group_name: ::std::option::Option::None,
+            market_bucket_group_id: ::std::option::Option::None,
+            sealed_type: ::std::option::Option::None,
+            market_name_inside_group: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3211,6 +3390,8 @@ pub struct CEconItem_AssetProperty {
     pub int_value: ::std::option::Option<i64>,
     // @@protoc_insertion_point(field:CEconItem_AssetProperty.float_value)
     pub float_value: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CEconItem_AssetProperty.string_value)
+    pub string_value: ::std::option::Option<::std::string::String>,
     // special fields
     // @@protoc_insertion_point(special_field:CEconItem_AssetProperty.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3283,6 +3464,42 @@ impl CEconItem_AssetProperty {
     pub fn set_float_value(&mut self, v: f32) {
         self.float_value = ::std::option::Option::Some(v);
     }
+
+    // optional string string_value = 4;
+
+    pub fn string_value(&self) -> &str {
+        match self.string_value.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_string_value(&mut self) {
+        self.string_value = ::std::option::Option::None;
+    }
+
+    pub fn has_string_value(&self) -> bool {
+        self.string_value.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_string_value(&mut self, v: ::std::string::String) {
+        self.string_value = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_string_value(&mut self) -> &mut ::std::string::String {
+        if self.string_value.is_none() {
+            self.string_value = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.string_value.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_string_value(&mut self) -> ::std::string::String {
+        self.string_value.take().unwrap_or_else(|| ::std::string::String::new())
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
@@ -3303,6 +3520,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
                 },
                 29 => {
                     self.float_value = ::std::option::Option::Some(is.read_float()?);
+                },
+                34 => {
+                    self.string_value = ::std::option::Option::Some(is.read_string()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -3325,6 +3545,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
         if let Some(v) = self.float_value {
             my_size += 1 + 4;
         }
+        if let Some(v) = self.string_value.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3339,6 +3562,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
         }
         if let Some(v) = self.float_value {
             os.write_float(3, v)?;
+        }
+        if let Some(v) = self.string_value.as_ref() {
+            os.write_string(4, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3360,6 +3586,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
         self.propertyid = ::std::option::Option::None;
         self.int_value = ::std::option::Option::None;
         self.float_value = ::std::option::Option::None;
+        self.string_value = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -3368,6 +3595,190 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperty {
             propertyid: ::std::option::Option::None,
             int_value: ::std::option::Option::None,
             float_value: ::std::option::Option::None,
+            string_value: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CEconItem_AssetAccessory)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CEconItem_AssetAccessory {
+    // message fields
+    // @@protoc_insertion_point(field:CEconItem_AssetAccessory.classid)
+    pub classid: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CEconItem_AssetAccessory.instanceid)
+    pub instanceid: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CEconItem_AssetAccessory.standalone_properties)
+    pub standalone_properties: ::std::vec::Vec<CEconItem_AssetProperty>,
+    // @@protoc_insertion_point(field:CEconItem_AssetAccessory.parent_relationship_properties)
+    pub parent_relationship_properties: ::std::vec::Vec<CEconItem_AssetProperty>,
+    // @@protoc_insertion_point(field:CEconItem_AssetAccessory.nested_accessories)
+    pub nested_accessories: ::std::vec::Vec<CEconItem_AssetAccessory>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CEconItem_AssetAccessory.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CEconItem_AssetAccessory {
+    fn default() -> &'a CEconItem_AssetAccessory {
+        <CEconItem_AssetAccessory as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CEconItem_AssetAccessory {
+    pub fn new() -> CEconItem_AssetAccessory {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 classid = 1;
+
+    pub fn classid(&self) -> u64 {
+        self.classid.unwrap_or(0)
+    }
+
+    pub fn clear_classid(&mut self) {
+        self.classid = ::std::option::Option::None;
+    }
+
+    pub fn has_classid(&self) -> bool {
+        self.classid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_classid(&mut self, v: u64) {
+        self.classid = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 instanceid = 2;
+
+    pub fn instanceid(&self) -> u64 {
+        self.instanceid.unwrap_or(0)
+    }
+
+    pub fn clear_instanceid(&mut self) {
+        self.instanceid = ::std::option::Option::None;
+    }
+
+    pub fn has_instanceid(&self) -> bool {
+        self.instanceid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_instanceid(&mut self, v: u64) {
+        self.instanceid = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetAccessory {
+    const NAME: &'static str = "CEconItem_AssetAccessory";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.classid = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.instanceid = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                26 => {
+                    self.standalone_properties.push(is.read_message()?);
+                },
+                34 => {
+                    self.parent_relationship_properties.push(is.read_message()?);
+                },
+                42 => {
+                    self.nested_accessories.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.classid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.instanceid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+        }
+        for value in &self.standalone_properties {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        for value in &self.parent_relationship_properties {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        for value in &self.nested_accessories {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.classid {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.instanceid {
+            os.write_uint64(2, v)?;
+        }
+        for v in &self.standalone_properties {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+        };
+        for v in &self.parent_relationship_properties {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
+        };
+        for v in &self.nested_accessories {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CEconItem_AssetAccessory {
+        CEconItem_AssetAccessory::new()
+    }
+
+    fn clear(&mut self) {
+        self.classid = ::std::option::Option::None;
+        self.instanceid = ::std::option::Option::None;
+        self.standalone_properties.clear();
+        self.parent_relationship_properties.clear();
+        self.nested_accessories.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CEconItem_AssetAccessory {
+        static instance: CEconItem_AssetAccessory = CEconItem_AssetAccessory {
+            classid: ::std::option::Option::None,
+            instanceid: ::std::option::Option::None,
+            standalone_properties: ::std::vec::Vec::new(),
+            parent_relationship_properties: ::std::vec::Vec::new(),
+            nested_accessories: ::std::vec::Vec::new(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3386,6 +3797,8 @@ pub struct CEconItem_AssetProperties {
     pub assetid: ::std::option::Option<u64>,
     // @@protoc_insertion_point(field:CEconItem_AssetProperties.asset_properties)
     pub asset_properties: ::std::vec::Vec<CEconItem_AssetProperty>,
+    // @@protoc_insertion_point(field:CEconItem_AssetProperties.asset_accessories)
+    pub asset_accessories: ::std::vec::Vec<CEconItem_AssetAccessory>,
     // special fields
     // @@protoc_insertion_point(special_field:CEconItem_AssetProperties.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3482,6 +3895,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperties 
                 34 => {
                     self.asset_properties.push(is.read_message()?);
                 },
+                42 => {
+                    self.asset_accessories.push(is.read_message()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -3507,6 +3923,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperties 
             let len = value.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
+        for value in &self.asset_accessories {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3524,6 +3944,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperties 
         }
         for v in &self.asset_properties {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
+        };
+        for v in &self.asset_accessories {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
         };
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3546,6 +3969,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperties 
         self.contextid = ::std::option::Option::None;
         self.assetid = ::std::option::Option::None;
         self.asset_properties.clear();
+        self.asset_accessories.clear();
         self.special_fields.clear();
     }
 
@@ -3555,6 +3979,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetProperties 
             contextid: ::std::option::Option::None,
             assetid: ::std::option::Option::None,
             asset_properties: ::std::vec::Vec::new(),
+            asset_accessories: ::std::vec::Vec::new(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -4572,6 +4997,717 @@ impl ::steam_vent_proto_common::protobuf::Message for CEcon_GetAssetClassInfo_Re
     }
 }
 
+// @@protoc_insertion_point(message:CEcon_GetAssetPropertySchema_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CEcon_GetAssetPropertySchema_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CEcon_GetAssetPropertySchema_Request.appid)
+    pub appid: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CEcon_GetAssetPropertySchema_Request.language)
+    pub language: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CEcon_GetAssetPropertySchema_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CEcon_GetAssetPropertySchema_Request {
+    fn default() -> &'a CEcon_GetAssetPropertySchema_Request {
+        <CEcon_GetAssetPropertySchema_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CEcon_GetAssetPropertySchema_Request {
+    pub fn new() -> CEcon_GetAssetPropertySchema_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 appid = 1;
+
+    pub fn appid(&self) -> u32 {
+        self.appid.unwrap_or(0)
+    }
+
+    pub fn clear_appid(&mut self) {
+        self.appid = ::std::option::Option::None;
+    }
+
+    pub fn has_appid(&self) -> bool {
+        self.appid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid(&mut self, v: u32) {
+        self.appid = ::std::option::Option::Some(v);
+    }
+
+    // optional string language = 2;
+
+    pub fn language(&self) -> &str {
+        match self.language.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_language(&mut self) {
+        self.language = ::std::option::Option::None;
+    }
+
+    pub fn has_language(&self) -> bool {
+        self.language.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_language(&mut self, v: ::std::string::String) {
+        self.language = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_language(&mut self) -> &mut ::std::string::String {
+        if self.language.is_none() {
+            self.language = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.language.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_language(&mut self) -> ::std::string::String {
+        self.language.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CEcon_GetAssetPropertySchema_Request {
+    const NAME: &'static str = "CEcon_GetAssetPropertySchema_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.language = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.appid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.language.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.appid {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.language.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CEcon_GetAssetPropertySchema_Request {
+        CEcon_GetAssetPropertySchema_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.appid = ::std::option::Option::None;
+        self.language = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CEcon_GetAssetPropertySchema_Request {
+        static instance: CEcon_GetAssetPropertySchema_Request = CEcon_GetAssetPropertySchema_Request {
+            appid: ::std::option::Option::None,
+            language: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CEconItem_AssetPropertySchema)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CEconItem_AssetPropertySchema {
+    // message fields
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.id)
+    pub id: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.name)
+    pub name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.type)
+    pub type_: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EAssetPropertyType>>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.float_min)
+    pub float_min: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.float_max)
+    pub float_max: ::std::option::Option<f32>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.int_min)
+    pub int_min: ::std::option::Option<i64>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.int_max)
+    pub int_max: ::std::option::Option<i64>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.localized_label)
+    pub localized_label: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CEconItem_AssetPropertySchema.hide_from_description)
+    pub hide_from_description: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CEconItem_AssetPropertySchema.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CEconItem_AssetPropertySchema {
+    fn default() -> &'a CEconItem_AssetPropertySchema {
+        <CEconItem_AssetPropertySchema as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CEconItem_AssetPropertySchema {
+    pub fn new() -> CEconItem_AssetPropertySchema {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 id = 1;
+
+    pub fn id(&self) -> u32 {
+        self.id.unwrap_or(0)
+    }
+
+    pub fn clear_id(&mut self) {
+        self.id = ::std::option::Option::None;
+    }
+
+    pub fn has_id(&self) -> bool {
+        self.id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_id(&mut self, v: u32) {
+        self.id = ::std::option::Option::Some(v);
+    }
+
+    // optional string name = 2;
+
+    pub fn name(&self) -> &str {
+        match self.name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_name(&mut self) {
+        self.name = ::std::option::Option::None;
+    }
+
+    pub fn has_name(&self) -> bool {
+        self.name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_name(&mut self, v: ::std::string::String) {
+        self.name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+        if self.name.is_none() {
+            self.name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_name(&mut self) -> ::std::string::String {
+        self.name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional .EAssetPropertyType type = 3;
+
+    pub fn type_(&self) -> EAssetPropertyType {
+        match self.type_ {
+            Some(e) => e.enum_value_or(EAssetPropertyType::k_EAssetPropertyType_Unknown),
+            None => EAssetPropertyType::k_EAssetPropertyType_Unknown,
+        }
+    }
+
+    pub fn clear_type_(&mut self) {
+        self.type_ = ::std::option::Option::None;
+    }
+
+    pub fn has_type(&self) -> bool {
+        self.type_.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_type(&mut self, v: EAssetPropertyType) {
+        self.type_ = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional float float_min = 4;
+
+    pub fn float_min(&self) -> f32 {
+        self.float_min.unwrap_or(0.)
+    }
+
+    pub fn clear_float_min(&mut self) {
+        self.float_min = ::std::option::Option::None;
+    }
+
+    pub fn has_float_min(&self) -> bool {
+        self.float_min.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_float_min(&mut self, v: f32) {
+        self.float_min = ::std::option::Option::Some(v);
+    }
+
+    // optional float float_max = 5;
+
+    pub fn float_max(&self) -> f32 {
+        self.float_max.unwrap_or(0.)
+    }
+
+    pub fn clear_float_max(&mut self) {
+        self.float_max = ::std::option::Option::None;
+    }
+
+    pub fn has_float_max(&self) -> bool {
+        self.float_max.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_float_max(&mut self, v: f32) {
+        self.float_max = ::std::option::Option::Some(v);
+    }
+
+    // optional int64 int_min = 6;
+
+    pub fn int_min(&self) -> i64 {
+        self.int_min.unwrap_or(0)
+    }
+
+    pub fn clear_int_min(&mut self) {
+        self.int_min = ::std::option::Option::None;
+    }
+
+    pub fn has_int_min(&self) -> bool {
+        self.int_min.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_int_min(&mut self, v: i64) {
+        self.int_min = ::std::option::Option::Some(v);
+    }
+
+    // optional int64 int_max = 7;
+
+    pub fn int_max(&self) -> i64 {
+        self.int_max.unwrap_or(0)
+    }
+
+    pub fn clear_int_max(&mut self) {
+        self.int_max = ::std::option::Option::None;
+    }
+
+    pub fn has_int_max(&self) -> bool {
+        self.int_max.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_int_max(&mut self, v: i64) {
+        self.int_max = ::std::option::Option::Some(v);
+    }
+
+    // optional string localized_label = 8;
+
+    pub fn localized_label(&self) -> &str {
+        match self.localized_label.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_localized_label(&mut self) {
+        self.localized_label = ::std::option::Option::None;
+    }
+
+    pub fn has_localized_label(&self) -> bool {
+        self.localized_label.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_localized_label(&mut self, v: ::std::string::String) {
+        self.localized_label = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_localized_label(&mut self) -> &mut ::std::string::String {
+        if self.localized_label.is_none() {
+            self.localized_label = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.localized_label.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_localized_label(&mut self) -> ::std::string::String {
+        self.localized_label.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool hide_from_description = 9;
+
+    pub fn hide_from_description(&self) -> bool {
+        self.hide_from_description.unwrap_or(false)
+    }
+
+    pub fn clear_hide_from_description(&mut self) {
+        self.hide_from_description = ::std::option::Option::None;
+    }
+
+    pub fn has_hide_from_description(&self) -> bool {
+        self.hide_from_description.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hide_from_description(&mut self, v: bool) {
+        self.hide_from_description = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CEconItem_AssetPropertySchema {
+    const NAME: &'static str = "CEconItem_AssetPropertySchema";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.id = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.name = ::std::option::Option::Some(is.read_string()?);
+                },
+                24 => {
+                    self.type_ = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                37 => {
+                    self.float_min = ::std::option::Option::Some(is.read_float()?);
+                },
+                45 => {
+                    self.float_max = ::std::option::Option::Some(is.read_float()?);
+                },
+                48 => {
+                    self.int_min = ::std::option::Option::Some(is.read_int64()?);
+                },
+                56 => {
+                    self.int_max = ::std::option::Option::Some(is.read_int64()?);
+                },
+                66 => {
+                    self.localized_label = ::std::option::Option::Some(is.read_string()?);
+                },
+                72 => {
+                    self.hide_from_description = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        if let Some(v) = self.type_ {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v.value());
+        }
+        if let Some(v) = self.float_min {
+            my_size += 1 + 4;
+        }
+        if let Some(v) = self.float_max {
+            my_size += 1 + 4;
+        }
+        if let Some(v) = self.int_min {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int64_size(6, v);
+        }
+        if let Some(v) = self.int_max {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int64_size(7, v);
+        }
+        if let Some(v) = self.localized_label.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(8, &v);
+        }
+        if let Some(v) = self.hide_from_description {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.id {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.name.as_ref() {
+            os.write_string(2, v)?;
+        }
+        if let Some(v) = self.type_ {
+            os.write_enum(3, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.float_min {
+            os.write_float(4, v)?;
+        }
+        if let Some(v) = self.float_max {
+            os.write_float(5, v)?;
+        }
+        if let Some(v) = self.int_min {
+            os.write_int64(6, v)?;
+        }
+        if let Some(v) = self.int_max {
+            os.write_int64(7, v)?;
+        }
+        if let Some(v) = self.localized_label.as_ref() {
+            os.write_string(8, v)?;
+        }
+        if let Some(v) = self.hide_from_description {
+            os.write_bool(9, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CEconItem_AssetPropertySchema {
+        CEconItem_AssetPropertySchema::new()
+    }
+
+    fn clear(&mut self) {
+        self.id = ::std::option::Option::None;
+        self.name = ::std::option::Option::None;
+        self.type_ = ::std::option::Option::None;
+        self.float_min = ::std::option::Option::None;
+        self.float_max = ::std::option::Option::None;
+        self.int_min = ::std::option::Option::None;
+        self.int_max = ::std::option::Option::None;
+        self.localized_label = ::std::option::Option::None;
+        self.hide_from_description = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CEconItem_AssetPropertySchema {
+        static instance: CEconItem_AssetPropertySchema = CEconItem_AssetPropertySchema {
+            id: ::std::option::Option::None,
+            name: ::std::option::Option::None,
+            type_: ::std::option::Option::None,
+            float_min: ::std::option::Option::None,
+            float_max: ::std::option::Option::None,
+            int_min: ::std::option::Option::None,
+            int_max: ::std::option::Option::None,
+            localized_label: ::std::option::Option::None,
+            hide_from_description: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CEcon_GetAssetPropertySchema_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CEcon_GetAssetPropertySchema_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CEcon_GetAssetPropertySchema_Response.property_schemas)
+    pub property_schemas: ::std::vec::Vec<CEconItem_AssetPropertySchema>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CEcon_GetAssetPropertySchema_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CEcon_GetAssetPropertySchema_Response {
+    fn default() -> &'a CEcon_GetAssetPropertySchema_Response {
+        <CEcon_GetAssetPropertySchema_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CEcon_GetAssetPropertySchema_Response {
+    pub fn new() -> CEcon_GetAssetPropertySchema_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CEcon_GetAssetPropertySchema_Response {
+    const NAME: &'static str = "CEcon_GetAssetPropertySchema_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.property_schemas.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.property_schemas {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.property_schemas {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CEcon_GetAssetPropertySchema_Response {
+        CEcon_GetAssetPropertySchema_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.property_schemas.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CEcon_GetAssetPropertySchema_Response {
+        static instance: CEcon_GetAssetPropertySchema_Response = CEcon_GetAssetPropertySchema_Response {
+            property_schemas: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EAssetPropertyType)
+pub enum EAssetPropertyType {
+    // @@protoc_insertion_point(enum_value:EAssetPropertyType.k_EAssetPropertyType_Unknown)
+    k_EAssetPropertyType_Unknown = 0,
+    // @@protoc_insertion_point(enum_value:EAssetPropertyType.k_EAssetPropertyType_Float)
+    k_EAssetPropertyType_Float = 1,
+    // @@protoc_insertion_point(enum_value:EAssetPropertyType.k_EAssetPropertyType_Int)
+    k_EAssetPropertyType_Int = 2,
+    // @@protoc_insertion_point(enum_value:EAssetPropertyType.k_EAssetPropertyType_String)
+    k_EAssetPropertyType_String = 3,
+    // @@protoc_insertion_point(enum_value:EAssetPropertyType.k_EAssetPropertyType_MAX)
+    k_EAssetPropertyType_MAX = 4,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EAssetPropertyType {
+    const NAME: &'static str = "EAssetPropertyType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EAssetPropertyType> {
+        match value {
+            0 => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Unknown),
+            1 => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Float),
+            2 => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Int),
+            3 => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_String),
+            4 => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EAssetPropertyType> {
+        match str {
+            "k_EAssetPropertyType_Unknown" => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Unknown),
+            "k_EAssetPropertyType_Float" => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Float),
+            "k_EAssetPropertyType_Int" => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_Int),
+            "k_EAssetPropertyType_String" => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_String),
+            "k_EAssetPropertyType_MAX" => ::std::option::Option::Some(EAssetPropertyType::k_EAssetPropertyType_MAX),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EAssetPropertyType] = &[
+        EAssetPropertyType::k_EAssetPropertyType_Unknown,
+        EAssetPropertyType::k_EAssetPropertyType_Float,
+        EAssetPropertyType::k_EAssetPropertyType_Int,
+        EAssetPropertyType::k_EAssetPropertyType_String,
+        EAssetPropertyType::k_EAssetPropertyType_MAX,
+    ];
+}
+
+impl ::std::default::Default for EAssetPropertyType {
+    fn default() -> Self {
+        EAssetPropertyType::k_EAssetPropertyType_Unknown
+    }
+}
+
+
 
 const _VENT_PROTO_VERSION_CHECK: () = ::steam_vent_proto_common::VERSION_0_5_0;
 
@@ -4697,6 +5833,19 @@ impl ::steam_vent_proto_common::RpcMessage for CEconItem_AssetProperty {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CEconItem_AssetAccessory {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage for CEconItem_AssetProperties {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -4804,6 +5953,45 @@ impl ::steam_vent_proto_common::RpcMessage for CEcon_GetAssetClassInfo_Response 
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CEcon_GetAssetPropertySchema_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CEconItem_AssetPropertySchema {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CEcon_GetAssetPropertySchema_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct Econ {}
 impl ::steam_vent_proto_common::RpcService for Econ {
@@ -4817,6 +6005,10 @@ for CEcon_ClientGetItemShopOverlayAuthURL_Request {
 impl ::steam_vent_proto_common::RpcMethod for CEcon_GetAssetClassInfo_Request {
     const METHOD_NAME: &'static str = "Econ.GetAssetClassInfo#1";
     type Response = CEcon_GetAssetClassInfo_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CEcon_GetAssetPropertySchema_Request {
+    const METHOD_NAME: &'static str = "Econ.GetAssetPropertySchema#1";
+    type Response = CEcon_GetAssetPropertySchema_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CEcon_GetInventoryItemsWithDescriptions_Request {

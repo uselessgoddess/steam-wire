@@ -895,6 +895,8 @@ pub enum ESteamNotificationType {
     k_ESteamNotificationType_PlaytestInvite = 28,
     // @@protoc_insertion_point(enum_value:ESteamNotificationType.k_ESteamNotificationType_TradeReversal)
     k_ESteamNotificationType_TradeReversal = 29,
+    // @@protoc_insertion_point(enum_value:ESteamNotificationType.k_ESteamNotificationType_ReportedContentAction)
+    k_ESteamNotificationType_ReportedContentAction = 30,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for ESteamNotificationType {
@@ -936,6 +938,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ESteamNotificationType {
             27 => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_PartnerEvent),
             28 => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_PlaytestInvite),
             29 => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_TradeReversal),
+            30 => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_ReportedContentAction),
             _ => ::std::option::Option::None
         }
     }
@@ -972,6 +975,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ESteamNotificationType {
             "k_ESteamNotificationType_PartnerEvent" => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_PartnerEvent),
             "k_ESteamNotificationType_PlaytestInvite" => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_PlaytestInvite),
             "k_ESteamNotificationType_TradeReversal" => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_TradeReversal),
+            "k_ESteamNotificationType_ReportedContentAction" => ::std::option::Option::Some(ESteamNotificationType::k_ESteamNotificationType_ReportedContentAction),
             _ => ::std::option::Option::None
         }
     }
@@ -1007,6 +1011,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for ESteamNotificationType {
         ESteamNotificationType::k_ESteamNotificationType_PartnerEvent,
         ESteamNotificationType::k_ESteamNotificationType_PlaytestInvite,
         ESteamNotificationType::k_ESteamNotificationType_TradeReversal,
+        ESteamNotificationType::k_ESteamNotificationType_ReportedContentAction,
     ];
 }
 

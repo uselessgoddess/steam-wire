@@ -304,8 +304,6 @@ pub struct StoreBrowseContext {
     pub elanguage: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:StoreBrowseContext.country_code)
     pub country_code: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:StoreBrowseContext.steam_realm)
-    pub steam_realm: ::std::option::Option<i32>,
     // special fields
     // @@protoc_insertion_point(special_field:StoreBrowseContext.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -412,25 +410,6 @@ impl StoreBrowseContext {
     pub fn take_country_code(&mut self) -> ::std::string::String {
         self.country_code.take().unwrap_or_else(|| ::std::string::String::new())
     }
-
-    // optional int32 steam_realm = 4;
-
-    pub fn steam_realm(&self) -> i32 {
-        self.steam_realm.unwrap_or(0)
-    }
-
-    pub fn clear_steam_realm(&mut self) {
-        self.steam_realm = ::std::option::Option::None;
-    }
-
-    pub fn has_steam_realm(&self) -> bool {
-        self.steam_realm.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_steam_realm(&mut self, v: i32) {
-        self.steam_realm = ::std::option::Option::Some(v);
-    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
@@ -451,9 +430,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
                 },
                 26 => {
                     self.country_code = ::std::option::Option::Some(is.read_string()?);
-                },
-                32 => {
-                    self.steam_realm = ::std::option::Option::Some(is.read_int32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -476,9 +452,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
         if let Some(v) = self.country_code.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
         }
-        if let Some(v) = self.steam_realm {
-            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v);
-        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -493,9 +466,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
         }
         if let Some(v) = self.country_code.as_ref() {
             os.write_string(3, v)?;
-        }
-        if let Some(v) = self.steam_realm {
-            os.write_int32(4, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -517,7 +487,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
         self.language = ::std::option::Option::None;
         self.elanguage = ::std::option::Option::None;
         self.country_code = ::std::option::Option::None;
-        self.steam_realm = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -526,7 +495,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreBrowseContext {
             language: ::std::option::Option::None,
             elanguage: ::std::option::Option::None,
             country_code: ::std::option::Option::None,
-            steam_realm: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -1315,8 +1283,6 @@ pub struct StoreItem {
     pub best_purchase_option: ::steam_vent_proto_common::protobuf::MessageField<store_item::PurchaseOption>,
     // @@protoc_insertion_point(field:StoreItem.purchase_options)
     pub purchase_options: ::std::vec::Vec<store_item::PurchaseOption>,
-    // @@protoc_insertion_point(field:StoreItem.accessories)
-    pub accessories: ::std::vec::Vec<store_item::PurchaseOption>,
     // @@protoc_insertion_point(field:StoreItem.self_purchase_option)
     pub self_purchase_option: ::steam_vent_proto_common::protobuf::MessageField<store_item::PurchaseOption>,
     // @@protoc_insertion_point(field:StoreItem.screenshots)
@@ -1335,8 +1301,8 @@ pub struct StoreItem {
     pub game_count: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:StoreItem.internal_name)
     pub internal_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:StoreItem.full_description)
-    pub full_description: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:StoreItem.full_description_bbcode)
+    pub full_description_bbcode: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:StoreItem.is_free_temporarily)
     pub is_free_temporarily: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:StoreItem.assets_without_overrides)
@@ -1345,6 +1311,10 @@ pub struct StoreItem {
     pub user_filter_failure: ::steam_vent_proto_common::protobuf::MessageField<StoreBrowseFilterFailure>,
     // @@protoc_insertion_point(field:StoreItem.links)
     pub links: ::std::vec::Vec<store_item::Link>,
+    // @@protoc_insertion_point(field:StoreItem.purchase_description_bbcode)
+    pub purchase_description_bbcode: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:StoreItem.package_groups)
+    pub package_groups: ::std::vec::Vec<store_item::PackageGroup>,
     // special fields
     // @@protoc_insertion_point(special_field:StoreItem.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -1739,40 +1709,40 @@ impl StoreItem {
         self.internal_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional string full_description = 58;
+    // optional string full_description_bbcode = 58;
 
-    pub fn full_description(&self) -> &str {
-        match self.full_description.as_ref() {
+    pub fn full_description_bbcode(&self) -> &str {
+        match self.full_description_bbcode.as_ref() {
             Some(v) => v,
             None => "",
         }
     }
 
-    pub fn clear_full_description(&mut self) {
-        self.full_description = ::std::option::Option::None;
+    pub fn clear_full_description_bbcode(&mut self) {
+        self.full_description_bbcode = ::std::option::Option::None;
     }
 
-    pub fn has_full_description(&self) -> bool {
-        self.full_description.is_some()
+    pub fn has_full_description_bbcode(&self) -> bool {
+        self.full_description_bbcode.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_full_description(&mut self, v: ::std::string::String) {
-        self.full_description = ::std::option::Option::Some(v);
+    pub fn set_full_description_bbcode(&mut self, v: ::std::string::String) {
+        self.full_description_bbcode = ::std::option::Option::Some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_full_description(&mut self) -> &mut ::std::string::String {
-        if self.full_description.is_none() {
-            self.full_description = ::std::option::Option::Some(::std::string::String::new());
+    pub fn mut_full_description_bbcode(&mut self) -> &mut ::std::string::String {
+        if self.full_description_bbcode.is_none() {
+            self.full_description_bbcode = ::std::option::Option::Some(::std::string::String::new());
         }
-        self.full_description.as_mut().unwrap()
+        self.full_description_bbcode.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_full_description(&mut self) -> ::std::string::String {
-        self.full_description.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_full_description_bbcode(&mut self) -> ::std::string::String {
+        self.full_description_bbcode.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
     // optional bool is_free_temporarily = 59;
@@ -1792,6 +1762,42 @@ impl StoreItem {
     // Param is passed by value, moved
     pub fn set_is_free_temporarily(&mut self, v: bool) {
         self.is_free_temporarily = ::std::option::Option::Some(v);
+    }
+
+    // optional string purchase_description_bbcode = 72;
+
+    pub fn purchase_description_bbcode(&self) -> &str {
+        match self.purchase_description_bbcode.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_purchase_description_bbcode(&mut self) {
+        self.purchase_description_bbcode = ::std::option::Option::None;
+    }
+
+    pub fn has_purchase_description_bbcode(&self) -> bool {
+        self.purchase_description_bbcode.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_purchase_description_bbcode(&mut self, v: ::std::string::String) {
+        self.purchase_description_bbcode = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_purchase_description_bbcode(&mut self) -> &mut ::std::string::String {
+        if self.purchase_description_bbcode.is_none() {
+            self.purchase_description_bbcode = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.purchase_description_bbcode.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_purchase_description_bbcode(&mut self) -> ::std::string::String {
+        self.purchase_description_bbcode.take().unwrap_or_else(|| ::std::string::String::new())
     }
 }
 
@@ -1901,9 +1907,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
                 330 => {
                     self.purchase_options.push(is.read_message()?);
                 },
-                338 => {
-                    self.accessories.push(is.read_message()?);
-                },
                 346 => {
                     ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.self_purchase_option)?;
                 },
@@ -1932,7 +1935,7 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
                     self.internal_name = ::std::option::Option::Some(is.read_string()?);
                 },
                 466 => {
-                    self.full_description = ::std::option::Option::Some(is.read_string()?);
+                    self.full_description_bbcode = ::std::option::Option::Some(is.read_string()?);
                 },
                 472 => {
                     self.is_free_temporarily = ::std::option::Option::Some(is.read_bool()?);
@@ -1945,6 +1948,12 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
                 },
                 570 => {
                     self.links.push(is.read_message()?);
+                },
+                578 => {
+                    self.purchase_description_bbcode = ::std::option::Option::Some(is.read_string()?);
+                },
+                594 => {
+                    self.package_groups.push(is.read_message()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2054,10 +2063,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
             let len = value.compute_size();
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
-        for value in &self.accessories {
-            let len = value.compute_size();
-            my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
-        };
         if let Some(v) = self.self_purchase_option.as_ref() {
             let len = v.compute_size();
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
@@ -2090,7 +2095,7 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         if let Some(v) = self.internal_name.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(57, &v);
         }
-        if let Some(v) = self.full_description.as_ref() {
+        if let Some(v) = self.full_description_bbcode.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(58, &v);
         }
         if let Some(v) = self.is_free_temporarily {
@@ -2105,6 +2110,13 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         }
         for value in &self.links {
+            let len = value.compute_size();
+            my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        if let Some(v) = self.purchase_description_bbcode.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(72, &v);
+        }
+        for value in &self.package_groups {
             let len = value.compute_size();
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
@@ -2198,9 +2210,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         for v in &self.purchase_options {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(41, v, os)?;
         };
-        for v in &self.accessories {
-            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(42, v, os)?;
-        };
         if let Some(v) = self.self_purchase_option.as_ref() {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(43, v, os)?;
         }
@@ -2228,7 +2237,7 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         if let Some(v) = self.internal_name.as_ref() {
             os.write_string(57, v)?;
         }
-        if let Some(v) = self.full_description.as_ref() {
+        if let Some(v) = self.full_description_bbcode.as_ref() {
             os.write_string(58, v)?;
         }
         if let Some(v) = self.is_free_temporarily {
@@ -2242,6 +2251,12 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         }
         for v in &self.links {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(71, v, os)?;
+        };
+        if let Some(v) = self.purchase_description_bbcode.as_ref() {
+            os.write_string(72, v)?;
+        }
+        for v in &self.package_groups {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(74, v, os)?;
         };
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2288,7 +2303,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         self.is_coming_soon = ::std::option::Option::None;
         self.best_purchase_option.clear();
         self.purchase_options.clear();
-        self.accessories.clear();
         self.self_purchase_option.clear();
         self.screenshots.clear();
         self.trailers.clear();
@@ -2298,11 +2312,13 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
         self.unlisted = ::std::option::Option::None;
         self.game_count = ::std::option::Option::None;
         self.internal_name = ::std::option::Option::None;
-        self.full_description = ::std::option::Option::None;
+        self.full_description_bbcode = ::std::option::Option::None;
         self.is_free_temporarily = ::std::option::Option::None;
         self.assets_without_overrides.clear();
         self.user_filter_failure.clear();
         self.links.clear();
+        self.purchase_description_bbcode = ::std::option::Option::None;
+        self.package_groups.clear();
         self.special_fields.clear();
     }
 
@@ -2336,7 +2352,6 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
             is_coming_soon: ::std::option::Option::None,
             best_purchase_option: ::steam_vent_proto_common::protobuf::MessageField::none(),
             purchase_options: ::std::vec::Vec::new(),
-            accessories: ::std::vec::Vec::new(),
             self_purchase_option: ::steam_vent_proto_common::protobuf::MessageField::none(),
             screenshots: ::steam_vent_proto_common::protobuf::MessageField::none(),
             trailers: ::steam_vent_proto_common::protobuf::MessageField::none(),
@@ -2346,11 +2361,13 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
             unlisted: ::std::option::Option::None,
             game_count: ::std::option::Option::None,
             internal_name: ::std::option::Option::None,
-            full_description: ::std::option::Option::None,
+            full_description_bbcode: ::std::option::Option::None,
             is_free_temporarily: ::std::option::Option::None,
             assets_without_overrides: ::steam_vent_proto_common::protobuf::MessageField::none(),
             user_filter_failure: ::steam_vent_proto_common::protobuf::MessageField::none(),
             links: ::std::vec::Vec::new(),
+            purchase_description_bbcode: ::std::option::Option::None,
+            package_groups: ::std::vec::Vec::new(),
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2359,6 +2376,337 @@ impl ::steam_vent_proto_common::protobuf::Message for StoreItem {
 
 /// Nested message and enums of message `StoreItem`
 pub mod store_item {
+    // @@protoc_insertion_point(message:StoreItem.Demo)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Demo {
+        // message fields
+        // @@protoc_insertion_point(field:StoreItem.Demo.appid)
+        pub appid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.Demo.label)
+        pub label: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.Demo.show_above_purchase)
+        pub show_above_purchase: ::std::option::Option<bool>,
+        // special fields
+        // @@protoc_insertion_point(special_field:StoreItem.Demo.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Demo {
+        fn default() -> &'a Demo {
+            <Demo as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Demo {
+        pub fn new() -> Demo {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 appid = 1;
+
+        pub fn appid(&self) -> u32 {
+            self.appid.unwrap_or(0)
+        }
+
+        pub fn clear_appid(&mut self) {
+            self.appid = ::std::option::Option::None;
+        }
+
+        pub fn has_appid(&self) -> bool {
+            self.appid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_appid(&mut self, v: u32) {
+            self.appid = ::std::option::Option::Some(v);
+        }
+
+        // optional string label = 2;
+
+        pub fn label(&self) -> &str {
+            match self.label.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_label(&mut self) {
+            self.label = ::std::option::Option::None;
+        }
+
+        pub fn has_label(&self) -> bool {
+            self.label.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_label(&mut self, v: ::std::string::String) {
+            self.label = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_label(&mut self) -> &mut ::std::string::String {
+            if self.label.is_none() {
+                self.label = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.label.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_label(&mut self) -> ::std::string::String {
+            self.label.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional bool show_above_purchase = 3;
+
+        pub fn show_above_purchase(&self) -> bool {
+            self.show_above_purchase.unwrap_or(false)
+        }
+
+        pub fn clear_show_above_purchase(&mut self) {
+            self.show_above_purchase = ::std::option::Option::None;
+        }
+
+        pub fn has_show_above_purchase(&self) -> bool {
+            self.show_above_purchase.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_show_above_purchase(&mut self, v: bool) {
+            self.show_above_purchase = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Demo {
+        const NAME: &'static str = "Demo";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    18 => {
+                        self.label = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    24 => {
+                        self.show_above_purchase = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.appid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.label.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+            }
+            if let Some(v) = self.show_above_purchase {
+                my_size += 1 + 1;
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.appid {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.label.as_ref() {
+                os.write_string(2, v)?;
+            }
+            if let Some(v) = self.show_above_purchase {
+                os.write_bool(3, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Demo {
+            Demo::new()
+        }
+
+        fn clear(&mut self) {
+            self.appid = ::std::option::Option::None;
+            self.label = ::std::option::Option::None;
+            self.show_above_purchase = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Demo {
+            static instance: Demo = Demo {
+                appid: ::std::option::Option::None,
+                label: ::std::option::Option::None,
+                show_above_purchase: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    // @@protoc_insertion_point(message:StoreItem.Playtest)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct Playtest {
+        // message fields
+        // @@protoc_insertion_point(field:StoreItem.Playtest.appid)
+        pub appid: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.Playtest.is_open)
+        pub is_open: ::std::option::Option<bool>,
+        // special fields
+        // @@protoc_insertion_point(special_field:StoreItem.Playtest.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a Playtest {
+        fn default() -> &'a Playtest {
+            <Playtest as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl Playtest {
+        pub fn new() -> Playtest {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 appid = 1;
+
+        pub fn appid(&self) -> u32 {
+            self.appid.unwrap_or(0)
+        }
+
+        pub fn clear_appid(&mut self) {
+            self.appid = ::std::option::Option::None;
+        }
+
+        pub fn has_appid(&self) -> bool {
+            self.appid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_appid(&mut self, v: u32) {
+            self.appid = ::std::option::Option::Some(v);
+        }
+
+        // optional bool is_open = 2;
+
+        pub fn is_open(&self) -> bool {
+            self.is_open.unwrap_or(false)
+        }
+
+        pub fn clear_is_open(&mut self) {
+            self.is_open = ::std::option::Option::None;
+        }
+
+        pub fn has_is_open(&self) -> bool {
+            self.is_open.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_is_open(&mut self, v: bool) {
+            self.is_open = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for Playtest {
+        const NAME: &'static str = "Playtest";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.appid = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.is_open = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.appid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.is_open {
+                my_size += 1 + 1;
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.appid {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.is_open {
+                os.write_bool(2, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> Playtest {
+            Playtest::new()
+        }
+
+        fn clear(&mut self) {
+            self.appid = ::std::option::Option::None;
+            self.is_open = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static Playtest {
+            static instance: Playtest = Playtest {
+                appid: ::std::option::Option::None,
+                is_open: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
     // @@protoc_insertion_point(message:StoreItem.RelatedItems)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct RelatedItems {
@@ -2369,6 +2717,12 @@ pub mod store_item {
         pub demo_appid: ::std::vec::Vec<u32>,
         // @@protoc_insertion_point(field:StoreItem.RelatedItems.standalone_demo_appid)
         pub standalone_demo_appid: ::std::vec::Vec<u32>,
+        // @@protoc_insertion_point(field:StoreItem.RelatedItems.demos)
+        pub demos: ::std::vec::Vec<Demo>,
+        // @@protoc_insertion_point(field:StoreItem.RelatedItems.standalone_demos)
+        pub standalone_demos: ::std::vec::Vec<Demo>,
+        // @@protoc_insertion_point(field:StoreItem.RelatedItems.playtests)
+        pub playtests: ::std::vec::Vec<Playtest>,
         // special fields
         // @@protoc_insertion_point(special_field:StoreItem.RelatedItems.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2430,6 +2784,15 @@ pub mod store_item {
                     24 => {
                         self.standalone_demo_appid.push(is.read_uint32()?);
                     },
+                    34 => {
+                        self.demos.push(is.read_message()?);
+                    },
+                    42 => {
+                        self.standalone_demos.push(is.read_message()?);
+                    },
+                    50 => {
+                        self.playtests.push(is.read_message()?);
+                    },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                     },
@@ -2451,6 +2814,18 @@ pub mod store_item {
             for value in &self.standalone_demo_appid {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, *value);
             };
+            for value in &self.demos {
+                let len = value.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+            };
+            for value in &self.standalone_demos {
+                let len = value.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+            };
+            for value in &self.playtests {
+                let len = value.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+            };
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -2465,6 +2840,15 @@ pub mod store_item {
             };
             for v in &self.standalone_demo_appid {
                 os.write_uint32(3, *v)?;
+            };
+            for v in &self.demos {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
+            };
+            for v in &self.standalone_demos {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
+            };
+            for v in &self.playtests {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(6, v, os)?;
             };
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -2486,6 +2870,9 @@ pub mod store_item {
             self.parent_appid = ::std::option::Option::None;
             self.demo_appid.clear();
             self.standalone_demo_appid.clear();
+            self.demos.clear();
+            self.standalone_demos.clear();
+            self.playtests.clear();
             self.special_fields.clear();
         }
 
@@ -2494,6 +2881,9 @@ pub mod store_item {
                 parent_appid: ::std::option::Option::None,
                 demo_appid: ::std::vec::Vec::new(),
                 standalone_demo_appid: ::std::vec::Vec::new(),
+                demos: ::std::vec::Vec::new(),
+                standalone_demos: ::std::vec::Vec::new(),
+                playtests: ::std::vec::Vec::new(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -2508,6 +2898,8 @@ pub mod store_item {
         pub included_apps: ::std::vec::Vec<super::StoreItem>,
         // @@protoc_insertion_point(field:StoreItem.IncludedItems.included_packages)
         pub included_packages: ::std::vec::Vec<super::StoreItem>,
+        // @@protoc_insertion_point(field:StoreItem.IncludedItems.included_bundles)
+        pub included_bundles: ::std::vec::Vec<super::StoreItem>,
         // special fields
         // @@protoc_insertion_point(special_field:StoreItem.IncludedItems.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2541,6 +2933,9 @@ pub mod store_item {
                     18 => {
                         self.included_packages.push(is.read_message()?);
                     },
+                    26 => {
+                        self.included_bundles.push(is.read_message()?);
+                    },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                     },
@@ -2561,6 +2956,10 @@ pub mod store_item {
                 let len = value.compute_size();
                 my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
             };
+            for value in &self.included_bundles {
+                let len = value.compute_size();
+                my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+            };
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -2572,6 +2971,9 @@ pub mod store_item {
             };
             for v in &self.included_packages {
                 ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+            };
+            for v in &self.included_bundles {
+                ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
             };
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -2592,6 +2994,7 @@ pub mod store_item {
         fn clear(&mut self) {
             self.included_apps.clear();
             self.included_packages.clear();
+            self.included_bundles.clear();
             self.special_fields.clear();
         }
 
@@ -2599,6 +3002,7 @@ pub mod store_item {
             static instance: IncludedItems = IncludedItems {
                 included_apps: ::std::vec::Vec::new(),
                 included_packages: ::std::vec::Vec::new(),
+                included_bundles: ::std::vec::Vec::new(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -3604,10 +4008,16 @@ pub mod store_item {
         pub asset_url_format: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.main_capsule)
         pub main_capsule: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.Assets.main_capsule_2x)
+        pub main_capsule_2x: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.small_capsule)
         pub small_capsule: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.Assets.small_capsule_2x)
+        pub small_capsule_2x: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.header)
         pub header: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.Assets.header_2x)
+        pub header_2x: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.package_header)
         pub package_header: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.page_background)
@@ -3632,6 +4042,8 @@ pub mod store_item {
         pub page_background_path: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:StoreItem.Assets.raw_page_background)
         pub raw_page_background: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.Assets.edition_comparison)
+        pub edition_comparison: ::std::option::Option<::std::string::String>,
         // special fields
         // @@protoc_insertion_point(special_field:StoreItem.Assets.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3720,6 +4132,42 @@ pub mod store_item {
             self.main_capsule.take().unwrap_or_else(|| ::std::string::String::new())
         }
 
+        // optional string main_capsule_2x = 18;
+
+        pub fn main_capsule_2x(&self) -> &str {
+            match self.main_capsule_2x.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_main_capsule_2x(&mut self) {
+            self.main_capsule_2x = ::std::option::Option::None;
+        }
+
+        pub fn has_main_capsule_2x(&self) -> bool {
+            self.main_capsule_2x.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_main_capsule_2x(&mut self, v: ::std::string::String) {
+            self.main_capsule_2x = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_main_capsule_2x(&mut self) -> &mut ::std::string::String {
+            if self.main_capsule_2x.is_none() {
+                self.main_capsule_2x = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.main_capsule_2x.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_main_capsule_2x(&mut self) -> ::std::string::String {
+            self.main_capsule_2x.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
         // optional string small_capsule = 3;
 
         pub fn small_capsule(&self) -> &str {
@@ -3756,6 +4204,42 @@ pub mod store_item {
             self.small_capsule.take().unwrap_or_else(|| ::std::string::String::new())
         }
 
+        // optional string small_capsule_2x = 19;
+
+        pub fn small_capsule_2x(&self) -> &str {
+            match self.small_capsule_2x.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_small_capsule_2x(&mut self) {
+            self.small_capsule_2x = ::std::option::Option::None;
+        }
+
+        pub fn has_small_capsule_2x(&self) -> bool {
+            self.small_capsule_2x.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_small_capsule_2x(&mut self, v: ::std::string::String) {
+            self.small_capsule_2x = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_small_capsule_2x(&mut self) -> &mut ::std::string::String {
+            if self.small_capsule_2x.is_none() {
+                self.small_capsule_2x = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.small_capsule_2x.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_small_capsule_2x(&mut self) -> ::std::string::String {
+            self.small_capsule_2x.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
         // optional string header = 4;
 
         pub fn header(&self) -> &str {
@@ -3790,6 +4274,42 @@ pub mod store_item {
         // Take field
         pub fn take_header(&mut self) -> ::std::string::String {
             self.header.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional string header_2x = 20;
+
+        pub fn header_2x(&self) -> &str {
+            match self.header_2x.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_header_2x(&mut self) {
+            self.header_2x = ::std::option::Option::None;
+        }
+
+        pub fn has_header_2x(&self) -> bool {
+            self.header_2x.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_header_2x(&mut self, v: ::std::string::String) {
+            self.header_2x = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_header_2x(&mut self) -> &mut ::std::string::String {
+            if self.header_2x.is_none() {
+                self.header_2x = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.header_2x.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_header_2x(&mut self) -> ::std::string::String {
+            self.header_2x.take().unwrap_or_else(|| ::std::string::String::new())
         }
 
         // optional string package_header = 5;
@@ -4223,6 +4743,42 @@ pub mod store_item {
         pub fn take_raw_page_background(&mut self) -> ::std::string::String {
             self.raw_page_background.take().unwrap_or_else(|| ::std::string::String::new())
         }
+
+        // optional string edition_comparison = 17;
+
+        pub fn edition_comparison(&self) -> &str {
+            match self.edition_comparison.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_edition_comparison(&mut self) {
+            self.edition_comparison = ::std::option::Option::None;
+        }
+
+        pub fn has_edition_comparison(&self) -> bool {
+            self.edition_comparison.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_edition_comparison(&mut self, v: ::std::string::String) {
+            self.edition_comparison = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_edition_comparison(&mut self) -> &mut ::std::string::String {
+            if self.edition_comparison.is_none() {
+                self.edition_comparison = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.edition_comparison.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_edition_comparison(&mut self) -> ::std::string::String {
+            self.edition_comparison.take().unwrap_or_else(|| ::std::string::String::new())
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for Assets {
@@ -4241,11 +4797,20 @@ pub mod store_item {
                     18 => {
                         self.main_capsule = ::std::option::Option::Some(is.read_string()?);
                     },
+                    146 => {
+                        self.main_capsule_2x = ::std::option::Option::Some(is.read_string()?);
+                    },
                     26 => {
                         self.small_capsule = ::std::option::Option::Some(is.read_string()?);
                     },
+                    154 => {
+                        self.small_capsule_2x = ::std::option::Option::Some(is.read_string()?);
+                    },
                     34 => {
                         self.header = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    162 => {
+                        self.header_2x = ::std::option::Option::Some(is.read_string()?);
                     },
                     42 => {
                         self.package_header = ::std::option::Option::Some(is.read_string()?);
@@ -4283,6 +4848,9 @@ pub mod store_item {
                     130 => {
                         self.raw_page_background = ::std::option::Option::Some(is.read_string()?);
                     },
+                    138 => {
+                        self.edition_comparison = ::std::option::Option::Some(is.read_string()?);
+                    },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                     },
@@ -4301,11 +4869,20 @@ pub mod store_item {
             if let Some(v) = self.main_capsule.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
             }
+            if let Some(v) = self.main_capsule_2x.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(18, &v);
+            }
             if let Some(v) = self.small_capsule.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
             }
+            if let Some(v) = self.small_capsule_2x.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(19, &v);
+            }
             if let Some(v) = self.header.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
+            }
+            if let Some(v) = self.header_2x.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(20, &v);
             }
             if let Some(v) = self.package_header.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
@@ -4343,6 +4920,9 @@ pub mod store_item {
             if let Some(v) = self.raw_page_background.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(16, &v);
             }
+            if let Some(v) = self.edition_comparison.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(17, &v);
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -4355,11 +4935,20 @@ pub mod store_item {
             if let Some(v) = self.main_capsule.as_ref() {
                 os.write_string(2, v)?;
             }
+            if let Some(v) = self.main_capsule_2x.as_ref() {
+                os.write_string(18, v)?;
+            }
             if let Some(v) = self.small_capsule.as_ref() {
                 os.write_string(3, v)?;
             }
+            if let Some(v) = self.small_capsule_2x.as_ref() {
+                os.write_string(19, v)?;
+            }
             if let Some(v) = self.header.as_ref() {
                 os.write_string(4, v)?;
+            }
+            if let Some(v) = self.header_2x.as_ref() {
+                os.write_string(20, v)?;
             }
             if let Some(v) = self.package_header.as_ref() {
                 os.write_string(5, v)?;
@@ -4397,6 +4986,9 @@ pub mod store_item {
             if let Some(v) = self.raw_page_background.as_ref() {
                 os.write_string(16, v)?;
             }
+            if let Some(v) = self.edition_comparison.as_ref() {
+                os.write_string(17, v)?;
+            }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
         }
@@ -4416,8 +5008,11 @@ pub mod store_item {
         fn clear(&mut self) {
             self.asset_url_format = ::std::option::Option::None;
             self.main_capsule = ::std::option::Option::None;
+            self.main_capsule_2x = ::std::option::Option::None;
             self.small_capsule = ::std::option::Option::None;
+            self.small_capsule_2x = ::std::option::Option::None;
             self.header = ::std::option::Option::None;
+            self.header_2x = ::std::option::Option::None;
             self.package_header = ::std::option::Option::None;
             self.page_background = ::std::option::Option::None;
             self.hero_capsule = ::std::option::Option::None;
@@ -4430,6 +5025,7 @@ pub mod store_item {
             self.clan_avatar = ::std::option::Option::None;
             self.page_background_path = ::std::option::Option::None;
             self.raw_page_background = ::std::option::Option::None;
+            self.edition_comparison = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -4437,8 +5033,11 @@ pub mod store_item {
             static instance: Assets = Assets {
                 asset_url_format: ::std::option::Option::None,
                 main_capsule: ::std::option::Option::None,
+                main_capsule_2x: ::std::option::Option::None,
                 small_capsule: ::std::option::Option::None,
+                small_capsule_2x: ::std::option::Option::None,
                 header: ::std::option::Option::None,
+                header_2x: ::std::option::Option::None,
                 package_header: ::std::option::Option::None,
                 page_background: ::std::option::Option::None,
                 hero_capsule: ::std::option::Option::None,
@@ -4451,6 +5050,7 @@ pub mod store_item {
                 clan_avatar: ::std::option::Option::None,
                 page_background_path: ::std::option::Option::None,
                 raw_page_background: ::std::option::Option::None,
+                edition_comparison: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -4467,6 +5067,10 @@ pub mod store_item {
         pub original_release_date: ::std::option::Option<u32>,
         // @@protoc_insertion_point(field:StoreItem.ReleaseInfo.original_steam_release_date)
         pub original_steam_release_date: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.ReleaseInfo.release_from_early_access_date)
+        pub release_from_early_access_date: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.ReleaseInfo.release_from_early_access_style)
+        pub release_from_early_access_style: ::std::option::Option<u32>,
         // @@protoc_insertion_point(field:StoreItem.ReleaseInfo.is_coming_soon)
         pub is_coming_soon: ::std::option::Option<bool>,
         // @@protoc_insertion_point(field:StoreItem.ReleaseInfo.is_preload)
@@ -4556,6 +5160,44 @@ pub mod store_item {
         // Param is passed by value, moved
         pub fn set_original_steam_release_date(&mut self, v: u32) {
             self.original_steam_release_date = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 release_from_early_access_date = 11;
+
+        pub fn release_from_early_access_date(&self) -> u32 {
+            self.release_from_early_access_date.unwrap_or(0)
+        }
+
+        pub fn clear_release_from_early_access_date(&mut self) {
+            self.release_from_early_access_date = ::std::option::Option::None;
+        }
+
+        pub fn has_release_from_early_access_date(&self) -> bool {
+            self.release_from_early_access_date.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_release_from_early_access_date(&mut self, v: u32) {
+            self.release_from_early_access_date = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 release_from_early_access_style = 12;
+
+        pub fn release_from_early_access_style(&self) -> u32 {
+            self.release_from_early_access_style.unwrap_or(0)
+        }
+
+        pub fn clear_release_from_early_access_style(&mut self) {
+            self.release_from_early_access_style = ::std::option::Option::None;
+        }
+
+        pub fn has_release_from_early_access_style(&self) -> bool {
+            self.release_from_early_access_style.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_release_from_early_access_style(&mut self, v: u32) {
+            self.release_from_early_access_style = ::std::option::Option::Some(v);
         }
 
         // optional bool is_coming_soon = 4;
@@ -4783,6 +5425,12 @@ pub mod store_item {
                     24 => {
                         self.original_steam_release_date = ::std::option::Option::Some(is.read_uint32()?);
                     },
+                    88 => {
+                        self.release_from_early_access_date = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    96 => {
+                        self.release_from_early_access_style = ::std::option::Option::Some(is.read_uint32()?);
+                    },
                     32 => {
                         self.is_coming_soon = ::std::option::Option::Some(is.read_bool()?);
                     },
@@ -4831,6 +5479,12 @@ pub mod store_item {
             if let Some(v) = self.original_steam_release_date {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
             }
+            if let Some(v) = self.release_from_early_access_date {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(11, v);
+            }
+            if let Some(v) = self.release_from_early_access_style {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(12, v);
+            }
             if let Some(v) = self.is_coming_soon {
                 my_size += 1 + 1;
             }
@@ -4872,6 +5526,12 @@ pub mod store_item {
             }
             if let Some(v) = self.original_steam_release_date {
                 os.write_uint32(3, v)?;
+            }
+            if let Some(v) = self.release_from_early_access_date {
+                os.write_uint32(11, v)?;
+            }
+            if let Some(v) = self.release_from_early_access_style {
+                os.write_uint32(12, v)?;
             }
             if let Some(v) = self.is_coming_soon {
                 os.write_bool(4, v)?;
@@ -4920,6 +5580,8 @@ pub mod store_item {
             self.steam_release_date = ::std::option::Option::None;
             self.original_release_date = ::std::option::Option::None;
             self.original_steam_release_date = ::std::option::Option::None;
+            self.release_from_early_access_date = ::std::option::Option::None;
+            self.release_from_early_access_style = ::std::option::Option::None;
             self.is_coming_soon = ::std::option::Option::None;
             self.is_preload = ::std::option::Option::None;
             self.custom_release_date_message = ::std::option::Option::None;
@@ -4937,6 +5599,8 @@ pub mod store_item {
                 steam_release_date: ::std::option::Option::None,
                 original_release_date: ::std::option::Option::None,
                 original_steam_release_date: ::std::option::Option::None,
+                release_from_early_access_date: ::std::option::Option::None,
+                release_from_early_access_style: ::std::option::Option::None,
                 is_coming_soon: ::std::option::Option::None,
                 is_preload: ::std::option::Option::None,
                 custom_release_date_message: ::std::option::Option::None,
@@ -5529,6 +6193,20 @@ pub mod store_item {
         pub recurrence_info: ::steam_vent_proto_common::protobuf::MessageField<purchase_option::RecurrenceInfo>,
         // @@protoc_insertion_point(field:StoreItem.PurchaseOption.free_to_keep_ends)
         pub free_to_keep_ends: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.must_purchase_as_set)
+        pub must_purchase_as_set: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.package_group)
+        pub package_group: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.is_edition)
+        pub is_edition: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.free_to_keep_base_package)
+        pub free_to_keep_base_package: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.price_cannot_be_displayed_as_discount)
+        pub price_cannot_be_displayed_as_discount: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.price_to_base_discount_on)
+        pub price_to_base_discount_on: ::std::option::Option<i64>,
+        // @@protoc_insertion_point(field:StoreItem.PurchaseOption.free_with_master_sub_appid)
+        pub free_with_master_sub_appid: ::std::option::Option<u32>,
         // special fields
         // @@protoc_insertion_point(special_field:StoreItem.PurchaseOption.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -5992,6 +6670,156 @@ pub mod store_item {
         pub fn set_free_to_keep_ends(&mut self, v: u32) {
             self.free_to_keep_ends = ::std::option::Option::Some(v);
         }
+
+        // optional bool must_purchase_as_set = 48;
+
+        pub fn must_purchase_as_set(&self) -> bool {
+            self.must_purchase_as_set.unwrap_or(false)
+        }
+
+        pub fn clear_must_purchase_as_set(&mut self) {
+            self.must_purchase_as_set = ::std::option::Option::None;
+        }
+
+        pub fn has_must_purchase_as_set(&self) -> bool {
+            self.must_purchase_as_set.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_must_purchase_as_set(&mut self, v: bool) {
+            self.must_purchase_as_set = ::std::option::Option::Some(v);
+        }
+
+        // optional string package_group = 49;
+
+        pub fn package_group(&self) -> &str {
+            match self.package_group.as_ref() {
+                Some(v) => v,
+                None => "default",
+            }
+        }
+
+        pub fn clear_package_group(&mut self) {
+            self.package_group = ::std::option::Option::None;
+        }
+
+        pub fn has_package_group(&self) -> bool {
+            self.package_group.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_package_group(&mut self, v: ::std::string::String) {
+            self.package_group = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_package_group(&mut self) -> &mut ::std::string::String {
+            if self.package_group.is_none() {
+                self.package_group = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.package_group.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_package_group(&mut self) -> ::std::string::String {
+            self.package_group.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional bool is_edition = 50;
+
+        pub fn is_edition(&self) -> bool {
+            self.is_edition.unwrap_or(false)
+        }
+
+        pub fn clear_is_edition(&mut self) {
+            self.is_edition = ::std::option::Option::None;
+        }
+
+        pub fn has_is_edition(&self) -> bool {
+            self.is_edition.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_is_edition(&mut self, v: bool) {
+            self.is_edition = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 free_to_keep_base_package = 51;
+
+        pub fn free_to_keep_base_package(&self) -> u32 {
+            self.free_to_keep_base_package.unwrap_or(0)
+        }
+
+        pub fn clear_free_to_keep_base_package(&mut self) {
+            self.free_to_keep_base_package = ::std::option::Option::None;
+        }
+
+        pub fn has_free_to_keep_base_package(&self) -> bool {
+            self.free_to_keep_base_package.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_free_to_keep_base_package(&mut self, v: u32) {
+            self.free_to_keep_base_package = ::std::option::Option::Some(v);
+        }
+
+        // optional bool price_cannot_be_displayed_as_discount = 52;
+
+        pub fn price_cannot_be_displayed_as_discount(&self) -> bool {
+            self.price_cannot_be_displayed_as_discount.unwrap_or(false)
+        }
+
+        pub fn clear_price_cannot_be_displayed_as_discount(&mut self) {
+            self.price_cannot_be_displayed_as_discount = ::std::option::Option::None;
+        }
+
+        pub fn has_price_cannot_be_displayed_as_discount(&self) -> bool {
+            self.price_cannot_be_displayed_as_discount.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_price_cannot_be_displayed_as_discount(&mut self, v: bool) {
+            self.price_cannot_be_displayed_as_discount = ::std::option::Option::Some(v);
+        }
+
+        // optional int64 price_to_base_discount_on = 53;
+
+        pub fn price_to_base_discount_on(&self) -> i64 {
+            self.price_to_base_discount_on.unwrap_or(0)
+        }
+
+        pub fn clear_price_to_base_discount_on(&mut self) {
+            self.price_to_base_discount_on = ::std::option::Option::None;
+        }
+
+        pub fn has_price_to_base_discount_on(&self) -> bool {
+            self.price_to_base_discount_on.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_price_to_base_discount_on(&mut self, v: i64) {
+            self.price_to_base_discount_on = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 free_with_master_sub_appid = 54;
+
+        pub fn free_with_master_sub_appid(&self) -> u32 {
+            self.free_with_master_sub_appid.unwrap_or(0)
+        }
+
+        pub fn clear_free_with_master_sub_appid(&mut self) {
+            self.free_with_master_sub_appid = ::std::option::Option::None;
+        }
+
+        pub fn has_free_with_master_sub_appid(&self) -> bool {
+            self.free_with_master_sub_appid.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_free_with_master_sub_appid(&mut self, v: u32) {
+            self.free_with_master_sub_appid = ::std::option::Option::Some(v);
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for PurchaseOption {
@@ -6069,6 +6897,27 @@ pub mod store_item {
                     },
                     376 => {
                         self.free_to_keep_ends = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    384 => {
+                        self.must_purchase_as_set = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    394 => {
+                        self.package_group = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    400 => {
+                        self.is_edition = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    408 => {
+                        self.free_to_keep_base_package = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    416 => {
+                        self.price_cannot_be_displayed_as_discount = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    424 => {
+                        self.price_to_base_discount_on = ::std::option::Option::Some(is.read_int64()?);
+                    },
+                    432 => {
+                        self.free_with_master_sub_appid = ::std::option::Option::Some(is.read_uint32()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -6150,6 +6999,27 @@ pub mod store_item {
             if let Some(v) = self.free_to_keep_ends {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(47, v);
             }
+            if let Some(v) = self.must_purchase_as_set {
+                my_size += 2 + 1;
+            }
+            if let Some(v) = self.package_group.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(49, &v);
+            }
+            if let Some(v) = self.is_edition {
+                my_size += 2 + 1;
+            }
+            if let Some(v) = self.free_to_keep_base_package {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(51, v);
+            }
+            if let Some(v) = self.price_cannot_be_displayed_as_discount {
+                my_size += 2 + 1;
+            }
+            if let Some(v) = self.price_to_base_discount_on {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int64_size(53, v);
+            }
+            if let Some(v) = self.free_with_master_sub_appid {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(54, v);
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -6222,6 +7092,27 @@ pub mod store_item {
             if let Some(v) = self.free_to_keep_ends {
                 os.write_uint32(47, v)?;
             }
+            if let Some(v) = self.must_purchase_as_set {
+                os.write_bool(48, v)?;
+            }
+            if let Some(v) = self.package_group.as_ref() {
+                os.write_string(49, v)?;
+            }
+            if let Some(v) = self.is_edition {
+                os.write_bool(50, v)?;
+            }
+            if let Some(v) = self.free_to_keep_base_package {
+                os.write_uint32(51, v)?;
+            }
+            if let Some(v) = self.price_cannot_be_displayed_as_discount {
+                os.write_bool(52, v)?;
+            }
+            if let Some(v) = self.price_to_base_discount_on {
+                os.write_int64(53, v)?;
+            }
+            if let Some(v) = self.free_with_master_sub_appid {
+                os.write_uint32(54, v)?;
+            }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
         }
@@ -6261,6 +7152,13 @@ pub mod store_item {
             self.requires_shipping = ::std::option::Option::None;
             self.recurrence_info.clear();
             self.free_to_keep_ends = ::std::option::Option::None;
+            self.must_purchase_as_set = ::std::option::Option::None;
+            self.package_group = ::std::option::Option::None;
+            self.is_edition = ::std::option::Option::None;
+            self.free_to_keep_base_package = ::std::option::Option::None;
+            self.price_cannot_be_displayed_as_discount = ::std::option::Option::None;
+            self.price_to_base_discount_on = ::std::option::Option::None;
+            self.free_with_master_sub_appid = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -6288,6 +7186,13 @@ pub mod store_item {
                 requires_shipping: ::std::option::Option::None,
                 recurrence_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
                 free_to_keep_ends: ::std::option::Option::None,
+                must_purchase_as_set: ::std::option::Option::None,
+                package_group: ::std::option::Option::None,
+                is_edition: ::std::option::Option::None,
+                free_to_keep_base_package: ::std::option::Option::None,
+                price_cannot_be_displayed_as_discount: ::std::option::Option::None,
+                price_to_base_discount_on: ::std::option::Option::None,
+                free_with_master_sub_appid: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -7506,14 +8411,12 @@ pub mod store_item {
             pub trailer_url_format: ::std::option::Option<::std::string::String>,
             // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.trailer_category)
             pub trailer_category: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::super::ETrailerCategory>>,
-            // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.trailer_480p)
-            pub trailer_480p: ::std::vec::Vec<VideoSource>,
-            // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.trailer_max)
-            pub trailer_max: ::std::vec::Vec<VideoSource>,
             // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.microtrailer)
             pub microtrailer: ::std::vec::Vec<VideoSource>,
             // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.adaptive_trailers)
             pub adaptive_trailers: ::std::vec::Vec<AdaptiveTrailer>,
+            // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.captions_manifest)
+            pub captions_manifest: ::std::option::Option<::std::string::String>,
             // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.screenshot_medium)
             pub screenshot_medium: ::std::option::Option<::std::string::String>,
             // @@protoc_insertion_point(field:StoreItem.Trailers.Trailer.screenshot_full)
@@ -7630,6 +8533,42 @@ pub mod store_item {
             // Param is passed by value, moved
             pub fn set_trailer_category(&mut self, v: super::super::ETrailerCategory) {
                 self.trailer_category = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+            }
+
+            // optional string captions_manifest = 7;
+
+            pub fn captions_manifest(&self) -> &str {
+                match self.captions_manifest.as_ref() {
+                    Some(v) => v,
+                    None => "",
+                }
+            }
+
+            pub fn clear_captions_manifest(&mut self) {
+                self.captions_manifest = ::std::option::Option::None;
+            }
+
+            pub fn has_captions_manifest(&self) -> bool {
+                self.captions_manifest.is_some()
+            }
+
+            // Param is passed by value, moved
+            pub fn set_captions_manifest(&mut self, v: ::std::string::String) {
+                self.captions_manifest = ::std::option::Option::Some(v);
+            }
+
+            // Mutable pointer to the field.
+            // If field is not initialized, it is initialized with default value first.
+            pub fn mut_captions_manifest(&mut self) -> &mut ::std::string::String {
+                if self.captions_manifest.is_none() {
+                    self.captions_manifest = ::std::option::Option::Some(::std::string::String::new());
+                }
+                self.captions_manifest.as_mut().unwrap()
+            }
+
+            // Take field
+            pub fn take_captions_manifest(&mut self) -> ::std::string::String {
+                self.captions_manifest.take().unwrap_or_else(|| ::std::string::String::new())
             }
 
             // optional string screenshot_medium = 10;
@@ -7762,17 +8701,14 @@ pub mod store_item {
                         104 => {
                             self.trailer_category = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                         },
-                        26 => {
-                            self.trailer_480p.push(is.read_message()?);
-                        },
-                        34 => {
-                            self.trailer_max.push(is.read_message()?);
-                        },
                         42 => {
                             self.microtrailer.push(is.read_message()?);
                         },
                         50 => {
                             self.adaptive_trailers.push(is.read_message()?);
+                        },
+                        58 => {
+                            self.captions_manifest = ::std::option::Option::Some(is.read_string()?);
                         },
                         82 => {
                             self.screenshot_medium = ::std::option::Option::Some(is.read_string()?);
@@ -7807,14 +8743,6 @@ pub mod store_item {
                 if let Some(v) = self.trailer_category {
                     my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(13, v.value());
                 }
-                for value in &self.trailer_480p {
-                    let len = value.compute_size();
-                    my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
-                };
-                for value in &self.trailer_max {
-                    let len = value.compute_size();
-                    my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
-                };
                 for value in &self.microtrailer {
                     let len = value.compute_size();
                     my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
@@ -7823,6 +8751,9 @@ pub mod store_item {
                     let len = value.compute_size();
                     my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
                 };
+                if let Some(v) = self.captions_manifest.as_ref() {
+                    my_size += ::steam_vent_proto_common::protobuf::rt::string_size(7, &v);
+                }
                 if let Some(v) = self.screenshot_medium.as_ref() {
                     my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
                 }
@@ -7850,18 +8781,15 @@ pub mod store_item {
                 if let Some(v) = self.trailer_category {
                     os.write_enum(13, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
                 }
-                for v in &self.trailer_480p {
-                    ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
-                };
-                for v in &self.trailer_max {
-                    ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
-                };
                 for v in &self.microtrailer {
                     ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
                 };
                 for v in &self.adaptive_trailers {
                     ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(6, v, os)?;
                 };
+                if let Some(v) = self.captions_manifest.as_ref() {
+                    os.write_string(7, v)?;
+                }
                 if let Some(v) = self.screenshot_medium.as_ref() {
                     os.write_string(10, v)?;
                 }
@@ -7894,10 +8822,9 @@ pub mod store_item {
                 self.trailer_name = ::std::option::Option::None;
                 self.trailer_url_format = ::std::option::Option::None;
                 self.trailer_category = ::std::option::Option::None;
-                self.trailer_480p.clear();
-                self.trailer_max.clear();
                 self.microtrailer.clear();
                 self.adaptive_trailers.clear();
+                self.captions_manifest = ::std::option::Option::None;
                 self.screenshot_medium = ::std::option::Option::None;
                 self.screenshot_full = ::std::option::Option::None;
                 self.trailer_base_id = ::std::option::Option::None;
@@ -7910,10 +8837,9 @@ pub mod store_item {
                     trailer_name: ::std::option::Option::None,
                     trailer_url_format: ::std::option::Option::None,
                     trailer_category: ::std::option::Option::None,
-                    trailer_480p: ::std::vec::Vec::new(),
-                    trailer_max: ::std::vec::Vec::new(),
                     microtrailer: ::std::vec::Vec::new(),
                     adaptive_trailers: ::std::vec::Vec::new(),
+                    captions_manifest: ::std::option::Option::None,
                     screenshot_medium: ::std::option::Option::None,
                     screenshot_full: ::std::option::Option::None,
                     trailer_base_id: ::std::option::Option::None,
@@ -8560,6 +9486,362 @@ pub mod store_item {
             };
             &instance
         }
+    }
+
+    // @@protoc_insertion_point(message:StoreItem.PackageGroup)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct PackageGroup {
+        // message fields
+        // @@protoc_insertion_point(field:StoreItem.PackageGroup.name)
+        pub name: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.PackageGroup.heading)
+        pub heading: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.PackageGroup.display_type)
+        pub display_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<package_group::EPackageGroupDisplayType>>,
+        // @@protoc_insertion_point(field:StoreItem.PackageGroup.dropdown_title)
+        pub dropdown_title: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:StoreItem.PackageGroup.dropdown_description_bbcode)
+        pub dropdown_description_bbcode: ::std::option::Option<::std::string::String>,
+        // special fields
+        // @@protoc_insertion_point(special_field:StoreItem.PackageGroup.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a PackageGroup {
+        fn default() -> &'a PackageGroup {
+            <PackageGroup as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl PackageGroup {
+        pub fn new() -> PackageGroup {
+            ::std::default::Default::default()
+        }
+
+        // optional string name = 1;
+
+        pub fn name(&self) -> &str {
+            match self.name.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_name(&mut self) {
+            self.name = ::std::option::Option::None;
+        }
+
+        pub fn has_name(&self) -> bool {
+            self.name.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_name(&mut self, v: ::std::string::String) {
+            self.name = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_name(&mut self) -> &mut ::std::string::String {
+            if self.name.is_none() {
+                self.name = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.name.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_name(&mut self) -> ::std::string::String {
+            self.name.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional string heading = 2;
+
+        pub fn heading(&self) -> &str {
+            match self.heading.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_heading(&mut self) {
+            self.heading = ::std::option::Option::None;
+        }
+
+        pub fn has_heading(&self) -> bool {
+            self.heading.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_heading(&mut self, v: ::std::string::String) {
+            self.heading = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_heading(&mut self) -> &mut ::std::string::String {
+            if self.heading.is_none() {
+                self.heading = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.heading.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_heading(&mut self) -> ::std::string::String {
+            self.heading.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional .StoreItem.PackageGroup.EPackageGroupDisplayType display_type = 3;
+
+        pub fn display_type(&self) -> package_group::EPackageGroupDisplayType {
+            match self.display_type {
+                Some(e) => e.enum_value_or(package_group::EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default),
+                None => package_group::EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default,
+            }
+        }
+
+        pub fn clear_display_type(&mut self) {
+            self.display_type = ::std::option::Option::None;
+        }
+
+        pub fn has_display_type(&self) -> bool {
+            self.display_type.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_display_type(&mut self, v: package_group::EPackageGroupDisplayType) {
+            self.display_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+        }
+
+        // optional string dropdown_title = 4;
+
+        pub fn dropdown_title(&self) -> &str {
+            match self.dropdown_title.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_dropdown_title(&mut self) {
+            self.dropdown_title = ::std::option::Option::None;
+        }
+
+        pub fn has_dropdown_title(&self) -> bool {
+            self.dropdown_title.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_dropdown_title(&mut self, v: ::std::string::String) {
+            self.dropdown_title = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_dropdown_title(&mut self) -> &mut ::std::string::String {
+            if self.dropdown_title.is_none() {
+                self.dropdown_title = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.dropdown_title.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_dropdown_title(&mut self) -> ::std::string::String {
+            self.dropdown_title.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+
+        // optional string dropdown_description_bbcode = 5;
+
+        pub fn dropdown_description_bbcode(&self) -> &str {
+            match self.dropdown_description_bbcode.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_dropdown_description_bbcode(&mut self) {
+            self.dropdown_description_bbcode = ::std::option::Option::None;
+        }
+
+        pub fn has_dropdown_description_bbcode(&self) -> bool {
+            self.dropdown_description_bbcode.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_dropdown_description_bbcode(&mut self, v: ::std::string::String) {
+            self.dropdown_description_bbcode = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_dropdown_description_bbcode(&mut self) -> &mut ::std::string::String {
+            if self.dropdown_description_bbcode.is_none() {
+                self.dropdown_description_bbcode = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.dropdown_description_bbcode.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_dropdown_description_bbcode(&mut self) -> ::std::string::String {
+            self.dropdown_description_bbcode.take().unwrap_or_else(|| ::std::string::String::new())
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for PackageGroup {
+        const NAME: &'static str = "PackageGroup";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    10 => {
+                        self.name = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    18 => {
+                        self.heading = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    24 => {
+                        self.display_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                    },
+                    34 => {
+                        self.dropdown_title = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    42 => {
+                        self.dropdown_description_bbcode = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.name.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+            }
+            if let Some(v) = self.heading.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+            }
+            if let Some(v) = self.display_type {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v.value());
+            }
+            if let Some(v) = self.dropdown_title.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(4, &v);
+            }
+            if let Some(v) = self.dropdown_description_bbcode.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.name.as_ref() {
+                os.write_string(1, v)?;
+            }
+            if let Some(v) = self.heading.as_ref() {
+                os.write_string(2, v)?;
+            }
+            if let Some(v) = self.display_type {
+                os.write_enum(3, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+            }
+            if let Some(v) = self.dropdown_title.as_ref() {
+                os.write_string(4, v)?;
+            }
+            if let Some(v) = self.dropdown_description_bbcode.as_ref() {
+                os.write_string(5, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> PackageGroup {
+            PackageGroup::new()
+        }
+
+        fn clear(&mut self) {
+            self.name = ::std::option::Option::None;
+            self.heading = ::std::option::Option::None;
+            self.display_type = ::std::option::Option::None;
+            self.dropdown_title = ::std::option::Option::None;
+            self.dropdown_description_bbcode = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static PackageGroup {
+            static instance: PackageGroup = PackageGroup {
+                name: ::std::option::Option::None,
+                heading: ::std::option::Option::None,
+                display_type: ::std::option::Option::None,
+                dropdown_title: ::std::option::Option::None,
+                dropdown_description_bbcode: ::std::option::Option::None,
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    /// Nested message and enums of message `PackageGroup`
+    pub mod package_group {
+        #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+        // @@protoc_insertion_point(enum:StoreItem.PackageGroup.EPackageGroupDisplayType)
+        pub enum EPackageGroupDisplayType {
+            // @@protoc_insertion_point(enum_value:StoreItem.PackageGroup.EPackageGroupDisplayType.k_EPackageGroupDisplayType_Default)
+            k_EPackageGroupDisplayType_Default = 0,
+            // @@protoc_insertion_point(enum_value:StoreItem.PackageGroup.EPackageGroupDisplayType.k_EPackageGroupDisplayType_Dropdown)
+            k_EPackageGroupDisplayType_Dropdown = 1,
+        }
+
+        impl ::steam_vent_proto_common::protobuf::Enum for EPackageGroupDisplayType {
+            const NAME: &'static str = "EPackageGroupDisplayType";
+
+            fn value(&self) -> i32 {
+                *self as i32
+            }
+
+            fn from_i32(value: i32) -> ::std::option::Option<EPackageGroupDisplayType> {
+                match value {
+                    0 => ::std::option::Option::Some(EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default),
+                    1 => ::std::option::Option::Some(EPackageGroupDisplayType::k_EPackageGroupDisplayType_Dropdown),
+                    _ => ::std::option::Option::None
+                }
+            }
+
+            fn from_str(str: &str) -> ::std::option::Option<EPackageGroupDisplayType> {
+                match str {
+                    "k_EPackageGroupDisplayType_Default" => ::std::option::Option::Some(EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default),
+                    "k_EPackageGroupDisplayType_Dropdown" => ::std::option::Option::Some(EPackageGroupDisplayType::k_EPackageGroupDisplayType_Dropdown),
+                    _ => ::std::option::Option::None
+                }
+            }
+
+            const VALUES: &'static [EPackageGroupDisplayType] = &[
+                EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default,
+                EPackageGroupDisplayType::k_EPackageGroupDisplayType_Dropdown,
+            ];
+        }
+
+        impl ::std::default::Default for EPackageGroupDisplayType {
+            fn default() -> Self {
+                EPackageGroupDisplayType::k_EPackageGroupDisplayType_Default
+            }
+        }
+
     }
 }
 
@@ -10355,6 +11637,16 @@ pub mod cstore_browse_get_content_hub_config_response {
         pub display_name: ::std::option::Option<::std::string::String>,
         // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.url_path)
         pub url_path: ::std::option::Option<::std::string::String>,
+        // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.replaces_tags)
+        pub replaces_tags: ::std::vec::Vec<u32>,
+        // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.must_have_tags)
+        pub must_have_tags: ::std::vec::Vec<u32>,
+        // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.any_one_of_tags)
+        pub any_one_of_tags: ::std::vec::Vec<u32>,
+        // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.must_not_have_tags)
+        pub must_not_have_tags: ::std::vec::Vec<u32>,
+        // @@protoc_insertion_point(field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.hub_description)
+        pub hub_description: ::std::option::Option<::std::string::String>,
         // special fields
         // @@protoc_insertion_point(special_field:CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -10533,6 +11825,42 @@ pub mod cstore_browse_get_content_hub_config_response {
         pub fn take_url_path(&mut self) -> ::std::string::String {
             self.url_path.take().unwrap_or_else(|| ::std::string::String::new())
         }
+
+        // optional string hub_description = 10;
+
+        pub fn hub_description(&self) -> &str {
+            match self.hub_description.as_ref() {
+                Some(v) => v,
+                None => "",
+            }
+        }
+
+        pub fn clear_hub_description(&mut self) {
+            self.hub_description = ::std::option::Option::None;
+        }
+
+        pub fn has_hub_description(&self) -> bool {
+            self.hub_description.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_hub_description(&mut self, v: ::std::string::String) {
+            self.hub_description = ::std::option::Option::Some(v);
+        }
+
+        // Mutable pointer to the field.
+        // If field is not initialized, it is initialized with default value first.
+        pub fn mut_hub_description(&mut self) -> &mut ::std::string::String {
+            if self.hub_description.is_none() {
+                self.hub_description = ::std::option::Option::Some(::std::string::String::new());
+            }
+            self.hub_description.as_mut().unwrap()
+        }
+
+        // Take field
+        pub fn take_hub_description(&mut self) -> ::std::string::String {
+            self.hub_description.take().unwrap_or_else(|| ::std::string::String::new())
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for ContentHubConfig {
@@ -10559,6 +11887,33 @@ pub mod cstore_browse_get_content_hub_config_response {
                     },
                     42 => {
                         self.url_path = ::std::option::Option::Some(is.read_string()?);
+                    },
+                    50 => {
+                        is.read_repeated_packed_uint32_into(&mut self.replaces_tags)?;
+                    },
+                    48 => {
+                        self.replaces_tags.push(is.read_uint32()?);
+                    },
+                    58 => {
+                        is.read_repeated_packed_uint32_into(&mut self.must_have_tags)?;
+                    },
+                    56 => {
+                        self.must_have_tags.push(is.read_uint32()?);
+                    },
+                    66 => {
+                        is.read_repeated_packed_uint32_into(&mut self.any_one_of_tags)?;
+                    },
+                    64 => {
+                        self.any_one_of_tags.push(is.read_uint32()?);
+                    },
+                    74 => {
+                        is.read_repeated_packed_uint32_into(&mut self.must_not_have_tags)?;
+                    },
+                    72 => {
+                        self.must_not_have_tags.push(is.read_uint32()?);
+                    },
+                    82 => {
+                        self.hub_description = ::std::option::Option::Some(is.read_string()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -10587,6 +11942,21 @@ pub mod cstore_browse_get_content_hub_config_response {
             if let Some(v) = self.url_path.as_ref() {
                 my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
             }
+            for value in &self.replaces_tags {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, *value);
+            };
+            for value in &self.must_have_tags {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, *value);
+            };
+            for value in &self.any_one_of_tags {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(8, *value);
+            };
+            for value in &self.must_not_have_tags {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(9, *value);
+            };
+            if let Some(v) = self.hub_description.as_ref() {
+                my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -10607,6 +11977,21 @@ pub mod cstore_browse_get_content_hub_config_response {
             }
             if let Some(v) = self.url_path.as_ref() {
                 os.write_string(5, v)?;
+            }
+            for v in &self.replaces_tags {
+                os.write_uint32(6, *v)?;
+            };
+            for v in &self.must_have_tags {
+                os.write_uint32(7, *v)?;
+            };
+            for v in &self.any_one_of_tags {
+                os.write_uint32(8, *v)?;
+            };
+            for v in &self.must_not_have_tags {
+                os.write_uint32(9, *v)?;
+            };
+            if let Some(v) = self.hub_description.as_ref() {
+                os.write_string(10, v)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -10630,6 +12015,11 @@ pub mod cstore_browse_get_content_hub_config_response {
             self.handle = ::std::option::Option::None;
             self.display_name = ::std::option::Option::None;
             self.url_path = ::std::option::Option::None;
+            self.replaces_tags.clear();
+            self.must_have_tags.clear();
+            self.any_one_of_tags.clear();
+            self.must_not_have_tags.clear();
+            self.hub_description = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -10640,6 +12030,11 @@ pub mod cstore_browse_get_content_hub_config_response {
                 handle: ::std::option::Option::None,
                 display_name: ::std::option::Option::None,
                 url_path: ::std::option::Option::None,
+                replaces_tags: ::std::vec::Vec::new(),
+                must_have_tags: ::std::vec::Vec::new(),
+                any_one_of_tags: ::std::vec::Vec::new(),
+                must_not_have_tags: ::std::vec::Vec::new(),
+                hub_description: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -12420,6 +13815,12 @@ pub struct CHardwarePackageDetails {
     pub estimated_delivery_soonest_business_days: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CHardwarePackageDetails.estimated_delivery_latest_business_days)
     pub estimated_delivery_latest_business_days: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CHardwarePackageDetails.not_allowed_to_reserved_because_already_owned)
+    pub not_allowed_to_reserved_because_already_owned: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CHardwarePackageDetails.appid_ownership_not_allowed_to_reserve)
+    pub appid_ownership_not_allowed_to_reserve: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CHardwarePackageDetails.account_first_date_purchase_requirement)
+    pub account_first_date_purchase_requirement: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CHardwarePackageDetails.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -12756,6 +14157,63 @@ impl CHardwarePackageDetails {
     pub fn set_estimated_delivery_latest_business_days(&mut self, v: u32) {
         self.estimated_delivery_latest_business_days = ::std::option::Option::Some(v);
     }
+
+    // optional bool not_allowed_to_reserved_because_already_owned = 19;
+
+    pub fn not_allowed_to_reserved_because_already_owned(&self) -> bool {
+        self.not_allowed_to_reserved_because_already_owned.unwrap_or(false)
+    }
+
+    pub fn clear_not_allowed_to_reserved_because_already_owned(&mut self) {
+        self.not_allowed_to_reserved_because_already_owned = ::std::option::Option::None;
+    }
+
+    pub fn has_not_allowed_to_reserved_because_already_owned(&self) -> bool {
+        self.not_allowed_to_reserved_because_already_owned.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_not_allowed_to_reserved_because_already_owned(&mut self, v: bool) {
+        self.not_allowed_to_reserved_because_already_owned = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 appid_ownership_not_allowed_to_reserve = 20;
+
+    pub fn appid_ownership_not_allowed_to_reserve(&self) -> u32 {
+        self.appid_ownership_not_allowed_to_reserve.unwrap_or(0)
+    }
+
+    pub fn clear_appid_ownership_not_allowed_to_reserve(&mut self) {
+        self.appid_ownership_not_allowed_to_reserve = ::std::option::Option::None;
+    }
+
+    pub fn has_appid_ownership_not_allowed_to_reserve(&self) -> bool {
+        self.appid_ownership_not_allowed_to_reserve.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_appid_ownership_not_allowed_to_reserve(&mut self, v: u32) {
+        self.appid_ownership_not_allowed_to_reserve = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 account_first_date_purchase_requirement = 21;
+
+    pub fn account_first_date_purchase_requirement(&self) -> u32 {
+        self.account_first_date_purchase_requirement.unwrap_or(0)
+    }
+
+    pub fn clear_account_first_date_purchase_requirement(&mut self) {
+        self.account_first_date_purchase_requirement = ::std::option::Option::None;
+    }
+
+    pub fn has_account_first_date_purchase_requirement(&self) -> bool {
+        self.account_first_date_purchase_requirement.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_account_first_date_purchase_requirement(&mut self, v: u32) {
+        self.account_first_date_purchase_requirement = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
@@ -12815,6 +14273,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
                 },
                 144 => {
                     self.estimated_delivery_latest_business_days = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                152 => {
+                    self.not_allowed_to_reserved_because_already_owned = ::std::option::Option::Some(is.read_bool()?);
+                },
+                160 => {
+                    self.appid_ownership_not_allowed_to_reserve = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                168 => {
+                    self.account_first_date_purchase_requirement = ::std::option::Option::Some(is.read_uint32()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -12876,6 +14343,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
         if let Some(v) = self.estimated_delivery_latest_business_days {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(18, v);
         }
+        if let Some(v) = self.not_allowed_to_reserved_because_already_owned {
+            my_size += 2 + 1;
+        }
+        if let Some(v) = self.appid_ownership_not_allowed_to_reserve {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(20, v);
+        }
+        if let Some(v) = self.account_first_date_purchase_requirement {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(21, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -12930,6 +14406,15 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
         if let Some(v) = self.estimated_delivery_latest_business_days {
             os.write_uint32(18, v)?;
         }
+        if let Some(v) = self.not_allowed_to_reserved_because_already_owned {
+            os.write_bool(19, v)?;
+        }
+        if let Some(v) = self.appid_ownership_not_allowed_to_reserve {
+            os.write_uint32(20, v)?;
+        }
+        if let Some(v) = self.account_first_date_purchase_requirement {
+            os.write_uint32(21, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -12963,6 +14448,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
         self.allow_purchase_in_country = ::std::option::Option::None;
         self.estimated_delivery_soonest_business_days = ::std::option::Option::None;
         self.estimated_delivery_latest_business_days = ::std::option::Option::None;
+        self.not_allowed_to_reserved_because_already_owned = ::std::option::Option::None;
+        self.appid_ownership_not_allowed_to_reserve = ::std::option::Option::None;
+        self.account_first_date_purchase_requirement = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -12984,6 +14472,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CHardwarePackageDetails {
             allow_purchase_in_country: ::std::option::Option::None,
             estimated_delivery_soonest_business_days: ::std::option::Option::None,
             estimated_delivery_latest_business_days: ::std::option::Option::None,
+            not_allowed_to_reserved_because_already_owned: ::std::option::Option::None,
+            appid_ownership_not_allowed_to_reserve: ::std::option::Option::None,
+            account_first_date_purchase_requirement: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance

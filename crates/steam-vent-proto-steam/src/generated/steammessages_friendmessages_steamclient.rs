@@ -1210,6 +1210,8 @@ pub mod cfriends_messages_get_active_message_sessions_response {
         pub last_view: ::std::option::Option<u32>,
         // @@protoc_insertion_point(field:CFriendsMessages_GetActiveMessageSessions_Response.FriendMessageSession.unread_message_count)
         pub unread_message_count: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CFriendsMessages_GetActiveMessageSessions_Response.FriendMessageSession.notices)
+        pub notices: ::std::vec::Vec<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::EChatSessionNotice>>,
         // special fields
         // @@protoc_insertion_point(special_field:CFriendsMessages_GetActiveMessageSessions_Response.FriendMessageSession.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -1325,6 +1327,12 @@ pub mod cfriends_messages_get_active_message_sessions_response {
                     32 => {
                         self.unread_message_count = ::std::option::Option::Some(is.read_uint32()?);
                     },
+                    40 => {
+                        self.notices.push(is.read_enum_or_unknown()?);
+                    },
+                    42 => {
+                        ::steam_vent_proto_common::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.notices)?
+                    },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                     },
@@ -1349,6 +1357,9 @@ pub mod cfriends_messages_get_active_message_sessions_response {
             if let Some(v) = self.unread_message_count {
                 my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(4, v);
             }
+            for value in &self.notices {
+                my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(5, value.value());
+            };
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -1367,6 +1378,9 @@ pub mod cfriends_messages_get_active_message_sessions_response {
             if let Some(v) = self.unread_message_count {
                 os.write_uint32(4, v)?;
             }
+            for v in &self.notices {
+                os.write_enum(5, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(v))?;
+            };
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
         }
@@ -1388,6 +1402,7 @@ pub mod cfriends_messages_get_active_message_sessions_response {
             self.last_message = ::std::option::Option::None;
             self.last_view = ::std::option::Option::None;
             self.unread_message_count = ::std::option::Option::None;
+            self.notices.clear();
             self.special_fields.clear();
         }
 
@@ -1397,6 +1412,7 @@ pub mod cfriends_messages_get_active_message_sessions_response {
                 last_message: ::std::option::Option::None,
                 last_view: ::std::option::Option::None,
                 unread_message_count: ::std::option::Option::None,
+                notices: ::std::vec::Vec::new(),
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -3181,6 +3197,8 @@ pub struct CFriendMessages_ResolveReport_Request {
     pub resolution: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportResolution>>,
     // @@protoc_insertion_point(field:CFriendMessages_ResolveReport_Request.reason)
     pub reason: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportReason>>,
+    // @@protoc_insertion_point(field:CFriendMessages_ResolveReport_Request.skip_lock)
+    pub skip_lock: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CFriendMessages_ResolveReport_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3316,6 +3334,25 @@ impl CFriendMessages_ResolveReport_Request {
     pub fn set_reason(&mut self, v: super::enums::EContentReportReason) {
         self.reason = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
+
+    // optional bool skip_lock = 7;
+
+    pub fn skip_lock(&self) -> bool {
+        self.skip_lock.unwrap_or(false)
+    }
+
+    pub fn clear_skip_lock(&mut self) {
+        self.skip_lock = ::std::option::Option::None;
+    }
+
+    pub fn has_skip_lock(&self) -> bool {
+        self.skip_lock.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_skip_lock(&mut self, v: bool) {
+        self.skip_lock = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveReport_Request {
@@ -3345,6 +3382,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
                 },
                 48 => {
                     self.reason = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                56 => {
+                    self.skip_lock = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -3376,6 +3416,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
         if let Some(v) = self.reason {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(6, v.value());
         }
+        if let Some(v) = self.skip_lock {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3400,6 +3443,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
         if let Some(v) = self.reason {
             os.write_enum(6, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
         }
+        if let Some(v) = self.skip_lock {
+            os.write_bool(7, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -3423,6 +3469,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
         self.subject_id = ::std::option::Option::None;
         self.resolution = ::std::option::Option::None;
         self.reason = ::std::option::Option::None;
+        self.skip_lock = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -3434,6 +3481,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
             subject_id: ::std::option::Option::None,
             resolution: ::std::option::Option::None,
             reason: ::std::option::Option::None,
+            skip_lock: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -3510,6 +3558,150 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_ResolveRep
 
     fn default_instance() -> &'static CFriendMessages_ResolveReport_Response {
         static instance: CFriendMessages_ResolveReport_Response = CFriendMessages_ResolveReport_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CFriendMessages_DismissSessionNotice_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CFriendMessages_DismissSessionNotice_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CFriendMessages_DismissSessionNotice_Notification.steamid_friend)
+    pub steamid_friend: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CFriendMessages_DismissSessionNotice_Notification.notice_type)
+    pub notice_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EChatSessionNotice>>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CFriendMessages_DismissSessionNotice_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CFriendMessages_DismissSessionNotice_Notification {
+    fn default() -> &'a CFriendMessages_DismissSessionNotice_Notification {
+        <CFriendMessages_DismissSessionNotice_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CFriendMessages_DismissSessionNotice_Notification {
+    pub fn new() -> CFriendMessages_DismissSessionNotice_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 steamid_friend = 1;
+
+    pub fn steamid_friend(&self) -> u64 {
+        self.steamid_friend.unwrap_or(0)
+    }
+
+    pub fn clear_steamid_friend(&mut self) {
+        self.steamid_friend = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid_friend(&self) -> bool {
+        self.steamid_friend.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid_friend(&mut self, v: u64) {
+        self.steamid_friend = ::std::option::Option::Some(v);
+    }
+
+    // optional .EChatSessionNotice notice_type = 2;
+
+    pub fn notice_type(&self) -> EChatSessionNotice {
+        match self.notice_type {
+            Some(e) => e.enum_value_or(EChatSessionNotice::k_EChatSessionNotice_Invalid),
+            None => EChatSessionNotice::k_EChatSessionNotice_Invalid,
+        }
+    }
+
+    pub fn clear_notice_type(&mut self) {
+        self.notice_type = ::std::option::Option::None;
+    }
+
+    pub fn has_notice_type(&self) -> bool {
+        self.notice_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_notice_type(&mut self, v: EChatSessionNotice) {
+        self.notice_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_DismissSessionNotice_Notification {
+    const NAME: &'static str = "CFriendMessages_DismissSessionNotice_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.steamid_friend = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                16 => {
+                    self.notice_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid_friend {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.notice_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v.value());
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid_friend {
+            os.write_fixed64(1, v)?;
+        }
+        if let Some(v) = self.notice_type {
+            os.write_enum(2, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CFriendMessages_DismissSessionNotice_Notification {
+        CFriendMessages_DismissSessionNotice_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid_friend = ::std::option::Option::None;
+        self.notice_type = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CFriendMessages_DismissSessionNotice_Notification {
+        static instance: CFriendMessages_DismissSessionNotice_Notification = CFriendMessages_DismissSessionNotice_Notification {
+            steamid_friend: ::std::option::Option::None,
+            notice_type: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -4236,6 +4428,182 @@ impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_MessageRea
     }
 }
 
+// @@protoc_insertion_point(message:CFriendMessages_SessionNotice_Notification)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CFriendMessages_SessionNotice_Notification {
+    // message fields
+    // @@protoc_insertion_point(field:CFriendMessages_SessionNotice_Notification.steamid_friend)
+    pub steamid_friend: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CFriendMessages_SessionNotice_Notification.notice_type)
+    pub notice_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EChatSessionNotice>>,
+    // @@protoc_insertion_point(field:CFriendMessages_SessionNotice_Notification.active)
+    pub active: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CFriendMessages_SessionNotice_Notification.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CFriendMessages_SessionNotice_Notification {
+    fn default() -> &'a CFriendMessages_SessionNotice_Notification {
+        <CFriendMessages_SessionNotice_Notification as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CFriendMessages_SessionNotice_Notification {
+    pub fn new() -> CFriendMessages_SessionNotice_Notification {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 steamid_friend = 1;
+
+    pub fn steamid_friend(&self) -> u64 {
+        self.steamid_friend.unwrap_or(0)
+    }
+
+    pub fn clear_steamid_friend(&mut self) {
+        self.steamid_friend = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid_friend(&self) -> bool {
+        self.steamid_friend.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid_friend(&mut self, v: u64) {
+        self.steamid_friend = ::std::option::Option::Some(v);
+    }
+
+    // optional .EChatSessionNotice notice_type = 2;
+
+    pub fn notice_type(&self) -> EChatSessionNotice {
+        match self.notice_type {
+            Some(e) => e.enum_value_or(EChatSessionNotice::k_EChatSessionNotice_Invalid),
+            None => EChatSessionNotice::k_EChatSessionNotice_Invalid,
+        }
+    }
+
+    pub fn clear_notice_type(&mut self) {
+        self.notice_type = ::std::option::Option::None;
+    }
+
+    pub fn has_notice_type(&self) -> bool {
+        self.notice_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_notice_type(&mut self, v: EChatSessionNotice) {
+        self.notice_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional bool active = 3;
+
+    pub fn active(&self) -> bool {
+        self.active.unwrap_or(false)
+    }
+
+    pub fn clear_active(&mut self) {
+        self.active = ::std::option::Option::None;
+    }
+
+    pub fn has_active(&self) -> bool {
+        self.active.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_active(&mut self, v: bool) {
+        self.active = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CFriendMessages_SessionNotice_Notification {
+    const NAME: &'static str = "CFriendMessages_SessionNotice_Notification";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.steamid_friend = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                16 => {
+                    self.notice_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                24 => {
+                    self.active = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid_friend {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.notice_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(2, v.value());
+        }
+        if let Some(v) = self.active {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid_friend {
+            os.write_fixed64(1, v)?;
+        }
+        if let Some(v) = self.notice_type {
+            os.write_enum(2, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.active {
+            os.write_bool(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CFriendMessages_SessionNotice_Notification {
+        CFriendMessages_SessionNotice_Notification::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid_friend = ::std::option::Option::None;
+        self.notice_type = ::std::option::Option::None;
+        self.active = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CFriendMessages_SessionNotice_Notification {
+        static instance: CFriendMessages_SessionNotice_Notification = CFriendMessages_SessionNotice_Notification {
+            steamid_friend: ::std::option::Option::None,
+            notice_type: ::std::option::Option::None,
+            active: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EMessageReactionType)
 pub enum EMessageReactionType {
@@ -4282,6 +4650,51 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMessageReactionType {
 impl ::std::default::Default for EMessageReactionType {
     fn default() -> Self {
         EMessageReactionType::k_EMessageReactionType_Invalid
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EChatSessionNotice)
+pub enum EChatSessionNotice {
+    // @@protoc_insertion_point(enum_value:EChatSessionNotice.k_EChatSessionNotice_Invalid)
+    k_EChatSessionNotice_Invalid = 0,
+    // @@protoc_insertion_point(enum_value:EChatSessionNotice.k_EChatSessionNotice_Suspicious)
+    k_EChatSessionNotice_Suspicious = 1,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EChatSessionNotice {
+    const NAME: &'static str = "EChatSessionNotice";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EChatSessionNotice> {
+        match value {
+            0 => ::std::option::Option::Some(EChatSessionNotice::k_EChatSessionNotice_Invalid),
+            1 => ::std::option::Option::Some(EChatSessionNotice::k_EChatSessionNotice_Suspicious),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EChatSessionNotice> {
+        match str {
+            "k_EChatSessionNotice_Invalid" => ::std::option::Option::Some(EChatSessionNotice::k_EChatSessionNotice_Invalid),
+            "k_EChatSessionNotice_Suspicious" => ::std::option::Option::Some(EChatSessionNotice::k_EChatSessionNotice_Suspicious),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EChatSessionNotice] = &[
+        EChatSessionNotice::k_EChatSessionNotice_Invalid,
+        EChatSessionNotice::k_EChatSessionNotice_Suspicious,
+    ];
+}
+
+impl ::std::default::Default for EChatSessionNotice {
+    fn default() -> Self {
+        EChatSessionNotice::k_EChatSessionNotice_Invalid
     }
 }
 
@@ -4499,6 +4912,20 @@ impl ::steam_vent_proto_common::RpcMessage for CFriendMessages_ResolveReport_Res
     }
 }
 impl ::steam_vent_proto_common::RpcMessage
+for CFriendMessages_DismissSessionNotice_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
 for CFriendMessages_IncomingMessage_Notification {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
@@ -4526,6 +4953,20 @@ for CFriendMessages_MessageReaction_Notification {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage
+for CFriendMessages_SessionNotice_Notification {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct FriendMessages {}
 impl ::steam_vent_proto_common::RpcService for FriendMessages {
@@ -4538,6 +4979,11 @@ impl ::steam_vent_proto_common::RpcService for FriendMessagesClient {
 }
 impl ::steam_vent_proto_common::RpcMethod for CFriendMessages_AckMessage_Notification {
     const METHOD_NAME: &'static str = "FriendMessages.AckMessage#1";
+    type Response = ();
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CFriendMessages_DismissSessionNotice_Notification {
+    const METHOD_NAME: &'static str = "FriendMessages.DismissSessionNotice#1";
     type Response = ();
 }
 impl ::steam_vent_proto_common::RpcMethod for CFriendMessages_GetRecentMessages_Request {
@@ -4569,6 +5015,11 @@ impl ::steam_vent_proto_common::RpcMethod for CFriendMessages_ResolveReport_Requ
 impl ::steam_vent_proto_common::RpcMethod for CFriendMessages_SendMessage_Request {
     const METHOD_NAME: &'static str = "FriendMessages.SendMessage#1";
     type Response = CFriendMessages_SendMessage_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CFriendMessages_SessionNotice_Notification {
+    const METHOD_NAME: &'static str = "FriendMessagesClient.SessionNotice#1";
+    type Response = ();
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CFriendMessages_UpdateMessageReaction_Request {

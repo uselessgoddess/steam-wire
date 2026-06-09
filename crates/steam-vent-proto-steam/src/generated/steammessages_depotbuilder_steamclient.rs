@@ -41,6 +41,8 @@ pub struct CContentBuilder_InitDepotBuild_Request {
     pub target_branch: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Request.shader_depot)
     pub shader_depot: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Request.baseline_manifest_id)
+    pub baseline_manifest_id: ::std::option::Option<u64>,
     // special fields
     // @@protoc_insertion_point(special_field:CContentBuilder_InitDepotBuild_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -187,6 +189,25 @@ impl CContentBuilder_InitDepotBuild_Request {
     pub fn set_shader_depot(&mut self, v: bool) {
         self.shader_depot = ::std::option::Option::Some(v);
     }
+
+    // optional uint64 baseline_manifest_id = 7;
+
+    pub fn baseline_manifest_id(&self) -> u64 {
+        self.baseline_manifest_id.unwrap_or(0)
+    }
+
+    pub fn clear_baseline_manifest_id(&mut self) {
+        self.baseline_manifest_id = ::std::option::Option::None;
+    }
+
+    pub fn has_baseline_manifest_id(&self) -> bool {
+        self.baseline_manifest_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_baseline_manifest_id(&mut self, v: u64) {
+        self.baseline_manifest_id = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotBuild_Request {
@@ -216,6 +237,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
                 },
                 48 => {
                     self.shader_depot = ::std::option::Option::Some(is.read_bool()?);
+                },
+                56 => {
+                    self.baseline_manifest_id = ::std::option::Option::Some(is.read_uint64()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -247,6 +271,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.shader_depot {
             my_size += 1 + 1;
         }
+        if let Some(v) = self.baseline_manifest_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(7, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -271,6 +298,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.shader_depot {
             os.write_bool(6, v)?;
         }
+        if let Some(v) = self.baseline_manifest_id {
+            os.write_uint64(7, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -294,6 +324,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         self.for_local_cs = ::std::option::Option::None;
         self.target_branch = ::std::option::Option::None;
         self.shader_depot = ::std::option::Option::None;
+        self.baseline_manifest_id = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -305,6 +336,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
             for_local_cs: ::std::option::Option::None,
             target_branch: ::std::option::Option::None,
             shader_depot: ::std::option::Option::None,
+            baseline_manifest_id: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -323,8 +355,8 @@ pub struct CContentBuilder_InitDepotBuild_Response {
     pub aes_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.rsa_key)
     pub rsa_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.url_host)
-    pub url_host: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.deprecated_url_host)
+    pub deprecated_url_host: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.offset_detection_enabled)
     pub offset_detection_enabled: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.offset_detection_min_clean_chunk)
@@ -343,6 +375,10 @@ pub struct CContentBuilder_InitDepotBuild_Response {
     pub download_host: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.manifest_request_code)
     pub manifest_request_code: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.chunk_upload_host)
+    pub chunk_upload_host: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CContentBuilder_InitDepotBuild_Response.manifest_upload_host)
+    pub manifest_upload_host: ::std::option::Option<::std::string::String>,
     // special fields
     // @@protoc_insertion_point(special_field:CContentBuilder_InitDepotBuild_Response.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -469,40 +505,40 @@ impl CContentBuilder_InitDepotBuild_Response {
         self.rsa_key.take().unwrap_or_else(|| ::std::vec::Vec::new())
     }
 
-    // optional string url_host = 5;
+    // optional string deprecated_url_host = 5;
 
-    pub fn url_host(&self) -> &str {
-        match self.url_host.as_ref() {
+    pub fn deprecated_url_host(&self) -> &str {
+        match self.deprecated_url_host.as_ref() {
             Some(v) => v,
             None => "",
         }
     }
 
-    pub fn clear_url_host(&mut self) {
-        self.url_host = ::std::option::Option::None;
+    pub fn clear_deprecated_url_host(&mut self) {
+        self.deprecated_url_host = ::std::option::Option::None;
     }
 
-    pub fn has_url_host(&self) -> bool {
-        self.url_host.is_some()
+    pub fn has_deprecated_url_host(&self) -> bool {
+        self.deprecated_url_host.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_url_host(&mut self, v: ::std::string::String) {
-        self.url_host = ::std::option::Option::Some(v);
+    pub fn set_deprecated_url_host(&mut self, v: ::std::string::String) {
+        self.deprecated_url_host = ::std::option::Option::Some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_url_host(&mut self) -> &mut ::std::string::String {
-        if self.url_host.is_none() {
-            self.url_host = ::std::option::Option::Some(::std::string::String::new());
+    pub fn mut_deprecated_url_host(&mut self) -> &mut ::std::string::String {
+        if self.deprecated_url_host.is_none() {
+            self.deprecated_url_host = ::std::option::Option::Some(::std::string::String::new());
         }
-        self.url_host.as_mut().unwrap()
+        self.deprecated_url_host.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_url_host(&mut self) -> ::std::string::String {
-        self.url_host.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_deprecated_url_host(&mut self) -> ::std::string::String {
+        self.deprecated_url_host.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
     // optional bool offset_detection_enabled = 6;
@@ -692,6 +728,78 @@ impl CContentBuilder_InitDepotBuild_Response {
     pub fn set_manifest_request_code(&mut self, v: u64) {
         self.manifest_request_code = ::std::option::Option::Some(v);
     }
+
+    // optional string chunk_upload_host = 15;
+
+    pub fn chunk_upload_host(&self) -> &str {
+        match self.chunk_upload_host.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_chunk_upload_host(&mut self) {
+        self.chunk_upload_host = ::std::option::Option::None;
+    }
+
+    pub fn has_chunk_upload_host(&self) -> bool {
+        self.chunk_upload_host.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_chunk_upload_host(&mut self, v: ::std::string::String) {
+        self.chunk_upload_host = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_chunk_upload_host(&mut self) -> &mut ::std::string::String {
+        if self.chunk_upload_host.is_none() {
+            self.chunk_upload_host = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.chunk_upload_host.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_chunk_upload_host(&mut self) -> ::std::string::String {
+        self.chunk_upload_host.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string manifest_upload_host = 16;
+
+    pub fn manifest_upload_host(&self) -> &str {
+        match self.manifest_upload_host.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_manifest_upload_host(&mut self) {
+        self.manifest_upload_host = ::std::option::Option::None;
+    }
+
+    pub fn has_manifest_upload_host(&self) -> bool {
+        self.manifest_upload_host.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_manifest_upload_host(&mut self, v: ::std::string::String) {
+        self.manifest_upload_host = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_manifest_upload_host(&mut self) -> &mut ::std::string::String {
+        if self.manifest_upload_host.is_none() {
+            self.manifest_upload_host = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.manifest_upload_host.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_manifest_upload_host(&mut self) -> ::std::string::String {
+        self.manifest_upload_host.take().unwrap_or_else(|| ::std::string::String::new())
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotBuild_Response {
@@ -717,7 +825,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
                     self.rsa_key = ::std::option::Option::Some(is.read_bytes()?);
                 },
                 42 => {
-                    self.url_host = ::std::option::Option::Some(is.read_string()?);
+                    self.deprecated_url_host = ::std::option::Option::Some(is.read_string()?);
                 },
                 48 => {
                     self.offset_detection_enabled = ::std::option::Option::Some(is.read_bool()?);
@@ -746,6 +854,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
                 112 => {
                     self.manifest_request_code = ::std::option::Option::Some(is.read_uint64()?);
                 },
+                122 => {
+                    self.chunk_upload_host = ::std::option::Option::Some(is.read_string()?);
+                },
+                130 => {
+                    self.manifest_upload_host = ::std::option::Option::Some(is.read_string()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -770,7 +884,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.rsa_key.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::bytes_size(4, &v);
         }
-        if let Some(v) = self.url_host.as_ref() {
+        if let Some(v) = self.deprecated_url_host.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(5, &v);
         }
         if let Some(v) = self.offset_detection_enabled {
@@ -800,6 +914,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.manifest_request_code {
             my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(14, v);
         }
+        if let Some(v) = self.chunk_upload_host.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(15, &v);
+        }
+        if let Some(v) = self.manifest_upload_host.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(16, &v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -818,7 +938,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.rsa_key.as_ref() {
             os.write_bytes(4, v)?;
         }
-        if let Some(v) = self.url_host.as_ref() {
+        if let Some(v) = self.deprecated_url_host.as_ref() {
             os.write_string(5, v)?;
         }
         if let Some(v) = self.offset_detection_enabled {
@@ -848,6 +968,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         if let Some(v) = self.manifest_request_code {
             os.write_uint64(14, v)?;
         }
+        if let Some(v) = self.chunk_upload_host.as_ref() {
+            os.write_string(15, v)?;
+        }
+        if let Some(v) = self.manifest_upload_host.as_ref() {
+            os.write_string(16, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -869,7 +995,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         self.chunk_size = ::std::option::Option::None;
         self.aes_key = ::std::option::Option::None;
         self.rsa_key = ::std::option::Option::None;
-        self.url_host = ::std::option::Option::None;
+        self.deprecated_url_host = ::std::option::Option::None;
         self.offset_detection_enabled = ::std::option::Option::None;
         self.offset_detection_min_clean_chunk = ::std::option::Option::None;
         self.offset_detection_blast_radius_pre = ::std::option::Option::None;
@@ -879,6 +1005,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
         self.compression_method = ::std::option::Option::None;
         self.download_host = ::std::option::Option::None;
         self.manifest_request_code = ::std::option::Option::None;
+        self.chunk_upload_host = ::std::option::Option::None;
+        self.manifest_upload_host = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -888,7 +1016,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
             chunk_size: ::std::option::Option::None,
             aes_key: ::std::option::Option::None,
             rsa_key: ::std::option::Option::None,
-            url_host: ::std::option::Option::None,
+            deprecated_url_host: ::std::option::Option::None,
             offset_detection_enabled: ::std::option::Option::None,
             offset_detection_min_clean_chunk: ::std::option::Option::None,
             offset_detection_blast_radius_pre: ::std::option::Option::None,
@@ -898,6 +1026,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_InitDepotB
             compression_method: ::std::option::Option::None,
             download_host: ::std::option::Option::None,
             manifest_request_code: ::std::option::Option::None,
+            chunk_upload_host: ::std::option::Option::None,
+            manifest_upload_host: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -2035,6 +2165,8 @@ pub struct CContentBuilder_CommitAppBuild_Request {
     pub live_branch: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CContentBuilder_CommitAppBuild_Request.for_local_cs)
     pub for_local_cs: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CContentBuilder_CommitAppBuild_Request.web_upload)
+    pub web_upload: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CContentBuilder_CommitAppBuild_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -2160,6 +2292,25 @@ impl CContentBuilder_CommitAppBuild_Request {
     pub fn set_for_local_cs(&mut self, v: bool) {
         self.for_local_cs = ::std::option::Option::Some(v);
     }
+
+    // optional bool web_upload = 7;
+
+    pub fn web_upload(&self) -> bool {
+        self.web_upload.unwrap_or(false)
+    }
+
+    pub fn clear_web_upload(&mut self) {
+        self.web_upload = ::std::option::Option::None;
+    }
+
+    pub fn has_web_upload(&self) -> bool {
+        self.web_upload.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_web_upload(&mut self, v: bool) {
+        self.web_upload = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppBuild_Request {
@@ -2186,6 +2337,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppB
                 },
                 48 => {
                     self.for_local_cs = ::std::option::Option::Some(is.read_bool()?);
+                },
+                56 => {
+                    self.web_upload = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -2215,6 +2369,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppB
         if let Some(v) = self.for_local_cs {
             my_size += 1 + 1;
         }
+        if let Some(v) = self.web_upload {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -2235,6 +2392,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppB
         }
         if let Some(v) = self.for_local_cs {
             os.write_bool(6, v)?;
+        }
+        if let Some(v) = self.web_upload {
+            os.write_bool(7, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2258,6 +2418,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppB
         self.build_notes = ::std::option::Option::None;
         self.live_branch = ::std::option::Option::None;
         self.for_local_cs = ::std::option::Option::None;
+        self.web_upload = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -2268,6 +2429,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CContentBuilder_CommitAppB
             build_notes: ::std::option::Option::None,
             live_branch: ::std::option::Option::None,
             for_local_cs: ::std::option::Option::None,
+            web_upload: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance

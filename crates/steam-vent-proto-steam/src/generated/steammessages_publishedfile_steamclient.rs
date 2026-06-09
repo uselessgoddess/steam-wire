@@ -7649,6 +7649,8 @@ pub struct CPublishedFile_GetItemInfo_Request {
     pub last_time_updated: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CPublishedFile_GetItemInfo_Request.workshop_items)
     pub workshop_items: ::std::vec::Vec<cpublished_file_get_item_info_request::WorkshopItem>,
+    // @@protoc_insertion_point(field:CPublishedFile_GetItemInfo_Request.desired_revision)
+    pub desired_revision: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EPublishedFileRevision>>,
     // special fields
     // @@protoc_insertion_point(special_field:CPublishedFile_GetItemInfo_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -7702,6 +7704,28 @@ impl CPublishedFile_GetItemInfo_Request {
     pub fn set_last_time_updated(&mut self, v: u32) {
         self.last_time_updated = ::std::option::Option::Some(v);
     }
+
+    // optional .EPublishedFileRevision desired_revision = 4;
+
+    pub fn desired_revision(&self) -> EPublishedFileRevision {
+        match self.desired_revision {
+            Some(e) => e.enum_value_or(EPublishedFileRevision::k_EPublishedFileRevision_Default),
+            None => EPublishedFileRevision::k_EPublishedFileRevision_Default,
+        }
+    }
+
+    pub fn clear_desired_revision(&mut self) {
+        self.desired_revision = ::std::option::Option::None;
+    }
+
+    pub fn has_desired_revision(&self) -> bool {
+        self.desired_revision.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_desired_revision(&mut self, v: EPublishedFileRevision) {
+        self.desired_revision = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo_Request {
@@ -7722,6 +7746,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo
                 },
                 26 => {
                     self.workshop_items.push(is.read_message()?);
+                },
+                32 => {
+                    self.desired_revision = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -7745,6 +7772,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo
             let len = value.compute_size();
             my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
+        if let Some(v) = self.desired_revision {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v.value());
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -7760,6 +7790,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo
         for v in &self.workshop_items {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
         };
+        if let Some(v) = self.desired_revision {
+            os.write_enum(4, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -7780,6 +7813,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo
         self.appid = ::std::option::Option::None;
         self.last_time_updated = ::std::option::Option::None;
         self.workshop_items.clear();
+        self.desired_revision = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -7788,6 +7822,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetItemInfo
             appid: ::std::option::Option::None,
             last_time_updated: ::std::option::Option::None,
             workshop_items: ::std::vec::Vec::new(),
+            desired_revision: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8405,6 +8440,10 @@ pub struct CPublishedFile_GetUserFiles_Request {
     pub language: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.taggroups)
     pub taggroups: ::std::vec::Vec<cpublished_file_get_user_files_request::TagGroup>,
+    // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.date_range_created)
+    pub date_range_created: ::steam_vent_proto_common::protobuf::MessageField<cpublished_file_get_user_files_request::DateRange>,
+    // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.date_range_updated)
+    pub date_range_updated: ::steam_vent_proto_common::protobuf::MessageField<cpublished_file_get_user_files_request::DateRange>,
     // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.excluded_content_descriptors)
     pub excluded_content_descriptors: ::std::vec::Vec<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums_productinfo::EContentDescriptorID>>,
     // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.admin_query)
@@ -9143,6 +9182,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetUserFile
                 274 => {
                     self.taggroups.push(is.read_message()?);
                 },
+                314 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.date_range_created)?;
+                },
+                322 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.date_range_updated)?;
+                },
                 296 => {
                     self.excluded_content_descriptors.push(is.read_enum_or_unknown()?);
                 },
@@ -9265,6 +9310,14 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetUserFile
             let len = value.compute_size();
             my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
         };
+        if let Some(v) = self.date_range_created.as_ref() {
+            let len = v.compute_size();
+            my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.date_range_updated.as_ref() {
+            let len = v.compute_size();
+            my_size += 2 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
         for value in &self.excluded_content_descriptors {
             my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(37, value.value());
         };
@@ -9376,6 +9429,12 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetUserFile
         for v in &self.taggroups {
             ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(34, v, os)?;
         };
+        if let Some(v) = self.date_range_created.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(39, v, os)?;
+        }
+        if let Some(v) = self.date_range_updated.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(40, v, os)?;
+        }
         for v in &self.excluded_content_descriptors {
             os.write_enum(37, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(v))?;
         };
@@ -9464,6 +9523,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetUserFile
         self.cache_max_age_seconds = ::std::option::Option::None;
         self.language = ::std::option::Option::None;
         self.taggroups.clear();
+        self.date_range_created.clear();
+        self.date_range_updated.clear();
         self.excluded_content_descriptors.clear();
         self.admin_query = ::std::option::Option::None;
         self.totalonly = ::std::option::Option::None;
@@ -9504,6 +9565,8 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_GetUserFile
             cache_max_age_seconds: ::std::option::Option::None,
             language: ::std::option::Option::None,
             taggroups: ::std::vec::Vec::new(),
+            date_range_created: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            date_range_updated: ::steam_vent_proto_common::protobuf::MessageField::none(),
             excluded_content_descriptors: ::std::vec::Vec::new(),
             admin_query: ::std::option::Option::None,
             totalonly: ::std::option::Option::None,
@@ -9789,6 +9852,147 @@ pub mod cpublished_file_get_user_files_request {
         fn default_instance() -> &'static TagGroup {
             static instance: TagGroup = TagGroup {
                 tags: ::std::vec::Vec::new(),
+                special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+            };
+            &instance
+        }
+    }
+
+    // @@protoc_insertion_point(message:CPublishedFile_GetUserFiles_Request.DateRange)
+    #[derive(PartialEq,Clone,Default,Debug)]
+    pub struct DateRange {
+        // message fields
+        // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.DateRange.timestamp_start)
+        pub timestamp_start: ::std::option::Option<u32>,
+        // @@protoc_insertion_point(field:CPublishedFile_GetUserFiles_Request.DateRange.timestamp_end)
+        pub timestamp_end: ::std::option::Option<u32>,
+        // special fields
+        // @@protoc_insertion_point(special_field:CPublishedFile_GetUserFiles_Request.DateRange.special_fields)
+        pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+    }
+
+    impl<'a> ::std::default::Default for &'a DateRange {
+        fn default() -> &'a DateRange {
+            <DateRange as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+        }
+    }
+
+    impl DateRange {
+        pub fn new() -> DateRange {
+            ::std::default::Default::default()
+        }
+
+        // optional uint32 timestamp_start = 1;
+
+        pub fn timestamp_start(&self) -> u32 {
+            self.timestamp_start.unwrap_or(0)
+        }
+
+        pub fn clear_timestamp_start(&mut self) {
+            self.timestamp_start = ::std::option::Option::None;
+        }
+
+        pub fn has_timestamp_start(&self) -> bool {
+            self.timestamp_start.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_timestamp_start(&mut self, v: u32) {
+            self.timestamp_start = ::std::option::Option::Some(v);
+        }
+
+        // optional uint32 timestamp_end = 2;
+
+        pub fn timestamp_end(&self) -> u32 {
+            self.timestamp_end.unwrap_or(0)
+        }
+
+        pub fn clear_timestamp_end(&mut self) {
+            self.timestamp_end = ::std::option::Option::None;
+        }
+
+        pub fn has_timestamp_end(&self) -> bool {
+            self.timestamp_end.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_timestamp_end(&mut self, v: u32) {
+            self.timestamp_end = ::std::option::Option::Some(v);
+        }
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Message for DateRange {
+        const NAME: &'static str = "DateRange";
+
+        fn is_initialized(&self) -> bool {
+            true
+        }
+
+        fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            while let Some(tag) = is.read_raw_tag_or_eof()? {
+                match tag {
+                    8 => {
+                        self.timestamp_start = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    16 => {
+                        self.timestamp_end = ::std::option::Option::Some(is.read_uint32()?);
+                    },
+                    tag => {
+                        ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                    },
+                };
+            }
+            ::std::result::Result::Ok(())
+        }
+
+        // Compute sizes of nested messages
+        #[allow(unused_variables)]
+        fn compute_size(&self) -> u64 {
+            let mut my_size = 0;
+            if let Some(v) = self.timestamp_start {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+            }
+            if let Some(v) = self.timestamp_end {
+                my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+            }
+            my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+            self.special_fields.cached_size().set(my_size as u32);
+            my_size
+        }
+
+        fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+            if let Some(v) = self.timestamp_start {
+                os.write_uint32(1, v)?;
+            }
+            if let Some(v) = self.timestamp_end {
+                os.write_uint32(2, v)?;
+            }
+            os.write_unknown_fields(self.special_fields.unknown_fields())?;
+            ::std::result::Result::Ok(())
+        }
+
+        fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+            &self.special_fields
+        }
+
+        fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+            &mut self.special_fields
+        }
+
+        fn new() -> DateRange {
+            DateRange::new()
+        }
+
+        fn clear(&mut self) {
+            self.timestamp_start = ::std::option::Option::None;
+            self.timestamp_end = ::std::option::Option::None;
+            self.special_fields.clear();
+        }
+
+        fn default_instance() -> &'static DateRange {
+            static instance: DateRange = DateRange {
+                timestamp_start: ::std::option::Option::None,
+                timestamp_end: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -13113,6 +13317,14 @@ pub struct CPublishedFile_QueryFiles_Request {
     pub excluded_content_descriptors: ::std::vec::Vec<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums_productinfo::EContentDescriptorID>>,
     // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.admin_query)
     pub admin_query: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.special_filter)
+    pub special_filter: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EQueryFilesSpecialFilter>>,
+    // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.appids_required_for_use)
+    pub appids_required_for_use: ::std::vec::Vec<u32>,
+    // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.excluded_appids_required_for_use)
+    pub excluded_appids_required_for_use: ::std::vec::Vec<u32>,
+    // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.search_text_target)
+    pub search_text_target: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<EQueryFilesSearchTextTarget>>,
     // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.totalonly)
     pub totalonly: ::std::option::Option<bool>,
     // @@protoc_insertion_point(field:CPublishedFile_QueryFiles_Request.ids_only)
@@ -13476,6 +13688,50 @@ impl CPublishedFile_QueryFiles_Request {
     // Param is passed by value, moved
     pub fn set_admin_query(&mut self, v: bool) {
         self.admin_query = ::std::option::Option::Some(v);
+    }
+
+    // optional .EQueryFilesSpecialFilter special_filter = 48;
+
+    pub fn special_filter(&self) -> EQueryFilesSpecialFilter {
+        match self.special_filter {
+            Some(e) => e.enum_value_or(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None),
+            None => EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None,
+        }
+    }
+
+    pub fn clear_special_filter(&mut self) {
+        self.special_filter = ::std::option::Option::None;
+    }
+
+    pub fn has_special_filter(&self) -> bool {
+        self.special_filter.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_special_filter(&mut self, v: EQueryFilesSpecialFilter) {
+        self.special_filter = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional .EQueryFilesSearchTextTarget search_text_target = 50;
+
+    pub fn search_text_target(&self) -> EQueryFilesSearchTextTarget {
+        match self.search_text_target {
+            Some(e) => e.enum_value_or(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText),
+            None => EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText,
+        }
+    }
+
+    pub fn clear_search_text_target(&mut self) {
+        self.search_text_target = ::std::option::Option::None;
+    }
+
+    pub fn has_search_text_target(&self) -> bool {
+        self.search_text_target.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_search_text_target(&mut self, v: EQueryFilesSearchTextTarget) {
+        self.search_text_target = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
     }
 
     // optional bool totalonly = 16;
@@ -13852,6 +14108,24 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_QueryFiles_
                 376 => {
                     self.admin_query = ::std::option::Option::Some(is.read_bool()?);
                 },
+                384 => {
+                    self.special_filter = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                394 => {
+                    is.read_repeated_packed_uint32_into(&mut self.appids_required_for_use)?;
+                },
+                392 => {
+                    self.appids_required_for_use.push(is.read_uint32()?);
+                },
+                410 => {
+                    is.read_repeated_packed_uint32_into(&mut self.excluded_appids_required_for_use)?;
+                },
+                408 => {
+                    self.excluded_appids_required_for_use.push(is.read_uint32()?);
+                },
+                400 => {
+                    self.search_text_target = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
                 128 => {
                     self.totalonly = ::std::option::Option::Some(is.read_bool()?);
                 },
@@ -13985,6 +14259,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_QueryFiles_
         if let Some(v) = self.admin_query {
             my_size += 2 + 1;
         }
+        if let Some(v) = self.special_filter {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(48, v.value());
+        }
+        for value in &self.appids_required_for_use {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(49, *value);
+        };
+        for value in &self.excluded_appids_required_for_use {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(51, *value);
+        };
+        if let Some(v) = self.search_text_target {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(50, v.value());
+        }
         if let Some(v) = self.totalonly {
             my_size += 2 + 1;
         }
@@ -14108,6 +14394,18 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_QueryFiles_
         if let Some(v) = self.admin_query {
             os.write_bool(47, v)?;
         }
+        if let Some(v) = self.special_filter {
+            os.write_enum(48, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        for v in &self.appids_required_for_use {
+            os.write_uint32(49, *v)?;
+        };
+        for v in &self.excluded_appids_required_for_use {
+            os.write_uint32(51, *v)?;
+        };
+        if let Some(v) = self.search_text_target {
+            os.write_enum(50, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
         if let Some(v) = self.totalonly {
             os.write_bool(16, v)?;
         }
@@ -14194,6 +14492,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_QueryFiles_
         self.date_range_updated.clear();
         self.excluded_content_descriptors.clear();
         self.admin_query = ::std::option::Option::None;
+        self.special_filter = ::std::option::Option::None;
+        self.appids_required_for_use.clear();
+        self.excluded_appids_required_for_use.clear();
+        self.search_text_target = ::std::option::Option::None;
         self.totalonly = ::std::option::Option::None;
         self.ids_only = ::std::option::Option::None;
         self.return_vote_data = ::std::option::Option::None;
@@ -14238,6 +14540,10 @@ impl ::steam_vent_proto_common::protobuf::Message for CPublishedFile_QueryFiles_
             date_range_updated: ::steam_vent_proto_common::protobuf::MessageField::none(),
             excluded_content_descriptors: ::std::vec::Vec::new(),
             admin_query: ::std::option::Option::None,
+            special_filter: ::std::option::Option::None,
+            appids_required_for_use: ::std::vec::Vec::new(),
+            excluded_appids_required_for_use: ::std::vec::Vec::new(),
+            search_text_target: ::std::option::Option::None,
             totalonly: ::std::option::Option::None,
             ids_only: ::std::option::Option::None,
             return_vote_data: ::std::option::Option::None,
@@ -20687,6 +20993,131 @@ impl ::steam_vent_proto_common::protobuf::Enum for EPublishedFileForSaleStatus {
 impl ::std::default::Default for EPublishedFileForSaleStatus {
     fn default() -> Self {
         EPublishedFileForSaleStatus::k_PFFSS_NotForSale
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EQueryFilesSpecialFilter)
+pub enum EQueryFilesSpecialFilter {
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_None)
+    k_EQueryFilesSpecialFilter_None = 0,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_AcceptedForUse)
+    k_EQueryFilesSpecialFilter_AcceptedForUse = 1,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_FavoritedByFriends)
+    k_EQueryFilesSpecialFilter_FavoritedByFriends = 2,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_CreateByFriends)
+    k_EQueryFilesSpecialFilter_CreateByFriends = 3,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_CreatedByFollowed)
+    k_EQueryFilesSpecialFilter_CreatedByFollowed = 4,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_Reported)
+    k_EQueryFilesSpecialFilter_Reported = 5,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_ParentItems)
+    k_EQueryFilesSpecialFilter_ParentItems = 6,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSpecialFilter.k_EQueryFilesSpecialFilter_ParentCollections)
+    k_EQueryFilesSpecialFilter_ParentCollections = 7,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EQueryFilesSpecialFilter {
+    const NAME: &'static str = "EQueryFilesSpecialFilter";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EQueryFilesSpecialFilter> {
+        match value {
+            0 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None),
+            1 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_AcceptedForUse),
+            2 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_FavoritedByFriends),
+            3 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreateByFriends),
+            4 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreatedByFollowed),
+            5 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_Reported),
+            6 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentItems),
+            7 => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentCollections),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EQueryFilesSpecialFilter> {
+        match str {
+            "k_EQueryFilesSpecialFilter_None" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None),
+            "k_EQueryFilesSpecialFilter_AcceptedForUse" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_AcceptedForUse),
+            "k_EQueryFilesSpecialFilter_FavoritedByFriends" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_FavoritedByFriends),
+            "k_EQueryFilesSpecialFilter_CreateByFriends" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreateByFriends),
+            "k_EQueryFilesSpecialFilter_CreatedByFollowed" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreatedByFollowed),
+            "k_EQueryFilesSpecialFilter_Reported" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_Reported),
+            "k_EQueryFilesSpecialFilter_ParentItems" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentItems),
+            "k_EQueryFilesSpecialFilter_ParentCollections" => ::std::option::Option::Some(EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentCollections),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EQueryFilesSpecialFilter] = &[
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_AcceptedForUse,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_FavoritedByFriends,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreateByFriends,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_CreatedByFollowed,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_Reported,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentItems,
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_ParentCollections,
+    ];
+}
+
+impl ::std::default::Default for EQueryFilesSpecialFilter {
+    fn default() -> Self {
+        EQueryFilesSpecialFilter::k_EQueryFilesSpecialFilter_None
+    }
+}
+
+
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:EQueryFilesSearchTextTarget)
+pub enum EQueryFilesSearchTextTarget {
+    // @@protoc_insertion_point(enum_value:EQueryFilesSearchTextTarget.k_EQueryFilesSearchTextTarget_AllText)
+    k_EQueryFilesSearchTextTarget_AllText = 0,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSearchTextTarget.k_EQueryFilesSearchTextTarget_Title)
+    k_EQueryFilesSearchTextTarget_Title = 1,
+    // @@protoc_insertion_point(enum_value:EQueryFilesSearchTextTarget.k_EQueryFilesSearchTextTarget_Description)
+    k_EQueryFilesSearchTextTarget_Description = 2,
+}
+
+impl ::steam_vent_proto_common::protobuf::Enum for EQueryFilesSearchTextTarget {
+    const NAME: &'static str = "EQueryFilesSearchTextTarget";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<EQueryFilesSearchTextTarget> {
+        match value {
+            0 => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText),
+            1 => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Title),
+            2 => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Description),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<EQueryFilesSearchTextTarget> {
+        match str {
+            "k_EQueryFilesSearchTextTarget_AllText" => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText),
+            "k_EQueryFilesSearchTextTarget_Title" => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Title),
+            "k_EQueryFilesSearchTextTarget_Description" => ::std::option::Option::Some(EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Description),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [EQueryFilesSearchTextTarget] = &[
+        EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText,
+        EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Title,
+        EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_Description,
+    ];
+}
+
+impl ::std::default::Default for EQueryFilesSearchTextTarget {
+    fn default() -> Self {
+        EQueryFilesSearchTextTarget::k_EQueryFilesSearchTextTarget_AllText
     }
 }
 

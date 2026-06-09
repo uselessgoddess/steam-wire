@@ -2593,8 +2593,8 @@ impl ::std::default::Default for EInputMode {
 pub enum EMouseMode {
     // @@protoc_insertion_point(enum_value:EMouseMode.k_EMouseModeUnknown)
     k_EMouseModeUnknown = 0,
-    // @@protoc_insertion_point(enum_value:EMouseMode.k_EMouseModeRelativeCursor)
-    k_EMouseModeRelativeCursor = 1,
+    // @@protoc_insertion_point(enum_value:EMouseMode.k_EMouseModeRelativeCursor_OBSOLETE)
+    k_EMouseModeRelativeCursor_OBSOLETE = 1,
     // @@protoc_insertion_point(enum_value:EMouseMode.k_EMouseModeAbsoluteCursor)
     k_EMouseModeAbsoluteCursor = 2,
     // @@protoc_insertion_point(enum_value:EMouseMode.k_EMouseModeTouch)
@@ -2613,7 +2613,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMouseMode {
     fn from_i32(value: i32) -> ::std::option::Option<EMouseMode> {
         match value {
             0 => ::std::option::Option::Some(EMouseMode::k_EMouseModeUnknown),
-            1 => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelativeCursor),
+            1 => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelativeCursor_OBSOLETE),
             2 => ::std::option::Option::Some(EMouseMode::k_EMouseModeAbsoluteCursor),
             3 => ::std::option::Option::Some(EMouseMode::k_EMouseModeTouch),
             4 => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelative),
@@ -2624,7 +2624,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMouseMode {
     fn from_str(str: &str) -> ::std::option::Option<EMouseMode> {
         match str {
             "k_EMouseModeUnknown" => ::std::option::Option::Some(EMouseMode::k_EMouseModeUnknown),
-            "k_EMouseModeRelativeCursor" => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelativeCursor),
+            "k_EMouseModeRelativeCursor_OBSOLETE" => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelativeCursor_OBSOLETE),
             "k_EMouseModeAbsoluteCursor" => ::std::option::Option::Some(EMouseMode::k_EMouseModeAbsoluteCursor),
             "k_EMouseModeTouch" => ::std::option::Option::Some(EMouseMode::k_EMouseModeTouch),
             "k_EMouseModeRelative" => ::std::option::Option::Some(EMouseMode::k_EMouseModeRelative),
@@ -2634,7 +2634,7 @@ impl ::steam_vent_proto_common::protobuf::Enum for EMouseMode {
 
     const VALUES: &'static [EMouseMode] = &[
         EMouseMode::k_EMouseModeUnknown,
-        EMouseMode::k_EMouseModeRelativeCursor,
+        EMouseMode::k_EMouseModeRelativeCursor_OBSOLETE,
         EMouseMode::k_EMouseModeAbsoluteCursor,
         EMouseMode::k_EMouseModeTouch,
         EMouseMode::k_EMouseModeRelative,

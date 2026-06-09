@@ -6590,6 +6590,414 @@ impl ::steam_vent_proto_common::protobuf::Message for CClientNotificationHardwar
     }
 }
 
+// @@protoc_insertion_point(message:CClientNotificationControllerLowBattery)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CClientNotificationControllerLowBattery {
+    // message fields
+    // @@protoc_insertion_point(field:CClientNotificationControllerLowBattery.controller_type)
+    pub controller_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CClientNotificationControllerLowBattery.pct_remaining)
+    pub pct_remaining: ::std::option::Option<f32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CClientNotificationControllerLowBattery.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CClientNotificationControllerLowBattery {
+    fn default() -> &'a CClientNotificationControllerLowBattery {
+        <CClientNotificationControllerLowBattery as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CClientNotificationControllerLowBattery {
+    pub fn new() -> CClientNotificationControllerLowBattery {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_type = 1;
+
+    pub fn controller_type(&self) -> u32 {
+        self.controller_type.unwrap_or(0)
+    }
+
+    pub fn clear_controller_type(&mut self) {
+        self.controller_type = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_type(&self) -> bool {
+        self.controller_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_type(&mut self, v: u32) {
+        self.controller_type = ::std::option::Option::Some(v);
+    }
+
+    // optional float pct_remaining = 2;
+
+    pub fn pct_remaining(&self) -> f32 {
+        self.pct_remaining.unwrap_or(0.)
+    }
+
+    pub fn clear_pct_remaining(&mut self) {
+        self.pct_remaining = ::std::option::Option::None;
+    }
+
+    pub fn has_pct_remaining(&self) -> bool {
+        self.pct_remaining.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_pct_remaining(&mut self, v: f32) {
+        self.pct_remaining = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CClientNotificationControllerLowBattery {
+    const NAME: &'static str = "CClientNotificationControllerLowBattery";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                21 => {
+                    self.pct_remaining = ::std::option::Option::Some(is.read_float()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.pct_remaining {
+            my_size += 1 + 4;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_type {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.pct_remaining {
+            os.write_float(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CClientNotificationControllerLowBattery {
+        CClientNotificationControllerLowBattery::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_type = ::std::option::Option::None;
+        self.pct_remaining = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CClientNotificationControllerLowBattery {
+        static instance: CClientNotificationControllerLowBattery = CClientNotificationControllerLowBattery {
+            controller_type: ::std::option::Option::None,
+            pct_remaining: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CClientNotificationControllerConnected)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CClientNotificationControllerConnected {
+    // message fields
+    // @@protoc_insertion_point(field:CClientNotificationControllerConnected.controller_index)
+    pub controller_index: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CClientNotificationControllerConnected.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CClientNotificationControllerConnected {
+    fn default() -> &'a CClientNotificationControllerConnected {
+        <CClientNotificationControllerConnected as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CClientNotificationControllerConnected {
+    pub fn new() -> CClientNotificationControllerConnected {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_index = 1;
+
+    pub fn controller_index(&self) -> u32 {
+        self.controller_index.unwrap_or(0)
+    }
+
+    pub fn clear_controller_index(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_index(&self) -> bool {
+        self.controller_index.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_index(&mut self, v: u32) {
+        self.controller_index = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CClientNotificationControllerConnected {
+    const NAME: &'static str = "CClientNotificationControllerConnected";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_index = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_index {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_index {
+            os.write_uint32(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CClientNotificationControllerConnected {
+        CClientNotificationControllerConnected::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_index = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CClientNotificationControllerConnected {
+        static instance: CClientNotificationControllerConnected = CClientNotificationControllerConnected {
+            controller_index: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CClientNotificationControllerDisconnected)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CClientNotificationControllerDisconnected {
+    // message fields
+    // @@protoc_insertion_point(field:CClientNotificationControllerDisconnected.controller_type)
+    pub controller_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CClientNotificationControllerDisconnected.controller_name)
+    pub controller_name: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CClientNotificationControllerDisconnected.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CClientNotificationControllerDisconnected {
+    fn default() -> &'a CClientNotificationControllerDisconnected {
+        <CClientNotificationControllerDisconnected as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CClientNotificationControllerDisconnected {
+    pub fn new() -> CClientNotificationControllerDisconnected {
+        ::std::default::Default::default()
+    }
+
+    // optional uint32 controller_type = 1;
+
+    pub fn controller_type(&self) -> u32 {
+        self.controller_type.unwrap_or(0)
+    }
+
+    pub fn clear_controller_type(&mut self) {
+        self.controller_type = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_type(&self) -> bool {
+        self.controller_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_type(&mut self, v: u32) {
+        self.controller_type = ::std::option::Option::Some(v);
+    }
+
+    // optional string controller_name = 2;
+
+    pub fn controller_name(&self) -> &str {
+        match self.controller_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_controller_name(&mut self) {
+        self.controller_name = ::std::option::Option::None;
+    }
+
+    pub fn has_controller_name(&self) -> bool {
+        self.controller_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_controller_name(&mut self, v: ::std::string::String) {
+        self.controller_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_controller_name(&mut self) -> &mut ::std::string::String {
+        if self.controller_name.is_none() {
+            self.controller_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.controller_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_controller_name(&mut self) -> ::std::string::String {
+        self.controller_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CClientNotificationControllerDisconnected {
+    const NAME: &'static str = "CClientNotificationControllerDisconnected";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.controller_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                18 => {
+                    self.controller_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.controller_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(1, v);
+        }
+        if let Some(v) = self.controller_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.controller_type {
+            os.write_uint32(1, v)?;
+        }
+        if let Some(v) = self.controller_name.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CClientNotificationControllerDisconnected {
+        CClientNotificationControllerDisconnected::new()
+    }
+
+    fn clear(&mut self) {
+        self.controller_type = ::std::option::Option::None;
+        self.controller_name = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CClientNotificationControllerDisconnected {
+        static instance: CClientNotificationControllerDisconnected = CClientNotificationControllerDisconnected {
+            controller_type: ::std::option::Option::None,
+            controller_name: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EClientNotificationType)
 pub enum EClientNotificationType {
@@ -6713,6 +7121,12 @@ pub enum EClientNotificationType {
     k_EClientNotificationType_TradeReversal = 60,
     // @@protoc_insertion_point(enum_value:EClientNotificationType.k_EClientNotificationType_HardwareUpdateAvailable)
     k_EClientNotificationType_HardwareUpdateAvailable = 61,
+    // @@protoc_insertion_point(enum_value:EClientNotificationType.k_EClientNotificationType_ControllerLowBattery)
+    k_EClientNotificationType_ControllerLowBattery = 62,
+    // @@protoc_insertion_point(enum_value:EClientNotificationType.k_EClientNotificationType_ControllerConnected)
+    k_EClientNotificationType_ControllerConnected = 63,
+    // @@protoc_insertion_point(enum_value:EClientNotificationType.k_EClientNotificationType_ControllerDisconnected)
+    k_EClientNotificationType_ControllerDisconnected = 64,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EClientNotificationType {
@@ -6784,6 +7198,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientNotificationType {
             59 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_PlaytestInvite),
             60 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_TradeReversal),
             61 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_HardwareUpdateAvailable),
+            62 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerLowBattery),
+            63 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerConnected),
+            64 => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerDisconnected),
             _ => ::std::option::Option::None
         }
     }
@@ -6850,6 +7267,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientNotificationType {
             "k_EClientNotificationType_PlaytestInvite" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_PlaytestInvite),
             "k_EClientNotificationType_TradeReversal" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_TradeReversal),
             "k_EClientNotificationType_HardwareUpdateAvailable" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_HardwareUpdateAvailable),
+            "k_EClientNotificationType_ControllerLowBattery" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerLowBattery),
+            "k_EClientNotificationType_ControllerConnected" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerConnected),
+            "k_EClientNotificationType_ControllerDisconnected" => ::std::option::Option::Some(EClientNotificationType::k_EClientNotificationType_ControllerDisconnected),
             _ => ::std::option::Option::None
         }
     }
@@ -6915,6 +7335,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EClientNotificationType {
         EClientNotificationType::k_EClientNotificationType_PlaytestInvite,
         EClientNotificationType::k_EClientNotificationType_TradeReversal,
         EClientNotificationType::k_EClientNotificationType_HardwareUpdateAvailable,
+        EClientNotificationType::k_EClientNotificationType_ControllerLowBattery,
+        EClientNotificationType::k_EClientNotificationType_ControllerConnected,
+        EClientNotificationType::k_EClientNotificationType_ControllerDisconnected,
     ];
 }
 
@@ -7571,6 +7994,46 @@ for CClientNotificationGameRecordingInstantClip {
 }
 impl ::steam_vent_proto_common::RpcMessage
 for CClientNotificationHardwareUpdateAvailable {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CClientNotificationControllerLowBattery {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CClientNotificationControllerConnected {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CClientNotificationControllerDisconnected {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }

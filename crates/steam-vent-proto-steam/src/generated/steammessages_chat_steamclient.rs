@@ -3021,6 +3021,8 @@ pub struct CUserChatRoomGroupState {
     pub time_last_group_ack: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CUserChatRoomGroupState.unread_indicator_muted)
     pub unread_indicator_muted: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CUserChatRoomGroupState.direct_messages_allowed)
+    pub direct_messages_allowed: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CUserChatRoomGroupState.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -3156,6 +3158,25 @@ impl CUserChatRoomGroupState {
     pub fn set_unread_indicator_muted(&mut self, v: bool) {
         self.unread_indicator_muted = ::std::option::Option::Some(v);
     }
+
+    // optional bool direct_messages_allowed = 8;
+
+    pub fn direct_messages_allowed(&self) -> bool {
+        self.direct_messages_allowed.unwrap_or(false)
+    }
+
+    pub fn clear_direct_messages_allowed(&mut self) {
+        self.direct_messages_allowed = ::std::option::Option::None;
+    }
+
+    pub fn has_direct_messages_allowed(&self) -> bool {
+        self.direct_messages_allowed.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_direct_messages_allowed(&mut self, v: bool) {
+        self.direct_messages_allowed = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
@@ -3188,6 +3209,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
                 },
                 56 => {
                     self.unread_indicator_muted = ::std::option::Option::Some(is.read_bool()?);
+                },
+                64 => {
+                    self.direct_messages_allowed = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -3223,6 +3247,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
         if let Some(v) = self.unread_indicator_muted {
             my_size += 1 + 1;
         }
+        if let Some(v) = self.direct_messages_allowed {
+            my_size += 1 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -3250,6 +3277,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
         if let Some(v) = self.unread_indicator_muted {
             os.write_bool(7, v)?;
         }
+        if let Some(v) = self.direct_messages_allowed {
+            os.write_bool(8, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -3274,6 +3304,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
         self.mobile_notification_level = ::std::option::Option::None;
         self.time_last_group_ack = ::std::option::Option::None;
         self.unread_indicator_muted = ::std::option::Option::None;
+        self.direct_messages_allowed = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -3286,6 +3317,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CUserChatRoomGroupState {
             mobile_notification_level: ::std::option::Option::None,
             time_last_group_ack: ::std::option::Option::None,
             unread_indicator_muted: ::std::option::Option::None,
+            direct_messages_allowed: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -17170,6 +17202,8 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
         pub mobile_notification_level: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::EChatRoomNotificationLevel>>,
         // @@protoc_insertion_point(field:CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.unread_indicator_muted)
         pub unread_indicator_muted: ::std::option::Option<bool>,
+        // @@protoc_insertion_point(field:CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.direct_messages_allowed)
+        pub direct_messages_allowed: ::std::option::Option<bool>,
         // special fields
         // @@protoc_insertion_point(special_field:CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.special_fields)
         pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -17248,6 +17282,25 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
         pub fn set_unread_indicator_muted(&mut self, v: bool) {
             self.unread_indicator_muted = ::std::option::Option::Some(v);
         }
+
+        // optional bool direct_messages_allowed = 4;
+
+        pub fn direct_messages_allowed(&self) -> bool {
+            self.direct_messages_allowed.unwrap_or(false)
+        }
+
+        pub fn clear_direct_messages_allowed(&mut self) {
+            self.direct_messages_allowed = ::std::option::Option::None;
+        }
+
+        pub fn has_direct_messages_allowed(&self) -> bool {
+            self.direct_messages_allowed.is_some()
+        }
+
+        // Param is passed by value, moved
+        pub fn set_direct_messages_allowed(&mut self, v: bool) {
+            self.direct_messages_allowed = ::std::option::Option::Some(v);
+        }
     }
 
     impl ::steam_vent_proto_common::protobuf::Message for ChatGroupPreferences {
@@ -17268,6 +17321,9 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
                     },
                     24 => {
                         self.unread_indicator_muted = ::std::option::Option::Some(is.read_bool()?);
+                    },
+                    32 => {
+                        self.direct_messages_allowed = ::std::option::Option::Some(is.read_bool()?);
                     },
                     tag => {
                         ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -17290,6 +17346,9 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
             if let Some(v) = self.unread_indicator_muted {
                 my_size += 1 + 1;
             }
+            if let Some(v) = self.direct_messages_allowed {
+                my_size += 1 + 1;
+            }
             my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
             self.special_fields.cached_size().set(my_size as u32);
             my_size
@@ -17304,6 +17363,9 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
             }
             if let Some(v) = self.unread_indicator_muted {
                 os.write_bool(3, v)?;
+            }
+            if let Some(v) = self.direct_messages_allowed {
+                os.write_bool(4, v)?;
             }
             os.write_unknown_fields(self.special_fields.unknown_fields())?;
             ::std::result::Result::Ok(())
@@ -17325,6 +17387,7 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
             self.desktop_notification_level = ::std::option::Option::None;
             self.mobile_notification_level = ::std::option::Option::None;
             self.unread_indicator_muted = ::std::option::Option::None;
+            self.direct_messages_allowed = ::std::option::Option::None;
             self.special_fields.clear();
         }
 
@@ -17333,6 +17396,7 @@ pub mod cchat_room_set_user_chat_group_preferences_request {
                 desktop_notification_level: ::std::option::Option::None,
                 mobile_notification_level: ::std::option::Option::None,
                 unread_indicator_muted: ::std::option::Option::None,
+                direct_messages_allowed: ::std::option::Option::None,
                 special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
             };
             &instance
@@ -19638,6 +19702,8 @@ pub struct CChatRoom_ReportMessage_Request {
     pub report_text: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CChatRoom_ReportMessage_Request.language)
     pub language: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CChatRoom_ReportMessage_Request.subject_type)
+    pub subject_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportSubjectType>>,
     // special fields
     // @@protoc_insertion_point(special_field:CChatRoom_ReportMessage_Request.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -19842,6 +19908,28 @@ impl CChatRoom_ReportMessage_Request {
     pub fn take_language(&mut self) -> ::std::string::String {
         self.language.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional .EContentReportSubjectType subject_type = 9;
+
+    pub fn subject_type(&self) -> super::enums::EContentReportSubjectType {
+        match self.subject_type {
+            Some(e) => e.enum_value_or(super::enums::EContentReportSubjectType::k_EContentReportSubjectType_Invalid),
+            None => super::enums::EContentReportSubjectType::k_EContentReportSubjectType_Invalid,
+        }
+    }
+
+    pub fn clear_subject_type(&mut self) {
+        self.subject_type = ::std::option::Option::None;
+    }
+
+    pub fn has_subject_type(&self) -> bool {
+        self.subject_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_subject_type(&mut self, v: super::enums::EContentReportSubjectType) {
+        self.subject_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Request {
@@ -19877,6 +19965,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
                 },
                 66 => {
                     self.language = ::std::option::Option::Some(is.read_string()?);
+                },
+                72 => {
+                    self.subject_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -19914,6 +20005,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
         if let Some(v) = self.language.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(8, &v);
         }
+        if let Some(v) = self.subject_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(9, v.value());
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -19944,6 +20038,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
         if let Some(v) = self.language.as_ref() {
             os.write_string(8, v)?;
         }
+        if let Some(v) = self.subject_type {
+            os.write_enum(9, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -19969,6 +20066,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
         self.report_reason = ::std::option::Option::None;
         self.report_text = ::std::option::Option::None;
         self.language = ::std::option::Option::None;
+        self.subject_type = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -19982,6 +20080,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
             report_reason: ::std::option::Option::None,
             report_text: ::std::option::Option::None,
             language: ::std::option::Option::None,
+            subject_type: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -20058,6 +20157,424 @@ impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ReportMessage_Re
 
     fn default_instance() -> &'static CChatRoom_ReportMessage_Response {
         static instance: CChatRoom_ReportMessage_Response = CChatRoom_ReportMessage_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CChatRoom_ResolveReport_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CChatRoom_ResolveReport_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.subject_group_id)
+    pub subject_group_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.subject_id)
+    pub subject_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.resolution)
+    pub resolution: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportResolution>>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.reason)
+    pub reason: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportReason>>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.subject_type)
+    pub subject_type: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<super::enums::EContentReportSubjectType>>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.chat_group_id)
+    pub chat_group_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.kick_expiration_time)
+    pub kick_expiration_time: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CChatRoom_ResolveReport_Request.skip_lock)
+    pub skip_lock: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CChatRoom_ResolveReport_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CChatRoom_ResolveReport_Request {
+    fn default() -> &'a CChatRoom_ResolveReport_Request {
+        <CChatRoom_ResolveReport_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CChatRoom_ResolveReport_Request {
+    pub fn new() -> CChatRoom_ResolveReport_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 subject_group_id = 1;
+
+    pub fn subject_group_id(&self) -> u64 {
+        self.subject_group_id.unwrap_or(0)
+    }
+
+    pub fn clear_subject_group_id(&mut self) {
+        self.subject_group_id = ::std::option::Option::None;
+    }
+
+    pub fn has_subject_group_id(&self) -> bool {
+        self.subject_group_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_subject_group_id(&mut self, v: u64) {
+        self.subject_group_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 subject_id = 2;
+
+    pub fn subject_id(&self) -> u64 {
+        self.subject_id.unwrap_or(0)
+    }
+
+    pub fn clear_subject_id(&mut self) {
+        self.subject_id = ::std::option::Option::None;
+    }
+
+    pub fn has_subject_id(&self) -> bool {
+        self.subject_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_subject_id(&mut self, v: u64) {
+        self.subject_id = ::std::option::Option::Some(v);
+    }
+
+    // optional .EContentReportResolution resolution = 3;
+
+    pub fn resolution(&self) -> super::enums::EContentReportResolution {
+        match self.resolution {
+            Some(e) => e.enum_value_or(super::enums::EContentReportResolution::k_EContentReportResolution_Unresolved),
+            None => super::enums::EContentReportResolution::k_EContentReportResolution_Unresolved,
+        }
+    }
+
+    pub fn clear_resolution(&mut self) {
+        self.resolution = ::std::option::Option::None;
+    }
+
+    pub fn has_resolution(&self) -> bool {
+        self.resolution.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_resolution(&mut self, v: super::enums::EContentReportResolution) {
+        self.resolution = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional .EContentReportReason reason = 4;
+
+    pub fn reason(&self) -> super::enums::EContentReportReason {
+        match self.reason {
+            Some(e) => e.enum_value_or(super::enums::EContentReportReason::k_EContentReportReason_Invalid),
+            None => super::enums::EContentReportReason::k_EContentReportReason_Invalid,
+        }
+    }
+
+    pub fn clear_reason(&mut self) {
+        self.reason = ::std::option::Option::None;
+    }
+
+    pub fn has_reason(&self) -> bool {
+        self.reason.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_reason(&mut self, v: super::enums::EContentReportReason) {
+        self.reason = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional .EContentReportSubjectType subject_type = 5;
+
+    pub fn subject_type(&self) -> super::enums::EContentReportSubjectType {
+        match self.subject_type {
+            Some(e) => e.enum_value_or(super::enums::EContentReportSubjectType::k_EContentReportSubjectType_Invalid),
+            None => super::enums::EContentReportSubjectType::k_EContentReportSubjectType_Invalid,
+        }
+    }
+
+    pub fn clear_subject_type(&mut self) {
+        self.subject_type = ::std::option::Option::None;
+    }
+
+    pub fn has_subject_type(&self) -> bool {
+        self.subject_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_subject_type(&mut self, v: super::enums::EContentReportSubjectType) {
+        self.subject_type = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional uint64 chat_group_id = 6;
+
+    pub fn chat_group_id(&self) -> u64 {
+        self.chat_group_id.unwrap_or(0)
+    }
+
+    pub fn clear_chat_group_id(&mut self) {
+        self.chat_group_id = ::std::option::Option::None;
+    }
+
+    pub fn has_chat_group_id(&self) -> bool {
+        self.chat_group_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_chat_group_id(&mut self, v: u64) {
+        self.chat_group_id = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 kick_expiration_time = 7;
+
+    pub fn kick_expiration_time(&self) -> u32 {
+        self.kick_expiration_time.unwrap_or(0)
+    }
+
+    pub fn clear_kick_expiration_time(&mut self) {
+        self.kick_expiration_time = ::std::option::Option::None;
+    }
+
+    pub fn has_kick_expiration_time(&self) -> bool {
+        self.kick_expiration_time.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_kick_expiration_time(&mut self, v: u32) {
+        self.kick_expiration_time = ::std::option::Option::Some(v);
+    }
+
+    // optional bool skip_lock = 8;
+
+    pub fn skip_lock(&self) -> bool {
+        self.skip_lock.unwrap_or(false)
+    }
+
+    pub fn clear_skip_lock(&mut self) {
+        self.skip_lock = ::std::option::Option::None;
+    }
+
+    pub fn has_skip_lock(&self) -> bool {
+        self.skip_lock.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_skip_lock(&mut self, v: bool) {
+        self.skip_lock = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ResolveReport_Request {
+    const NAME: &'static str = "CChatRoom_ResolveReport_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.subject_group_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.subject_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                24 => {
+                    self.resolution = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                32 => {
+                    self.reason = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                40 => {
+                    self.subject_type = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                48 => {
+                    self.chat_group_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                56 => {
+                    self.kick_expiration_time = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                64 => {
+                    self.skip_lock = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.subject_group_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.subject_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(2, v);
+        }
+        if let Some(v) = self.resolution {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(3, v.value());
+        }
+        if let Some(v) = self.reason {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v.value());
+        }
+        if let Some(v) = self.subject_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(5, v.value());
+        }
+        if let Some(v) = self.chat_group_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(6, v);
+        }
+        if let Some(v) = self.kick_expiration_time {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(7, v);
+        }
+        if let Some(v) = self.skip_lock {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.subject_group_id {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.subject_id {
+            os.write_uint64(2, v)?;
+        }
+        if let Some(v) = self.resolution {
+            os.write_enum(3, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.reason {
+            os.write_enum(4, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.subject_type {
+            os.write_enum(5, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.chat_group_id {
+            os.write_uint64(6, v)?;
+        }
+        if let Some(v) = self.kick_expiration_time {
+            os.write_uint32(7, v)?;
+        }
+        if let Some(v) = self.skip_lock {
+            os.write_bool(8, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CChatRoom_ResolveReport_Request {
+        CChatRoom_ResolveReport_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.subject_group_id = ::std::option::Option::None;
+        self.subject_id = ::std::option::Option::None;
+        self.resolution = ::std::option::Option::None;
+        self.reason = ::std::option::Option::None;
+        self.subject_type = ::std::option::Option::None;
+        self.chat_group_id = ::std::option::Option::None;
+        self.kick_expiration_time = ::std::option::Option::None;
+        self.skip_lock = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CChatRoom_ResolveReport_Request {
+        static instance: CChatRoom_ResolveReport_Request = CChatRoom_ResolveReport_Request {
+            subject_group_id: ::std::option::Option::None,
+            subject_id: ::std::option::Option::None,
+            resolution: ::std::option::Option::None,
+            reason: ::std::option::Option::None,
+            subject_type: ::std::option::Option::None,
+            chat_group_id: ::std::option::Option::None,
+            kick_expiration_time: ::std::option::Option::None,
+            skip_lock: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CChatRoom_ResolveReport_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CChatRoom_ResolveReport_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CChatRoom_ResolveReport_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CChatRoom_ResolveReport_Response {
+    fn default() -> &'a CChatRoom_ResolveReport_Response {
+        <CChatRoom_ResolveReport_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CChatRoom_ResolveReport_Response {
+    pub fn new() -> CChatRoom_ResolveReport_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CChatRoom_ResolveReport_Response {
+    const NAME: &'static str = "CChatRoom_ResolveReport_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CChatRoom_ResolveReport_Response {
+        CChatRoom_ResolveReport_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CChatRoom_ResolveReport_Response {
+        static instance: CChatRoom_ResolveReport_Response = CChatRoom_ResolveReport_Response {
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -26555,6 +27072,12 @@ pub enum EChatRoomServerMessage {
     k_EChatRoomServerMsg_ChatRoomAvatarChanged = 10,
     // @@protoc_insertion_point(enum_value:EChatRoomServerMessage.k_EChatRoomServerMsg_AppCustom)
     k_EChatRoomServerMsg_AppCustom = 11,
+    // @@protoc_insertion_point(enum_value:EChatRoomServerMessage.k_EChatRoomServerMsg_JoinedMany)
+    k_EChatRoomServerMsg_JoinedMany = 12,
+    // @@protoc_insertion_point(enum_value:EChatRoomServerMessage.k_EChatRoomServerMsg_PartedMany)
+    k_EChatRoomServerMsg_PartedMany = 13,
+    // @@protoc_insertion_point(enum_value:EChatRoomServerMessage.k_EChatRoomServerMsg_InvitedMany)
+    k_EChatRoomServerMsg_InvitedMany = 14,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EChatRoomServerMessage {
@@ -26576,6 +27099,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EChatRoomServerMessage {
             9 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomTaglineChanged),
             10 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomAvatarChanged),
             11 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_AppCustom),
+            12 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_JoinedMany),
+            13 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_PartedMany),
+            14 => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_InvitedMany),
             _ => ::std::option::Option::None
         }
     }
@@ -26592,6 +27118,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EChatRoomServerMessage {
             "k_EChatRoomServerMsg_ChatRoomTaglineChanged" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomTaglineChanged),
             "k_EChatRoomServerMsg_ChatRoomAvatarChanged" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomAvatarChanged),
             "k_EChatRoomServerMsg_AppCustom" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_AppCustom),
+            "k_EChatRoomServerMsg_JoinedMany" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_JoinedMany),
+            "k_EChatRoomServerMsg_PartedMany" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_PartedMany),
+            "k_EChatRoomServerMsg_InvitedMany" => ::std::option::Option::Some(EChatRoomServerMessage::k_EChatRoomServerMsg_InvitedMany),
             _ => ::std::option::Option::None
         }
     }
@@ -26607,6 +27136,9 @@ impl ::steam_vent_proto_common::protobuf::Enum for EChatRoomServerMessage {
         EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomTaglineChanged,
         EChatRoomServerMessage::k_EChatRoomServerMsg_ChatRoomAvatarChanged,
         EChatRoomServerMessage::k_EChatRoomServerMsg_AppCustom,
+        EChatRoomServerMessage::k_EChatRoomServerMsg_JoinedMany,
+        EChatRoomServerMessage::k_EChatRoomServerMsg_PartedMany,
+        EChatRoomServerMessage::k_EChatRoomServerMsg_InvitedMany,
     ];
 }
 
@@ -28321,6 +28853,32 @@ impl ::steam_vent_proto_common::RpcMessage for CChatRoom_ReportMessage_Response 
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CChatRoom_ResolveReport_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CChatRoom_ResolveReport_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 impl ::steam_vent_proto_common::RpcMessage
 for CClanChatRooms_GetClanChatRoomInfo_Request {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
@@ -28809,6 +29367,10 @@ impl ::steam_vent_proto_common::RpcMethod for CChatRoom_ReplaceRoleActions_Reque
 impl ::steam_vent_proto_common::RpcMethod for CChatRoom_ReportMessage_Request {
     const METHOD_NAME: &'static str = "ChatRoom.ReportMessage#1";
     type Response = CChatRoom_ReportMessage_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CChatRoom_ResolveReport_Request {
+    const METHOD_NAME: &'static str = "ChatRoom.ResolveReport#1";
+    type Response = CChatRoom_ResolveReport_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod for CChatRoom_RevokeInvite_Request {
     const METHOD_NAME: &'static str = "ChatRoom.RevokeInviteToGroup#1";

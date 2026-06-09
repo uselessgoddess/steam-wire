@@ -6245,6 +6245,8 @@ pub struct CClanEventData {
     pub build_branch: ::std::option::Option<::std::string::String>,
     // @@protoc_insertion_point(field:CClanEventData.unlisted)
     pub unlisted: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CClanEventData.rtime_created)
+    pub rtime_created: ::std::option::Option<u32>,
     // special fields
     // @@protoc_insertion_point(special_field:CClanEventData.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -6916,6 +6918,25 @@ impl CClanEventData {
     pub fn set_unlisted(&mut self, v: bool) {
         self.unlisted = ::std::option::Option::Some(v);
     }
+
+    // optional uint32 rtime_created = 32;
+
+    pub fn rtime_created(&self) -> u32 {
+        self.rtime_created.unwrap_or(0)
+    }
+
+    pub fn clear_rtime_created(&mut self) {
+        self.rtime_created = ::std::option::Option::None;
+    }
+
+    pub fn has_rtime_created(&self) -> bool {
+        self.rtime_created.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_rtime_created(&mut self, v: u32) {
+        self.rtime_created = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
@@ -7024,6 +7045,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
                 248 => {
                     self.unlisted = ::std::option::Option::Some(is.read_bool()?);
                 },
+                256 => {
+                    self.rtime_created = ::std::option::Option::Some(is.read_uint32()?);
+                },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -7130,6 +7154,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
         if let Some(v) = self.unlisted {
             my_size += 2 + 1;
         }
+        if let Some(v) = self.rtime_created {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(32, v);
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -7229,6 +7256,9 @@ impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
         if let Some(v) = self.unlisted {
             os.write_bool(31, v)?;
         }
+        if let Some(v) = self.rtime_created {
+            os.write_uint32(32, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -7277,6 +7307,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
         self.build_id = ::std::option::Option::None;
         self.build_branch = ::std::option::Option::None;
         self.unlisted = ::std::option::Option::None;
+        self.rtime_created = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -7313,6 +7344,7 @@ impl ::steam_vent_proto_common::protobuf::Message for CClanEventData {
             build_id: ::std::option::Option::None,
             build_branch: ::std::option::Option::None,
             unlisted: ::std::option::Option::None,
+            rtime_created: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -7893,6 +7925,20 @@ pub struct CPackageReservationStatus {
     pub rtime_estimated_notification: ::std::option::Option<u32>,
     // @@protoc_insertion_point(field:CPackageReservationStatus.notificaton_token)
     pub notificaton_token: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.queue_head_position_at_reservation)
+    pub queue_head_position_at_reservation: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.queue_head_position_now)
+    pub queue_head_position_now: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.position_is_waitlist)
+    pub position_is_waitlist: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.user_waitlist_token)
+    pub user_waitlist_token: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.queue_in_waitlist)
+    pub queue_in_waitlist: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.queue_waitlist_token)
+    pub queue_waitlist_token: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CPackageReservationStatus.reservation_type)
+    pub reservation_type: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:CPackageReservationStatus.special_fields)
     pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
@@ -8132,6 +8178,173 @@ impl CPackageReservationStatus {
     pub fn take_notificaton_token(&mut self) -> ::std::string::String {
         self.notificaton_token.take().unwrap_or_else(|| ::std::string::String::new())
     }
+
+    // optional int32 queue_head_position_at_reservation = 11;
+
+    pub fn queue_head_position_at_reservation(&self) -> i32 {
+        self.queue_head_position_at_reservation.unwrap_or(0)
+    }
+
+    pub fn clear_queue_head_position_at_reservation(&mut self) {
+        self.queue_head_position_at_reservation = ::std::option::Option::None;
+    }
+
+    pub fn has_queue_head_position_at_reservation(&self) -> bool {
+        self.queue_head_position_at_reservation.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_queue_head_position_at_reservation(&mut self, v: i32) {
+        self.queue_head_position_at_reservation = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 queue_head_position_now = 12;
+
+    pub fn queue_head_position_now(&self) -> i32 {
+        self.queue_head_position_now.unwrap_or(0)
+    }
+
+    pub fn clear_queue_head_position_now(&mut self) {
+        self.queue_head_position_now = ::std::option::Option::None;
+    }
+
+    pub fn has_queue_head_position_now(&self) -> bool {
+        self.queue_head_position_now.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_queue_head_position_now(&mut self, v: i32) {
+        self.queue_head_position_now = ::std::option::Option::Some(v);
+    }
+
+    // optional bool position_is_waitlist = 13;
+
+    pub fn position_is_waitlist(&self) -> bool {
+        self.position_is_waitlist.unwrap_or(false)
+    }
+
+    pub fn clear_position_is_waitlist(&mut self) {
+        self.position_is_waitlist = ::std::option::Option::None;
+    }
+
+    pub fn has_position_is_waitlist(&self) -> bool {
+        self.position_is_waitlist.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_position_is_waitlist(&mut self, v: bool) {
+        self.position_is_waitlist = ::std::option::Option::Some(v);
+    }
+
+    // optional string user_waitlist_token = 14;
+
+    pub fn user_waitlist_token(&self) -> &str {
+        match self.user_waitlist_token.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_user_waitlist_token(&mut self) {
+        self.user_waitlist_token = ::std::option::Option::None;
+    }
+
+    pub fn has_user_waitlist_token(&self) -> bool {
+        self.user_waitlist_token.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_user_waitlist_token(&mut self, v: ::std::string::String) {
+        self.user_waitlist_token = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_user_waitlist_token(&mut self) -> &mut ::std::string::String {
+        if self.user_waitlist_token.is_none() {
+            self.user_waitlist_token = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.user_waitlist_token.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_user_waitlist_token(&mut self) -> ::std::string::String {
+        self.user_waitlist_token.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool queue_in_waitlist = 15;
+
+    pub fn queue_in_waitlist(&self) -> bool {
+        self.queue_in_waitlist.unwrap_or(false)
+    }
+
+    pub fn clear_queue_in_waitlist(&mut self) {
+        self.queue_in_waitlist = ::std::option::Option::None;
+    }
+
+    pub fn has_queue_in_waitlist(&self) -> bool {
+        self.queue_in_waitlist.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_queue_in_waitlist(&mut self, v: bool) {
+        self.queue_in_waitlist = ::std::option::Option::Some(v);
+    }
+
+    // optional string queue_waitlist_token = 16;
+
+    pub fn queue_waitlist_token(&self) -> &str {
+        match self.queue_waitlist_token.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_queue_waitlist_token(&mut self) {
+        self.queue_waitlist_token = ::std::option::Option::None;
+    }
+
+    pub fn has_queue_waitlist_token(&self) -> bool {
+        self.queue_waitlist_token.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_queue_waitlist_token(&mut self, v: ::std::string::String) {
+        self.queue_waitlist_token = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_queue_waitlist_token(&mut self) -> &mut ::std::string::String {
+        if self.queue_waitlist_token.is_none() {
+            self.queue_waitlist_token = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.queue_waitlist_token.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_queue_waitlist_token(&mut self) -> ::std::string::String {
+        self.queue_waitlist_token.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool reservation_type = 17;
+
+    pub fn reservation_type(&self) -> bool {
+        self.reservation_type.unwrap_or(false)
+    }
+
+    pub fn clear_reservation_type(&mut self) {
+        self.reservation_type = ::std::option::Option::None;
+    }
+
+    pub fn has_reservation_type(&self) -> bool {
+        self.reservation_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_reservation_type(&mut self, v: bool) {
+        self.reservation_type = ::std::option::Option::Some(v);
+    }
 }
 
 impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus {
@@ -8173,6 +8386,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus 
                 },
                 82 => {
                     self.notificaton_token = ::std::option::Option::Some(is.read_string()?);
+                },
+                88 => {
+                    self.queue_head_position_at_reservation = ::std::option::Option::Some(is.read_int32()?);
+                },
+                96 => {
+                    self.queue_head_position_now = ::std::option::Option::Some(is.read_int32()?);
+                },
+                104 => {
+                    self.position_is_waitlist = ::std::option::Option::Some(is.read_bool()?);
+                },
+                114 => {
+                    self.user_waitlist_token = ::std::option::Option::Some(is.read_string()?);
+                },
+                120 => {
+                    self.queue_in_waitlist = ::std::option::Option::Some(is.read_bool()?);
+                },
+                130 => {
+                    self.queue_waitlist_token = ::std::option::Option::Some(is.read_string()?);
+                },
+                136 => {
+                    self.reservation_type = ::std::option::Option::Some(is.read_bool()?);
                 },
                 tag => {
                     ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -8216,6 +8450,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus 
         if let Some(v) = self.notificaton_token.as_ref() {
             my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
         }
+        if let Some(v) = self.queue_head_position_at_reservation {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(11, v);
+        }
+        if let Some(v) = self.queue_head_position_now {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(12, v);
+        }
+        if let Some(v) = self.position_is_waitlist {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.user_waitlist_token.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(14, &v);
+        }
+        if let Some(v) = self.queue_in_waitlist {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.queue_waitlist_token.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(16, &v);
+        }
+        if let Some(v) = self.reservation_type {
+            my_size += 2 + 1;
+        }
         my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -8252,6 +8507,27 @@ impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus 
         if let Some(v) = self.notificaton_token.as_ref() {
             os.write_string(10, v)?;
         }
+        if let Some(v) = self.queue_head_position_at_reservation {
+            os.write_int32(11, v)?;
+        }
+        if let Some(v) = self.queue_head_position_now {
+            os.write_int32(12, v)?;
+        }
+        if let Some(v) = self.position_is_waitlist {
+            os.write_bool(13, v)?;
+        }
+        if let Some(v) = self.user_waitlist_token.as_ref() {
+            os.write_string(14, v)?;
+        }
+        if let Some(v) = self.queue_in_waitlist {
+            os.write_bool(15, v)?;
+        }
+        if let Some(v) = self.queue_waitlist_token.as_ref() {
+            os.write_string(16, v)?;
+        }
+        if let Some(v) = self.reservation_type {
+            os.write_bool(17, v)?;
+        }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -8279,6 +8555,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus 
         self.time_reserved = ::std::option::Option::None;
         self.rtime_estimated_notification = ::std::option::Option::None;
         self.notificaton_token = ::std::option::Option::None;
+        self.queue_head_position_at_reservation = ::std::option::Option::None;
+        self.queue_head_position_now = ::std::option::Option::None;
+        self.position_is_waitlist = ::std::option::Option::None;
+        self.user_waitlist_token = ::std::option::Option::None;
+        self.queue_in_waitlist = ::std::option::Option::None;
+        self.queue_waitlist_token = ::std::option::Option::None;
+        self.reservation_type = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -8294,6 +8577,13 @@ impl ::steam_vent_proto_common::protobuf::Message for CPackageReservationStatus 
             time_reserved: ::std::option::Option::None,
             rtime_estimated_notification: ::std::option::Option::None,
             notificaton_token: ::std::option::Option::None,
+            queue_head_position_at_reservation: ::std::option::Option::None,
+            queue_head_position_now: ::std::option::Option::None,
+            position_is_waitlist: ::std::option::Option::None,
+            user_waitlist_token: ::std::option::Option::None,
+            queue_in_waitlist: ::std::option::Option::None,
+            queue_waitlist_token: ::std::option::Option::None,
+            reservation_type: ::std::option::Option::None,
             special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8799,6 +9089,1105 @@ pub mod user_content_descriptor_preferences {
             &instance
         }
     }
+}
+
+// @@protoc_insertion_point(message:UserSystemInformation)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct UserSystemInformation {
+    // message fields
+    // @@protoc_insertion_point(field:UserSystemInformation.manufacturer)
+    pub manufacturer: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.model)
+    pub model: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.dx_video_card)
+    pub dx_video_card: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.dx_vendorid)
+    pub dx_vendorid: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.dx_deviceid)
+    pub dx_deviceid: ::std::option::Option<i32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.num_gpu)
+    pub num_gpu: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.system_ram)
+    pub system_ram: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:UserSystemInformation.os)
+    pub os: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.cpu_vendor)
+    pub cpu_vendor: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.cpu_name)
+    pub cpu_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.gaming_device_type)
+    pub gaming_device_type: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.dx_driver_version)
+    pub dx_driver_version: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.adapter_description)
+    pub adapter_description: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.driver_version)
+    pub driver_version: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.driver_date)
+    pub driver_date: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:UserSystemInformation.vram_size)
+    pub vram_size: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.screen_width)
+    pub screen_width: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.screen_height)
+    pub screen_height: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:UserSystemInformation.precise_frame_rate)
+    pub precise_frame_rate: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:UserSystemInformation.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a UserSystemInformation {
+    fn default() -> &'a UserSystemInformation {
+        <UserSystemInformation as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl UserSystemInformation {
+    pub fn new() -> UserSystemInformation {
+        ::std::default::Default::default()
+    }
+
+    // optional string manufacturer = 1;
+
+    pub fn manufacturer(&self) -> &str {
+        match self.manufacturer.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_manufacturer(&mut self) {
+        self.manufacturer = ::std::option::Option::None;
+    }
+
+    pub fn has_manufacturer(&self) -> bool {
+        self.manufacturer.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_manufacturer(&mut self, v: ::std::string::String) {
+        self.manufacturer = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_manufacturer(&mut self) -> &mut ::std::string::String {
+        if self.manufacturer.is_none() {
+            self.manufacturer = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.manufacturer.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_manufacturer(&mut self) -> ::std::string::String {
+        self.manufacturer.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string model = 2;
+
+    pub fn model(&self) -> &str {
+        match self.model.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_model(&mut self) {
+        self.model = ::std::option::Option::None;
+    }
+
+    pub fn has_model(&self) -> bool {
+        self.model.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_model(&mut self, v: ::std::string::String) {
+        self.model = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_model(&mut self) -> &mut ::std::string::String {
+        if self.model.is_none() {
+            self.model = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.model.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_model(&mut self) -> ::std::string::String {
+        self.model.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string dx_video_card = 3;
+
+    pub fn dx_video_card(&self) -> &str {
+        match self.dx_video_card.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_dx_video_card(&mut self) {
+        self.dx_video_card = ::std::option::Option::None;
+    }
+
+    pub fn has_dx_video_card(&self) -> bool {
+        self.dx_video_card.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dx_video_card(&mut self, v: ::std::string::String) {
+        self.dx_video_card = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_dx_video_card(&mut self) -> &mut ::std::string::String {
+        if self.dx_video_card.is_none() {
+            self.dx_video_card = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.dx_video_card.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_dx_video_card(&mut self) -> ::std::string::String {
+        self.dx_video_card.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional int32 dx_vendorid = 4;
+
+    pub fn dx_vendorid(&self) -> i32 {
+        self.dx_vendorid.unwrap_or(0)
+    }
+
+    pub fn clear_dx_vendorid(&mut self) {
+        self.dx_vendorid = ::std::option::Option::None;
+    }
+
+    pub fn has_dx_vendorid(&self) -> bool {
+        self.dx_vendorid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dx_vendorid(&mut self, v: i32) {
+        self.dx_vendorid = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 dx_deviceid = 5;
+
+    pub fn dx_deviceid(&self) -> i32 {
+        self.dx_deviceid.unwrap_or(0)
+    }
+
+    pub fn clear_dx_deviceid(&mut self) {
+        self.dx_deviceid = ::std::option::Option::None;
+    }
+
+    pub fn has_dx_deviceid(&self) -> bool {
+        self.dx_deviceid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dx_deviceid(&mut self, v: i32) {
+        self.dx_deviceid = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 num_gpu = 6;
+
+    pub fn num_gpu(&self) -> u32 {
+        self.num_gpu.unwrap_or(0)
+    }
+
+    pub fn clear_num_gpu(&mut self) {
+        self.num_gpu = ::std::option::Option::None;
+    }
+
+    pub fn has_num_gpu(&self) -> bool {
+        self.num_gpu.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_num_gpu(&mut self, v: u32) {
+        self.num_gpu = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 system_ram = 7;
+
+    pub fn system_ram(&self) -> u64 {
+        self.system_ram.unwrap_or(0)
+    }
+
+    pub fn clear_system_ram(&mut self) {
+        self.system_ram = ::std::option::Option::None;
+    }
+
+    pub fn has_system_ram(&self) -> bool {
+        self.system_ram.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_system_ram(&mut self, v: u64) {
+        self.system_ram = ::std::option::Option::Some(v);
+    }
+
+    // optional string os = 8;
+
+    pub fn os(&self) -> &str {
+        match self.os.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_os(&mut self) {
+        self.os = ::std::option::Option::None;
+    }
+
+    pub fn has_os(&self) -> bool {
+        self.os.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_os(&mut self, v: ::std::string::String) {
+        self.os = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_os(&mut self) -> &mut ::std::string::String {
+        if self.os.is_none() {
+            self.os = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.os.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_os(&mut self) -> ::std::string::String {
+        self.os.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string cpu_vendor = 9;
+
+    pub fn cpu_vendor(&self) -> &str {
+        match self.cpu_vendor.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_cpu_vendor(&mut self) {
+        self.cpu_vendor = ::std::option::Option::None;
+    }
+
+    pub fn has_cpu_vendor(&self) -> bool {
+        self.cpu_vendor.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cpu_vendor(&mut self, v: ::std::string::String) {
+        self.cpu_vendor = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_cpu_vendor(&mut self) -> &mut ::std::string::String {
+        if self.cpu_vendor.is_none() {
+            self.cpu_vendor = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.cpu_vendor.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_cpu_vendor(&mut self) -> ::std::string::String {
+        self.cpu_vendor.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string cpu_name = 10;
+
+    pub fn cpu_name(&self) -> &str {
+        match self.cpu_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_cpu_name(&mut self) {
+        self.cpu_name = ::std::option::Option::None;
+    }
+
+    pub fn has_cpu_name(&self) -> bool {
+        self.cpu_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cpu_name(&mut self, v: ::std::string::String) {
+        self.cpu_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_cpu_name(&mut self) -> &mut ::std::string::String {
+        if self.cpu_name.is_none() {
+            self.cpu_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.cpu_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_cpu_name(&mut self) -> ::std::string::String {
+        self.cpu_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional uint32 gaming_device_type = 11;
+
+    pub fn gaming_device_type(&self) -> u32 {
+        self.gaming_device_type.unwrap_or(0)
+    }
+
+    pub fn clear_gaming_device_type(&mut self) {
+        self.gaming_device_type = ::std::option::Option::None;
+    }
+
+    pub fn has_gaming_device_type(&self) -> bool {
+        self.gaming_device_type.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_gaming_device_type(&mut self, v: u32) {
+        self.gaming_device_type = ::std::option::Option::Some(v);
+    }
+
+    // optional string dx_driver_version = 12;
+
+    pub fn dx_driver_version(&self) -> &str {
+        match self.dx_driver_version.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_dx_driver_version(&mut self) {
+        self.dx_driver_version = ::std::option::Option::None;
+    }
+
+    pub fn has_dx_driver_version(&self) -> bool {
+        self.dx_driver_version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_dx_driver_version(&mut self, v: ::std::string::String) {
+        self.dx_driver_version = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_dx_driver_version(&mut self) -> &mut ::std::string::String {
+        if self.dx_driver_version.is_none() {
+            self.dx_driver_version = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.dx_driver_version.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_dx_driver_version(&mut self) -> ::std::string::String {
+        self.dx_driver_version.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string adapter_description = 14;
+
+    pub fn adapter_description(&self) -> &str {
+        match self.adapter_description.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_adapter_description(&mut self) {
+        self.adapter_description = ::std::option::Option::None;
+    }
+
+    pub fn has_adapter_description(&self) -> bool {
+        self.adapter_description.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_adapter_description(&mut self, v: ::std::string::String) {
+        self.adapter_description = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_adapter_description(&mut self) -> &mut ::std::string::String {
+        if self.adapter_description.is_none() {
+            self.adapter_description = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.adapter_description.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_adapter_description(&mut self) -> ::std::string::String {
+        self.adapter_description.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string driver_version = 15;
+
+    pub fn driver_version(&self) -> &str {
+        match self.driver_version.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_driver_version(&mut self) {
+        self.driver_version = ::std::option::Option::None;
+    }
+
+    pub fn has_driver_version(&self) -> bool {
+        self.driver_version.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_driver_version(&mut self, v: ::std::string::String) {
+        self.driver_version = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_driver_version(&mut self) -> &mut ::std::string::String {
+        if self.driver_version.is_none() {
+            self.driver_version = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.driver_version.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_driver_version(&mut self) -> ::std::string::String {
+        self.driver_version.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string driver_date = 16;
+
+    pub fn driver_date(&self) -> &str {
+        match self.driver_date.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_driver_date(&mut self) {
+        self.driver_date = ::std::option::Option::None;
+    }
+
+    pub fn has_driver_date(&self) -> bool {
+        self.driver_date.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_driver_date(&mut self, v: ::std::string::String) {
+        self.driver_date = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_driver_date(&mut self) -> &mut ::std::string::String {
+        if self.driver_date.is_none() {
+            self.driver_date = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.driver_date.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_driver_date(&mut self) -> ::std::string::String {
+        self.driver_date.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional uint32 vram_size = 17;
+
+    pub fn vram_size(&self) -> u32 {
+        self.vram_size.unwrap_or(0)
+    }
+
+    pub fn clear_vram_size(&mut self) {
+        self.vram_size = ::std::option::Option::None;
+    }
+
+    pub fn has_vram_size(&self) -> bool {
+        self.vram_size.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_vram_size(&mut self, v: u32) {
+        self.vram_size = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 screen_width = 18;
+
+    pub fn screen_width(&self) -> u32 {
+        self.screen_width.unwrap_or(0)
+    }
+
+    pub fn clear_screen_width(&mut self) {
+        self.screen_width = ::std::option::Option::None;
+    }
+
+    pub fn has_screen_width(&self) -> bool {
+        self.screen_width.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_screen_width(&mut self, v: u32) {
+        self.screen_width = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 screen_height = 19;
+
+    pub fn screen_height(&self) -> u32 {
+        self.screen_height.unwrap_or(0)
+    }
+
+    pub fn clear_screen_height(&mut self) {
+        self.screen_height = ::std::option::Option::None;
+    }
+
+    pub fn has_screen_height(&self) -> bool {
+        self.screen_height.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_screen_height(&mut self, v: u32) {
+        self.screen_height = ::std::option::Option::Some(v);
+    }
+
+    // optional bool precise_frame_rate = 20;
+
+    pub fn precise_frame_rate(&self) -> bool {
+        self.precise_frame_rate.unwrap_or(false)
+    }
+
+    pub fn clear_precise_frame_rate(&mut self) {
+        self.precise_frame_rate = ::std::option::Option::None;
+    }
+
+    pub fn has_precise_frame_rate(&self) -> bool {
+        self.precise_frame_rate.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_precise_frame_rate(&mut self, v: bool) {
+        self.precise_frame_rate = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for UserSystemInformation {
+    const NAME: &'static str = "UserSystemInformation";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.manufacturer = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.model = ::std::option::Option::Some(is.read_string()?);
+                },
+                26 => {
+                    self.dx_video_card = ::std::option::Option::Some(is.read_string()?);
+                },
+                32 => {
+                    self.dx_vendorid = ::std::option::Option::Some(is.read_int32()?);
+                },
+                40 => {
+                    self.dx_deviceid = ::std::option::Option::Some(is.read_int32()?);
+                },
+                48 => {
+                    self.num_gpu = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                56 => {
+                    self.system_ram = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                66 => {
+                    self.os = ::std::option::Option::Some(is.read_string()?);
+                },
+                74 => {
+                    self.cpu_vendor = ::std::option::Option::Some(is.read_string()?);
+                },
+                82 => {
+                    self.cpu_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                88 => {
+                    self.gaming_device_type = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                98 => {
+                    self.dx_driver_version = ::std::option::Option::Some(is.read_string()?);
+                },
+                114 => {
+                    self.adapter_description = ::std::option::Option::Some(is.read_string()?);
+                },
+                122 => {
+                    self.driver_version = ::std::option::Option::Some(is.read_string()?);
+                },
+                130 => {
+                    self.driver_date = ::std::option::Option::Some(is.read_string()?);
+                },
+                136 => {
+                    self.vram_size = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                144 => {
+                    self.screen_width = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                152 => {
+                    self.screen_height = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                160 => {
+                    self.precise_frame_rate = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.manufacturer.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.model.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        if let Some(v) = self.dx_video_card.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        if let Some(v) = self.dx_vendorid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(4, v);
+        }
+        if let Some(v) = self.dx_deviceid {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(5, v);
+        }
+        if let Some(v) = self.num_gpu {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(6, v);
+        }
+        if let Some(v) = self.system_ram {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(7, v);
+        }
+        if let Some(v) = self.os.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(8, &v);
+        }
+        if let Some(v) = self.cpu_vendor.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(9, &v);
+        }
+        if let Some(v) = self.cpu_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(10, &v);
+        }
+        if let Some(v) = self.gaming_device_type {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(11, v);
+        }
+        if let Some(v) = self.dx_driver_version.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(12, &v);
+        }
+        if let Some(v) = self.adapter_description.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(14, &v);
+        }
+        if let Some(v) = self.driver_version.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(15, &v);
+        }
+        if let Some(v) = self.driver_date.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(16, &v);
+        }
+        if let Some(v) = self.vram_size {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(17, v);
+        }
+        if let Some(v) = self.screen_width {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(18, v);
+        }
+        if let Some(v) = self.screen_height {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(19, v);
+        }
+        if let Some(v) = self.precise_frame_rate {
+            my_size += 2 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.manufacturer.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.model.as_ref() {
+            os.write_string(2, v)?;
+        }
+        if let Some(v) = self.dx_video_card.as_ref() {
+            os.write_string(3, v)?;
+        }
+        if let Some(v) = self.dx_vendorid {
+            os.write_int32(4, v)?;
+        }
+        if let Some(v) = self.dx_deviceid {
+            os.write_int32(5, v)?;
+        }
+        if let Some(v) = self.num_gpu {
+            os.write_uint32(6, v)?;
+        }
+        if let Some(v) = self.system_ram {
+            os.write_uint64(7, v)?;
+        }
+        if let Some(v) = self.os.as_ref() {
+            os.write_string(8, v)?;
+        }
+        if let Some(v) = self.cpu_vendor.as_ref() {
+            os.write_string(9, v)?;
+        }
+        if let Some(v) = self.cpu_name.as_ref() {
+            os.write_string(10, v)?;
+        }
+        if let Some(v) = self.gaming_device_type {
+            os.write_uint32(11, v)?;
+        }
+        if let Some(v) = self.dx_driver_version.as_ref() {
+            os.write_string(12, v)?;
+        }
+        if let Some(v) = self.adapter_description.as_ref() {
+            os.write_string(14, v)?;
+        }
+        if let Some(v) = self.driver_version.as_ref() {
+            os.write_string(15, v)?;
+        }
+        if let Some(v) = self.driver_date.as_ref() {
+            os.write_string(16, v)?;
+        }
+        if let Some(v) = self.vram_size {
+            os.write_uint32(17, v)?;
+        }
+        if let Some(v) = self.screen_width {
+            os.write_uint32(18, v)?;
+        }
+        if let Some(v) = self.screen_height {
+            os.write_uint32(19, v)?;
+        }
+        if let Some(v) = self.precise_frame_rate {
+            os.write_bool(20, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> UserSystemInformation {
+        UserSystemInformation::new()
+    }
+
+    fn clear(&mut self) {
+        self.manufacturer = ::std::option::Option::None;
+        self.model = ::std::option::Option::None;
+        self.dx_video_card = ::std::option::Option::None;
+        self.dx_vendorid = ::std::option::Option::None;
+        self.dx_deviceid = ::std::option::Option::None;
+        self.num_gpu = ::std::option::Option::None;
+        self.system_ram = ::std::option::Option::None;
+        self.os = ::std::option::Option::None;
+        self.cpu_vendor = ::std::option::Option::None;
+        self.cpu_name = ::std::option::Option::None;
+        self.gaming_device_type = ::std::option::Option::None;
+        self.dx_driver_version = ::std::option::Option::None;
+        self.adapter_description = ::std::option::Option::None;
+        self.driver_version = ::std::option::Option::None;
+        self.driver_date = ::std::option::Option::None;
+        self.vram_size = ::std::option::Option::None;
+        self.screen_width = ::std::option::Option::None;
+        self.screen_height = ::std::option::Option::None;
+        self.precise_frame_rate = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static UserSystemInformation {
+        static instance: UserSystemInformation = UserSystemInformation {
+            manufacturer: ::std::option::Option::None,
+            model: ::std::option::Option::None,
+            dx_video_card: ::std::option::Option::None,
+            dx_vendorid: ::std::option::Option::None,
+            dx_deviceid: ::std::option::Option::None,
+            num_gpu: ::std::option::Option::None,
+            system_ram: ::std::option::Option::None,
+            os: ::std::option::Option::None,
+            cpu_vendor: ::std::option::Option::None,
+            cpu_name: ::std::option::Option::None,
+            gaming_device_type: ::std::option::Option::None,
+            dx_driver_version: ::std::option::Option::None,
+            adapter_description: ::std::option::Option::None,
+            driver_version: ::std::option::Option::None,
+            driver_date: ::std::option::Option::None,
+            vram_size: ::std::option::Option::None,
+            screen_width: ::std::option::Option::None,
+            screen_height: ::std::option::Option::None,
+            precise_frame_rate: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:GamePerformanceSettings)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct GamePerformanceSettings {
+    // message fields
+    // @@protoc_insertion_point(field:GamePerformanceSettings.setting)
+    pub setting: ::std::option::Option<::steam_vent_proto_common::protobuf::EnumOrUnknown<game_performance_settings::EGamePerformanceSetting>>,
+    // @@protoc_insertion_point(field:GamePerformanceSettings.game_resolution_width)
+    pub game_resolution_width: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:GamePerformanceSettings.game_resolution_height)
+    pub game_resolution_height: ::std::option::Option<u32>,
+    // special fields
+    // @@protoc_insertion_point(special_field:GamePerformanceSettings.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a GamePerformanceSettings {
+    fn default() -> &'a GamePerformanceSettings {
+        <GamePerformanceSettings as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl GamePerformanceSettings {
+    pub fn new() -> GamePerformanceSettings {
+        ::std::default::Default::default()
+    }
+
+    // optional .GamePerformanceSettings.EGamePerformanceSetting setting = 1;
+
+    pub fn setting(&self) -> game_performance_settings::EGamePerformanceSetting {
+        match self.setting {
+            Some(e) => e.enum_value_or(game_performance_settings::EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet),
+            None => game_performance_settings::EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet,
+        }
+    }
+
+    pub fn clear_setting(&mut self) {
+        self.setting = ::std::option::Option::None;
+    }
+
+    pub fn has_setting(&self) -> bool {
+        self.setting.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_setting(&mut self, v: game_performance_settings::EGamePerformanceSetting) {
+        self.setting = ::std::option::Option::Some(::steam_vent_proto_common::protobuf::EnumOrUnknown::new(v));
+    }
+
+    // optional uint32 game_resolution_width = 2;
+
+    pub fn game_resolution_width(&self) -> u32 {
+        self.game_resolution_width.unwrap_or(0)
+    }
+
+    pub fn clear_game_resolution_width(&mut self) {
+        self.game_resolution_width = ::std::option::Option::None;
+    }
+
+    pub fn has_game_resolution_width(&self) -> bool {
+        self.game_resolution_width.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_game_resolution_width(&mut self, v: u32) {
+        self.game_resolution_width = ::std::option::Option::Some(v);
+    }
+
+    // optional uint32 game_resolution_height = 3;
+
+    pub fn game_resolution_height(&self) -> u32 {
+        self.game_resolution_height.unwrap_or(0)
+    }
+
+    pub fn clear_game_resolution_height(&mut self) {
+        self.game_resolution_height = ::std::option::Option::None;
+    }
+
+    pub fn has_game_resolution_height(&self) -> bool {
+        self.game_resolution_height.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_game_resolution_height(&mut self, v: u32) {
+        self.game_resolution_height = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for GamePerformanceSettings {
+    const NAME: &'static str = "GamePerformanceSettings";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.setting = ::std::option::Option::Some(is.read_enum_or_unknown()?);
+                },
+                16 => {
+                    self.game_resolution_width = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                24 => {
+                    self.game_resolution_height = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.setting {
+            my_size += ::steam_vent_proto_common::protobuf::rt::int32_size(1, v.value());
+        }
+        if let Some(v) = self.game_resolution_width {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(2, v);
+        }
+        if let Some(v) = self.game_resolution_height {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.setting {
+            os.write_enum(1, ::steam_vent_proto_common::protobuf::EnumOrUnknown::value(&v))?;
+        }
+        if let Some(v) = self.game_resolution_width {
+            os.write_uint32(2, v)?;
+        }
+        if let Some(v) = self.game_resolution_height {
+            os.write_uint32(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> GamePerformanceSettings {
+        GamePerformanceSettings::new()
+    }
+
+    fn clear(&mut self) {
+        self.setting = ::std::option::Option::None;
+        self.game_resolution_width = ::std::option::Option::None;
+        self.game_resolution_height = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static GamePerformanceSettings {
+        static instance: GamePerformanceSettings = GamePerformanceSettings {
+            setting: ::std::option::Option::None,
+            game_resolution_width: ::std::option::Option::None,
+            game_resolution_height: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+/// Nested message and enums of message `GamePerformanceSettings`
+pub mod game_performance_settings {
+    #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+    // @@protoc_insertion_point(enum:GamePerformanceSettings.EGamePerformanceSetting)
+    pub enum EGamePerformanceSetting {
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_NotSet)
+        k_EGamePerformanceSetting_NotSet = 0,
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_Low)
+        k_EGamePerformanceSetting_Low = 1,
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_Medium)
+        k_EGamePerformanceSetting_Medium = 2,
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_High)
+        k_EGamePerformanceSetting_High = 3,
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_Ultra)
+        k_EGamePerformanceSetting_Ultra = 4,
+        // @@protoc_insertion_point(enum_value:GamePerformanceSettings.EGamePerformanceSetting.k_EGamePerformanceSetting_Custom)
+        k_EGamePerformanceSetting_Custom = 5,
+    }
+
+    impl ::steam_vent_proto_common::protobuf::Enum for EGamePerformanceSetting {
+        const NAME: &'static str = "EGamePerformanceSetting";
+
+        fn value(&self) -> i32 {
+            *self as i32
+        }
+
+        fn from_i32(value: i32) -> ::std::option::Option<EGamePerformanceSetting> {
+            match value {
+                0 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet),
+                1 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Low),
+                2 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Medium),
+                3 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_High),
+                4 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Ultra),
+                5 => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Custom),
+                _ => ::std::option::Option::None
+            }
+        }
+
+        fn from_str(str: &str) -> ::std::option::Option<EGamePerformanceSetting> {
+            match str {
+                "k_EGamePerformanceSetting_NotSet" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet),
+                "k_EGamePerformanceSetting_Low" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Low),
+                "k_EGamePerformanceSetting_Medium" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Medium),
+                "k_EGamePerformanceSetting_High" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_High),
+                "k_EGamePerformanceSetting_Ultra" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Ultra),
+                "k_EGamePerformanceSetting_Custom" => ::std::option::Option::Some(EGamePerformanceSetting::k_EGamePerformanceSetting_Custom),
+                _ => ::std::option::Option::None
+            }
+        }
+
+        const VALUES: &'static [EGamePerformanceSetting] = &[
+            EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet,
+            EGamePerformanceSetting::k_EGamePerformanceSetting_Low,
+            EGamePerformanceSetting::k_EGamePerformanceSetting_Medium,
+            EGamePerformanceSetting::k_EGamePerformanceSetting_High,
+            EGamePerformanceSetting::k_EGamePerformanceSetting_Ultra,
+            EGamePerformanceSetting::k_EGamePerformanceSetting_Custom,
+        ];
+    }
+
+    impl ::std::default::Default for EGamePerformanceSetting {
+        fn default() -> Self {
+            EGamePerformanceSetting::k_EGamePerformanceSetting_NotSet
+        }
+    }
+
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
@@ -9421,6 +10810,32 @@ impl ::steam_vent_proto_common::RpcMessage for CMsgKeyValueSet {
     }
 }
 impl ::steam_vent_proto_common::RpcMessage for UserContentDescriptorPreferences {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for UserSystemInformation {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for GamePerformanceSettings {
     fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
         <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
     }

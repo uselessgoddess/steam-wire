@@ -4855,6 +4855,1240 @@ impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_GetSteamD
     }
 }
 
+// @@protoc_insertion_point(message:CAccountHardware_SaveHardware_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_SaveHardware_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_SaveHardware_Request.friendly_name)
+    pub friendly_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CAccountHardware_SaveHardware_Request.system_info)
+    pub system_info: ::steam_vent_proto_common::protobuf::MessageField<super::steammessages_base::UserSystemInformation>,
+    // @@protoc_insertion_point(field:CAccountHardware_SaveHardware_Request.backfill_user_reviews)
+    pub backfill_user_reviews: ::std::option::Option<bool>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_SaveHardware_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_SaveHardware_Request {
+    fn default() -> &'a CAccountHardware_SaveHardware_Request {
+        <CAccountHardware_SaveHardware_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_SaveHardware_Request {
+    pub fn new() -> CAccountHardware_SaveHardware_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string friendly_name = 1;
+
+    pub fn friendly_name(&self) -> &str {
+        match self.friendly_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_friendly_name(&mut self) {
+        self.friendly_name = ::std::option::Option::None;
+    }
+
+    pub fn has_friendly_name(&self) -> bool {
+        self.friendly_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_friendly_name(&mut self, v: ::std::string::String) {
+        self.friendly_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_friendly_name(&mut self) -> &mut ::std::string::String {
+        if self.friendly_name.is_none() {
+            self.friendly_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.friendly_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_friendly_name(&mut self) -> ::std::string::String {
+        self.friendly_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional bool backfill_user_reviews = 3;
+
+    pub fn backfill_user_reviews(&self) -> bool {
+        self.backfill_user_reviews.unwrap_or(false)
+    }
+
+    pub fn clear_backfill_user_reviews(&mut self) {
+        self.backfill_user_reviews = ::std::option::Option::None;
+    }
+
+    pub fn has_backfill_user_reviews(&self) -> bool {
+        self.backfill_user_reviews.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_backfill_user_reviews(&mut self, v: bool) {
+        self.backfill_user_reviews = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_SaveHardware_Request {
+    const NAME: &'static str = "CAccountHardware_SaveHardware_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.friendly_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.system_info)?;
+                },
+                24 => {
+                    self.backfill_user_reviews = ::std::option::Option::Some(is.read_bool()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.friendly_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.system_info.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        if let Some(v) = self.backfill_user_reviews {
+            my_size += 1 + 1;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.friendly_name.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.system_info.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
+        }
+        if let Some(v) = self.backfill_user_reviews {
+            os.write_bool(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_SaveHardware_Request {
+        CAccountHardware_SaveHardware_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.friendly_name = ::std::option::Option::None;
+        self.system_info.clear();
+        self.backfill_user_reviews = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_SaveHardware_Request {
+        static instance: CAccountHardware_SaveHardware_Request = CAccountHardware_SaveHardware_Request {
+            friendly_name: ::std::option::Option::None,
+            system_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            backfill_user_reviews: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_SaveHardware_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_SaveHardware_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_SaveHardware_Response.hardware_id)
+    pub hardware_id: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_SaveHardware_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_SaveHardware_Response {
+    fn default() -> &'a CAccountHardware_SaveHardware_Response {
+        <CAccountHardware_SaveHardware_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_SaveHardware_Response {
+    pub fn new() -> CAccountHardware_SaveHardware_Response {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 hardware_id = 1;
+
+    pub fn hardware_id(&self) -> u64 {
+        self.hardware_id.unwrap_or(0)
+    }
+
+    pub fn clear_hardware_id(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+    }
+
+    pub fn has_hardware_id(&self) -> bool {
+        self.hardware_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hardware_id(&mut self, v: u64) {
+        self.hardware_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_SaveHardware_Response {
+    const NAME: &'static str = "CAccountHardware_SaveHardware_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.hardware_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.hardware_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.hardware_id {
+            os.write_uint64(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_SaveHardware_Response {
+        CAccountHardware_SaveHardware_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_SaveHardware_Response {
+        static instance: CAccountHardware_SaveHardware_Response = CAccountHardware_SaveHardware_Response {
+            hardware_id: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_ManageSavedHardware_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_ManageSavedHardware_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_ManageSavedHardware_Request.hardware_id)
+    pub hardware_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CAccountHardware_ManageSavedHardware_Request.delete_hardware)
+    pub delete_hardware: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:CAccountHardware_ManageSavedHardware_Request.friendly_name_update)
+    pub friendly_name_update: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_ManageSavedHardware_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_ManageSavedHardware_Request {
+    fn default() -> &'a CAccountHardware_ManageSavedHardware_Request {
+        <CAccountHardware_ManageSavedHardware_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_ManageSavedHardware_Request {
+    pub fn new() -> CAccountHardware_ManageSavedHardware_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 hardware_id = 1;
+
+    pub fn hardware_id(&self) -> u64 {
+        self.hardware_id.unwrap_or(0)
+    }
+
+    pub fn clear_hardware_id(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+    }
+
+    pub fn has_hardware_id(&self) -> bool {
+        self.hardware_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hardware_id(&mut self, v: u64) {
+        self.hardware_id = ::std::option::Option::Some(v);
+    }
+
+    // optional bool delete_hardware = 2;
+
+    pub fn delete_hardware(&self) -> bool {
+        self.delete_hardware.unwrap_or(false)
+    }
+
+    pub fn clear_delete_hardware(&mut self) {
+        self.delete_hardware = ::std::option::Option::None;
+    }
+
+    pub fn has_delete_hardware(&self) -> bool {
+        self.delete_hardware.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_delete_hardware(&mut self, v: bool) {
+        self.delete_hardware = ::std::option::Option::Some(v);
+    }
+
+    // optional string friendly_name_update = 3;
+
+    pub fn friendly_name_update(&self) -> &str {
+        match self.friendly_name_update.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_friendly_name_update(&mut self) {
+        self.friendly_name_update = ::std::option::Option::None;
+    }
+
+    pub fn has_friendly_name_update(&self) -> bool {
+        self.friendly_name_update.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_friendly_name_update(&mut self, v: ::std::string::String) {
+        self.friendly_name_update = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_friendly_name_update(&mut self) -> &mut ::std::string::String {
+        if self.friendly_name_update.is_none() {
+            self.friendly_name_update = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.friendly_name_update.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_friendly_name_update(&mut self) -> ::std::string::String {
+        self.friendly_name_update.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_ManageSavedHardware_Request {
+    const NAME: &'static str = "CAccountHardware_ManageSavedHardware_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.hardware_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                16 => {
+                    self.delete_hardware = ::std::option::Option::Some(is.read_bool()?);
+                },
+                26 => {
+                    self.friendly_name_update = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.hardware_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.delete_hardware {
+            my_size += 1 + 1;
+        }
+        if let Some(v) = self.friendly_name_update.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(3, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.hardware_id {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.delete_hardware {
+            os.write_bool(2, v)?;
+        }
+        if let Some(v) = self.friendly_name_update.as_ref() {
+            os.write_string(3, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_ManageSavedHardware_Request {
+        CAccountHardware_ManageSavedHardware_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+        self.delete_hardware = ::std::option::Option::None;
+        self.friendly_name_update = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_ManageSavedHardware_Request {
+        static instance: CAccountHardware_ManageSavedHardware_Request = CAccountHardware_ManageSavedHardware_Request {
+            hardware_id: ::std::option::Option::None,
+            delete_hardware: ::std::option::Option::None,
+            friendly_name_update: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_ManageSavedHardware_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_ManageSavedHardware_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_ManageSavedHardware_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_ManageSavedHardware_Response {
+    fn default() -> &'a CAccountHardware_ManageSavedHardware_Response {
+        <CAccountHardware_ManageSavedHardware_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_ManageSavedHardware_Response {
+    pub fn new() -> CAccountHardware_ManageSavedHardware_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_ManageSavedHardware_Response {
+    const NAME: &'static str = "CAccountHardware_ManageSavedHardware_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_ManageSavedHardware_Response {
+        CAccountHardware_ManageSavedHardware_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_ManageSavedHardware_Response {
+        static instance: CAccountHardware_ManageSavedHardware_Response = CAccountHardware_ManageSavedHardware_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_GetSavedHardwareList_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_GetSavedHardwareList_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_GetSavedHardwareList_Request.steamid)
+    pub steamid: ::std::option::Option<u64>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_GetSavedHardwareList_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_GetSavedHardwareList_Request {
+    fn default() -> &'a CAccountHardware_GetSavedHardwareList_Request {
+        <CAccountHardware_GetSavedHardwareList_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_GetSavedHardwareList_Request {
+    pub fn new() -> CAccountHardware_GetSavedHardwareList_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional fixed64 steamid = 1;
+
+    pub fn steamid(&self) -> u64 {
+        self.steamid.unwrap_or(0)
+    }
+
+    pub fn clear_steamid(&mut self) {
+        self.steamid = ::std::option::Option::None;
+    }
+
+    pub fn has_steamid(&self) -> bool {
+        self.steamid.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_steamid(&mut self, v: u64) {
+        self.steamid = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_GetSavedHardwareList_Request {
+    const NAME: &'static str = "CAccountHardware_GetSavedHardwareList_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                9 => {
+                    self.steamid = ::std::option::Option::Some(is.read_fixed64()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.steamid {
+            my_size += 1 + 8;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.steamid {
+            os.write_fixed64(1, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_GetSavedHardwareList_Request {
+        CAccountHardware_GetSavedHardwareList_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.steamid = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_GetSavedHardwareList_Request {
+        static instance: CAccountHardware_GetSavedHardwareList_Request = CAccountHardware_GetSavedHardwareList_Request {
+            steamid: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_SavedHardware_Details)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_SavedHardware_Details {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_SavedHardware_Details.hardware_id)
+    pub hardware_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CAccountHardware_SavedHardware_Details.friendly_name)
+    pub friendly_name: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CAccountHardware_SavedHardware_Details.timestamp_created)
+    pub timestamp_created: ::std::option::Option<u32>,
+    // @@protoc_insertion_point(field:CAccountHardware_SavedHardware_Details.hardware_cluster_id)
+    pub hardware_cluster_id: ::std::option::Option<u64>,
+    // @@protoc_insertion_point(field:CAccountHardware_SavedHardware_Details.system_info)
+    pub system_info: ::steam_vent_proto_common::protobuf::MessageField<super::steammessages_base::UserSystemInformation>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_SavedHardware_Details.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_SavedHardware_Details {
+    fn default() -> &'a CAccountHardware_SavedHardware_Details {
+        <CAccountHardware_SavedHardware_Details as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_SavedHardware_Details {
+    pub fn new() -> CAccountHardware_SavedHardware_Details {
+        ::std::default::Default::default()
+    }
+
+    // optional uint64 hardware_id = 1;
+
+    pub fn hardware_id(&self) -> u64 {
+        self.hardware_id.unwrap_or(0)
+    }
+
+    pub fn clear_hardware_id(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+    }
+
+    pub fn has_hardware_id(&self) -> bool {
+        self.hardware_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hardware_id(&mut self, v: u64) {
+        self.hardware_id = ::std::option::Option::Some(v);
+    }
+
+    // optional string friendly_name = 2;
+
+    pub fn friendly_name(&self) -> &str {
+        match self.friendly_name.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_friendly_name(&mut self) {
+        self.friendly_name = ::std::option::Option::None;
+    }
+
+    pub fn has_friendly_name(&self) -> bool {
+        self.friendly_name.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_friendly_name(&mut self, v: ::std::string::String) {
+        self.friendly_name = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_friendly_name(&mut self) -> &mut ::std::string::String {
+        if self.friendly_name.is_none() {
+            self.friendly_name = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.friendly_name.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_friendly_name(&mut self) -> ::std::string::String {
+        self.friendly_name.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional uint32 timestamp_created = 3;
+
+    pub fn timestamp_created(&self) -> u32 {
+        self.timestamp_created.unwrap_or(0)
+    }
+
+    pub fn clear_timestamp_created(&mut self) {
+        self.timestamp_created = ::std::option::Option::None;
+    }
+
+    pub fn has_timestamp_created(&self) -> bool {
+        self.timestamp_created.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_timestamp_created(&mut self, v: u32) {
+        self.timestamp_created = ::std::option::Option::Some(v);
+    }
+
+    // optional uint64 hardware_cluster_id = 4;
+
+    pub fn hardware_cluster_id(&self) -> u64 {
+        self.hardware_cluster_id.unwrap_or(0)
+    }
+
+    pub fn clear_hardware_cluster_id(&mut self) {
+        self.hardware_cluster_id = ::std::option::Option::None;
+    }
+
+    pub fn has_hardware_cluster_id(&self) -> bool {
+        self.hardware_cluster_id.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_hardware_cluster_id(&mut self, v: u64) {
+        self.hardware_cluster_id = ::std::option::Option::Some(v);
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_SavedHardware_Details {
+    const NAME: &'static str = "CAccountHardware_SavedHardware_Details";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                8 => {
+                    self.hardware_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                18 => {
+                    self.friendly_name = ::std::option::Option::Some(is.read_string()?);
+                },
+                24 => {
+                    self.timestamp_created = ::std::option::Option::Some(is.read_uint32()?);
+                },
+                32 => {
+                    self.hardware_cluster_id = ::std::option::Option::Some(is.read_uint64()?);
+                },
+                42 => {
+                    ::steam_vent_proto_common::protobuf::rt::read_singular_message_into_field(is, &mut self.system_info)?;
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.hardware_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(1, v);
+        }
+        if let Some(v) = self.friendly_name.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        if let Some(v) = self.timestamp_created {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint32_size(3, v);
+        }
+        if let Some(v) = self.hardware_cluster_id {
+            my_size += ::steam_vent_proto_common::protobuf::rt::uint64_size(4, v);
+        }
+        if let Some(v) = self.system_info.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.hardware_id {
+            os.write_uint64(1, v)?;
+        }
+        if let Some(v) = self.friendly_name.as_ref() {
+            os.write_string(2, v)?;
+        }
+        if let Some(v) = self.timestamp_created {
+            os.write_uint32(3, v)?;
+        }
+        if let Some(v) = self.hardware_cluster_id {
+            os.write_uint64(4, v)?;
+        }
+        if let Some(v) = self.system_info.as_ref() {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_SavedHardware_Details {
+        CAccountHardware_SavedHardware_Details::new()
+    }
+
+    fn clear(&mut self) {
+        self.hardware_id = ::std::option::Option::None;
+        self.friendly_name = ::std::option::Option::None;
+        self.timestamp_created = ::std::option::Option::None;
+        self.hardware_cluster_id = ::std::option::Option::None;
+        self.system_info.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_SavedHardware_Details {
+        static instance: CAccountHardware_SavedHardware_Details = CAccountHardware_SavedHardware_Details {
+            hardware_id: ::std::option::Option::None,
+            friendly_name: ::std::option::Option::None,
+            timestamp_created: ::std::option::Option::None,
+            hardware_cluster_id: ::std::option::Option::None,
+            system_info: ::steam_vent_proto_common::protobuf::MessageField::none(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_GetSavedHardwareList_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_GetSavedHardwareList_Response {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_GetSavedHardwareList_Response.saved_hardware)
+    pub saved_hardware: ::std::vec::Vec<CAccountHardware_SavedHardware_Details>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_GetSavedHardwareList_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_GetSavedHardwareList_Response {
+    fn default() -> &'a CAccountHardware_GetSavedHardwareList_Response {
+        <CAccountHardware_GetSavedHardwareList_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_GetSavedHardwareList_Response {
+    pub fn new() -> CAccountHardware_GetSavedHardwareList_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_GetSavedHardwareList_Response {
+    const NAME: &'static str = "CAccountHardware_GetSavedHardwareList_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.saved_hardware.push(is.read_message()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        for value in &self.saved_hardware {
+            let len = value.compute_size();
+            my_size += 1 + ::steam_vent_proto_common::protobuf::rt::compute_raw_varint64_size(len) + len;
+        };
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        for v in &self.saved_hardware {
+            ::steam_vent_proto_common::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_GetSavedHardwareList_Response {
+        CAccountHardware_GetSavedHardwareList_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.saved_hardware.clear();
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_GetSavedHardwareList_Response {
+        static instance: CAccountHardware_GetSavedHardwareList_Response = CAccountHardware_GetSavedHardwareList_Response {
+            saved_hardware: ::std::vec::Vec::new(),
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_RegisterSteamMachine_Request)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_RegisterSteamMachine_Request {
+    // message fields
+    // @@protoc_insertion_point(field:CAccountHardware_RegisterSteamMachine_Request.serial_number)
+    pub serial_number: ::std::option::Option<::std::string::String>,
+    // @@protoc_insertion_point(field:CAccountHardware_RegisterSteamMachine_Request.machine_code)
+    pub machine_code: ::std::option::Option<::std::string::String>,
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_RegisterSteamMachine_Request.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_RegisterSteamMachine_Request {
+    fn default() -> &'a CAccountHardware_RegisterSteamMachine_Request {
+        <CAccountHardware_RegisterSteamMachine_Request as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_RegisterSteamMachine_Request {
+    pub fn new() -> CAccountHardware_RegisterSteamMachine_Request {
+        ::std::default::Default::default()
+    }
+
+    // optional string serial_number = 1;
+
+    pub fn serial_number(&self) -> &str {
+        match self.serial_number.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_serial_number(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+    }
+
+    pub fn has_serial_number(&self) -> bool {
+        self.serial_number.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_serial_number(&mut self, v: ::std::string::String) {
+        self.serial_number = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_serial_number(&mut self) -> &mut ::std::string::String {
+        if self.serial_number.is_none() {
+            self.serial_number = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.serial_number.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_serial_number(&mut self) -> ::std::string::String {
+        self.serial_number.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+
+    // optional string machine_code = 2;
+
+    pub fn machine_code(&self) -> &str {
+        match self.machine_code.as_ref() {
+            Some(v) => v,
+            None => "",
+        }
+    }
+
+    pub fn clear_machine_code(&mut self) {
+        self.machine_code = ::std::option::Option::None;
+    }
+
+    pub fn has_machine_code(&self) -> bool {
+        self.machine_code.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_machine_code(&mut self, v: ::std::string::String) {
+        self.machine_code = ::std::option::Option::Some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_machine_code(&mut self) -> &mut ::std::string::String {
+        if self.machine_code.is_none() {
+            self.machine_code = ::std::option::Option::Some(::std::string::String::new());
+        }
+        self.machine_code.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_machine_code(&mut self) -> ::std::string::String {
+        self.machine_code.take().unwrap_or_else(|| ::std::string::String::new())
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_RegisterSteamMachine_Request {
+    const NAME: &'static str = "CAccountHardware_RegisterSteamMachine_Request";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                10 => {
+                    self.serial_number = ::std::option::Option::Some(is.read_string()?);
+                },
+                18 => {
+                    self.machine_code = ::std::option::Option::Some(is.read_string()?);
+                },
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        if let Some(v) = self.serial_number.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(1, &v);
+        }
+        if let Some(v) = self.machine_code.as_ref() {
+            my_size += ::steam_vent_proto_common::protobuf::rt::string_size(2, &v);
+        }
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        if let Some(v) = self.serial_number.as_ref() {
+            os.write_string(1, v)?;
+        }
+        if let Some(v) = self.machine_code.as_ref() {
+            os.write_string(2, v)?;
+        }
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_RegisterSteamMachine_Request {
+        CAccountHardware_RegisterSteamMachine_Request::new()
+    }
+
+    fn clear(&mut self) {
+        self.serial_number = ::std::option::Option::None;
+        self.machine_code = ::std::option::Option::None;
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_RegisterSteamMachine_Request {
+        static instance: CAccountHardware_RegisterSteamMachine_Request = CAccountHardware_RegisterSteamMachine_Request {
+            serial_number: ::std::option::Option::None,
+            machine_code: ::std::option::Option::None,
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
+// @@protoc_insertion_point(message:CAccountHardware_RegisterSteamMachine_Response)
+#[derive(PartialEq,Clone,Default,Debug)]
+pub struct CAccountHardware_RegisterSteamMachine_Response {
+    // special fields
+    // @@protoc_insertion_point(special_field:CAccountHardware_RegisterSteamMachine_Response.special_fields)
+    pub special_fields: ::steam_vent_proto_common::protobuf::SpecialFields,
+}
+
+impl<'a> ::std::default::Default for &'a CAccountHardware_RegisterSteamMachine_Response {
+    fn default() -> &'a CAccountHardware_RegisterSteamMachine_Response {
+        <CAccountHardware_RegisterSteamMachine_Response as ::steam_vent_proto_common::protobuf::Message>::default_instance()
+    }
+}
+
+impl CAccountHardware_RegisterSteamMachine_Response {
+    pub fn new() -> CAccountHardware_RegisterSteamMachine_Response {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::steam_vent_proto_common::protobuf::Message for CAccountHardware_RegisterSteamMachine_Response {
+    const NAME: &'static str = "CAccountHardware_RegisterSteamMachine_Response";
+
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::steam_vent_proto_common::protobuf::CodedInputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        while let Some(tag) = is.read_raw_tag_or_eof()? {
+            match tag {
+                tag => {
+                    ::steam_vent_proto_common::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u64 {
+        let mut my_size = 0;
+        my_size += ::steam_vent_proto_common::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
+        self.special_fields.cached_size().set(my_size as u32);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::steam_vent_proto_common::protobuf::CodedOutputStream<'_>) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        os.write_unknown_fields(self.special_fields.unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn special_fields(&self) -> &::steam_vent_proto_common::protobuf::SpecialFields {
+        &self.special_fields
+    }
+
+    fn mut_special_fields(&mut self) -> &mut ::steam_vent_proto_common::protobuf::SpecialFields {
+        &mut self.special_fields
+    }
+
+    fn new() -> CAccountHardware_RegisterSteamMachine_Response {
+        CAccountHardware_RegisterSteamMachine_Response::new()
+    }
+
+    fn clear(&mut self) {
+        self.special_fields.clear();
+    }
+
+    fn default_instance() -> &'static CAccountHardware_RegisterSteamMachine_Response {
+        static instance: CAccountHardware_RegisterSteamMachine_Response = CAccountHardware_RegisterSteamMachine_Response {
+            special_fields: ::steam_vent_proto_common::protobuf::SpecialFields::new(),
+        };
+        &instance
+    }
+}
+
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 // @@protoc_insertion_point(enum:EValveIndexComponent)
 pub enum EValveIndexComponent {
@@ -4866,12 +6100,14 @@ pub enum EValveIndexComponent {
     k_EValveIndexComponentLeftKnuckle = 2,
     // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_EValveIndexComponentRightKnuckle)
     k_EValveIndexComponentRightKnuckle = 3,
-    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_ETempDTst1)
-    k_ETempDTst1 = 4,
-    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_ETempDTst2)
-    k_ETempDTst2 = 5,
-    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_ETempDTst3)
-    k_ETempDTst3 = 6,
+    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_EValveIndexComponentSteamFrameHMD)
+    k_EValveIndexComponentSteamFrameHMD = 4,
+    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_EValveIndexComponentSteamFrameLeftController)
+    k_EValveIndexComponentSteamFrameLeftController = 5,
+    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_EValveIndexComponentSteamFrameRightController)
+    k_EValveIndexComponentSteamFrameRightController = 6,
+    // @@protoc_insertion_point(enum_value:EValveIndexComponent.k_EValveIndexComponentSteamFrameWirelessAdapter)
+    k_EValveIndexComponentSteamFrameWirelessAdapter = 7,
 }
 
 impl ::steam_vent_proto_common::protobuf::Enum for EValveIndexComponent {
@@ -4887,9 +6123,10 @@ impl ::steam_vent_proto_common::protobuf::Enum for EValveIndexComponent {
             1 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentHMD),
             2 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentLeftKnuckle),
             3 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentRightKnuckle),
-            4 => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst1),
-            5 => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst2),
-            6 => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst3),
+            4 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameHMD),
+            5 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameLeftController),
+            6 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameRightController),
+            7 => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameWirelessAdapter),
             _ => ::std::option::Option::None
         }
     }
@@ -4900,9 +6137,10 @@ impl ::steam_vent_proto_common::protobuf::Enum for EValveIndexComponent {
             "k_EValveIndexComponentHMD" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentHMD),
             "k_EValveIndexComponentLeftKnuckle" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentLeftKnuckle),
             "k_EValveIndexComponentRightKnuckle" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentRightKnuckle),
-            "k_ETempDTst1" => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst1),
-            "k_ETempDTst2" => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst2),
-            "k_ETempDTst3" => ::std::option::Option::Some(EValveIndexComponent::k_ETempDTst3),
+            "k_EValveIndexComponentSteamFrameHMD" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameHMD),
+            "k_EValveIndexComponentSteamFrameLeftController" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameLeftController),
+            "k_EValveIndexComponentSteamFrameRightController" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameRightController),
+            "k_EValveIndexComponentSteamFrameWirelessAdapter" => ::std::option::Option::Some(EValveIndexComponent::k_EValveIndexComponentSteamFrameWirelessAdapter),
             _ => ::std::option::Option::None
         }
     }
@@ -4912,9 +6150,10 @@ impl ::steam_vent_proto_common::protobuf::Enum for EValveIndexComponent {
         EValveIndexComponent::k_EValveIndexComponentHMD,
         EValveIndexComponent::k_EValveIndexComponentLeftKnuckle,
         EValveIndexComponent::k_EValveIndexComponentRightKnuckle,
-        EValveIndexComponent::k_ETempDTst1,
-        EValveIndexComponent::k_ETempDTst2,
-        EValveIndexComponent::k_ETempDTst3,
+        EValveIndexComponent::k_EValveIndexComponentSteamFrameHMD,
+        EValveIndexComponent::k_EValveIndexComponentSteamFrameLeftController,
+        EValveIndexComponent::k_EValveIndexComponentSteamFrameRightController,
+        EValveIndexComponent::k_EValveIndexComponentSteamFrameWirelessAdapter,
     ];
 }
 
@@ -5310,6 +6549,129 @@ for CAccountHardware_GetSteamDeckComponents_Response {
         self.compute_size() as usize
     }
 }
+impl ::steam_vent_proto_common::RpcMessage for CAccountHardware_SaveHardware_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CAccountHardware_SaveHardware_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_ManageSavedHardware_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_ManageSavedHardware_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_GetSavedHardwareList_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage for CAccountHardware_SavedHardware_Details {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_GetSavedHardwareList_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_RegisterSteamMachine_Request {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
+impl ::steam_vent_proto_common::RpcMessage
+for CAccountHardware_RegisterSteamMachine_Response {
+    fn parse(reader: &mut dyn std::io::Read) -> ::steam_vent_proto_common::protobuf::Result<Self> {
+        <Self as ::steam_vent_proto_common::protobuf::Message>::parse_from_reader(reader)
+    }
+    fn write(&self, writer: &mut dyn std::io::Write) -> ::steam_vent_proto_common::protobuf::Result<()> {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.write_to_writer(writer)
+    }
+    fn encode_size(&self) -> usize {
+        use ::steam_vent_proto_common::protobuf::Message;
+        self.compute_size() as usize
+    }
+}
 ///
 struct AccountHardware {}
 impl ::steam_vent_proto_common::RpcService for AccountHardware {
@@ -5331,9 +6693,19 @@ for CAccountHardware_GetPersonalizationFile_Request {
     type Response = CAccountHardware_GetPersonalizationFile_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
+for CAccountHardware_GetSavedHardwareList_Request {
+    const METHOD_NAME: &'static str = "AccountHardware.GetSavedHardwareList#1";
+    type Response = CAccountHardware_GetSavedHardwareList_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
 for CAccountHardware_GetSteamDeckComponents_Request {
     const METHOD_NAME: &'static str = "AccountHardware.GetSteamDeckComponents#1";
     type Response = CAccountHardware_GetSteamDeckComponents_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
+for CAccountHardware_ManageSavedHardware_Request {
+    const METHOD_NAME: &'static str = "AccountHardware.ManageSavedHardware#1";
+    type Response = CAccountHardware_ManageSavedHardware_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CAccountHardware_QueryAccountsRegisteredToSerial_Request {
@@ -5346,9 +6718,18 @@ for CAccountHardware_RegisterSteamController_Request {
     type Response = CAccountHardware_RegisterSteamController_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
+for CAccountHardware_RegisterSteamMachine_Request {
+    const METHOD_NAME: &'static str = "AccountHardware.RegisterSteamMachine#1";
+    type Response = CAccountHardware_RegisterSteamMachine_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod
 for CAccountHardware_RegisterValveIndexComponent_Request {
     const METHOD_NAME: &'static str = "AccountHardware.RegisterValveIndexComponent#1";
     type Response = CAccountHardware_RegisterValveIndexComponent_Response;
+}
+impl ::steam_vent_proto_common::RpcMethod for CAccountHardware_SaveHardware_Request {
+    const METHOD_NAME: &'static str = "AccountHardware.SaveHardware#1";
+    type Response = CAccountHardware_SaveHardware_Response;
 }
 impl ::steam_vent_proto_common::RpcMethod
 for CAccountHardware_SetPersonalizationFile_Request {
